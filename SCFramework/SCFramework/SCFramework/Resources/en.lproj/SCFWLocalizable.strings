@@ -1,0 +1,24 @@
+/* 
+  SCFWLocalizable.strings
+  SCFramework
+
+  Created by Angzn on 3/5/14.
+  Copyright (c) 2014 Richer VC. All rights reserved.
+*/
+
+"SCFW_LS_OK" = "OK";
+"SCFW_LS_Done" = "Done";
+"SCFW_LS_Cancel" = "Cancel";
+
+"SCFW_LS_Release to refresh" = "Release to refresh";
+"SCFW_LS_Pull down to refresh" = "Pull down to refresh";
+"SCFW_LS_Refreshing" = "Refreshing...";
+
+"SCFW_LS_Release to load" = "Release to load";
+"SCFW_LS_Pull up to load" = "Pull up to load";
+"SCFW_LS_Loading" = "Loading...";
+
+"SCFW_LS_Last updated time" = "Last updated";
+"SCFW_LS_Last updated today" = "Today";
+"SCFW_LS_Last updated yesterday" = "Yesterday";
+"SCFW_LS_Last updated before yesterday" = "Before yesterday";

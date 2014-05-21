@@ -1,0 +1,61 @@
+PODS:
+  - AFNetworking (2.2.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.2.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.2.3):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.2.3)
+  - AFNetworking/Security (2.2.3)
+  - AFNetworking/Serialization (2.2.3)
+  - AFNetworking/UIKit (2.2.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - FMDB (2.2):
+    - FMDB/standard
+  - FMDB/common (2.2)
+  - FMDB/standard (2.2):
+    - FMDB/common
+  - JSONModel (0.13.0)
+  - Masonry (0.4.0)
+  - MBProgressHUD (0.8)
+  - pop (1.0.4)
+  - ReactiveCocoa (2.3):
+    - ReactiveCocoa/UI
+  - ReactiveCocoa/Core (2.3):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.3)
+  - ReactiveCocoa/UI (2.3):
+    - ReactiveCocoa/Core
+  - SDWebImage (3.6):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.6)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.2.3)
+  - FMDB (~> 2.2)
+  - JSONModel (~> 0.13.0)
+  - Masonry (~> 0.4.0)
+  - MBProgressHUD (~> 0.8)
+  - pop (~> 1.0.4)
+  - ReactiveCocoa (~> 2.3)
+  - SDWebImage (~> 3.6)
+
+SPEC CHECKSUMS:
+  AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
+  FMDB: e0dd09464b4e1a1cd7fa51ea835ae821b5656865
+  JSONModel: 1ce27c7d59de0ada0048e64f20006ce02e9ce73d
+  Masonry: d673617c9cbc24aaea90fba20b10e47fd9970a39
+  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
+  pop: 63a4f5e8942077fed2efe195036ecc572c71c48c
+  ReactiveCocoa: dde7b11a14954edf789e7343b2c32e595caabd01
+  SDWebImage: 7eb273e54ca8a2e506ad9bd5e80c35b2a4d7c95e
+
+COCOAPODS: 0.32.1
