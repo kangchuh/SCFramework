@@ -18,6 +18,21 @@ PODS:
   - AFNetworking/UIKit (2.2.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - BlocksKit (2.2.3):
+    - BlocksKit/All
+  - BlocksKit/All (2.2.3):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.3)
+  - BlocksKit/DynamicDelegate (2.2.3)
+  - BlocksKit/MessageUI (2.2.3):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.3):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - FMDB (2.2):
     - FMDB/standard
   - FMDB/common (2.2)
@@ -40,6 +55,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2.3)
+  - BlocksKit (~> 2.2.3)
   - FMDB (~> 2.2)
   - JSONModel (~> 0.13.0)
   - Masonry (~> 0.4.0)
@@ -49,13 +65,14 @@ DEPENDENCIES:
   - SDWebImage (~> 3.6)
 
 SPEC CHECKSUMS:
-  AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
-  FMDB: e0dd09464b4e1a1cd7fa51ea835ae821b5656865
-  JSONModel: 1ce27c7d59de0ada0048e64f20006ce02e9ce73d
-  Masonry: d673617c9cbc24aaea90fba20b10e47fd9970a39
-  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  pop: 63a4f5e8942077fed2efe195036ecc572c71c48c
-  ReactiveCocoa: dde7b11a14954edf789e7343b2c32e595caabd01
-  SDWebImage: 7eb273e54ca8a2e506ad9bd5e80c35b2a4d7c95e
+  AFNetworking: 47947303319594706f48a55185ea95a95159ab94
+  BlocksKit: 07c8a80f04275efac6a5f8b973782489c083a182
+  FMDB: f6f4511ad1e9ace38e9b6f4d83c2cddaabf98ea6
+  JSONModel: 62ea96b49ea18a8b91ef89c249dba291d8601d82
+  Masonry: 392466f4090cb28cc5349adec067453463e2ecd9
+  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
+  pop: 626af22f9f3b6eb866141a1af7bfd909dac1851e
+  ReactiveCocoa: 2066583826c17dde8e90c41e489f682048cc57c9
+  SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
 
 COCOAPODS: 0.32.1
