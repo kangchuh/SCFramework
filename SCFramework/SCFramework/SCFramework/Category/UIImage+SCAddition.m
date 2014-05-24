@@ -516,4 +516,20 @@
 	return [UIColor colorWithPatternImage:self];
 }
 
+/**
+ *  宽度
+ */
+- (CGFloat)width
+{
+    return self.size.width;
+}
+
+/**
+ *  高度
+ */
+- (CGFloat)height
+{
+    return self.size.height;
+}
+
 @end

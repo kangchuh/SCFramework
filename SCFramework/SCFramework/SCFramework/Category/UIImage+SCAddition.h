@@ -37,4 +37,7 @@
 
 - (UIColor *)patternColor;
 
+- (CGFloat)width;
+- (CGFloat)height;
+
 @end
