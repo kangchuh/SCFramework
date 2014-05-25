@@ -43,7 +43,6 @@
                                                 fromViewController:(UIViewController *)fromVC
                                                   toViewController:(UIViewController *)toVC
 {
-    
     if ([navigationController isKindOfClass:[SCCTNavigationController class]] ||
         [navigationController isMemberOfClass:[SCCTNavigationController class]]) {
         SCCTNavigationController *navigationVC = (SCCTNavigationController *)navigationController;
