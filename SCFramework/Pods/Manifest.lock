@@ -1,21 +1,21 @@
 PODS:
-  - AFNetworking (2.2.3):
+  - AFNetworking (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.2.3):
+  - AFNetworking/NSURLConnection (2.2.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.3):
+  - AFNetworking/NSURLSession (2.2.4):
     - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.3)
-  - AFNetworking/Security (2.2.3)
-  - AFNetworking/Serialization (2.2.3)
-  - AFNetworking/UIKit (2.2.3):
+  - AFNetworking/Reachability (2.2.4)
+  - AFNetworking/Security (2.2.4)
+  - AFNetworking/Serialization (2.2.4)
+  - AFNetworking/UIKit (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - BlocksKit (2.2.3):
@@ -33,15 +33,15 @@ PODS:
   - BlocksKit/UIKit (2.2.3):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - FMDB (2.2):
+  - FMDB (2.3):
     - FMDB/standard
-  - FMDB/common (2.2)
-  - FMDB/standard (2.2):
+  - FMDB/common (2.3)
+  - FMDB/standard (2.3):
     - FMDB/common
   - JSONModel (0.13.0)
-  - Masonry (0.4.0)
+  - Masonry (0.5.2)
   - MBProgressHUD (0.8)
-  - pop (1.0.4)
+  - pop (1.0.5)
   - ReactiveCocoa (2.3):
     - ReactiveCocoa/UI
   - ReactiveCocoa/Core (2.3):
@@ -54,25 +54,25 @@ PODS:
   - SDWebImage/Core (3.6)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.2.3)
+  - AFNetworking (~> 2.2.4)
   - BlocksKit (~> 2.2.3)
-  - FMDB (~> 2.2)
+  - FMDB (~> 2.3)
   - JSONModel (~> 0.13.0)
-  - Masonry (~> 0.4.0)
+  - Masonry (~> 0.5.0)
   - MBProgressHUD (~> 0.8)
-  - pop (~> 1.0.4)
+  - pop (~> 1.0.5)
   - ReactiveCocoa (~> 2.3)
   - SDWebImage (~> 3.6)
 
 SPEC CHECKSUMS:
-  AFNetworking: 47947303319594706f48a55185ea95a95159ab94
+  AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   BlocksKit: 07c8a80f04275efac6a5f8b973782489c083a182
-  FMDB: f6f4511ad1e9ace38e9b6f4d83c2cddaabf98ea6
+  FMDB: 31ec26773c7f7b7890a6038235a1f2bbd933a7cb
   JSONModel: 62ea96b49ea18a8b91ef89c249dba291d8601d82
-  Masonry: 392466f4090cb28cc5349adec067453463e2ecd9
+  Masonry: ec0189e1a07af00913e4a1a335ea76887adc86e1
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
-  pop: 626af22f9f3b6eb866141a1af7bfd909dac1851e
+  pop: 75fa2b33934200a8a68abb449ac1726fcf7e43b9
   ReactiveCocoa: 2066583826c17dde8e90c41e489f682048cc57c9
   SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1

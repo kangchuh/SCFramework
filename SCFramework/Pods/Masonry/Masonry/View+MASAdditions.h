@@ -30,6 +30,7 @@
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_centerX;
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_centerY;
 @property (nonatomic, strong, readonly) MASViewAttribute *mas_baseline;
+@property (nonatomic, strong, readonly) MASViewAttribute *(^mas_attribute)(NSLayoutAttribute attr);
 
 /**
  *	a key to associate with this view
@@ -65,5 +66,16 @@
  *  @return Array of created/updated MASConstraints
  */
 - (NSArray *)mas_updateConstraints:(void(^)(MASConstraintMaker *make))block;
+
+/**
+ *  Creates a MASConstraintMaker with the callee view.
+ *  Any constraints defined are added to the view or the appropriate superview once the block has finished executing.
+ *  All constraints previously installed for the view will be removed.
+ *
+ *  @param block scope within which you can build up the constraints which you wish to apply to the view.
+ *
+ *  @return Array of created/updated MASConstraints
+ */
+- (NSArray *)mas_remakeConstraints:(void(^)(MASConstraintMaker *make))block;
 
 @end

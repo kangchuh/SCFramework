@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "AFNetworkActivityIndicatorManager.h"
+#import <AFNetworkActivityIndicatorManager.h>
 
 #import "SCTestViewController.h"
 
@@ -25,11 +25,12 @@
     
     // -------------------------- <#Description#> -------------------------- //
     
-    NSDictionary *textAttributes = @{UITextAttributeTextColor : [UIColor orangeColor],
-                                     UITextAttributeTextShadowColor : [UIColor whiteColor],
-                                     UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:
-                                                                        UIOffsetMake(-1, -1)],
-                                     UITextAttributeFont : kSCBOLDSYSTEMFONT(18)};
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowOffset = CGSizeMake(-1, -1);
+    shadow.shadowColor = [UIColor whiteColor];
+    NSDictionary *textAttributes = @{NSForegroundColorAttributeName: [UIColor orangeColor],
+                                     NSShadowAttributeName: shadow,
+                                     NSFontAttributeName: kSCBOLDSYSTEMFONT(18)};
     [[UINavigationBar appearance] setTitleTextAttributes:textAttributes];
     
     //[[UIBarButtonItem appearance] setTitleTextAttributes:textAttributes forState:UIControlStateNormal];
@@ -39,13 +40,13 @@
         [[UINavigationBar appearance] setBarTintColor:[UIColor brownColor]];
     } else {
         [[UIBarButtonItem appearance] setTintColor:[UIColor orangeColor]];
-        [[UINavigationBar appearance] setTintColor:[UIColor brownColor]];
+        //[[UINavigationBar appearance] setTintColor:[UIColor brownColor]];
     }
     
     // -------------------------- <#Description#> -------------------------- //
     
     SCTestViewController *tableViewController = [[SCTestViewController alloc] init];
-    self.navigationController = [[SCDBNavigationController alloc] initWithRootViewController:
+    self.navigationController = [[SCCTNavigationController alloc] initWithRootViewController:
                                  tableViewController];
     //self.navigationController.navigationBarHidden = YES;
     

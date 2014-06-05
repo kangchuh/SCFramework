@@ -1,1 +1,1 @@
-../../FMDB/src/FMResultSet.h
+../../FMDB/src/fmdb/FMResultSet.h
