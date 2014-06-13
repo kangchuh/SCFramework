@@ -18,7 +18,9 @@
 #import "SCConstant.h"
 
 // -------------------------- Common -------------------------- //
+#import "SCApp.h"
 #import "SCMath.h"
+#import "SCNSJSONSerialization.h"
 
 // -------------------------- Adapted -------------------------- //
 #import "SCAdaptedDevice.h"
@@ -26,6 +28,7 @@
 
 // -------------------------- Manager -------------------------- //
 #import "SCCoreDataManager.h"
+#import "SCDaoManager.h"
 #import "SCDateManager.h"
 #import "SCFileManager.h"
 #import "SCUserDefaultManager.h"
@@ -35,12 +38,14 @@
 #import "NSData+SCAddition.h"
 #import "NSDate+SCAddition.h"
 #import "NSDictionary+SCAddition.h"
+#import "NSObject+SCAddition.h"
 #import "NSString+SCAddition.h"
 #import "UIAlertView+SCAddition.h"
 #import "UIColor+SCAddition.h"
 #import "UIDevice+SCAddition.h"
 #import "UIImage+SCAddition.h"
 #import "UIView+SCAddition.h"
+#import "NSURL+SCAddition.h"
 #import "UINavigationController+SCAddition.h"
 
 // -------------------------- Veiw -------------------------- //

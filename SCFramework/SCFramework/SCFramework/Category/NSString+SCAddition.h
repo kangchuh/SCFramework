@@ -42,4 +42,7 @@
 /// 字符串转时间
 - (NSDate *)dateWithFormat:(NSString *)format;
 
+/// 参数键值对
+- (NSDictionary *)paramValue;
+
 @end

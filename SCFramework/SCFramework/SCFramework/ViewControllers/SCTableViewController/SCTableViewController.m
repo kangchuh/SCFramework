@@ -49,11 +49,6 @@
 - (void)loadView
 {
     [super loadView];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
     
     _tableView = [[SCTableView alloc] initWithFrame:self.view.bounds
                                               style:_style];
@@ -65,6 +60,11 @@
     _tableView.delegate = self;
     _tableView.pullDelegate = self;
     [self.view addSubview:_tableView];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning

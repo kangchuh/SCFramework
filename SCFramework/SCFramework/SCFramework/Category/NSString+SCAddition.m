@@ -269,4 +269,29 @@
     return date;
 }
 
+/**
+ *  @brief 参数键值对
+ */
+- (NSDictionary *)paramValue
+{
+    NSArray *pairs = [self componentsSeparatedByString:@"&"];
+    
+    if ([pairs isEmpty]) {
+        return nil;
+    }
+    
+    NSMutableDictionary *paramDictionary = [NSMutableDictionary dictionary];
+    
+    for (NSString *pair in pairs) {
+        if ([pair containsString:@"="]) {
+            NSArray *key_value = [pair componentsSeparatedByString:@"="];
+            NSString *key = [key_value firstObject];
+            NSString *value = [key_value lastObject];
+            [paramDictionary setObject:[value URLDecodedString] forKey:key];
+        }
+    }
+    
+    return paramDictionary;
+}
+
 @end

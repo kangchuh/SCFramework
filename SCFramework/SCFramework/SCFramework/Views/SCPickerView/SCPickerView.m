@@ -15,7 +15,7 @@ UIPickerViewDataSource
 >
 
 /// 选择器
-@property (nonatomic, retain) UIPickerView *pickerView;
+@property (nonatomic, strong) UIPickerView *pickerView;
 
 /// 完成回调
 @property (nonatomic, copy) SCPickerViewDoneHandler doneHandler;

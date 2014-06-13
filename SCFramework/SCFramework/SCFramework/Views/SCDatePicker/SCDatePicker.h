@@ -14,10 +14,10 @@ typedef void (^SCDatePickerCancelHandler)(void);
 @interface SCDatePicker : UIActionSheet
 
 /// 时间选择器
-@property (nonatomic, retain) UIDatePicker *datePicker;
+@property (nonatomic, strong) UIDatePicker *datePicker;
 
 /// 默认显示日期
-@property (nonatomic, retain) NSDate *defaultDate;
+@property (nonatomic, strong) NSDate *defaultDate;
 
 - (id)initWithDate:(NSDate *)date;
 

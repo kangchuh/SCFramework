@@ -19,4 +19,6 @@
 - (float)floatForKey:(id)aKey;
 - (double)doubleForKey:(id)aKey;
 
+- (NSString *)paramString;
+
 @end
