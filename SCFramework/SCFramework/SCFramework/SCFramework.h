@@ -20,6 +20,7 @@
 // -------------------------- Common -------------------------- //
 #import "SCApp.h"
 #import "SCMath.h"
+#import "SCModel.h"
 #import "SCNSJSONSerialization.h"
 
 // -------------------------- Adapted -------------------------- //

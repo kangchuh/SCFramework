@@ -517,7 +517,7 @@
 }
 
 /**
- *  宽度
+ *  @brief 宽度
  */
 - (CGFloat)width
 {
@@ -525,11 +525,29 @@
 }
 
 /**
- *  高度
+ *  @brief 高度
  */
 - (CGFloat)height
 {
     return self.size.height;
+}
+
+/**
+ *  @brief 根据颜色创建图片
+ *
+ *  @param color 图片颜色
+ */
++ (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0.0, 0.0, 1.0, 1.0);
+    
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+    [color setFill];
+    UIRectFill(rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end

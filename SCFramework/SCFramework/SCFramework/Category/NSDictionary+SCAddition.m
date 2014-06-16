@@ -111,6 +111,21 @@
     return (double)0;
 }
 
+- (BOOL)boolForKey:(id)aKey
+{
+    id object = [self objectForKey:aKey];
+    if ([object isEqual:[NSNull null]]) {
+        return NO;
+    } else {
+        if ([object isKindOfClass:[NSString class]]) {
+            return [(NSString *)object boolValue];
+        } else if ([object isKindOfClass:[NSNumber class]]) {
+            return [(NSNumber *)object boolValue];
+        }
+    }
+    return NO;
+}
+
 - (NSString *)paramString
 {
     NSMutableArray *paramPairs = [NSMutableArray array];

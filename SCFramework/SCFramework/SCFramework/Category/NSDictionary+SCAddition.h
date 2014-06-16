@@ -18,6 +18,7 @@
 - (int)intForKey:(id)aKey;
 - (float)floatForKey:(id)aKey;
 - (double)doubleForKey:(id)aKey;
+- (BOOL)boolForKey:(id)aKey;
 
 - (NSString *)paramString;
 

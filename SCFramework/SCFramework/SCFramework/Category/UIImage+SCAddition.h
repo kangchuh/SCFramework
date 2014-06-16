@@ -40,4 +40,6 @@
 - (CGFloat)width;
 - (CGFloat)height;
 
++ (UIImage *)imageWithColor:(UIColor *)color;
+
 @end
