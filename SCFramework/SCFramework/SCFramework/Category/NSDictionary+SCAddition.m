@@ -40,7 +40,7 @@
 {
     id object = [self objectForKey:aKey];
     if ([object isEqual:[NSNull null]]) {
-        return nil;
+        return @"";
     } else {
         if ([object isKindOfClass:[NSNumber class]]) {
             return [(NSNumber *)object stringValue];
@@ -48,7 +48,7 @@
             return (NSString *)object;
         }
     }
-    return nil;
+    return @"";
 }
 
 - (NSInteger)integerForKey:(id)aKey

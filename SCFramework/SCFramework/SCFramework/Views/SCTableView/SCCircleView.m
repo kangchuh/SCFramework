@@ -34,10 +34,12 @@
 {
     self.backgroundColor = [UIColor clearColor];
     // 默认颜色
-    self.trackColor = [UIColor colorWithWholeRed:240.0
-                                           green:240.0
-                                            blue:240.0];
-    self.progressColor = [UIColor orangeColor];
+    //self.trackColor = [UIColor colorWithWholeRed:240.0
+    //                                       green:240.0
+    //                                        blue:240.0];
+    //self.progressColor = [UIColor orangeColor];
+    self.trackColor = [UIColor colorWithHex:0x989898];
+    self.progressColor = [UIColor colorWithHex:0xd21a1b];
     // 默认宽度
     self.progressWidth = 3.0;
 }

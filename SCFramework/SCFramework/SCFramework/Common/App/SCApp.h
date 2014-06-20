@@ -8,10 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+static inline void SCApplicationLock(void) {
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+}
+
+static inline void SCApplicationUnLock(void) {
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+}
+
 @interface SCApp : NSObject
 
 + (NSString *)name;
 + (NSString *)bundleID;
 + (NSString *)version;
+
++ (void)lock;
++ (void)unlock;
 
 @end

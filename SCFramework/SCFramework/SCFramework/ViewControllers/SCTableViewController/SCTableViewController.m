@@ -22,6 +22,7 @@
 {
     _tableView.dataSource = nil;
     _tableView.delegate = nil;
+    _tableView.pullDelegate = nil;
 }
 
 #pragma mark - Init Methods

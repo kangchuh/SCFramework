@@ -23,6 +23,9 @@
 SCViewControllerTransition
 >
 
+/// 手势交互是否可用, 默认为YES
+@property (assign, nonatomic) BOOL interactiveEnabled;
+
 /// 转场方向
 @property (assign, nonatomic) SCViewControllerTransitionDirection direction;
 

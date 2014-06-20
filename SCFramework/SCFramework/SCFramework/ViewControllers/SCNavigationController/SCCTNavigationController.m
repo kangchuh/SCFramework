@@ -34,6 +34,8 @@ UIGestureRecognizerDelegate
 
 - (void)defaultInit
 {
+    _interactiveEnabled = YES;
+    
     _direction = SCViewControllerTransitionDirectionHorizontal;
 }
 
@@ -144,7 +146,7 @@ UIGestureRecognizerDelegate
     if ([[self transitionCoordinator] isAnimated]) {
         return NO;
     }
-    if ([self isOnlyContainRootViewController]) {
+    if ([self isOnlyContainRootViewController] || !_interactiveEnabled) {
         if ([gestureRecognizer isEqual:_interactiveGestureRecognizer]) {
             return NO;
         }

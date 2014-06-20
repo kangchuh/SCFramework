@@ -25,4 +25,14 @@
     return [[NSBundle mainBundle] infoDictionary][(NSString*)kCFBundleVersionKey];
 }
 
++ (void)lock
+{
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+}
+
++ (void)unlock
+{
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+}
+
 @end
