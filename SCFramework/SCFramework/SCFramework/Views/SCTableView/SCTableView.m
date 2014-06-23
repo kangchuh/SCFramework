@@ -118,8 +118,12 @@
     CGPoint contentOffset     = scrollView.contentOffset;
     UIEdgeInsets contentInset = scrollView.contentInset;
     
-    CGFloat topMargin    = contentOffset.y + contentInset.top;
-    CGFloat bottomMargin = contentOffset.y + frameSize.height - contentSize.height;
+    CGFloat topMargin    = (contentOffset.y
+                            + contentInset.top);
+    CGFloat bottomMargin = (contentOffset.y
+                            + frameSize.height
+                            - contentSize.height
+                            - contentInset.bottom);
     
     if (_refreshEnabled && !_refreshing) {
         if (topMargin < -kSCPullDownDistance) {
