@@ -10,4 +10,6 @@
 
 @interface SCTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) NSIndexPath *indexPath;
+
 @end
