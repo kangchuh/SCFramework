@@ -45,4 +45,10 @@ SCSINGLETON(SCDateManager);
     return date;
 }
 
+- (NSString *)dateWithTimeIntervalSince1970:(NSTimeInterval)secs format:(NSString *)format
+{
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:secs];
+    return [self stringByConvertFromDate:date format:format];
+}
+
 @end

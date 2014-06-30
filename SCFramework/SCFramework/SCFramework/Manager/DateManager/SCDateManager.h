@@ -14,5 +14,6 @@
 
 - (NSString *)stringByConvertFromDate:(NSDate *)date format:(NSString *)format;
 - (NSDate *)dateByConvertFromString:(NSString *)string format:(NSString *)format;
+- (NSString *)dateWithTimeIntervalSince1970:(NSTimeInterval)secs format:(NSString *)format;
 
 @end
