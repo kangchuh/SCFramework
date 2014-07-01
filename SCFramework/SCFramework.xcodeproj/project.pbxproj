@@ -84,6 +84,7 @@
 		B7DED3F81957D47D00A2D5C0 /* SCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED3C01957D47D00A2D5C0 /* SCTextField.m */; };
 		B7DED3F91957D47D00A2D5C0 /* SCTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED3C31957D47D00A2D5C0 /* SCTextView.m */; };
 		B7DED3FA1957D47D00A2D5C0 /* SCView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED3C61957D47D00A2D5C0 /* SCView.m */; };
+		B7F300371962529800921CFD /* UINavigationItem+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F300361962529800921CFD /* UINavigationItem+SCAddition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +239,8 @@
 		B7DED3C31957D47D00A2D5C0 /* SCTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTextView.m; sourceTree = "<group>"; };
 		B7DED3C51957D47D00A2D5C0 /* SCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCView.h; sourceTree = "<group>"; };
 		B7DED3C61957D47D00A2D5C0 /* SCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCView.m; sourceTree = "<group>"; };
+		B7F300351962529800921CFD /* UINavigationItem+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+SCAddition.h"; sourceTree = "<group>"; };
+		B7F300361962529800921CFD /* UINavigationItem+SCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+SCAddition.m"; sourceTree = "<group>"; };
 		C8F7DCEE5BED4F0499DCBFDB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -437,6 +440,8 @@
 				B7DED3581957D47D00A2D5C0 /* UINavigationController+SCAddition.m */,
 				B7DED3591957D47D00A2D5C0 /* UIView+SCAddition.h */,
 				B7DED35A1957D47D00A2D5C0 /* UIView+SCAddition.m */,
+				B7F300351962529800921CFD /* UINavigationItem+SCAddition.h */,
+				B7F300361962529800921CFD /* UINavigationItem+SCAddition.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -886,6 +891,7 @@
 				B7DED3DE1957D47D00A2D5C0 /* SCDaoManager.m in Sources */,
 				B7DED3DF1957D47D00A2D5C0 /* SCDateManager.m in Sources */,
 				B7DED3E11957D47D00A2D5C0 /* SCUserDefaultManager.m in Sources */,
+				B7F300371962529800921CFD /* UINavigationItem+SCAddition.m in Sources */,
 				B7DED3DA1957D47D00A2D5C0 /* SCConstant.m in Sources */,
 				B7DED3F91957D47D00A2D5C0 /* SCTextView.m in Sources */,
 				B7DED3DC1957D47D00A2D5C0 /* NSManagedObject+SCDaoAddition.m in Sources */,
