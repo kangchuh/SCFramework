@@ -19,6 +19,8 @@ SCTableViewPullDelegate
 
 @property (nonatomic, strong) SCTableView *tableView;
 
++ (UITableViewStyle)tableViewStyle;
+
 - (id)initWithStyle:(UITableViewStyle)style;
 
 @end

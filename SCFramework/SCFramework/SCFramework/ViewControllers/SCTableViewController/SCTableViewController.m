@@ -27,11 +27,16 @@
 
 #pragma mark - Init Methods
 
++ (UITableViewStyle)tableViewStyle
+{
+    return UITableViewStylePlain;
+}
+
 - (id)init
 {
     self = [super init];
     if (self) {
-        _style = UITableViewStylePlain;
+        _style = [self.class tableViewStyle];
     }
     return self;
 }
