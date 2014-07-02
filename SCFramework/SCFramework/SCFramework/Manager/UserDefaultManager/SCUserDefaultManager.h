@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class SCModel;
+
 @interface SCUserDefaultManager : NSObject
 
 + (SCUserDefaultManager *)sharedInstance;
@@ -22,6 +24,7 @@
 - (float)getFloatForKey:(NSString *)key;
 - (double)getDoubleForKey:(NSString *)key;
 - (NSURL *)getURLForKey:(NSString *)key;
+- (SCModel *)getModelForKey:(NSString *)key;
 
 - (void)setBool:(BOOL)bValue forKey:(NSString *)key;
 - (void)setInteger:(NSInteger)iVaule forKey:(NSString *)key;
@@ -29,5 +32,8 @@
 - (void)setFloat:(float)fValue forKey:(NSString *)key;
 - (void)setDouble:(double)dValue forKey:(NSString *)key;
 - (void)setURL:(NSURL *)url forKey:(NSString *)key;
+- (void)setModel:(SCModel *)model forKey:(NSString *)key;
+
+- (void)removeObjectForKey:(NSString *)key;
 
 @end

@@ -81,6 +81,12 @@ SCSINGLETON(SCUserDefaultManager);
     return [_userDefaults URLForKey:key];
 }
 
+- (SCModel *)getModelForKey:(NSString *)key
+{
+    NSData *data = [_userDefaults objectForKey:key];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+
 #pragma mark - Set Methods
 
 - (void)setBool:(BOOL)bValue forKey:(NSString *)key
@@ -116,6 +122,21 @@ SCSINGLETON(SCUserDefaultManager);
 - (void)setURL:(NSURL *)url forKey:(NSString *)key
 {
     [_userDefaults setURL:url forKey:key];
+    [_userDefaults synchronize];
+}
+
+- (void)setModel:(SCModel *)model forKey:(NSString *)key
+{
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
+    [_userDefaults setObject:data forKey:key];
+    [_userDefaults synchronize];
+}
+
+#pragma mark - Remove Methods
+
+- (void)removeObjectForKey:(NSString *)key
+{
+    [_userDefaults removeObjectForKey:key];
     [_userDefaults synchronize];
 }
 
