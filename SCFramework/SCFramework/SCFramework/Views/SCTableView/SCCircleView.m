@@ -38,7 +38,7 @@
     //                                       green:240.0
     //                                        blue:240.0];
     //self.progressColor = [UIColor orangeColor];
-    self.trackColor = [UIColor colorWithHex:0x989898];
+    self.trackColor = [UIColor colorWithHex:0xdedede];
     self.progressColor = [UIColor colorWithHex:0xd21a1b];
     // 默认宽度
     self.progressWidth = 3.0;
@@ -63,7 +63,8 @@
     CGFloat startAngle = - M_PI_2;
     CGFloat endAngle   = startAngle + 2 * M_PI * _progress;
     
-    //CGContextSetShouldAntialias(context, YES);
+    //CGContextSetAllowsAntialiasing(context, true);
+    //CGContextSetShouldAntialias(context, true);
     CGContextSetLineWidth(context, lineWidth);
     CGContextSetLineCap(context, kCGLineCapRound);
     CGContextSetStrokeColorWithColor(context, _trackColor.CGColor);
