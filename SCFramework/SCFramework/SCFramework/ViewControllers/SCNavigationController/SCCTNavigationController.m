@@ -9,7 +9,7 @@
 #import "SCCTNavigationController.h"
 
 // 手势交互转场完成百分比值
-const CGFloat kSCInteractiveTransitionPercentComplete = 0.30;
+static const CGFloat kSCInteractiveTransitionPercentComplete = 0.30;
 
 @interface SCCTNavigationController ()
 <

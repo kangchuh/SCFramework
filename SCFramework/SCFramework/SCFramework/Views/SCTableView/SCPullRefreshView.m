@@ -14,10 +14,10 @@ const CGFloat kSCPullRefreshViewHeight = 60.f;
 
 const CGFloat kSCPullDownDistance = 60.f;
 
-NSString * const kSCUpdatedDateFormatterMMddHHmm = @"MM-dd HH:mm";
-NSString * const kSCUpdatedDateFormatterHHmm     = @"HH:mm";
+static NSString * const kSCUpdatedDateFormatterMMddHHmm = @"MM-dd HH:mm";
+static NSString * const kSCUpdatedDateFormatterHHmm     = @"HH:mm";
 
-NSString * const kSCLastUpdatedDateKey = @"SCLastUpdatedDateKey";
+static NSString * const kSCLastUpdatedDateKey = @"SCLastUpdatedDateKey";
 
 @interface SCPullRefreshView ()
 

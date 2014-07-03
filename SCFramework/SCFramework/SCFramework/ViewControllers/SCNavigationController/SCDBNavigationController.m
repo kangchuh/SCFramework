@@ -9,17 +9,17 @@
 #import "SCDBNavigationController.h"
 
 // 拖动完成距离
-const CGFloat kSCDragCompleteDistance = 50.0;
+static const CGFloat kSCDragCompleteDistance = 50.0;
 
 // 返回动画持续时间
-const CGFloat kSCBackAnimationDuration = 0.3;
+static const CGFloat kSCBackAnimationDuration = 0.3;
 
 // 最后截屏初始缩放比例
-const CGFloat kSCLastScreenshotViewStartScale = 0.95;
+static const CGFloat kSCLastScreenshotViewStartScale = 0.95;
 // 最后截屏初始左边距离
-const CGFloat kSCLastScreenshotViewStartLeft = -180.0;
+static const CGFloat kSCLastScreenshotViewStartLeft = -180.0;
 // 截屏蒙板初始透明度
-const CGFloat kSCScreenshotMaskStartAlpha = 0.4;
+static const CGFloat kSCScreenshotMaskStartAlpha = 0.4;
 
 @interface SCDBNavigationController ()
 <

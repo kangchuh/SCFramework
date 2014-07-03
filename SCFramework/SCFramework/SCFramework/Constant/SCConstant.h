@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-const CGFloat kSCFW_STATUSBAR_HEIGHT;
-const CGFloat kSCFW_NAVIGATIONBAR_HEIGHT;
-const CGFloat kSCFW_TABBAR_HEIGHT;
-const CGFloat kSCFW_CELL_DEFAULT_HEIGHT;
+extern const CGFloat kSCFW_STATUSBAR_HEIGHT;
+extern const CGFloat kSCFW_NAVIGATIONBAR_HEIGHT;
+extern const CGFloat kSCFW_TABBAR_HEIGHT;
+extern const CGFloat kSCFW_CELL_DEFAULT_HEIGHT;

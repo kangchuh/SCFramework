@@ -13,10 +13,10 @@
 #import "SCLog.h"
 
 // Momd文件后缀
-NSString * const kSCFW_MOMD_FILE_EXT = @"momd";
+static NSString * const kSCFW_MOMD_FILE_EXT = @"momd";
 
 // 数据库文件默认后缀
-NSString * const kSCFW_DB_FILE_EXT_DEFAULT = @"sqlite";
+static NSString * const kSCFW_DB_FILE_EXT_DEFAULT = @"sqlite";
 
 @interface SCCoreDataManager ()
 
