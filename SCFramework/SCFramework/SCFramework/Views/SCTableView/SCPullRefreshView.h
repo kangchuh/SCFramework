@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, SCPullDownState) {
 @property (nonatomic, strong, readonly) UILabel *dateLabel;
 
 @property (nonatomic, strong, readonly) SCCircleView            *circleView;
-@property (nonatomic, strong, readonly) UIActivityIndicatorView *activityView;
+//@property (nonatomic, strong, readonly) UIActivityIndicatorView *activityView;
 
 @property (nonatomic, assign) SCPullDownState state;
 @property (nonatomic, assign) CGFloat         pullScale;

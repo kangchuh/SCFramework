@@ -68,23 +68,23 @@ static NSString * const kSCLastUpdatedDateKey = @"SCLastUpdatedDateKey";
 		[self addSubview:_dateLabel];
         
 		_circleView = [[SCCircleView alloc] initWithFrame:
-                       CGRectMake(30.0f,
-                                  thisHeight - 50.0f,
-                                  40.0f,
-                                  40.0f)];
+                       CGRectMake(35.0f,
+                                  thisHeight - 45.0f,
+                                  30.0f,
+                                  30.0f)];
         [self addSubview:_circleView];
-        
+        /*
 		_activityView = [[UIActivityIndicatorView alloc]
                          initWithActivityIndicatorStyle:
                          UIActivityIndicatorViewStyleGray];
 		_activityView.frame = CGRectMake(40.0f,
-                                         frame.size.height - 40.0f,
+                                         thisHeight - 40.0f,
                                          20.0f,
                                          20.0f);
         _activityView.backgroundColor = [UIColor clearColor];
         _activityView.color = _circleView.progressColor;
 		[self addSubview:_activityView];
-        
+        */
         [self setState:SCPullDownStateNormal];
         
         NSDate *updatedDate = [[SCUserDefaultManager sharedInstance]
@@ -108,14 +108,17 @@ static NSString * const kSCLastUpdatedDateKey = @"SCLastUpdatedDateKey";
                 break;
             case SCPullDownStateNormal:
                 statusText = NSLocalizedStringFromTable(@"SCFW_LS_Pull down to refresh", @"SCFWLocalizable", nil);
-                [_activityView stopAnimating];
-                _circleView.hidden = NO;
+                //[_activityView stopAnimating];
+                //_circleView.hidden = NO;
+                [_circleView stopRotating];
                 break;
             case SCPullDownStateRefreshing:
                 statusText = NSLocalizedStringFromTable(@"SCFW_LS_Refreshing", @"SCFWLocalizable", nil);
-                [_activityView startAnimating];
-                _circleView.hidden = YES;
-                _circleView.progress = 0.0;
+                //[_activityView startAnimating];
+                //_circleView.hidden = YES;
+                //_circleView.progress = 0.0;
+                [_circleView startRotating];
+                _circleView.progress = 0.75;
                 break;
             default:
                 break;

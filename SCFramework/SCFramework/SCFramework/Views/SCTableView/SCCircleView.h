@@ -15,6 +15,9 @@
 @property (nonatomic, assign) CGFloat progressWidth;
 @property (nonatomic, assign) CGFloat progress; //0~1之间的数
 
+- (void)startRotating;
+- (void)stopRotating;
+
 @end
 
 /*

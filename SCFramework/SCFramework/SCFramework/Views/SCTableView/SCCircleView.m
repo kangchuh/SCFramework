@@ -8,6 +8,8 @@
 
 #import "SCCircleView.h"
 
+static NSString * const kSCCircleViewRotationAnimationKey = @"kSCCircleViewRotationAnimationKey";
+
 @implementation SCCircleView
 
 - (id)initWithFrame:(CGRect)frame
@@ -119,6 +121,24 @@
         _progress = progress;
         [self setNeedsDisplay];
     }
+}
+
+- (void)startRotating
+{
+    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:
+                                           @"transform.rotation.z"];
+    rotationAnimation.toValue = @(M_PI * 2.0);
+    rotationAnimation.duration = 1.0;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = HUGE_VALF;
+    rotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:
+                                        kCAMediaTimingFunctionLinear];
+    [self.layer addAnimation:rotationAnimation forKey:kSCCircleViewRotationAnimationKey];
+}
+
+- (void)stopRotating
+{
+    [self.layer removeAnimationForKey:kSCCircleViewRotationAnimationKey];
 }
 
 @end
