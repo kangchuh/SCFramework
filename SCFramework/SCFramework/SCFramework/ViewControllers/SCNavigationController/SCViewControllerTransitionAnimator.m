@@ -14,6 +14,9 @@ static const CGFloat kSCTransitionDurationDefault = 0.30;
 // 转场宽度
 static const CGFloat kSCTransitionWidth = 180.0;
 
+// 转场缩放比例
+static const CGFloat kSCTransitionScale = 0.9;
+
 @implementation SCViewControllerTransitionAnimator
 
 #pragma mark - Init Method
@@ -95,10 +98,13 @@ static const CGFloat kSCTransitionWidth = 180.0;
                      animations:^{
                          fromView.transform = CGAffineTransformMakeTranslation(-kSCTransitionWidth, 0);
                          toView.transform = CGAffineTransformIdentity;
+                         tabBar.transform = CGAffineTransformMakeTranslation(tabBar.width - kSCTransitionWidth, 0);
                      }
                      completion:^(BOOL finished) {
                          fromView.transform = CGAffineTransformIdentity;
                          toView.transform = CGAffineTransformIdentity;
+                         tabBar.transform = CGAffineTransformIdentity;
+                         tabBar.left = 0.0;
                          [tabBarSuperView addSubview:tabBar];
                          BOOL cancelled = [transitionContext transitionWasCancelled];
                          [transitionContext completeTransition:!cancelled];
@@ -153,15 +159,23 @@ static const CGFloat kSCTransitionWidth = 180.0;
  */
 - (void)animationVerticalPush:(id<UIViewControllerContextTransitioning>)transitionContext
 {
-    UIViewController *toVC = [transitionContext viewControllerForKey:
-                              UITransitionContextToViewControllerKey];
+    UIViewController *toVC   = [transitionContext viewControllerForKey:
+                                UITransitionContextToViewControllerKey];
+    UIViewController *fromVC = [transitionContext viewControllerForKey:
+                                UITransitionContextFromViewControllerKey];
     
-    UIView *toView = toVC.view;
+    UIView *toView   = toVC.view;
+    UIView *fromView = fromVC.view;
+    UITabBar *tabBar = fromVC.tabBarController.tabBar;
+    
+    UIView *tabBarSuperView = tabBar.superview;
     
     UIView *containerView = [transitionContext containerView];
+    [containerView addSubview:tabBar];
     [containerView addSubview:toView];
     
-    toView.transform = CGAffineTransformMakeTranslation(0, toView.height);
+    //toView.transform = CGAffineTransformMakeTranslation(0, toView.height);
+    toView.transform = CGAffineTransformMakeScale(0.0, 0.0);
     
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     
@@ -169,10 +183,16 @@ static const CGFloat kSCTransitionWidth = 180.0;
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
+                         fromView.transform = CGAffineTransformMakeScale(kSCTransitionScale, kSCTransitionScale);
                          toView.transform = CGAffineTransformIdentity;
+                         tabBar.transform = CGAffineTransformMakeTranslation(tabBar.width, 0);
                      }
                      completion:^(BOOL finished) {
+                         fromView.transform = CGAffineTransformIdentity;
                          toView.transform = CGAffineTransformIdentity;
+                         tabBar.transform = CGAffineTransformIdentity;
+                         tabBar.left = 0.0;
+                         [tabBarSuperView addSubview:tabBar];
                          BOOL cancelled = [transitionContext transitionWasCancelled];
                          [transitionContext completeTransition:!cancelled];
                      }];
@@ -190,9 +210,16 @@ static const CGFloat kSCTransitionWidth = 180.0;
     
     UIView *toView   = toVC.view;
     UIView *fromView = fromVC.view;
+    UITabBar *tabBar = toVC.tabBarController.tabBar;
+    
+    UIView *tabBarSuperView = tabBar.superview;
     
     UIView *containerView = [transitionContext containerView];
     [containerView insertSubview:toView belowSubview:fromView];
+    [containerView insertSubview:tabBar belowSubview:fromView];
+    
+    toView.transform = CGAffineTransformMakeScale(kSCTransitionScale, kSCTransitionScale);
+    tabBar.left = 0.0;
     
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     
@@ -200,10 +227,15 @@ static const CGFloat kSCTransitionWidth = 180.0;
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                         fromView.transform = CGAffineTransformMakeTranslation(0, fromView.height);
+                         //fromView.transform = CGAffineTransformMakeTranslation(0, fromView.height);
+                         fromView.transform = CGAffineTransformMakeScale(0.0, 0.0);
+                         toView.transform = CGAffineTransformIdentity;
                      }
                      completion:^(BOOL finished) {
                          fromView.transform = CGAffineTransformIdentity;
+                         toView.transform = CGAffineTransformIdentity;
+                         tabBar.left = 0.0;
+                         [tabBarSuperView addSubview:tabBar];
                          BOOL cancelled = [transitionContext transitionWasCancelled];
                          [transitionContext completeTransition:!cancelled];
                      }];
