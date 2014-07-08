@@ -8,32 +8,56 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  是否等于零
+ */
 static inline BOOL SCMathEqualZero(double number) {
     const double EPSINON = 1.00e-07;//此处根据精度定
     return (number >= -EPSINON) && (number <= EPSINON);
 }
 
+/**
+ *  四舍五入
+ *
+ *  @param number 数字
+ *  @param digit  小数点位数
+ */
 static inline CGFloat SCMathRound(CGFloat number, NSInteger digit) {
     double powNum = pow(10, digit);
     return (number * powNum + 0.51) / powNum;
 }
 
+/**
+ *  数字一半
+ */
 static inline CGFloat SCMathHalf(CGFloat number) {
     return number / 2.0;
 };
 
+/**
+ *  数字两倍
+ */
 static inline CGFloat SCMathDouble(CGFloat number) {
     return number * 2.0;
 };
 
+/**
+ *  角度转弧度
+ */
 static inline CGFloat SCMathDegreesToRadians(CGFloat degrees) {
     return degrees * (M_PI / 180);
 };
 
+/**
+ *  弧度转角度
+ */
 static inline CGFloat SCMathRadiansToDegrees(CGFloat radians) {
     return radians * (180 / M_PI);
 };
 
+/**
+ *  数字交换
+ */
 static inline void SCMathSWAP(CGFloat *a, CGFloat *b) {
     CGFloat t;
     t = *a;
