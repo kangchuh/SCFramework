@@ -24,7 +24,7 @@ static inline BOOL SCMathEqualZero(double number) {
  */
 static inline CGFloat SCMathRound(CGFloat number, NSInteger digit) {
     double powNum = pow(10, digit);
-    return (number * powNum + 0.51) / powNum;
+    return round(number * powNum) / powNum;
 }
 
 /**
