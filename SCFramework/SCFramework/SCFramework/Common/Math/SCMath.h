@@ -8,17 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
-static inline BOOL SCMathEqualZero(double digit) {
+static inline BOOL SCMathEqualZero(double number) {
     const double EPSINON = 1.00e-07;//此处根据精度定
-    return (digit >= -EPSINON) && (digit <= EPSINON);
+    return (number >= -EPSINON) && (number <= EPSINON);
 }
 
-static inline CGFloat SCMathHalf(CGFloat digit) {
-    return digit / 2.0;
+static inline CGFloat SCMathRound(CGFloat number, NSInteger digit) {
+    double powNum = pow(10, digit);
+    return (number * powNum + 0.51) / powNum;
+}
+
+static inline CGFloat SCMathHalf(CGFloat number) {
+    return number / 2.0;
 };
 
-static inline CGFloat SCMathDouble(CGFloat digit) {
-    return digit * 2.0;
+static inline CGFloat SCMathDouble(CGFloat number) {
+    return number * 2.0;
 };
 
 static inline CGFloat SCMathDegreesToRadians(CGFloat degrees) {
@@ -39,22 +44,22 @@ static inline void SCMathSWAP(CGFloat *a, CGFloat *b) {
 /**
  *  取整
  */
-static inline CGFloat SCRectRound(CGFloat digit) {
-    return ceil(digit);
+static inline CGFloat SCRectRound(CGFloat number) {
+    return ceil(number);
 }
 
 /**
  *  上取整(不小于/大于等于)
  */
-static inline CGFloat SCRectCeil(CGFloat digit) {
-    return ceil(digit);
+static inline CGFloat SCRectCeil(CGFloat number) {
+    return ceil(number);
 }
 
 /**
  *  下取整(不大于/小于等于)
  */
-static inline CGFloat SCRectFloor(CGFloat digit) {
-    return floor(digit);
+static inline CGFloat SCRectFloor(CGFloat number) {
+    return floor(number);
 }
 
 /**
