@@ -130,6 +130,22 @@
 }
 
 /**
+ *  @brief URL
+ */
+- (NSURL *)URL
+{
+    return [NSURL URLWithString:self];
+}
+
+/**
+ *  @brief 文件URL
+ */
+- (NSURL *)fileURL
+{
+    return [NSURL fileURLWithPath:self];
+}
+
+/**
  *  @brief MD5加密
  */
 - (NSString *)MD5String

@@ -21,8 +21,11 @@
 
 - (int)wordsCount;
 
-- (NSString *)URLDecodedString;
 - (NSString *)URLEncodedString;
+- (NSString *)URLDecodedString;
+
+- (NSURL *)URL;
+- (NSURL *)fileURL;
 
 - (NSString *)MD5String;
 
