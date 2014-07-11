@@ -10,4 +10,7 @@
 
 @interface SCLabel : UILabel
 
+- (void)setText:(NSString *)text adjustWidth:(BOOL)adjustWidth;
+- (void)setText:(NSString *)text adjustHeight:(BOOL)adjustHeight;
+
 @end

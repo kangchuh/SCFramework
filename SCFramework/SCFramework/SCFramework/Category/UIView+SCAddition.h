@@ -29,6 +29,9 @@
 
 @property (nonatomic, readonly) CGPoint middle;
 
+- (void)setWidth:(CGFloat)width rightAlignment:(BOOL)rightAlignment;
+- (void)setHeight:(CGFloat)height bottomAlignment:(BOOL)bottomAlignment;
+
 #pragma mark - Border radius
 
 /**
@@ -40,6 +43,11 @@
  *  @brief 设置圆角和边框
  */
 - (void)rounded:(CGFloat)cornerRadius width:(CGFloat)borderWidth color:(UIColor *)borderColor;
+
+/**
+ *  @brief 设置边框
+ */
+- (void)border:(CGFloat)borderWidth color:(UIColor *)borderColor;
 
 #pragma mark - Load Nib
 

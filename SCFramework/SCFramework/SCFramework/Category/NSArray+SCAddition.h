@@ -10,7 +10,6 @@
 
 @interface NSArray (SCAddition)
 
-- (BOOL)isEmpty;
 - (BOOL)isNotEmpty;
 
 @end

@@ -10,7 +10,6 @@
 
 @interface NSString (SCAddition)
 
-- (BOOL)isEmpty;
 - (BOOL)isNotEmpty;
 
 - (NSString *)trimWhitespaceAndNewline;

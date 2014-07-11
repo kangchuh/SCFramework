@@ -13,17 +13,6 @@
 /**
  *  @brief 判断是否为空
  */
-- (BOOL)isEmpty
-{
-    return !self
-    || [(NSNull *)self isEqual:[NSNull null]]
-    || ![self isKindOfClass:[NSArray class]]
-    || self.count == 0;
-}
-
-/**
- *  @brief 判断是否为空
- */
 - (BOOL)isNotEmpty
 {
     return self
@@ -49,7 +38,7 @@
 
 - (void)replaceAllObjectsWithObject:(id)theObject
 {
-    if (self.isEmpty) {
+    if (!self.isNotEmpty) {
         return;
     }
     if (!theObject) {

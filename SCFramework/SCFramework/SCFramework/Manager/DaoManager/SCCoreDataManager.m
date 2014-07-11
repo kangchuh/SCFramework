@@ -127,7 +127,7 @@ SCSINGLETON(SCCoreDataManager);
  */
 - (NSURL *)databaseDirectory
 {
-    NSString *dbExt = _dbFileExt.isEmpty ? kSCFW_DB_FILE_EXT_DEFAULT : _dbFileExt;
+    NSString *dbExt = !_dbFileExt.isNotEmpty ? kSCFW_DB_FILE_EXT_DEFAULT : _dbFileExt;
     NSString *dbFullName = [NSString stringWithFormat:@"%@.%@", _dbFileName, dbExt];
     return [[self applicationDocumentsDirectory] URLByAppendingPathComponent:dbFullName];
 }

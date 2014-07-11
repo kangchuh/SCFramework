@@ -14,17 +14,6 @@
 /**
  *  @brief 判断是否为空
  */
-- (BOOL)isEmpty
-{
-    return !self
-    || [(NSNull *)self isEqual:[NSNull null]]
-    || ![self isKindOfClass:[NSString class]]
-    || self.length == 0;
-}
-
-/**
- *  @brief 判断是否为空
- */
 - (BOOL)isNotEmpty
 {
     return self
@@ -292,7 +281,7 @@
 {
     NSArray *pairs = [self componentsSeparatedByString:@"&"];
     
-    if ([pairs isEmpty]) {
+    if (![pairs isNotEmpty]) {
         return nil;
     }
     

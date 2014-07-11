@@ -152,7 +152,7 @@ numberOfRowsInComponent:(NSInteger)component
 - (NSString *)titleForRow:(NSInteger)row
 {
     NSString *rowTitle = @"";
-    if (_dataSources.isEmpty || _dataSources.count <= row) {
+    if (!_dataSources.isNotEmpty || _dataSources.count <= row) {
         return rowTitle;
     }
     id anyObject = [_dataSources objectAtIndex:row];

@@ -138,6 +138,28 @@
                        CGRectGetHeight(self.frame) / 2.0);
 }
 
+- (void)setWidth:(CGFloat)width rightAlignment:(BOOL)rightAlignment
+{
+    if (rightAlignment) {
+        CGFloat right = self.right;
+        self.width = width;
+        self.right = right;
+    } else {
+        self.width = width;
+    }
+}
+
+- (void)setHeight:(CGFloat)height bottomAlignment:(BOOL)bottomAlignment
+{
+    if (bottomAlignment) {
+        CGFloat bottom = self.bottom;
+        self.height = height;
+        self.bottom = bottom;
+    } else {
+        self.height = height;
+    }
+}
+
 #pragma mark - Border radius
 
 /**
@@ -161,6 +183,19 @@
 - (void)rounded:(CGFloat)cornerRadius width:(CGFloat)borderWidth color:(UIColor *)borderColor
 {
     self.layer.cornerRadius = cornerRadius;
+    self.layer.borderWidth = borderWidth;
+    self.layer.borderColor = [borderColor CGColor];
+    self.layer.masksToBounds = YES;
+}
+
+/**
+ *  @brief 设置边框
+ *
+ *  @param borderWidth 边框宽度
+ *  @param borderColor 边框颜色
+ */
+- (void)border:(CGFloat)borderWidth color:(UIColor *)borderColor
+{
     self.layer.borderWidth = borderWidth;
     self.layer.borderColor = [borderColor CGColor];
     self.layer.masksToBounds = YES;
