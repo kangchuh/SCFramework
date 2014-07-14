@@ -8,6 +8,8 @@
 
 #import "SCApp.h"
 
+static NSString * const SCAppStoreURL = @"https://itunes.apple.com/app/id";
+
 @implementation SCApp
 
 + (NSString *)name
@@ -33,6 +35,13 @@
 + (void)unlock
 {
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+}
+
++ (void)launchAppStore:(NSString *)appID
+{
+    NSString *downloadURLString = [NSString stringWithFormat:@"%@%@", SCAppStoreURL, appID];
+    NSURL *downloadURL = [NSURL URLWithString:downloadURLString];
+    [[UIApplication sharedApplication] openURL:downloadURL];
 }
 
 @end

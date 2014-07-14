@@ -29,7 +29,7 @@
         self.title = @"\n\n\n\n\n\n\n\n\n\n\n\n\n";
         
         UIBarButtonItem *cancelBarItem
-        = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Cancel", @"SCFWLocalizable", nil)
+        = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"SCFW_LS_Cancel", @"SCFWLocalizable", nil)
                                            style:UIBarButtonItemStyleBordered
                                           target:self
                                           action:@selector(cancelButtonAction:)];
@@ -38,7 +38,7 @@
                                                         target:nil
                                                         action:nil];
         UIBarButtonItem *doneBarItem
-        = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"Done", @"SCFWLocalizable", nil)
+        = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"SCFW_LS_Done", @"SCFWLocalizable", nil)
                                            style:UIBarButtonItemStyleBordered
                                           target:self
                                           action:@selector(doneButtonAction:)];
