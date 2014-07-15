@@ -10,6 +10,8 @@
 
 @interface NSData (SCAddition)
 
+- (BOOL)isNotEmpty;
+
 /// 获取图片ContentType
 - (NSString *)contentType;
 

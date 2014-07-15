@@ -16,10 +16,9 @@
  */
 - (BOOL)isNotEmpty
 {
-    return self
-    && ![(NSNull *)self isEqual:[NSNull null]]
-    && [self isKindOfClass:[NSString class]]
-    && self.length > 0;
+    return (![(NSNull *)self isEqual:[NSNull null]]
+            && [self isKindOfClass:[NSString class]]
+            && self.length > 0);
 }
 
 /**

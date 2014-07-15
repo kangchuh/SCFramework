@@ -11,6 +11,13 @@
 
 @implementation NSData (SCAddition)
 
+- (BOOL)isNotEmpty
+{
+    return (![(NSNull *)self isEqual:[NSNull null]]
+            && [self isKindOfClass:[NSData class]]
+            && self.length > 0);
+}
+
 /**
  *  @brief 获取图片的ContentType
  */

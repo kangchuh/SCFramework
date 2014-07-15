@@ -15,10 +15,9 @@
  */
 - (BOOL)isNotEmpty
 {
-    return self
-    && ![(NSNull *)self isEqual:[NSNull null]]
-    && [self isKindOfClass:[NSArray class]]
-    && self.count > 0;
+    return (![(NSNull *)self isEqual:[NSNull null]]
+            && [self isKindOfClass:[NSArray class]]
+            && self.count > 0);
 }
 
 @end
