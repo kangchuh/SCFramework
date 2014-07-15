@@ -12,6 +12,12 @@ extern NSString * const SCVersionManagerLanguageEnglish;
 extern NSString * const SCVersionManagerLanguageChineseSimplified;
 extern NSString * const SCVersionManagerLanguageChineseTraditional;
 
+typedef NS_ENUM(NSUInteger, SCVersionAlertType) {
+    SCVersionAlertTypeDefault,
+    SCVersionAlertTypeSkip,
+    SCVersionAlertTypeForce,
+};
+
 @protocol SCVersionManagerDelegate <NSObject>
 
 @optional
@@ -21,13 +27,6 @@ extern NSString * const SCVersionManagerLanguageChineseTraditional;
 - (void)versionManagerDidCancel;
 
 @end
-
-typedef NS_ENUM(NSUInteger, SCVersionAlertType)
-{
-    SCVersionAlertTypeDefault,
-    SCVersionAlertTypeSkip,
-    SCVersionAlertTypeForce,
-};
 
 @interface SCVersionManager : NSObject
 

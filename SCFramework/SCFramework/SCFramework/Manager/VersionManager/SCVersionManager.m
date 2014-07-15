@@ -27,7 +27,13 @@ static NSString * const SCVersionManagerShouldSkipVersionKey = @"User Skip Versi
  */
 static NSString * const SCVersionManagerDidSkippedVersionKey = @"User Skipped Version Number";
 
+/**
+ *  查找版本信息URL
+ */
 #define SCFW_LOOKUP_VERSION_URL_UNIVERSAL   @"http://itunes.apple.com/lookup?id=%@"
+/**
+ *  查找版本信息URL(指定国家)
+ */
 #define SCFW_LOOKUP_VERSION_URL_SPECIFIC    @"http://itunes.apple.com/lookup?id=%@&country=%@"
 
 @interface SCVersionManager ()
