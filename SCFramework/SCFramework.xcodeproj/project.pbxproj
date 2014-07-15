@@ -14,6 +14,7 @@
 		B71EE5A91910CB9100590A9D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B71EE5A81910CB9100590A9D /* AVFoundation.framework */; };
 		B71EE5AB1910D69000590A9D /* TestPic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B71EE5AA1910D69000590A9D /* TestPic.jpg */; };
 		B71EE5AD1910D73D00590A9D /* Test.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B71EE5AC1910D73D00590A9D /* Test.jpeg */; };
+		B7271A711974BE9100FDFA72 /* SCVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7271A701974BE9100FDFA72 /* SCVersionManager.m */; };
 		B72AF3D518C5655100621B34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72AF3D418C5655100621B34 /* Foundation.framework */; };
 		B72AF3D718C5655100621B34 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72AF3D618C5655100621B34 /* CoreGraphics.framework */; };
 		B72AF3D918C5655100621B34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72AF3D818C5655100621B34 /* UIKit.framework */; };
@@ -107,6 +108,8 @@
 		B71EE5A81910CB9100590A9D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B71EE5AA1910D69000590A9D /* TestPic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TestPic.jpg; sourceTree = "<group>"; };
 		B71EE5AC1910D73D00590A9D /* Test.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test.jpeg; sourceTree = "<group>"; };
+		B7271A6F1974BE9100FDFA72 /* SCVersionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVersionManager.h; sourceTree = "<group>"; };
+		B7271A701974BE9100FDFA72 /* SCVersionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVersionManager.m; sourceTree = "<group>"; };
 		B72AF3D118C5655100621B34 /* SCFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72AF3D418C5655100621B34 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B72AF3D618C5655100621B34 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -277,6 +280,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B7271A6E1974BE6B00FDFA72 /* VersionManager */ = {
+			isa = PBXGroup;
+			children = (
+				B7271A6F1974BE9100FDFA72 /* SCVersionManager.h */,
+				B7271A701974BE9100FDFA72 /* SCVersionManager.m */,
+			);
+			path = VersionManager;
+			sourceTree = "<group>";
+		};
 		B72AF3C818C5655100621B34 = {
 			isa = PBXGroup;
 			children = (
@@ -514,6 +526,7 @@
 				B7DED3771957D47D00A2D5C0 /* FileManager */,
 				B7645720196BC902009302C2 /* ImagePickerManager */,
 				B7DED37A1957D47D00A2D5C0 /* UserDefaultManager */,
+				B7271A6E1974BE6B00FDFA72 /* VersionManager */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -924,6 +937,7 @@
 				B7DED3D81957D47D00A2D5C0 /* SCNSJSONSerialization.m in Sources */,
 				B7DED3D91957D47D00A2D5C0 /* SCMath.m in Sources */,
 				B7DED3CD1957D47D00A2D5C0 /* NSObject+SCAddition.m in Sources */,
+				B7271A711974BE9100FDFA72 /* SCVersionManager.m in Sources */,
 				B7DED3F21957D47D00A2D5C0 /* SCExpandTableView.m in Sources */,
 				B7DED3ED1957D47D00A2D5C0 /* SCDatePicker.m in Sources */,
 				B7DED3D11957D47D00A2D5C0 /* UIColor+SCAddition.m in Sources */,
