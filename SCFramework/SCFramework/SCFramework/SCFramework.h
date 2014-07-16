@@ -47,6 +47,7 @@
 #import "UIImage+SCAddition.h"
 #import "UIView+SCAddition.h"
 #import "NSURL+SCAddition.h"
+#import "UIScreen+SCAddition.h"
 #import "UINavigationItem+SCAddition.h"
 #import "UINavigationController+SCAddition.h"
 

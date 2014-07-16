@@ -35,6 +35,7 @@
 		B7AB47641920A6FD00249F5D /* SCXibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AB47621920A6FD00249F5D /* SCXibViewController.m */; };
 		B7AB47651920A6FD00249F5D /* SCXibViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7AB47631920A6FD00249F5D /* SCXibViewController.xib */; };
 		B7C2268619760BF700BEF1B2 /* SCPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C2268519760BF700BEF1B2 /* SCPageControl.m */; };
+		B7C2268C19762AF000BEF1B2 /* UIScreen+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C2268B19762AF000BEF1B2 /* UIScreen+SCAddition.m */; };
 		B7DED3C71957D47D00A2D5C0 /* SCAdaptedDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED33C1957D47D00A2D5C0 /* SCAdaptedDevice.m */; };
 		B7DED3C81957D47D00A2D5C0 /* SCAdaptedSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED33F1957D47D00A2D5C0 /* SCAdaptedSystem.m */; };
 		B7DED3C91957D47D00A2D5C0 /* NSArray+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED3421957D47D00A2D5C0 /* NSArray+SCAddition.m */; };
@@ -139,6 +140,8 @@
 		B7AB47631920A6FD00249F5D /* SCXibViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCXibViewController.xib; sourceTree = "<group>"; };
 		B7C2268419760BF700BEF1B2 /* SCPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPageControl.h; sourceTree = "<group>"; };
 		B7C2268519760BF700BEF1B2 /* SCPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPageControl.m; sourceTree = "<group>"; };
+		B7C2268A19762AF000BEF1B2 /* UIScreen+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+SCAddition.h"; sourceTree = "<group>"; };
+		B7C2268B19762AF000BEF1B2 /* UIScreen+SCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+SCAddition.m"; sourceTree = "<group>"; };
 		B7DED33B1957D47D00A2D5C0 /* SCAdaptedDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAdaptedDevice.h; sourceTree = "<group>"; };
 		B7DED33C1957D47D00A2D5C0 /* SCAdaptedDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAdaptedDevice.m; sourceTree = "<group>"; };
 		B7DED33E1957D47D00A2D5C0 /* SCAdaptedSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAdaptedSystem.h; sourceTree = "<group>"; };
@@ -478,6 +481,8 @@
 				B7DED35A1957D47D00A2D5C0 /* UIView+SCAddition.m */,
 				B7F300351962529800921CFD /* UINavigationItem+SCAddition.h */,
 				B7F300361962529800921CFD /* UINavigationItem+SCAddition.m */,
+				B7C2268A19762AF000BEF1B2 /* UIScreen+SCAddition.h */,
+				B7C2268B19762AF000BEF1B2 /* UIScreen+SCAddition.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -923,6 +928,7 @@
 				B7DED3F61957D47D00A2D5C0 /* SCExpandTableViewCell.m in Sources */,
 				B7DED3EF1957D47D00A2D5C0 /* SCPickerView.m in Sources */,
 				B7DED3D51957D47D00A2D5C0 /* UIView+SCAddition.m in Sources */,
+				B7C2268C19762AF000BEF1B2 /* UIScreen+SCAddition.m in Sources */,
 				B7DED3EA1957D47D00A2D5C0 /* SCTableViewController.m in Sources */,
 				B7AB47641920A6FD00249F5D /* SCXibViewController.m in Sources */,
 				B7DED3C71957D47D00A2D5C0 /* SCAdaptedDevice.m in Sources */,
