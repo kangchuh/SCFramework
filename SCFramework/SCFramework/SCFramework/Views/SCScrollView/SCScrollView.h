@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  Page方向
+ */
+typedef NS_ENUM(NSUInteger, SCScrollViewPageDirection) {
+    /**
+     *  水平
+     */
+    SCScrollViewPageDirectionHorizontal,
+    /**
+     *  垂直
+     */
+    SCScrollViewPageDirectionVertical,
+};
+
 @protocol SCScrollViewTouchDelegate;
 
 @interface SCScrollView : UIScrollView
@@ -15,6 +29,12 @@
 @property (nonatomic, weak) id <SCScrollViewTouchDelegate> touchDelegate;
 
 @property (nonatomic, assign) BOOL endEditingWhenTouch;
+
+@property (nonatomic, assign) NSInteger numberOfPages;
+
+@property (nonatomic, assign) SCScrollViewPageDirection pageDirection;
+
+- (NSInteger)currentPage;
 
 @end
 

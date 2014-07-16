@@ -60,6 +60,7 @@
 #import "SCTextField.h"
 #import "SCTextView.h"
 #import "SCView.h"
+#import "SCPageControl.h"
 
 // -------------------------- VeiwController -------------------------- //
 #import "SCViewController.h"

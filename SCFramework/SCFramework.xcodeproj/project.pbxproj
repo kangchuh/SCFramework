@@ -34,6 +34,7 @@
 		B7645723196BC902009302C2 /* SCImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7645722196BC902009302C2 /* SCImagePickerManager.m */; };
 		B7AB47641920A6FD00249F5D /* SCXibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AB47621920A6FD00249F5D /* SCXibViewController.m */; };
 		B7AB47651920A6FD00249F5D /* SCXibViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7AB47631920A6FD00249F5D /* SCXibViewController.xib */; };
+		B7C2268619760BF700BEF1B2 /* SCPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C2268519760BF700BEF1B2 /* SCPageControl.m */; };
 		B7DED3C71957D47D00A2D5C0 /* SCAdaptedDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED33C1957D47D00A2D5C0 /* SCAdaptedDevice.m */; };
 		B7DED3C81957D47D00A2D5C0 /* SCAdaptedSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED33F1957D47D00A2D5C0 /* SCAdaptedSystem.m */; };
 		B7DED3C91957D47D00A2D5C0 /* NSArray+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED3421957D47D00A2D5C0 /* NSArray+SCAddition.m */; };
@@ -136,6 +137,8 @@
 		B7AB47611920A6FD00249F5D /* SCXibViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCXibViewController.h; sourceTree = "<group>"; };
 		B7AB47621920A6FD00249F5D /* SCXibViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCXibViewController.m; sourceTree = "<group>"; };
 		B7AB47631920A6FD00249F5D /* SCXibViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCXibViewController.xib; sourceTree = "<group>"; };
+		B7C2268419760BF700BEF1B2 /* SCPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPageControl.h; sourceTree = "<group>"; };
+		B7C2268519760BF700BEF1B2 /* SCPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPageControl.m; sourceTree = "<group>"; };
 		B7DED33B1957D47D00A2D5C0 /* SCAdaptedDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAdaptedDevice.h; sourceTree = "<group>"; };
 		B7DED33C1957D47D00A2D5C0 /* SCAdaptedDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAdaptedDevice.m; sourceTree = "<group>"; };
 		B7DED33E1957D47D00A2D5C0 /* SCAdaptedSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAdaptedSystem.h; sourceTree = "<group>"; };
@@ -385,6 +388,15 @@
 				B7645722196BC902009302C2 /* SCImagePickerManager.m */,
 			);
 			path = ImagePickerManager;
+			sourceTree = "<group>";
+		};
+		B7C2268319760BF700BEF1B2 /* SCPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				B7C2268419760BF700BEF1B2 /* SCPageControl.h */,
+				B7C2268519760BF700BEF1B2 /* SCPageControl.m */,
+			);
+			path = SCPageControl;
 			sourceTree = "<group>";
 		};
 		B7DED3381957D47D00A2D5C0 /* SCFramework */ = {
@@ -658,6 +670,7 @@
 				B7DED3BE1957D47D00A2D5C0 /* SCTextField */,
 				B7DED3C11957D47D00A2D5C0 /* SCTextView */,
 				B7DED3C41957D47D00A2D5C0 /* SCView */,
+				B7C2268319760BF700BEF1B2 /* SCPageControl */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -953,6 +966,7 @@
 				B707FA8318CDA1B500413B64 /* SCTestViewController.m in Sources */,
 				B7DED3DB1957D47D00A2D5C0 /* NSFetchRequest+SCDaoAddition.m in Sources */,
 				B7DED3F41957D47D00A2D5C0 /* SCPullRefreshView.m in Sources */,
+				B7C2268619760BF700BEF1B2 /* SCPageControl.m in Sources */,
 				B7645723196BC902009302C2 /* SCImagePickerManager.m in Sources */,
 				B7DED3D21957D47D00A2D5C0 /* UIDevice+SCAddition.m in Sources */,
 				B72AF3EB18C5655100621B34 /* AppDelegate.m in Sources */,

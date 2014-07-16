@@ -65,4 +65,60 @@
     return YES;
 }
 
+#pragma mark - Public Method
+
+- (void)setPagingEnabled:(BOOL)pagingEnabled
+{
+    [super setPagingEnabled:pagingEnabled];
+    
+    if (self.pagingEnabled) {
+        if (_pageDirection == SCScrollViewPageDirectionVertical) {
+            self.contentSize = CGSizeMake(self.width, self.height*_numberOfPages);
+        } else {
+            self.contentSize = CGSizeMake(self.width*_numberOfPages, self.height);
+        }
+    } else {
+        self.contentSize = CGSizeZero;
+    }
+}
+
+- (void)setNumberOfPages:(NSInteger)numberOfPages
+{
+    _numberOfPages = numberOfPages;
+    
+    if (self.pagingEnabled) {
+        if (_pageDirection == SCScrollViewPageDirectionVertical) {
+            self.contentSize = CGSizeMake(self.width, self.height*_numberOfPages);
+        } else {
+            self.contentSize = CGSizeMake(self.width*_numberOfPages, self.height);
+        }
+    }
+}
+
+- (void)setPageDirection:(SCScrollViewPageDirection)pageDirection
+{
+    _pageDirection = pageDirection;
+    
+    if (self.pagingEnabled) {
+        if (_pageDirection == SCScrollViewPageDirectionVertical) {
+            self.contentSize = CGSizeMake(self.width, self.height*_numberOfPages);
+        } else {
+            self.contentSize = CGSizeMake(self.width*_numberOfPages, self.height);
+        }
+    }
+}
+
+- (NSInteger)currentPage
+{
+    if (self.pagingEnabled) {
+        if (_pageDirection == SCScrollViewPageDirectionVertical) {
+            return floor((self.contentOffset.y - self.height / 2.0) / self.height) + 1;
+        } else {
+            return floor((self.contentOffset.x - self.width / 2.0) / self.width) + 1;
+        }
+    } else {
+        return 0;
+    }
+}
+
 @end
