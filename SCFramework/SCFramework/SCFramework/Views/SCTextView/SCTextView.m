@@ -8,15 +8,71 @@
 
 #import "SCTextView.h"
 
+@interface SCTextView ()
+{
+@private
+    UILabel *_placeholderLabel;
+}
+
+@end
+
 @implementation SCTextView
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UITextViewTextDidChangeNotification
+                                                  object:nil];
+}
+
+#pragma mark - Init Method
+
+- (void)initialize
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textDidChange:)
+                                                 name:UITextViewTextDidChangeNotification
+                                               object:nil];
+    
+    self.placeholderColor = [UIColor lightGrayColor];
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        [self initialize];
     }
     return self;
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    if ([self.placeholder isNotEmpty]) {
+        if (!_placeholderLabel) {
+            _placeholderLabel = [[UILabel alloc] initWithFrame:
+                                 CGRectMake(8.0, 8.0, self.width - 16.0, 0.0)];
+            _placeholderLabel.backgroundColor = [UIColor clearColor];
+            _placeholderLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            _placeholderLabel.textColor = self.placeholderColor;
+            _placeholderLabel.numberOfLines = 0;
+            _placeholderLabel.font = self.font;
+            [self addSubview:_placeholderLabel];
+        }
+        
+        _placeholderLabel.text = self.placeholder;
+        [_placeholderLabel sizeToFit];
+        [self sendSubviewToBack:_placeholderLabel];
+        
+        if ([self.text isNotEmpty]) {
+            _placeholderLabel.alpha = 0.0;
+        } else {
+            _placeholderLabel.alpha = 1.0;
+        }
+    }
+    
+    [super drawRect:rect];
 }
 
 #pragma mark - UIResponder Touch Methods
@@ -42,6 +98,21 @@
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesCancelled:touches withEvent:event];
+}
+
+#pragma mark - Notification Method
+
+- (void)textDidChange:(NSNotification *)notification
+{
+    if (![self.placeholder isNotEmpty]) {
+        return;
+    }
+    
+    if ([self.text isNotEmpty]) {
+        _placeholderLabel.alpha = 0.0;
+    } else {
+        _placeholderLabel.alpha = 1.0;
+    }
 }
 
 @end
