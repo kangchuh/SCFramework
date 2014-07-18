@@ -27,4 +27,28 @@
     return nil;
 }
 
+- (NSArray *)popToViewControllerWithClass:(Class)viewControllerClass animated:(BOOL)animated
+{
+    NSInteger viewControllersCount = self.viewControllers.count;
+    for (int i = viewControllersCount - 1; i >= 0; --i) {
+        UIViewController *viewController = self.viewControllers[i];
+        if ([viewController isKindOfClass:viewControllerClass]) {
+            return [self popToViewController:viewController animated:animated];
+        }
+    }
+    return nil;
+}
+
+- (NSArray *)popToViewControllerWithLevel:(NSInteger)level animated:(BOOL)animated
+{
+    NSInteger viewControllersCount = self.viewControllers.count;
+    if (viewControllersCount > level) {
+        NSInteger idx = viewControllersCount - level - 1;
+        UIViewController *viewController = self.viewControllers[idx];
+        return [self popToViewController:viewController animated:animated];
+    } else {
+        return [self popToRootViewControllerAnimated:animated];
+    }
+}
+
 @end

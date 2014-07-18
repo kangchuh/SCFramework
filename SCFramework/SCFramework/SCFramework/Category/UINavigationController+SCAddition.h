@@ -13,4 +13,7 @@
 - (BOOL)isOnlyContainRootViewController;
 - (UIViewController *)rootViewController;
 
+- (NSArray *)popToViewControllerWithClass:(Class)viewControllerClass animated:(BOOL)animated;
+- (NSArray *)popToViewControllerWithLevel:(NSInteger)level animated:(BOOL)animated;
+
 @end
