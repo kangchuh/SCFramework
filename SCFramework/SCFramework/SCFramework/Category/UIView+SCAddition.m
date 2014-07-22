@@ -220,4 +220,28 @@
 	return nil;
 }
 
+#pragma mark - Animation
+
++ (void)animateFollowKeyboard:(NSDictionary *)userInfo
+                   animations:(void(^)(NSDictionary *userInfo))animations
+                   completion:(void (^)(BOOL finished))completion
+{
+    NSTimeInterval animationDuration;
+    UIViewAnimationCurve animationCurve;
+    
+    [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey]
+     getValue:&animationDuration];
+    [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey]
+     getValue:&animationCurve];
+    
+    [UIView animateWithDuration:animationDuration
+                          delay:0.0
+                        options:(UIViewAnimationOptions)animationCurve
+                     animations:^{
+                         if (animations) {
+                             animations(userInfo);
+                         }
+                     } completion:completion];
+}
+
 @end

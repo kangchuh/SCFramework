@@ -59,4 +59,10 @@
  */
 + (id)loadFromNib;
 
+#pragma mark - Animation
+
++ (void)animateFollowKeyboard:(NSDictionary *)userInfo
+                   animations:(void(^)(NSDictionary *userInfo))animations
+                   completion:(void (^)(BOOL finished))completion;
+
 @end
