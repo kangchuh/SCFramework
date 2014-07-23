@@ -47,9 +47,14 @@ static NSString * const SCAppFirstLaunchKey  = @"SCAppFirstLaunchKey";
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 }
 
++ (NSString *)appStoreURL:(NSString *)appID
+{
+    return [NSString stringWithFormat:@"%@%@", SCAppStoreURL, appID];
+}
+
 + (void)launchAppStore:(NSString *)appID
 {
-    NSString *downloadURLString = [NSString stringWithFormat:@"%@%@", SCAppStoreURL, appID];
+    NSString *downloadURLString = [self.class appStoreURL:appID];
     NSURL *downloadURL = [NSURL URLWithString:downloadURLString];
     [[UIApplication sharedApplication] openURL:downloadURL];
 }
