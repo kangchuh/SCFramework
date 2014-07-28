@@ -30,7 +30,7 @@
 - (NSArray *)popToViewControllerWithClass:(Class)viewControllerClass animated:(BOOL)animated
 {
     NSInteger viewControllersCount = self.viewControllers.count;
-    for (int i = viewControllersCount - 1; i >= 0; --i) {
+    for (NSInteger i = viewControllersCount - 1; i >= 0; --i) {
         UIViewController *viewController = self.viewControllers[i];
         if ([viewController isKindOfClass:viewControllerClass]) {
             return [self popToViewController:viewController animated:animated];
