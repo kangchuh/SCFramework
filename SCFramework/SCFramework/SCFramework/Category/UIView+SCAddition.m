@@ -234,9 +234,12 @@
     [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey]
      getValue:&animationCurve];
     
+    UIViewAnimationOptions options = ((animationCurve << 16) |
+                                      UIViewAnimationOptionBeginFromCurrentState);
+    
     [UIView animateWithDuration:animationDuration
                           delay:0.0
-                        options:(UIViewAnimationOptions)animationCurve
+                        options:options
                      animations:^{
                          if (animations) {
                              animations(userInfo);
