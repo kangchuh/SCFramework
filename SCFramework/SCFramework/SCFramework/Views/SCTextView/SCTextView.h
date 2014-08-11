@@ -12,7 +12,9 @@
 
 @property (nonatomic, assign) BOOL endEditingWhenSlide;
 
-@property (nonatomic, strong) NSString *placeholder;
+@property (nonatomic, copy  ) NSString *placeholder;
 @property (nonatomic, strong) UIColor *placeholderColor;
+
+- (void)reset;
 
 @end

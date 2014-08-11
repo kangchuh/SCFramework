@@ -100,6 +100,32 @@
     [super touchesCancelled:touches withEvent:event];
 }
 
+#pragma mark - Public Method
+
+- (void)setPlaceholder:(NSString *)placeholder
+{
+    if (_placeholder != placeholder) {
+        _placeholder = nil;
+        _placeholder = [placeholder copy];
+        [self setNeedsDisplay];
+    }
+}
+
+- (void)setPlaceholderColor:(UIColor *)placeholderColor
+{
+    if (_placeholderColor != placeholderColor) {
+        _placeholderColor = nil;
+        _placeholderColor = placeholderColor;
+        [self setNeedsDisplay];
+    }
+}
+
+- (void)reset
+{
+    self.text = nil;
+    _placeholderLabel.alpha = 1.0;
+}
+
 #pragma mark - Notification Method
 
 - (void)textDidChange:(NSNotification *)notification
