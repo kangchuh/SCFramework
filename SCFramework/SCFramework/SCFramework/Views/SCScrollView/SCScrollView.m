@@ -27,9 +27,8 @@
         [self endEditing:YES];
     }
     
-    if ( _touchDelegate &&
-        [_touchDelegate respondsToSelector:
-         @selector(scrollView:touchEnded:withEvent:)] ) {
+    if ( _touchDelegate && [_touchDelegate respondsToSelector:
+                            @selector(scrollView:touchEnded:withEvent:)] ) {
         [_touchDelegate scrollView:self
                         touchEnded:touches
                          withEvent:event];
@@ -45,9 +44,8 @@
         [self endEditing:YES];
     }
     
-    if ( _touchDelegate &&
-        [_touchDelegate respondsToSelector:
-         @selector(scrollView:touchShouldBegin:withEvent:inContentView:)] ) {
+    if ( _touchDelegate && [_touchDelegate respondsToSelector:
+                            @selector(scrollView:touchShouldBegin:withEvent:inContentView:)] ) {
         [_touchDelegate scrollView:self
                   touchShouldBegin:touches
                          withEvent:event
@@ -112,12 +110,86 @@
 {
     if (self.pagingEnabled) {
         if (_pageDirection == SCScrollViewPageDirectionVertical) {
-            return floor((self.contentOffset.y - self.height / 2.0) / self.height) + 1;
+            return floor((self.contentOffset.y + self.height / 2.0) / self.height);
         } else {
-            return floor((self.contentOffset.x - self.width / 2.0) / self.width) + 1;
+            return floor((self.contentOffset.x + self.width / 2.0) / self.width);
         }
     } else {
         return 0;
+    }
+}
+
+- (BOOL)isFirstPage
+{
+    return (self.currentPage == 0);
+}
+
+- (BOOL)isLastPage
+{
+    return (self.currentPage == self.numberOfPages - 1);
+}
+
+- (void)scrollToPreviousPage
+{
+    if (self.pagingEnabled) {
+        CGPoint contentOffset = self.contentOffset;
+        if (_pageDirection == SCScrollViewPageDirectionVertical) {
+            if (contentOffset.y <= 0) {
+                return;
+            }
+            contentOffset.y -= self.height;
+        } else {
+            if (contentOffset.x <= 0) {
+                return;
+            }
+            contentOffset.x -= self.width;
+        }
+        self.contentOffset = contentOffset;
+    }
+}
+
+- (void)scrollToNextPage
+{
+    if (self.pagingEnabled) {
+        CGPoint contentOffset = self.contentOffset;
+        if (_pageDirection == SCScrollViewPageDirectionVertical) {
+            if (contentOffset.y >= self.contentSize.height - self.height) {
+                return;
+            }
+            contentOffset.y += self.height;
+        } else {
+            if (contentOffset.x >= self.contentSize.width - self.width) {
+                return;
+            }
+            contentOffset.x += self.width;
+        }
+        self.contentOffset = contentOffset;
+    }
+}
+
+- (void)scrollToFirstPage
+{
+    if (self.pagingEnabled) {
+        CGPoint contentOffset = self.contentOffset;
+        if (_pageDirection == SCScrollViewPageDirectionVertical) {
+            contentOffset.y = 0.0;
+        } else {
+            contentOffset.x = 0.0;
+        }
+        self.contentOffset = contentOffset;
+    }
+}
+
+- (void)scrollToLastPage
+{
+    if (self.pagingEnabled) {
+        CGPoint contentOffset = self.contentOffset;
+        if (_pageDirection == SCScrollViewPageDirectionVertical) {
+            contentOffset.y = self.contentSize.height - self.height;
+        } else {
+            contentOffset.x = self.contentSize.width - self.width;
+        }
+        self.contentOffset = contentOffset;
     }
 }
 
