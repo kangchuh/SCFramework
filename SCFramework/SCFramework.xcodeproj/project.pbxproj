@@ -29,6 +29,7 @@
 		B72AF3FE18C5655100621B34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B72AF3FC18C5655100621B34 /* InfoPlist.strings */; };
 		B72AF40018C5655100621B34 /* SCFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B72AF3FF18C5655100621B34 /* SCFrameworkTests.m */; };
 		B730F7D91921B9CA00CBB1E8 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B730F7D81921B9CA00CBB1E8 /* JavaScriptCore.framework */; };
+		B73CD4861990B39A00D21CD0 /* SCBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CD4851990B39A00D21CD0 /* SCBrowseView.m */; };
 		B7531D8718C734B100D701BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7531D8618C734B100D701BF /* libz.dylib */; };
 		B75DAF85191B83230011E917 /* SCDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75DAF84191B83230011E917 /* SCDetailViewController.m */; };
 		B7645723196BC902009302C2 /* SCImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7645722196BC902009302C2 /* SCImagePickerManager.m */; };
@@ -88,6 +89,8 @@
 		B7DED3F81957D47D00A2D5C0 /* SCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED3C01957D47D00A2D5C0 /* SCTextField.m */; };
 		B7DED3F91957D47D00A2D5C0 /* SCTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED3C31957D47D00A2D5C0 /* SCTextView.m */; };
 		B7DED3FA1957D47D00A2D5C0 /* SCView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED3C61957D47D00A2D5C0 /* SCView.m */; };
+		B7E640AC19A478340019D963 /* NSTimer+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E640AB19A478340019D963 /* NSTimer+SCAddition.m */; };
+		B7E640AF19A478520019D963 /* SCBrowseViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E640AE19A478520019D963 /* SCBrowseViewPage.m */; };
 		B7F300371962529800921CFD /* UINavigationItem+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F300361962529800921CFD /* UINavigationItem+SCAddition.m */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +133,8 @@
 		B72AF3FD18C5655100621B34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B72AF3FF18C5655100621B34 /* SCFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCFrameworkTests.m; sourceTree = "<group>"; };
 		B730F7D81921B9CA00CBB1E8 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		B73CD4841990B39A00D21CD0 /* SCBrowseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBrowseView.h; sourceTree = "<group>"; };
+		B73CD4851990B39A00D21CD0 /* SCBrowseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBrowseView.m; sourceTree = "<group>"; };
 		B7531D8618C734B100D701BF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B75DAF83191B83230011E917 /* SCDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDetailViewController.h; sourceTree = "<group>"; };
 		B75DAF84191B83230011E917 /* SCDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDetailViewController.m; sourceTree = "<group>"; };
@@ -251,6 +256,10 @@
 		B7DED3C31957D47D00A2D5C0 /* SCTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTextView.m; sourceTree = "<group>"; };
 		B7DED3C51957D47D00A2D5C0 /* SCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCView.h; sourceTree = "<group>"; };
 		B7DED3C61957D47D00A2D5C0 /* SCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCView.m; sourceTree = "<group>"; };
+		B7E640AA19A478340019D963 /* NSTimer+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+SCAddition.h"; sourceTree = "<group>"; };
+		B7E640AB19A478340019D963 /* NSTimer+SCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+SCAddition.m"; sourceTree = "<group>"; };
+		B7E640AD19A478520019D963 /* SCBrowseViewPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBrowseViewPage.h; sourceTree = "<group>"; };
+		B7E640AE19A478520019D963 /* SCBrowseViewPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBrowseViewPage.m; sourceTree = "<group>"; };
 		B7F300351962529800921CFD /* UINavigationItem+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+SCAddition.h"; sourceTree = "<group>"; };
 		B7F300361962529800921CFD /* UINavigationItem+SCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+SCAddition.m"; sourceTree = "<group>"; };
 		C8F7DCEE5BED4F0499DCBFDB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -483,6 +492,8 @@
 				B7F300361962529800921CFD /* UINavigationItem+SCAddition.m */,
 				B7C2268A19762AF000BEF1B2 /* UIScreen+SCAddition.h */,
 				B7C2268B19762AF000BEF1B2 /* UIScreen+SCAddition.m */,
+				B7E640AA19A478340019D963 /* NSTimer+SCAddition.h */,
+				B7E640AB19A478340019D963 /* NSTimer+SCAddition.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -721,6 +732,10 @@
 			children = (
 				B7DED3AC1957D47D00A2D5C0 /* SCScrollView.h */,
 				B7DED3AD1957D47D00A2D5C0 /* SCScrollView.m */,
+				B73CD4841990B39A00D21CD0 /* SCBrowseView.h */,
+				B73CD4851990B39A00D21CD0 /* SCBrowseView.m */,
+				B7E640AD19A478520019D963 /* SCBrowseViewPage.h */,
+				B7E640AE19A478520019D963 /* SCBrowseViewPage.m */,
 			);
 			path = SCScrollView;
 			sourceTree = "<group>";
@@ -950,9 +965,11 @@
 				B7DED3F11957D47D00A2D5C0 /* SCCircleView.m in Sources */,
 				B7DED3CF1957D47D00A2D5C0 /* NSURL+SCAddition.m in Sources */,
 				B7DED3F71957D47D00A2D5C0 /* SCTableViewCell.m in Sources */,
+				B7E640AF19A478520019D963 /* SCBrowseViewPage.m in Sources */,
 				B7DED3EB1957D47D00A2D5C0 /* SCViewController.m in Sources */,
 				B7DED3FA1957D47D00A2D5C0 /* SCView.m in Sources */,
 				B7DED3E61957D47D00A2D5C0 /* SCDBNavigationController.m in Sources */,
+				B7E640AC19A478340019D963 /* NSTimer+SCAddition.m in Sources */,
 				B7DED3D81957D47D00A2D5C0 /* SCNSJSONSerialization.m in Sources */,
 				B7DED3D91957D47D00A2D5C0 /* SCMath.m in Sources */,
 				B7DED3CD1957D47D00A2D5C0 /* NSObject+SCAddition.m in Sources */,
@@ -960,6 +977,7 @@
 				B7DED3F21957D47D00A2D5C0 /* SCExpandTableView.m in Sources */,
 				B7DED3ED1957D47D00A2D5C0 /* SCDatePicker.m in Sources */,
 				B7DED3D11957D47D00A2D5C0 /* UIColor+SCAddition.m in Sources */,
+				B73CD4861990B39A00D21CD0 /* SCBrowseView.m in Sources */,
 				B7DED3D61957D47D00A2D5C0 /* SCApp.m in Sources */,
 				B7DED3C91957D47D00A2D5C0 /* NSArray+SCAddition.m in Sources */,
 				B7DED3EE1957D47D00A2D5C0 /* SCLabel.m in Sources */,
