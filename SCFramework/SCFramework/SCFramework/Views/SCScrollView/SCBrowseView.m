@@ -290,7 +290,7 @@ UIScrollViewDelegate
     NSMutableArray *reusablePages = [NSMutableArray array];
     for (SCBrowseViewPage *itemPage in _loadedPages) {
         NSInteger index = [self indexForPage:itemPage];
-        if (abs(index - currentPage) > 1) {
+        if (abs((int)(index - currentPage)) > 1) {
             [reusablePages addObject:itemPage];
             [self __recyclePage:itemPage];
         }
