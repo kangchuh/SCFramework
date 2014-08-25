@@ -56,7 +56,7 @@ SCSINGLETON(SCDaoManager);
 
 #pragma mark - Database
 
-- (BOOL)existTableWithModel:(Class)modelCls
+- (BOOL)existTable:(Class)modelCls
 {
     BOOL flag = NO;
     
@@ -79,7 +79,7 @@ SCSINGLETON(SCDaoManager);
     return flag;
 }
 
-- (BOOL)createTableWithModel:(Class)modelCls
+- (BOOL)createTable:(Class)modelCls
 {
     BOOL flag = NO;
     
@@ -99,15 +99,13 @@ SCSINGLETON(SCDaoManager);
 
 - (BOOL)dropTable:(Class)modelCls
 {
-    if ( ![self existTableWithModel:modelCls] ) {
+    if ( ![self existTable:modelCls] ) {
         return YES;
     }
     
     BOOL flag = NO;
     
     if ( [self.db open] ) {
-        NSAssert([modelCls respondsToSelector:@selector(tableName)],
-                 @"Model must be implement <SCModelDatabase> protocol.");
         NSString *sql = [self constructSQLForDropTableWithModel:modelCls];
         BOOL ret = [self.db executeUpdate:sql];
         if ( ret ) {
@@ -121,8 +119,8 @@ SCSINGLETON(SCDaoManager);
 
 - (BOOL)insertModel:(SCModel <SCDatabaseModel> *)model
 {
-    if ( ![self existTableWithModel:[model class]] ) {
-        if ( ![self createTableWithModel:[model class]] ) {
+    if ( ![self existTable:[model class]] ) {
+        if ( ![self createTable:[model class]] ) {
             return NO;
         }
     }
@@ -144,15 +142,13 @@ SCSINGLETON(SCDaoManager);
 
 - (BOOL)deleteModel:(Class)modelCls
 {
-    if ( ![self existTableWithModel:modelCls] ) {
+    if ( ![self existTable:modelCls] ) {
         return YES;
     }
     
     BOOL flag = NO;
     
     if ( [self.db open] ) {
-        NSAssert([modelCls respondsToSelector:@selector(tableName)],
-                 @"Model must be implement <SCModelDatabase> protocol.");
         NSString *sql = [self constructSQLForDeleteWithModel:modelCls];
         BOOL ret = [self.db executeUpdate:sql];
         if ( ret ) {
@@ -166,15 +162,13 @@ SCSINGLETON(SCDaoManager);
 
 - (BOOL)updateModel:(SCModel <SCDatabaseModel> *)model forSQL:(NSString *)SQL
 {
-    if ( ![self existTableWithModel:[model class]] ) {
-        return [self insertModel:model];
+    if ( ![self existTable:[model class]] ) {
+        return NO;
     }
     
     BOOL flag = NO;
     
     if ( [self.db open] ) {
-        NSAssert([[model class] respondsToSelector:@selector(tableName)],
-                 @"Model must be implement <SCModelDatabase> protocol.");
         NSString *sql = [NSString stringWithFormat:SQL, [[model class] tableName]];
         BOOL ret = [self.db executeUpdate:sql];
         if ( ret ) {
@@ -188,7 +182,7 @@ SCSINGLETON(SCDaoManager);
 
 - (NSArray *)query:(Class)modelCls
 {
-    if ( ![self existTableWithModel:modelCls] ) {
+    if ( ![self existTable:modelCls] ) {
         return nil;
     }
     
@@ -197,21 +191,7 @@ SCSINGLETON(SCDaoManager);
     if ( [self.db open] ) {
         NSString *sql = [self constructSQLForQueryWithModel:modelCls];
         FMResultSet *rs = [self.db executeQuery:sql];
-        NSInteger columnCount = (NSInteger)[rs columnCount];
-        NSDictionary *properties = [modelCls storableProperties];
-        NSArray *propertyNames = [properties allKeys];
-        while ( [rs next] ) {
-            SCModel *model = [[modelCls alloc] init];
-            for (int clm = 0; clm < columnCount; ++clm) {
-                NSString *columnName = [rs columnNameForIndex:clm];
-                if ([propertyNames containsObject:columnName]) {
-                    id obj = [rs objectForColumnName:columnName];
-                    id value = [self convertToObjcValue:obj forType:[properties objectForKey:columnName]];
-                    [model setValue:value forKey:columnName];
-                }
-            }
-            [models addObject:model];
-        }
+        [models addObjectsFromArray:[self parseResultSet:rs forModel:modelCls]];
     }
     [self.db close];
     
@@ -220,7 +200,7 @@ SCSINGLETON(SCDaoManager);
 
 - (NSArray *)query:(Class)modelCls where:(id)where
 {
-    if ( ![self existTableWithModel:modelCls] ) {
+    if ( ![self existTable:modelCls] ) {
         return nil;
     }
     
@@ -236,21 +216,7 @@ SCSINGLETON(SCDaoManager);
         } else {
             rs = [self.db executeQuery:sql];
         }
-        NSInteger columnCount = (NSInteger)[rs columnCount];
-        NSDictionary *properties = [modelCls storableProperties];
-        NSArray *propertyNames = [properties allKeys];
-        while ( [rs next] ) {
-            SCModel *model = [[modelCls alloc] init];
-            for (int clm = 0; clm < columnCount; ++clm) {
-                NSString *columnName = [rs columnNameForIndex:clm];
-                if ([propertyNames containsObject:columnName]) {
-                    id obj = [rs objectForColumnName:columnName];
-                    id value = [self convertToObjcValue:obj forType:[properties objectForKey:columnName]];
-                    [model setValue:value forKey:columnName];
-                }
-            }
-            [models addObject:model];
-        }
+        [models addObjectsFromArray:[self parseResultSet:rs forModel:modelCls]];
     }
     [self.db close];
     
@@ -259,7 +225,7 @@ SCSINGLETON(SCDaoManager);
 
 - (NSArray *)query:(Class)modelCls forSQL:(NSString *)SQL
 {
-    if ( ![self existTableWithModel:modelCls] ) {
+    if ( ![self existTable:modelCls] ) {
         return nil;
     }
     
@@ -268,21 +234,7 @@ SCSINGLETON(SCDaoManager);
     if ( [self.db open] ) {
         NSString *sql = [NSString stringWithFormat:SQL, [modelCls tableName]];
         FMResultSet *rs = [self.db executeQuery:sql];
-        NSInteger columnCount = (NSInteger)[rs columnCount];
-        NSDictionary *properties = [modelCls storableProperties];
-        NSArray *propertyNames = [properties allKeys];
-        while ( [rs next] ) {
-            SCModel *model = [[modelCls alloc] init];
-            for (int clm = 0; clm < columnCount; ++clm) {
-                NSString *columnName = [rs columnNameForIndex:clm];
-                if ([propertyNames containsObject:columnName]) {
-                    id obj = [rs objectForColumnName:columnName];
-                    id value = [self convertToObjcValue:obj forType:[properties objectForKey:columnName]];
-                    [model setValue:value forKey:columnName];
-                }
-            }
-            [models addObject:model];
-        }
+        [models addObjectsFromArray:[self parseResultSet:rs forModel:modelCls]];
     }
     [self.db close];
     
@@ -291,7 +243,7 @@ SCSINGLETON(SCDaoManager);
 
 - (NSInteger)count:(Class)modelCls forSQL:(NSString *)SQL
 {
-    if ( ![self existTableWithModel:modelCls] ) {
+    if ( ![self existTable:modelCls] ) {
         return 0;
     }
     
@@ -300,7 +252,7 @@ SCSINGLETON(SCDaoManager);
     if ( [self.db open] ) {
         NSString *sql = [NSString stringWithFormat:SQL, [modelCls tableName]];
         FMResultSet *rs = [self.db executeQuery:sql];
-        if ( [rs columnCount] > 0 && [rs next] ) {
+        if ( [rs next] ) {
             count = [[rs stringForColumnIndex:0] integerValue];
         }
     }
@@ -382,8 +334,9 @@ SCSINGLETON(SCDaoManager);
     
     NSDictionary *properties = [model storableProperties];
     for (NSString *key in [properties keyEnumerator]) {
+        NSString *objcType = [properties objectForKey:key];
         id value = [model valueForKey:key];
-        id obj = value ? [self convertToSQLValue:value forType:[properties objectForKey:key]] : [NSNull null];
+        id obj = value ? [self convertToSQLValue:value forType:objcType] : [NSNull null];
         [keys addObject:key];
         [values addObject:obj];
         [placeholders addObject:@"?"];
@@ -410,6 +363,8 @@ SCSINGLETON(SCDaoManager);
 	return sql;
 }
 
+#pragma mark - Convert & Parse
+
 - (id)convertToSQLValue:(id)obj forType:(NSString *)objcType
 {
     if ([objcType isEqualToString:SCObjcTypeCGPoint]) {
@@ -432,6 +387,28 @@ SCSINGLETON(SCDaoManager);
         return [NSValue valueWithCGRect:CGRectFromString(obj)];
     }
     return obj;
+}
+
+- (NSArray *)parseResultSet:(FMResultSet *)rs forModel:(Class)modelCls
+{
+    NSMutableArray *models = [NSMutableArray array];
+    NSInteger columnCount = (NSInteger)[rs columnCount];
+    NSDictionary *properties = [modelCls storableProperties];
+    NSArray *propertyNames = [properties allKeys];
+    while ( [rs next] ) {
+        SCModel *model = [[modelCls alloc] init];
+        for (int clm = 0; clm < columnCount; ++clm) {
+            NSString *columnName = [rs columnNameForIndex:clm];
+            if ([propertyNames containsObject:columnName]) {
+                NSString *objcType = [properties objectForKey:columnName];
+                id obj = [rs objectForColumnName:columnName];
+                id value = [self convertToObjcValue:obj forType:objcType];
+                [model setValue:value forKey:columnName];
+            }
+        }
+        [models addObject:model];
+    }
+    return [NSArray arrayWithArray:models];
 }
 
 @end
