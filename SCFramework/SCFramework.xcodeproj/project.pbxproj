@@ -35,6 +35,8 @@
 		B7645723196BC902009302C2 /* SCImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7645722196BC902009302C2 /* SCImagePickerManager.m */; };
 		B7AB47641920A6FD00249F5D /* SCXibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AB47621920A6FD00249F5D /* SCXibViewController.m */; };
 		B7AB47651920A6FD00249F5D /* SCXibViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7AB47631920A6FD00249F5D /* SCXibViewController.xib */; };
+		B7AF797D19A5DE270041F724 /* SCDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AF797C19A5DE270041F724 /* SCDatabase.m */; };
+		B7AF798A19A6E8AA0041F724 /* SCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AF798919A6E8AA0041F724 /* SCUtils.m */; };
 		B7C2268619760BF700BEF1B2 /* SCPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C2268519760BF700BEF1B2 /* SCPageControl.m */; };
 		B7C2268C19762AF000BEF1B2 /* UIScreen+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C2268B19762AF000BEF1B2 /* UIScreen+SCAddition.m */; };
 		B7DED3C71957D47D00A2D5C0 /* SCAdaptedDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED33C1957D47D00A2D5C0 /* SCAdaptedDevice.m */; };
@@ -109,6 +111,7 @@
 		B705E09C18C6CAAE00AC6B5E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B707FA8118CDA1B500413B64 /* SCTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTestViewController.h; sourceTree = "<group>"; };
 		B707FA8218CDA1B500413B64 /* SCTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTestViewController.m; sourceTree = "<group>"; };
+		B7141FFB19A74EF3006C510C /* SCDatabaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDatabaseModel.h; sourceTree = "<group>"; };
 		B71EE5A61910CB3500590A9D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		B71EE5A81910CB9100590A9D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B71EE5AA1910D69000590A9D /* TestPic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TestPic.jpg; sourceTree = "<group>"; };
@@ -143,6 +146,10 @@
 		B7AB47611920A6FD00249F5D /* SCXibViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCXibViewController.h; sourceTree = "<group>"; };
 		B7AB47621920A6FD00249F5D /* SCXibViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCXibViewController.m; sourceTree = "<group>"; };
 		B7AB47631920A6FD00249F5D /* SCXibViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCXibViewController.xib; sourceTree = "<group>"; };
+		B7AF797B19A5DE270041F724 /* SCDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDatabase.h; sourceTree = "<group>"; };
+		B7AF797C19A5DE270041F724 /* SCDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDatabase.m; sourceTree = "<group>"; };
+		B7AF798819A6E8AA0041F724 /* SCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUtils.h; sourceTree = "<group>"; };
+		B7AF798919A6E8AA0041F724 /* SCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUtils.m; sourceTree = "<group>"; };
 		B7C2268419760BF700BEF1B2 /* SCPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPageControl.h; sourceTree = "<group>"; };
 		B7C2268519760BF700BEF1B2 /* SCPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPageControl.m; sourceTree = "<group>"; };
 		B7C2268A19762AF000BEF1B2 /* UIScreen+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+SCAddition.h"; sourceTree = "<group>"; };
@@ -402,6 +409,15 @@
 			path = ImagePickerManager;
 			sourceTree = "<group>";
 		};
+		B7AF798719A6E89A0041F724 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B7AF798819A6E8AA0041F724 /* SCUtils.h */,
+				B7AF798919A6E8AA0041F724 /* SCUtils.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		B7C2268319760BF700BEF1B2 /* SCPageControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +517,7 @@
 		B7DED35B1957D47D00A2D5C0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B7AF798719A6E89A0041F724 /* Utils */,
 				B7DED35C1957D47D00A2D5C0 /* App */,
 				B7DED35F1957D47D00A2D5C0 /* Foundation */,
 				B7DED3641957D47D00A2D5C0 /* Math */,
@@ -570,6 +587,9 @@
 				B7DED3711957D47D00A2D5C0 /* SCCoreDataManager.m */,
 				B7DED3721957D47D00A2D5C0 /* SCDaoManager.h */,
 				B7DED3731957D47D00A2D5C0 /* SCDaoManager.m */,
+				B7AF797B19A5DE270041F724 /* SCDatabase.h */,
+				B7AF797C19A5DE270041F724 /* SCDatabase.m */,
+				B7141FFB19A74EF3006C510C /* SCDatabaseModel.h */,
 			);
 			path = DaoManager;
 			sourceTree = "<group>";
@@ -947,6 +967,7 @@
 				B7DED3EA1957D47D00A2D5C0 /* SCTableViewController.m in Sources */,
 				B7AB47641920A6FD00249F5D /* SCXibViewController.m in Sources */,
 				B7DED3C71957D47D00A2D5C0 /* SCAdaptedDevice.m in Sources */,
+				B7AF798A19A6E8AA0041F724 /* SCUtils.m in Sources */,
 				B7DED3CE1957D47D00A2D5C0 /* NSString+SCAddition.m in Sources */,
 				B7DED3DE1957D47D00A2D5C0 /* SCDaoManager.m in Sources */,
 				B7DED3DF1957D47D00A2D5C0 /* SCDateManager.m in Sources */,
@@ -958,6 +979,7 @@
 				B7DED3D31957D47D00A2D5C0 /* UIImage+SCAddition.m in Sources */,
 				B72AF3E818C5655100621B34 /* main.m in Sources */,
 				B7DED3E41957D47D00A2D5C0 /* SCCTNavigationController.m in Sources */,
+				B7AF797D19A5DE270041F724 /* SCDatabase.m in Sources */,
 				B7DED3D01957D47D00A2D5C0 /* UIAlertView+SCAddition.m in Sources */,
 				B75DAF85191B83230011E917 /* SCDetailViewController.m in Sources */,
 				B7DED3E81957D47D00A2D5C0 /* SCViewControllerTransitionAnimator.m in Sources */,

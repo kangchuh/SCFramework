@@ -11,9 +11,9 @@
 @protocol SCDatabaseModel <NSObject>
 
 @required
-- (NSString *)tableName;
++ (NSString *)tableName;
 
 @optional
-- (NSString *)primaryKey;
++ (NSString *)primaryKey;
 
 @end

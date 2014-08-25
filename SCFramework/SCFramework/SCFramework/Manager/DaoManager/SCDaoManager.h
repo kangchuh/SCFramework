@@ -8,8 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol SCDatabaseModel;
+
 @interface SCDaoManager : NSObject
 
 + (SCDaoManager *)sharedInstance;
+
+- (instancetype)initWithName:(NSString *)dbName;
+- (instancetype)initWithPath:(NSString *)dbPath;
+
+- (BOOL)dropTable:(Class)modelCls;
+
+- (BOOL)insertModel:(SCModel <SCDatabaseModel> *)model;
+
+- (BOOL)deleteModel:(Class)modelCls;
+
+- (BOOL)updateModel:(SCModel <SCDatabaseModel> *)model forSQL:(NSString *)SQL;
+
+- (NSArray *)query:(Class)modelCls;
+- (NSArray *)query:(Class)modelCls where:(id)where;
+- (NSArray *)query:(Class)modelCls forSQL:(NSString *)SQL;
+
+- (NSInteger)count:(Class)modelCls forSQL:(NSString *)SQL;
 
 @end

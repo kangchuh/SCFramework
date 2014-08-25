@@ -18,6 +18,7 @@
 #import "SCConstant.h"
 
 // -------------------------- Common -------------------------- //
+#import "SCUtils.h"
 #import "SCApp.h"
 #import "SCMath.h"
 #import "SCModel.h"
