@@ -10,6 +10,8 @@
 
 @interface NSDictionary (SCAddition)
 
+- (BOOL)isNotEmpty;
+
 - (NSArray *)arrayForKey:(id)aKey;
 - (NSDictionary *)dictionaryForKey:(id)aKey;
 

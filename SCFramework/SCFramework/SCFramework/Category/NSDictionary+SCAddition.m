@@ -10,6 +10,13 @@
 
 @implementation NSDictionary (SCAddition)
 
+- (BOOL)isNotEmpty
+{
+    return (![(NSNull *)self isEqual:[NSNull null]]
+            && [self isKindOfClass:[NSDictionary class]]
+            && self.count > 0);
+}
+
 - (NSArray *)arrayForKey:(id)aKey
 {
     id object = [self objectForKey:aKey];
