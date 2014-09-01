@@ -61,7 +61,7 @@ SCSINGLETON(SCImagePickerManager);
             _pickingMediaHandler(picker, image, info);
         }
         
-        if (_allowStore) {
+        if ( _allowStore ) {
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
         }
     }
@@ -73,7 +73,7 @@ SCSINGLETON(SCImagePickerManager);
             _pickingMediaHandler(picker, moviePath, info);
         }
         
-        if (_allowStore) {
+        if ( _allowStore ) {
             if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(moviePath)) {
                 UISaveVideoAtPathToSavedPhotosAlbum(moviePath, nil, nil, nil);
             }
