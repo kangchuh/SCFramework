@@ -33,6 +33,8 @@ typedef void(^SCImagePickerConfigHandler)(UIImagePickerController *picker);
 
 @interface SCImagePickerManager : NSObject
 
+@property (nonatomic, assign) BOOL allowStore;
+
 + (SCImagePickerManager *)sharedInstance;
 
 - (void)startPickFromViewController:(UIViewController *)viewController

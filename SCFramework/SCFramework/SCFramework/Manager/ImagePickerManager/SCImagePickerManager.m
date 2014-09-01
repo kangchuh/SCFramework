@@ -61,7 +61,9 @@ SCSINGLETON(SCImagePickerManager);
             _pickingMediaHandler(picker, image, info);
         }
         
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        if (_allowStore) {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        }
     }
     
     if (CFStringCompare((CFStringRef) mediaType, kUTTypeMovie, 0) == kCFCompareEqualTo) {
@@ -71,8 +73,10 @@ SCSINGLETON(SCImagePickerManager);
             _pickingMediaHandler(picker, moviePath, info);
         }
         
-        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(moviePath)) {
-            UISaveVideoAtPathToSavedPhotosAlbum(moviePath, nil, nil, nil);
+        if (_allowStore) {
+            if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(moviePath)) {
+                UISaveVideoAtPathToSavedPhotosAlbum(moviePath, nil, nil, nil);
+            }
         }
     }
     
