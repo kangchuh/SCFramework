@@ -30,4 +30,16 @@
     return ([UIDevice iPhone] && [UIScreen height] == 480.0);
 }
 
++ (CGSize)size
+{
+    return [[UIScreen mainScreen] bounds].size;
+}
+
++ (CGSize)DPISize
+{
+    CGSize size = [[UIScreen mainScreen] bounds].size;
+    CGFloat scale = [[UIScreen mainScreen] scale];
+    return CGSizeMake(size.width * scale, size.height * scale);
+}
+
 @end

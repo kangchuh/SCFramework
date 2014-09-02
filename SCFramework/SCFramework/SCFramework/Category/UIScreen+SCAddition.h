@@ -14,5 +14,7 @@
 + (CGFloat)height;
 + (BOOL)isFourInch;
 + (BOOL)isThreePointFiveInch;
++ (CGSize)size;
++ (CGSize)DPISize;
 
 @end
