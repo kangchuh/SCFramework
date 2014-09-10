@@ -102,7 +102,10 @@ UIPickerViewDataSource
 {
     if (_doneHandler != nil) {
         NSInteger selectedRow = [_pickerView selectedRowInComponent:0];
-        id result = [_dataSources objectAtIndex:selectedRow];
+        id result = nil;
+        if ([_dataSources isNotEmpty] && [_dataSources count] > selectedRow) {
+            result = [_dataSources objectAtIndex:selectedRow];
+        }
         _doneHandler(result);
     }
     [self dismissWithClickedButtonIndex:1 animated:YES];
