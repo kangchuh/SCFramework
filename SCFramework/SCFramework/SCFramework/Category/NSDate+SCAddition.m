@@ -69,6 +69,7 @@
     return [dateComponents second];
 }
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 70000
 - (NSInteger)week
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -77,6 +78,25 @@
                                                    fromDate:self];
     return [dateComponents week];
 }
+#else
+- (NSInteger)weekOfMonth
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    unsigned int uintFlags = NSCalendarUnitWeekOfMonth;
+    NSDateComponents *dateComponents = [calendar components:uintFlags
+                                                   fromDate:self];
+    return [dateComponents weekOfMonth];
+}
+
+- (NSInteger)weekOfYear
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    unsigned int uintFlags = NSCalendarUnitWeekOfYear;
+    NSDateComponents *dateComponents = [calendar components:uintFlags
+                                                   fromDate:self];
+    return [dateComponents weekOfYear];
+}
+#endif
 
 /**
  *  @brief 获取月份的天数
@@ -170,15 +190,15 @@
 - (BOOL)isSameDay:(NSDate *)anotherDate
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-	NSDateComponents *components1 = [calendar components:(NSYearCalendarUnit |
+    NSDateComponents *components1 = [calendar components:(NSYearCalendarUnit |
                                                           NSMonthCalendarUnit |
                                                           NSDayCalendarUnit)
                                                 fromDate:self];
-	NSDateComponents *components2 = [calendar components:(NSYearCalendarUnit |
+    NSDateComponents *components2 = [calendar components:(NSYearCalendarUnit |
                                                           NSMonthCalendarUnit |
                                                           NSDayCalendarUnit)
                                                 fromDate:anotherDate];
-	return ([components1 year] == [components2 year] &&
+    return ([components1 year] == [components2 year] &&
             [components1 month] == [components2 month] &&
             [components1 day] == [components2 day]);
 }

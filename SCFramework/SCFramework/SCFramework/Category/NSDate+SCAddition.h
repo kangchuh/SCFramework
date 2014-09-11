@@ -26,6 +26,13 @@
 - (NSInteger)minute;
 - (NSInteger)second;
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 70000
+- (NSInteger)week
+#else
+- (NSInteger)weekOfMonth;
+- (NSInteger)weekOfYear;
+#endif
+
 /// 获取月份的天数
 - (NSInteger)numberOfDaysInMonth;
 
