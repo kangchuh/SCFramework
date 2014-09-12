@@ -1,11 +1,11 @@
 //
 //  JSONValueTransformer.h
 //
-//  @version 0.13.0
+//  @version 1.0.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
-// Copyright (c) 2012-2013 Marin Todorov, Underplot ltd.
+// Copyright (c) 2012-2014 Marin Todorov, Underplot ltd.
 // This code is distributed under the terms and conditions of the MIT license.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -189,6 +189,23 @@ extern BOOL isNull(id value);
  */
 -(NSString*)JSONObjectFromNSURL:(NSURL*)url;
 
+#pragma mark - string <-> time zone
+
+/** @name Transforming NSTimeZone */
+/**
+ * Transforms a string object to an NSTimeZone object
+ * @param string the string to convert
+ * @return the resulting NSTimeZone object
+ */
+- (NSTimeZone *)NSTimeZoneFromNSString:(NSString*)string;
+
+/**
+ * Transforms an NSTimeZone object to a string
+ * @param timeZone the time zone object to convert
+ * @return the resulting string
+ */
+- (NSString *)JSONObjectFromNSTimeZone:(NSTimeZone *)timeZone;
+
 #pragma mark - string <-> date
 /** @name Transforming Dates */
 /**
@@ -200,5 +217,14 @@ extern BOOL isNull(id value);
 
 //-(NSDate*)NSDateFromNSString:(NSString*)string;
 //-(NSString*)JSONObjectFromNSDate:(NSDate*)date;
+
+#pragma mark - number <-> date
+
+/**
+ * Transforms a number to an NSDate object
+ * @param number the number to convert
+ * @return the resulting date
+ */
+- (NSDate*)NSDateFromNSNumber:(NSNumber*)number;
 
 @end

@@ -8,7 +8,6 @@
 
 #import "UISegmentedControl+RACSignalSupport.h"
 #import "RACEXTKeyPathCoding.h"
-#import "UIControl+RACSignalSupport.h"
 #import "UIControl+RACSignalSupportPrivate.h"
 
 @implementation UISegmentedControl (RACSignalSupport)

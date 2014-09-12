@@ -1,11 +1,11 @@
 //
 //  JSONValueTransformer.m
 //
-//  @version 0.13.0
+//  @version 1.0.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
-// Copyright (c) 2012-2013 Marin Todorov, Underplot ltd.
+// Copyright (c) 2012-2014 Marin Todorov, Underplot ltd.
 // This code is distributed under the terms and conditions of the MIT license.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -25,6 +25,8 @@ extern BOOL isNull(id value)
     
     return NO;
 }
+
+static NSDateFormatter *_dateFormatter;
 
 @implementation JSONValueTransformer
 
@@ -142,8 +144,12 @@ extern BOOL isNull(id value)
 
 -(NSNumber*)BOOLFromNSString:(NSString*)string
 {
-    int val = [string intValue];
-    return [NSNumber numberWithBool: val==0?NO:YES];
+    if (string != nil && 
+        ([string caseInsensitiveCompare:@"true"] == NSOrderedSame ||
+        [string caseInsensitiveCompare:@"yes"] == NSOrderedSame)) {
+        return [NSNumber numberWithBool:YES];
+    }
+    return [NSNumber numberWithBool: ([string intValue]==0)?NO:YES];
 }
 
 -(NSNumber*)JSONObjectFromBOOL:(NSNumber*)number
@@ -205,21 +211,58 @@ extern BOOL isNull(id value)
 }
 
 #pragma mark - string <-> date
+-(NSDateFormatter*)importDateFormatter
+{
+    static dispatch_once_t once;
+    static NSDateFormatter* dateFormatter;
+    dispatch_once(&once, ^{
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmssZZZZ"];
+    });
+    return dateFormatter;
+}
+
 -(NSDate*)__NSDateFromNSString:(NSString*)string
 {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     string = [string stringByReplacingOccurrencesOfString:@":" withString:@""]; // this is such an ugly code, is this the only way?
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HHmmssZZZZ"];
-    
-    return [dateFormatter dateFromString: string];
+    return [self.importDateFormatter dateFromString: string];
 }
 
 -(NSString*)__JSONObjectFromNSDate:(NSDate*)date
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
-    
     return [dateFormatter stringFromDate:date];
+}
+
+#pragma mark - number <-> date
+- (NSDate*)NSDateFromNSNumber:(NSNumber*)number
+{
+    return [NSDate dateWithTimeIntervalSince1970:number.doubleValue];
+}
+
+#pragma mark - string <-> NSTimeZone
+
+- (NSTimeZone *)NSTimeZoneFromNSString:(NSString *)string {
+    return [NSTimeZone timeZoneWithName:string];
+}
+
+- (id)JSONObjectFromNSTimeZone:(NSTimeZone *)timeZone {
+    return [timeZone name];
+}
+
+#pragma mark - hidden transform for empty dictionaries
+//https://github.com/icanzilb/JSONModel/issues/163
+-(NSDictionary*)__NSDictionaryFromNSArray:(NSArray*)array
+{
+    if (array.count==0) return @{};
+    return (id)array;
+}
+
+-(NSMutableDictionary*)__NSMutableDictionaryFromNSArray:(NSArray*)array
+{
+    if (array.count==0) return [[self __NSDictionaryFromNSArray:array] mutableCopy];
+    return (id)array;
 }
 
 @end

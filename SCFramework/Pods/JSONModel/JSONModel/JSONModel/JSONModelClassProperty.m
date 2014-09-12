@@ -1,11 +1,11 @@
 //
 //  JSONModelClassProperty.m
 //
-//  @version 0.13.0
+//  @version 1.0.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
-// Copyright (c) 2012-2013 Marin Todorov, Underplot ltd.
+// Copyright (c) 2012-2014 Marin Todorov, Underplot ltd.
 // This code is distributed under the terms and conditions of the MIT license.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -21,7 +21,7 @@
 -(NSString*)description
 {
     //build the properties string for the current class property
-    NSMutableArray* properties = [NSMutableArray arrayWithCapacity:4];
+    NSMutableArray* properties = [NSMutableArray arrayWithCapacity:8];
     
     if (self.isIndex) [properties addObject:@"Index"];
     if (self.isOptional) [properties addObject:@"Optional"];

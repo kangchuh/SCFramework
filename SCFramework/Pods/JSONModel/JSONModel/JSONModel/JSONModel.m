@@ -1,11 +1,11 @@
 //
 //  JSONModel.m
 //
-//  @version 0.13.0
+//  @version 1.0.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
 //
 
-// Copyright (c) 2012-2013 Marin Todorov, Underplot ltd.
+// Copyright (c) 2012-2014 Marin Todorov, Underplot ltd.
 // This code is distributed under the terms and conditions of the MIT license.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -44,6 +44,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
 #pragma mark - JSONModel implementation
 @implementation JSONModel
+{
+    NSString* _description;
+}
 
 #pragma mark - initialization methods
 
@@ -72,7 +75,10 @@ static JSONKeyMapper* globalKeyMapper = nil;
             // This is quite strange, but I found the test isSubclassOfClass: (line ~291) to fail if using [JSONModel class].
             // somewhat related: https://stackoverflow.com/questions/6524165/nsclassfromstring-vs-classnamednsstring
             // //; seems to break the unit tests
-            JSONModelClass = [JSONModel class];
+            
+            // Using NSClassFromString instead of [JSONModel class], as this was breaking unit tests, see below
+            //http://stackoverflow.com/questions/21394919/xcode-5-unit-test-seeing-wrong-class
+            JSONModelClass = NSClassFromString(NSStringFromClass(self));
 		}
     });
 }
@@ -175,16 +181,13 @@ static JSONKeyMapper* globalKeyMapper = nil;
         return nil;
     }
     
-    //key mapping
-    JSONKeyMapper* keyMapper = [self __keyMapper];
-    
     //check incoming data structure
-    if (![self __doesDictionary:dict matchModelWithKeyMapper:keyMapper error:err]) {
+    if (![self __doesDictionary:dict matchModelWithKeyMapper:self.__keyMapper error:err]) {
         return nil;
     }
     
     //import the data from a dictionary
-    if (![self __importDictionary:dict withKeyMapper:keyMapper validation:YES error:err]) {
+    if (![self __importDictionary:dict withKeyMapper:self.__keyMapper validation:YES error:err]) {
         return nil;
     }
     
@@ -200,10 +203,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
 -(JSONKeyMapper*)__keyMapper
 {
     //get the model key mapper
-    JSONKeyMapper* keyMapper = objc_getAssociatedObject(self.class, &kMapperObjectKey);
-    if (!keyMapper && globalKeyMapper) keyMapper = globalKeyMapper;
-
-    return keyMapper;
+    return objc_getAssociatedObject(self.class, &kMapperObjectKey);
 }
 
 -(BOOL)__doesDictionary:(NSDictionary*)dict matchModelWithKeyMapper:(JSONKeyMapper*)keyMapper error:(NSError**)err
@@ -214,7 +214,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
     NSSet* incomingKeys = [NSSet setWithArray: incomingKeysArray];
     
     //transform the key names, if neccessary
-    if (keyMapper) {
+    if (keyMapper || globalKeyMapper) {
         
         NSMutableSet* transformedIncomingKeys = [NSMutableSet setWithCapacity: requiredProperties.count];
         NSString* transformedName = nil;
@@ -222,8 +222,7 @@ static JSONKeyMapper* globalKeyMapper = nil;
         //loop over the required properties list
         for (JSONModelClassProperty* property in [self __properties__]) {
             
-            //get the mapped key path
-            transformedName = keyMapper.modelToJSONKeyBlock(property.name);
+            transformedName = (keyMapper||globalKeyMapper) ? [self __mapString:property.name withKeyMapper:keyMapper importing:YES] : property.name;
             
             //chek if exists and if so, add to incoming keys
             id value;
@@ -263,15 +262,30 @@ static JSONKeyMapper* globalKeyMapper = nil;
     return YES;
 }
 
+-(NSString*)__mapString:(NSString*)string withKeyMapper:(JSONKeyMapper*)keyMapper importing:(BOOL)importing
+{
+    if (keyMapper) {
+        //custom mapper
+        NSString* mappedName = [keyMapper convertValue:string isImportingToModel:importing];
+        if (globalKeyMapper && [mappedName isEqualToString: string]) {
+            mappedName = [globalKeyMapper convertValue:string isImportingToModel:importing];
+        }
+        string = mappedName;
+    } else if (globalKeyMapper) {
+        //global keymapper
+        string = [globalKeyMapper convertValue:string isImportingToModel:importing];
+    }
+    
+    return string;
+}
+
 -(BOOL)__importDictionary:(NSDictionary*)dict withKeyMapper:(JSONKeyMapper*)keyMapper validation:(BOOL)validation error:(NSError**)err
 {
     //loop over the incoming keys and set self's properties
     for (JSONModelClassProperty* property in [self __properties__]) {
         
         //convert key name ot model keys, if a mapper is provided
-        NSString* jsonKeyPath = property.name;
-        if (keyMapper) jsonKeyPath = keyMapper.modelToJSONKeyBlock( property.name );
-        
+        NSString* jsonKeyPath = (keyMapper||globalKeyMapper) ? [self __mapString:property.name withKeyMapper:keyMapper importing:YES] : property.name;
         //JMLog(@"keyPath: %@", jsonKeyPath);
         
         //general check for data type compliance
@@ -553,7 +567,14 @@ static JSONKeyMapper* globalKeyMapper = nil;
             //get property attributes
             const char *attrs = property_getAttributes(property);
             NSString* propertyAttributes = @(attrs);
+            NSArray* attributeItems = [propertyAttributes componentsSeparatedByString:@","];
             
+            //ignore read-only properties
+            if ([attributeItems containsObject:@"R"]) {
+                continue; //to next property
+            }
+            
+            //check for 64b BOOLs
             if ([propertyAttributes hasPrefix:@"Tc,"]) {
                 //mask BOOLs as structs so they can have custom convertors
                 p.structName = @"BOOL";
@@ -596,8 +617,6 @@ static JSONKeyMapper* globalKeyMapper = nil;
                     } else if([protocolName isEqualToString:@"ConvertOnDemand"]) {
                         p.convertsOnDemand = YES;
                     } else if([protocolName isEqualToString:@"Ignore"]) {
-                        p = nil;
-                    } else if ([self propertyIsReadOnly:p.name]) {
                         p = nil;
                     } else {
                         p.protocol = protocolName;
@@ -645,7 +664,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
                 p = nil;
             }
             
-            if([self propertyIsReadOnly:nsPropertyName]) {
+            //few cases where JSONModel will ignore properties automatically
+            if ([propertyType isEqualToString:@"Block"]) {
                 p = nil;
             }
             
@@ -903,12 +923,6 @@ static JSONKeyMapper* globalKeyMapper = nil;
 
     id value;
 
-    //get the key mapper
-    JSONKeyMapper* keyMapper = objc_getAssociatedObject(self.class, &kMapperObjectKey);
-    
-    //if no custom mapper, check for a global mapper
-    if (keyMapper==nil && globalKeyMapper!=nil) keyMapper = globalKeyMapper;
-
     //loop over all properties
     for (JSONModelClassProperty* p in properties) {
 
@@ -917,12 +931,9 @@ static JSONKeyMapper* globalKeyMapper = nil;
             continue;
         
         //fetch key and value
-        NSString* keyPath = p.name;
+        NSString* keyPath = (self.__keyMapper||globalKeyMapper) ? [self __mapString:p.name withKeyMapper:self.__keyMapper importing:YES] : p.name;
         value = [self valueForKey: p.name];
         
-        //convert the key name, if a key mapper exists
-        if (keyMapper) keyPath = keyMapper.modelToJSONKeyBlock(keyPath);
-
         //JMLog(@"toDictionary[%@]->[%@] = '%@'", p.name, keyPath, value);
 
         if ([keyPath rangeOfString:@"."].location != NSNotFound) {
@@ -1187,7 +1198,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
     NSMutableString* text = [NSMutableString stringWithFormat:@"<%@> \n", [self class]];
     
     for (JSONModelClassProperty *p in [self __properties__]) {
-        id value = [self valueForKey:p.name];
+        
+        id value = ([p.name isEqualToString:@"description"])?self->_description:[self valueForKey:p.name];
         NSString* valueDescription = (value)?[value description]:@"<nil>";
         
         if (p.isStandardJSONType && ![value respondsToSelector:@selector(count)] && [valueDescription length]>60 && !p.convertsOnDemand) {
@@ -1224,22 +1236,10 @@ static JSONKeyMapper* globalKeyMapper = nil;
     return NO;
 }
 
--(BOOL)propertyIsReadOnly: (NSString*)key
-{
-    NSString *setterString = [NSString stringWithFormat:@"set%@%@:",
-                              [[key substringToIndex:1] capitalizedString],
-                              [key substringFromIndex:1]];
-    
-    if ([self respondsToSelector:NSSelectorFromString(setterString)]) {
-        return NO;
-    }
-    return YES;
-}
-
 #pragma mark - working with incomplete models
 -(void)mergeFromDictionary:(NSDictionary*)dict useKeyMapping:(BOOL)useKeyMapping
 {
-    [self __importDictionary:dict withKeyMapper:(useKeyMapping)?[self __keyMapper]:nil validation:NO error:nil];
+    [self __importDictionary:dict withKeyMapper:(useKeyMapping)? self.__keyMapper:nil validation:NO error:nil];
 }
 
 #pragma mark - NSCopying, NSCoding
@@ -1261,6 +1261,11 @@ static JSONKeyMapper* globalKeyMapper = nil;
 -(void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeObject:self.toJSONString forKey:@"json"];
+}
+
++ (BOOL)supportsSecureCoding
+{
+    return YES;
 }
 
 @end

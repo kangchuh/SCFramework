@@ -35,6 +35,8 @@ static CGFloat const kPOPThresholdRadius = 0.01;
 NSString * const kPOPLayerBackgroundColor = @"backgroundColor";
 NSString * const kPOPLayerBounds = @"bounds";
 NSString * const kPOPLayerCornerRadius = @"cornerRadius";
+NSString * const kPOPLayerBorderWidth = @"borderWidth";
+NSString * const kPOPLayerBorderColor = @"borderColor";
 NSString * const kPOPLayerOpacity = @"opacity";
 NSString * const kPOPLayerPosition = @"position";
 NSString * const kPOPLayerPositionX = @"positionX";
@@ -89,6 +91,10 @@ NSString * const kPOPScrollViewZoomScale = @"scrollView.zoomScale";
 NSString * const kPOPTableViewContentOffset = kPOPScrollViewContentOffset;
 NSString * const kPOPTableViewContentSize = kPOPScrollViewContentSize;
 
+// UICollectionView
+NSString * const kPOPCollectionViewContentOffset = kPOPScrollViewContentOffset;
+NSString * const kPOPCollectionViewContentSize = kPOPScrollViewContentSize;
+
 // UINavigationBar
 NSString * const kPOPNavigationBarBarTintColor = @"navigationBar.barTintColor";
 
@@ -141,12 +147,34 @@ static POPStaticAnimatablePropertyState _staticStates[] =
 
   {kPOPLayerCornerRadius,
     ^(CALayer *obj, CGFloat values[]) {
-        values[0] = [obj cornerRadius];
+      values[0] = [obj cornerRadius];
     },
     ^(CALayer *obj, const CGFloat values[]) {
-        [obj setCornerRadius:values[0]];
+      [obj setCornerRadius:values[0]];
     },
     kPOPThresholdRadius
+  },
+
+  {kPOPLayerBorderWidth,
+    ^(CALayer *obj, CGFloat values[]) {
+      values[0] = [obj borderWidth];
+    },
+    ^(CALayer *obj, const CGFloat values[]) {
+      [obj setBorderWidth:values[0]];
+    },
+    0.01
+  },
+
+  {kPOPLayerBorderColor,
+    ^(CALayer *obj, CGFloat values[]) {
+      POPCGColorGetRGBAComponents(obj.borderColor, values);
+    },
+    ^(CALayer *obj, const CGFloat values[]) {
+      CGColorRef color = POPCGColorRGBACreate(values);
+      [obj setBorderColor:color];
+      CGColorRelease(color);
+    },
+    kPOPThresholdColor
   },
 
   {kPOPLayerPosition,
@@ -399,7 +427,7 @@ static POPStaticAnimatablePropertyState _staticStates[] =
     ^(CALayer *obj, const CGFloat values[]) {
         [obj setShadowOpacity:values[0]];
     },
-    0.01
+    kPOPThresholdOpacity
   },
 
   {kPOPLayerShadowRadius,
@@ -537,7 +565,7 @@ static POPStaticAnimatablePropertyState _staticStates[] =
       values_from_point(values, obj.contentOffset);
     },
     ^(UIScrollView *obj, const CGFloat values[]) {
-      obj.contentOffset = values_to_point(values);
+      [obj setContentOffset:values_to_point(values) animated:NO];
     },
     kPOPThresholdPoint
   },

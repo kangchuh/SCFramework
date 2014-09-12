@@ -38,8 +38,9 @@
     [self.childConstraints replaceObjectAtIndex:index withObject:replacementConstraint];
 }
 
-- (MASConstraint *)constraint:(MASConstraint *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute {
-    MASConstraint *newConstraint = [self.delegate constraint:self addConstraintWithLayoutAttribute:layoutAttribute];
+- (MASConstraint *)constraint:(MASConstraint __unused *)constraint addConstraintWithLayoutAttribute:(NSLayoutAttribute)layoutAttribute {
+    id<MASConstraintDelegate> strongDelegate = self.delegate;
+    MASConstraint *newConstraint = [strongDelegate constraint:self addConstraintWithLayoutAttribute:layoutAttribute];
     newConstraint.delegate = self;
     [self.childConstraints addObject:newConstraint];
     return newConstraint;

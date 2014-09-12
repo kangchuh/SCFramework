@@ -14,14 +14,12 @@
     #define MAS_VIEW UIView
     #define MASEdgeInsets UIEdgeInsets
 
-    enum {
-        MASLayoutPriorityRequired = UILayoutPriorityRequired,
-        MASLayoutPriorityDefaultHigh = UILayoutPriorityDefaultHigh,
-        MASLayoutPriorityDefaultMedium = 500,
-        MASLayoutPriorityDefaultLow = UILayoutPriorityDefaultLow,
-        MASLayoutPriorityFittingSizeLevel = UILayoutPriorityFittingSizeLevel,
-    };
-    typedef float MASLayoutPriority;
+    typedef UILayoutPriority MASLayoutPriority;
+    static const MASLayoutPriority MASLayoutPriorityRequired = UILayoutPriorityRequired;
+    static const MASLayoutPriority MASLayoutPriorityDefaultHigh = UILayoutPriorityDefaultHigh;
+    static const MASLayoutPriority MASLayoutPriorityDefaultMedium = 500;
+    static const MASLayoutPriority MASLayoutPriorityDefaultLow = UILayoutPriorityDefaultLow;
+    static const MASLayoutPriority MASLayoutPriorityFittingSizeLevel = UILayoutPriorityFittingSizeLevel;
 
 #elif TARGET_OS_MAC
 
@@ -29,17 +27,15 @@
     #define MAS_VIEW NSView
     #define MASEdgeInsets NSEdgeInsets
 
-    enum {
-        MASLayoutPriorityRequired = NSLayoutPriorityRequired,
-        MASLayoutPriorityDefaultHigh = NSLayoutPriorityDefaultHigh,
-        MASLayoutPriorityDragThatCanResizeWindow = NSLayoutPriorityDragThatCanResizeWindow,
-        MASLayoutPriorityDefaultMedium = 501,
-        MASLayoutPriorityWindowSizeStayPut = NSLayoutPriorityWindowSizeStayPut,
-        MASLayoutPriorityDragThatCannotResizeWindow = NSLayoutPriorityDragThatCannotResizeWindow,
-        MASLayoutPriorityDefaultLow = NSLayoutPriorityDefaultLow,
-        MASLayoutPriorityFittingSizeCompression = NSLayoutPriorityFittingSizeCompression,
-    };
-    typedef float MASLayoutPriority;
+    typedef NSLayoutPriority MASLayoutPriority;
+    static const MASLayoutPriority MASLayoutPriorityRequired = NSLayoutPriorityRequired;
+    static const MASLayoutPriority MASLayoutPriorityDefaultHigh = NSLayoutPriorityDefaultHigh;
+    static const MASLayoutPriority MASLayoutPriorityDragThatCanResizeWindow = NSLayoutPriorityDragThatCanResizeWindow;
+    static const MASLayoutPriority MASLayoutPriorityDefaultMedium = 501;
+    static const MASLayoutPriority MASLayoutPriorityWindowSizeStayPut = NSLayoutPriorityWindowSizeStayPut;
+    static const MASLayoutPriority MASLayoutPriorityDragThatCannotResizeWindow = NSLayoutPriorityDragThatCannotResizeWindow;
+    static const MASLayoutPriority MASLayoutPriorityDefaultLow = NSLayoutPriorityDefaultLow;
+    static const MASLayoutPriority MASLayoutPriorityFittingSizeCompression = NSLayoutPriorityFittingSizeCompression;
 
 #endif
 
@@ -116,7 +112,7 @@ static inline id _MASBoxValue(const char *type, ...) {
         unsigned char actual = (unsigned char)va_arg(v, unsigned int);
         obj = [NSNumber numberWithUnsignedChar:actual];
     } else if (strcmp(type, @encode(unsigned int)) == 0) {
-        unsigned int actual = (int)va_arg(v, unsigned int);
+        unsigned int actual = (unsigned int)va_arg(v, unsigned int);
         obj = [NSNumber numberWithUnsignedInt:actual];
     } else if (strcmp(type, @encode(unsigned long)) == 0) {
         unsigned long actual = (unsigned long)va_arg(v, unsigned long);
