@@ -1,24 +1,24 @@
 //
-//  SCTestViewController.m
+//  SCDemoListViewController.m
 //  SCFramework
 //
 //  Created by Angzn on 3/10/14.
 //  Copyright (c) 2014 Richer VC. All rights reserved.
 //
 
-#import "SCTestViewController.h"
+#import "SCDemoListViewController.h"
 
 #import "SCTableViewCell.h"
 
-#import "SCDetailViewController.h"
+#import "SCDemoDetailViewController.h"
 
 static NSInteger rows = 20;
 
-@interface SCTestViewController ()
+@interface SCDemoListViewController ()
 
 @end
 
-@implementation SCTestViewController
+@implementation SCDemoListViewController
 
 - (void)viewDidLoad
 {
@@ -83,10 +83,7 @@ static NSInteger rows = 20;
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    SCDetailViewController *vc = [[SCDetailViewController alloc] init];
-//    SCXibViewController *vc = [[SCXibViewController alloc] init];
-    SCDetailViewController *vc = [[SCDetailViewController alloc] initWithNibName:@"SCXibViewController"
-                                                                          bundle:nil];
+    SCDemoDetailViewController *vc = [[SCDemoDetailViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

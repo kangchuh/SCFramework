@@ -1,14 +1,13 @@
 //
-//  SCDetailViewController.h
+//  SCDemoDetailViewController.h
 //  SCFramework
 //
 //  Created by Angzn on 5/8/14.
 //  Copyright (c) 2014 Richer VC. All rights reserved.
 //
 
-//#import "SCViewController.h"
-#import "SCXibViewController.h"
+#import "SCViewController.h"
 
-@interface SCDetailViewController : SCXibViewController
+@interface SCDemoDetailViewController : SCViewController
 
 @end

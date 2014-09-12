@@ -1,18 +1,18 @@
 //
-//  SCDetailViewController.m
+//  SCDemoDetailViewController.m
 //  SCFramework
 //
 //  Created by Angzn on 5/8/14.
 //  Copyright (c) 2014 Richer VC. All rights reserved.
 //
 
-#import "SCDetailViewController.h"
+#import "SCDemoDetailViewController.h"
 
-@interface SCDetailViewController ()
+@interface SCDemoDetailViewController ()
 
 @end
 
-@implementation SCDetailViewController
+@implementation SCDemoDetailViewController
 
 - (void)viewDidLoad
 {
@@ -40,9 +40,6 @@
     //imageView.image = [image resize:size];
     imageView.image = [image rotate:30];
     [self.view addSubview:imageView];
-    
-    self.leftLabel.text = @"LEFT";
-    self.rightLabel.text = @"RIGHT";
 }
 
 - (void)didReceiveMemoryWarning

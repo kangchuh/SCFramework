@@ -10,7 +10,7 @@
 
 #import <AFNetworkActivityIndicatorManager.h>
 
-#import "SCTestViewController.h"
+#import "SCDemoListViewController.h"
 
 @implementation AppDelegate
 
@@ -45,7 +45,7 @@
     
     // -------------------------- <#Description#> -------------------------- //
     
-    SCTestViewController *tableViewController = [[SCTestViewController alloc] init];
+    SCDemoListViewController *tableViewController = [[SCDemoListViewController alloc] init];
     self.navigationController = [[SCCTNavigationController alloc] initWithRootViewController:
                                  tableViewController];
     //self.navigationController.navigationBarHidden = YES;

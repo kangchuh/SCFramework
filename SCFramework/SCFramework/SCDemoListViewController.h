@@ -1,5 +1,5 @@
 //
-//  SCTestViewController.h
+//  SCDemoListViewController.h
 //  SCFramework
 //
 //  Created by Angzn on 3/10/14.
@@ -8,6 +8,6 @@
 
 #import "SCTableViewController.h"
 
-@interface SCTestViewController : SCTableViewController
+@interface SCDemoListViewController : SCTableViewController
 
 @end
