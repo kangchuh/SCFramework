@@ -13,7 +13,7 @@
 + (void)showWithMessage:(NSString *)message
 {
     NSString *cancelTitle = NSLocalizedStringFromTable(@"SCFW_LS_OK", @"SCFWLocalizable", nil);
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                     message:message
                                                    delegate:nil
                                           cancelButtonTitle:cancelTitle
