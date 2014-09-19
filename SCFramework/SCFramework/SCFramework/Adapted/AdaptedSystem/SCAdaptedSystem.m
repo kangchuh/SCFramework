@@ -11,7 +11,7 @@
 #import "SCLog.h"
 
 /**
- *  @brief 检查是否iOS7坐标系
+ *  @brief 检查是否iOS7+
  */
 BOOL SCiOS7OrLater(void)
 {
@@ -19,7 +19,6 @@ BOOL SCiOS7OrLater(void)
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
-        //iOS7OrLater = YES;
         CGFloat systemVersion = [[[UIDevice currentDevice] systemVersion]
                                  doubleValue];
         if (systemVersion >= 7.f) {
@@ -36,7 +35,31 @@ BOOL SCiOS7OrLater(void)
 }
 
 /**
- *  @brief 获取适配的坐标(此坐标是基于iOS7的坐标系)
+ *  @brief 检查是否iOS8+
+ */
+extern BOOL SCiOS8OrLater(void)
+{
+    static BOOL iOS8OrLater;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+        CGFloat systemVersion = [[[UIDevice currentDevice] systemVersion]
+                                 doubleValue];
+        if (systemVersion >= 8.f) {
+            iOS8OrLater = YES;
+        } else {
+            iOS8OrLater = NO;
+        }
+#else
+        iOS8OrLater = NO;
+#endif
+    });
+    DLog(@"%@%@", @"iOS 8 Or Later : ", iOS8OrLater ? @"YES" : @"NO");
+    return iOS8OrLater;
+}
+
+/**
+ *  @brief 获取适配的坐标(此坐标是基于iOS7+的坐标系)
  *
  *  @param x                x 坐标
  *  @param y                y 坐标

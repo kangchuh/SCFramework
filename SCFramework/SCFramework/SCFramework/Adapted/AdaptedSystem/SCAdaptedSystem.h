@@ -9,12 +9,17 @@
 #import <Foundation/Foundation.h>
 
 /**
- *  @brief 检查是否iOS7坐标系
+ *  @brief 检查是否iOS7+
  */
 extern BOOL SCiOS7OrLater(void);
 
 /**
- *  @brief 获取适配的坐标(此坐标是基于iOS7的坐标系)
+ *  @brief 检查是否iOS8+
+ */
+extern BOOL SCiOS8OrLater(void);
+
+/**
+ *  @brief 获取适配的坐标(此坐标是基于iOS7+的坐标系)
  */
 CG_EXTERN CGRect CGRectAdapt(CGFloat x,
                              CGFloat y,
