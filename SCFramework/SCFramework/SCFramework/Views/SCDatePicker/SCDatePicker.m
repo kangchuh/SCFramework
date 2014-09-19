@@ -46,7 +46,7 @@
         NSArray *itemArray = [[NSArray alloc] initWithObjects:
                               cancelBarItem, fixedBarItem, doneBarItem, nil];
         
-        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, kSC_APP_FRAME_WIDTH, 44)];
         toolBar.barStyle = UIBarStyleBlackTranslucent;
         toolBar.items = itemArray;
         [self addSubview:toolBar];
