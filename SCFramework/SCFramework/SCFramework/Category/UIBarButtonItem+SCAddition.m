@@ -12,11 +12,9 @@
 
 - (instancetype)initWithTarget:(id)target action:(SEL)action
 {
-    self = [super init];
+    self = [self initWithTitle:nil style:UIBarButtonItemStylePlain target:target action:action];
     if (self) {
         // Initialization code
-        self.target = target;
-        self.action = action;
     }
     return self;
 }

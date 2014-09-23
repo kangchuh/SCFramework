@@ -45,6 +45,7 @@ SCToolbarActionDelegate
         _toolbar.size = CGSizeMake(self.width, kSCFW_TOOLBAR_HEIGHT);
         _toolbar.barStyle = UIBarStyleBlackTranslucent;
         _toolbar.actionStyle = SCToolbarActionStyleDoneAndCancel;
+        _toolbar.actionDelegate = self;
         [self addSubview:_toolbar];
         
         _datePicker = [[UIDatePicker alloc] init];

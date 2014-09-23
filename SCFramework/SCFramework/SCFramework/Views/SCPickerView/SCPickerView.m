@@ -11,7 +11,8 @@
 @interface SCPickerView ()
 <
 UIPickerViewDelegate,
-UIPickerViewDataSource
+UIPickerViewDataSource,
+SCToolbarActionDelegate
 >
 
 /// 工具条
@@ -47,6 +48,7 @@ UIPickerViewDataSource
         _toolbar.size = CGSizeMake(self.width, kSCFW_TOOLBAR_HEIGHT);
         _toolbar.barStyle = UIBarStyleBlackTranslucent;
         _toolbar.actionStyle = SCToolbarActionStyleDoneAndCancel;
+        _toolbar.actionDelegate = self;
         [self addSubview:_toolbar];
         
         _pickerView = [[UIPickerView alloc] init];
