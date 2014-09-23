@@ -10,4 +10,39 @@
 
 @implementation UIBarButtonItem (SCAddition)
 
+- (instancetype)initWithTarget:(id)target action:(SEL)action
+{
+    self = [super init];
+    if (self) {
+        // Initialization code
+        self.target = target;
+        self.action = action;
+    }
+    return self;
+}
+
+- (instancetype)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem
+{
+    self = [self initWithBarButtonSystemItem:systemItem target:nil action:nil];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
+- (instancetype)initWithFixedSpaceWidth:(CGFloat)spaceWidth
+{
+    self = [self initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace];
+    if (self) {
+        // Initialization code
+        self.width = spaceWidth;
+    }
+    return self;
+}
+
++ (instancetype)flexibleSpaceSystemItem
+{
+    return [[self alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace];
+}
+
 @end

@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Richer VC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SCActionView.h"
 
 typedef void (^SCPickerViewDoneHandler)(id result);
 typedef void (^SCPickerViewCancelHandler)(void);
 
-@interface SCPickerView : UIActionSheet
+@interface SCPickerView : SCActionView
 
 /// 数据源(字符串/字典/数据对象)
 @property (nonatomic, copy) NSArray *dataSources;

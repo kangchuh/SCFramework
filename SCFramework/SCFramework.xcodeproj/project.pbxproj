@@ -33,8 +33,11 @@
 		B7531D8718C734B100D701BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7531D8618C734B100D701BF /* libz.dylib */; };
 		B75DAF85191B83230011E917 /* SCDemoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75DAF84191B83230011E917 /* SCDemoDetailViewController.m */; };
 		B7645723196BC902009302C2 /* SCImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7645722196BC902009302C2 /* SCImagePickerManager.m */; };
+		B7653F6319CC207300A2AAB5 /* SCActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7653F6219CC207300A2AAB5 /* SCActionView.m */; };
 		B7AF797D19A5DE270041F724 /* SCDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AF797C19A5DE270041F724 /* SCDatabase.m */; };
 		B7AF798A19A6E8AA0041F724 /* SCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AF798919A6E8AA0041F724 /* SCUtils.m */; };
+		B7B70C5319D11B25000D4472 /* SCToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B70C5219D11B25000D4472 /* SCToolbar.m */; };
+		B7B70C5A19D11E56000D4472 /* UIBarButtonItem+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B70C5919D11E56000D4472 /* UIBarButtonItem+SCAddition.m */; };
 		B7C2268619760BF700BEF1B2 /* SCPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C2268519760BF700BEF1B2 /* SCPageControl.m */; };
 		B7C2268C19762AF000BEF1B2 /* UIScreen+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C2268B19762AF000BEF1B2 /* UIScreen+SCAddition.m */; };
 		B7DED3C71957D47D00A2D5C0 /* SCAdaptedDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED33C1957D47D00A2D5C0 /* SCAdaptedDevice.m */; };
@@ -141,10 +144,16 @@
 		B75DAF84191B83230011E917 /* SCDemoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDemoDetailViewController.m; sourceTree = "<group>"; };
 		B7645721196BC902009302C2 /* SCImagePickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImagePickerManager.h; sourceTree = "<group>"; };
 		B7645722196BC902009302C2 /* SCImagePickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImagePickerManager.m; sourceTree = "<group>"; };
+		B7653F6119CC207300A2AAB5 /* SCActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCActionView.h; sourceTree = "<group>"; };
+		B7653F6219CC207300A2AAB5 /* SCActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCActionView.m; sourceTree = "<group>"; };
 		B7AF797B19A5DE270041F724 /* SCDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDatabase.h; sourceTree = "<group>"; };
 		B7AF797C19A5DE270041F724 /* SCDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDatabase.m; sourceTree = "<group>"; };
 		B7AF798819A6E8AA0041F724 /* SCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUtils.h; sourceTree = "<group>"; };
 		B7AF798919A6E8AA0041F724 /* SCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUtils.m; sourceTree = "<group>"; };
+		B7B70C5119D11B25000D4472 /* SCToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCToolbar.h; sourceTree = "<group>"; };
+		B7B70C5219D11B25000D4472 /* SCToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCToolbar.m; sourceTree = "<group>"; };
+		B7B70C5819D11E56000D4472 /* UIBarButtonItem+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+SCAddition.h"; sourceTree = "<group>"; };
+		B7B70C5919D11E56000D4472 /* UIBarButtonItem+SCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+SCAddition.m"; sourceTree = "<group>"; };
 		B7C2268419760BF700BEF1B2 /* SCPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPageControl.h; sourceTree = "<group>"; };
 		B7C2268519760BF700BEF1B2 /* SCPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPageControl.m; sourceTree = "<group>"; };
 		B7C2268A19762AF000BEF1B2 /* UIScreen+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+SCAddition.h"; sourceTree = "<group>"; };
@@ -410,6 +419,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		B7B70C5019D11B16000D4472 /* SCToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				B7B70C5119D11B25000D4472 /* SCToolbar.h */,
+				B7B70C5219D11B25000D4472 /* SCToolbar.m */,
+			);
+			path = SCToolbar;
+			sourceTree = "<group>";
+		};
 		B7C2268319760BF700BEF1B2 /* SCPageControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,6 +520,8 @@
 				B7C2268B19762AF000BEF1B2 /* UIScreen+SCAddition.m */,
 				B7E640AA19A478340019D963 /* NSTimer+SCAddition.h */,
 				B7E640AB19A478340019D963 /* NSTimer+SCAddition.m */,
+				B7B70C5819D11E56000D4472 /* UIBarButtonItem+SCAddition.h */,
+				B7B70C5919D11E56000D4472 /* UIBarButtonItem+SCAddition.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -688,6 +708,7 @@
 		B7DED39E1957D47D00A2D5C0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B7B70C5019D11B16000D4472 /* SCToolbar */,
 				B7DED39F1957D47D00A2D5C0 /* SCButton */,
 				B7DED3A21957D47D00A2D5C0 /* SCDatePicker */,
 				B7DED3A51957D47D00A2D5C0 /* SCLabel */,
@@ -803,6 +824,8 @@
 			children = (
 				B7DED3C51957D47D00A2D5C0 /* SCView.h */,
 				B7DED3C61957D47D00A2D5C0 /* SCView.m */,
+				B7653F6119CC207300A2AAB5 /* SCActionView.h */,
+				B7653F6219CC207300A2AAB5 /* SCActionView.m */,
 			);
 			path = SCView;
 			sourceTree = "<group>";
@@ -958,10 +981,12 @@
 				B7DED3EA1957D47D00A2D5C0 /* SCTableViewController.m in Sources */,
 				B7DED3C71957D47D00A2D5C0 /* SCAdaptedDevice.m in Sources */,
 				B7AF798A19A6E8AA0041F724 /* SCUtils.m in Sources */,
+				B7653F6319CC207300A2AAB5 /* SCActionView.m in Sources */,
 				B7DED3CE1957D47D00A2D5C0 /* NSString+SCAddition.m in Sources */,
 				B7DED3DE1957D47D00A2D5C0 /* SCDaoManager.m in Sources */,
 				B7DED3DF1957D47D00A2D5C0 /* SCDateManager.m in Sources */,
 				B7DED3E11957D47D00A2D5C0 /* SCUserDefaultManager.m in Sources */,
+				B7B70C5A19D11E56000D4472 /* UIBarButtonItem+SCAddition.m in Sources */,
 				B7F300371962529800921CFD /* UINavigationItem+SCAddition.m in Sources */,
 				B7DED3DA1957D47D00A2D5C0 /* SCConstant.m in Sources */,
 				B7DED3F91957D47D00A2D5C0 /* SCTextView.m in Sources */,
@@ -1005,6 +1030,7 @@
 				B7C2268619760BF700BEF1B2 /* SCPageControl.m in Sources */,
 				B7645723196BC902009302C2 /* SCImagePickerManager.m in Sources */,
 				B7DED3D21957D47D00A2D5C0 /* UIDevice+SCAddition.m in Sources */,
+				B7B70C5319D11B25000D4472 /* SCToolbar.m in Sources */,
 				B72AF3EB18C5655100621B34 /* AppDelegate.m in Sources */,
 				B7DED3F31957D47D00A2D5C0 /* SCPullLoadView.m in Sources */,
 				B7DED3CC1957D47D00A2D5C0 /* NSDictionary+SCAddition.m in Sources */,

@@ -12,3 +12,6 @@ extern const CGFloat kSCFW_STATUSBAR_HEIGHT;
 extern const CGFloat kSCFW_NAVIGATIONBAR_HEIGHT;
 extern const CGFloat kSCFW_TABBAR_HEIGHT;
 extern const CGFloat kSCFW_CELL_DEFAULT_HEIGHT;
+extern const CGFloat kSCFW_TOOLBAR_HEIGHT;
+extern const CGFloat kSCFW_PICKERVIEW_HEIGHT;
+extern const CGFloat kSCFW_DATEPICKER_HEIGHT;

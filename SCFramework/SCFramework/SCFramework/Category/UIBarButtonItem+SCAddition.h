@@ -10,4 +10,9 @@
 
 @interface UIBarButtonItem (SCAddition)
 
+- (instancetype)initWithTarget:(id)target action:(SEL)action;
+- (instancetype)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem;
+- (instancetype)initWithFixedSpaceWidth:(CGFloat)spaceWidth;
++ (instancetype)flexibleSpaceSystemItem;
+
 @end

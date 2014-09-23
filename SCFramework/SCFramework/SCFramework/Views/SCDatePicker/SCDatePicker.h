@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Richer VC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SCActionView.h"
 
 typedef void (^SCDatePickerDoneHandler)(NSDate *date);
 typedef void (^SCDatePickerCancelHandler)(void);
 
-@interface SCDatePicker : UIActionSheet
+@interface SCDatePicker : SCActionView
 
 /// 时间选择器
-@property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong, readonly) UIDatePicker *datePicker;
 
 /// 默认显示日期
 @property (nonatomic, strong) NSDate *defaultDate;

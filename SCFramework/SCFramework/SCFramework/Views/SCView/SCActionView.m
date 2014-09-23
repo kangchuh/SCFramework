@@ -97,9 +97,10 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
 - (void)showInView:(UIView *)view beginForAction:(SCViewActionAnimations)actionAnimations
 {
     if (actionAnimations == SCViewActionAnimationActionSheet) {
-        [view.window addSubview:self.mask];
-        [view addSubview:self];
-        self.top = view.height;
+        UIWindow *window = view.window;
+        self.top = window.height;
+        [window addSubview:self.mask];
+        [window addSubview:self];
     }
 }
 
@@ -109,8 +110,9 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
     void(^animations)(void) = NULL;
     if (actionAnimations == SCViewActionAnimationActionSheet) {
         animations = ^(void) {
+            UIWindow *window = view.window;
             weakSelf.mask.alpha = SCActionViewMaskShowAlpha;
-            weakSelf.top = view.height - weakSelf.height;
+            weakSelf.top = window.height - weakSelf.height;
         };
     }
     return animations;
@@ -122,9 +124,9 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
     void(^animations)(void) = NULL;
     if (actionAnimations == SCViewActionAnimationActionSheet) {
         animations = ^(void) {
-            UIView *view = self.superview;
+            UIWindow *window = weakSelf.window;
             weakSelf.mask.alpha = SCActionViewMaskDismissAlpha;
-            weakSelf.top = view.height;
+            weakSelf.top = window.height;
         };
     }
     return animations;

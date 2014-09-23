@@ -9,6 +9,15 @@
 #import "SCDatePicker.h"
 
 @interface SCDatePicker ()
+<
+SCToolbarActionDelegate
+>
+
+/// 工具条
+@property (nonatomic, strong) SCToolbar *toolbar;
+
+/// 时间选择器
+@property (nonatomic, strong) UIDatePicker *datePicker;
 
 /// 完成回调
 @property (nonatomic, copy) SCDatePickerDoneHandler doneHandler;
@@ -22,38 +31,24 @@
 
 #pragma mark - Init Method
 
-- (id)init
+- (id)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    frame.size = CGSizeMake(kSC_MAIN_SCREEN_WIDTH,
+                            kSCFW_TOOLBAR_HEIGHT
+                            + kSCFW_DATEPICKER_HEIGHT);
+    self = [super initWithFrame:frame];
     if ( self ) {
-        self.title = @"\n\n\n\n\n\n\n\n\n\n\n\n\n";
+        self.backgroundColor = [UIColor whiteColor];
+        self.actionAnimations = SCViewActionAnimationActionSheet;
         
-        UIBarButtonItem *cancelBarItem
-        = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"SCFW_LS_Cancel", @"SCFWLocalizable", nil)
-                                           style:UIBarButtonItemStyleBordered
-                                          target:self
-                                          action:@selector(cancelButtonAction:)];
-        UIBarButtonItem *fixedBarItem
-        = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                        target:nil
-                                                        action:nil];
-        UIBarButtonItem *doneBarItem
-        = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"SCFW_LS_Done", @"SCFWLocalizable", nil)
-                                           style:UIBarButtonItemStyleBordered
-                                          target:self
-                                          action:@selector(doneButtonAction:)];
+        _toolbar = [[SCToolbar alloc] init];
+        _toolbar.size = CGSizeMake(self.width, kSCFW_TOOLBAR_HEIGHT);
+        _toolbar.barStyle = UIBarStyleBlackTranslucent;
+        _toolbar.actionStyle = SCToolbarActionStyleDoneAndCancel;
+        [self addSubview:_toolbar];
         
-        NSArray *itemArray = [[NSArray alloc] initWithObjects:
-                              cancelBarItem, fixedBarItem, doneBarItem, nil];
-        
-        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, kSC_APP_FRAME_WIDTH, 44)];
-        toolBar.barStyle = UIBarStyleBlackTranslucent;
-        toolBar.items = itemArray;
-        [self addSubview:toolBar];
-        
-        _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 44, 0, 0)];
-        // 解决iOS7上UIActionSheet四周是透明
-        _datePicker.backgroundColor = [UIColor whiteColor];
+        _datePicker = [[UIDatePicker alloc] init];
+        _datePicker.top = _toolbar.bottom;
         _datePicker.datePickerMode = UIDatePickerModeDate;
         _datePicker.minimumDate = [NSDate dateWithTimeIntervalSince1970:0];
         _datePicker.maximumDate = [NSDate dateWithTimeIntervalSinceNow:(kSCFW_SECOND_YEAR * 30)];
@@ -69,29 +64,29 @@
  */
 - (id)initWithDate:(NSDate *)date
 {
-    self = [self init];
+    self = [self initWithFrame:CGRectZero];
     if (self) {
         _datePicker.date = date;
     }
     return self;
 }
 
-#pragma mark - Action Method
+#pragma mark - SCToolbarActionDelegate
 
-- (void)cancelButtonAction:(id)sender
-{
-    if (_cancelHandler != nil) {
-        _cancelHandler();
-    }
-    [self dismissWithClickedButtonIndex:0 animated:YES];
-}
-
-- (void)doneButtonAction:(id)sender
+- (void)toolbarDidDone:(SCToolbar *)toolbar
 {
     if (_doneHandler != nil) {
         _doneHandler(_datePicker.date);
     }
-    [self dismissWithClickedButtonIndex:1 animated:YES];
+    [self dismiss];
+}
+
+- (void)toolbarDidCancel:(SCToolbar *)toolbar
+{
+    if (_cancelHandler != nil) {
+        _cancelHandler();
+    }
+    [self dismiss];
 }
 
 #pragma mark - Public Method

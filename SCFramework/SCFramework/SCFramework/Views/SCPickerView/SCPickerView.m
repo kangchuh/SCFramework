@@ -14,6 +14,9 @@ UIPickerViewDelegate,
 UIPickerViewDataSource
 >
 
+/// 工具条
+@property (nonatomic, strong) SCToolbar *toolbar;
+
 /// 选择器
 @property (nonatomic, strong) UIPickerView *pickerView;
 
@@ -30,38 +33,24 @@ UIPickerViewDataSource
 
 #pragma mark - Init Method
 
-- (id)init
+- (id)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    frame.size = CGSizeMake(kSC_MAIN_SCREEN_WIDTH,
+                            kSCFW_TOOLBAR_HEIGHT
+                            + kSCFW_PICKERVIEW_HEIGHT);
+    self = [super initWithFrame:frame];
     if ( self ) {
-        self.title = @"\n\n\n\n\n\n\n\n\n\n\n\n\n";
+        self.backgroundColor = [UIColor whiteColor];
+        self.actionAnimations = SCViewActionAnimationActionSheet;
         
-        UIBarButtonItem *cancelBarItem
-        = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"SCFW_LS_Cancel", @"SCFWLocalizable", nil)
-                                           style:UIBarButtonItemStyleBordered
-                                          target:self
-                                          action:@selector(cancelButtonAction:)];
-        UIBarButtonItem *fixedBarItem
-        = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                        target:nil
-                                                        action:nil];
-        UIBarButtonItem *doneBarItem
-        = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"SCFW_LS_Done", @"SCFWLocalizable", nil)
-                                           style:UIBarButtonItemStyleBordered
-                                          target:self
-                                          action:@selector(doneButtonAction:)];
+        _toolbar = [[SCToolbar alloc] init];
+        _toolbar.size = CGSizeMake(self.width, kSCFW_TOOLBAR_HEIGHT);
+        _toolbar.barStyle = UIBarStyleBlackTranslucent;
+        _toolbar.actionStyle = SCToolbarActionStyleDoneAndCancel;
+        [self addSubview:_toolbar];
         
-        NSArray *itemArray = [[NSArray alloc] initWithObjects:
-                              cancelBarItem, fixedBarItem, doneBarItem, nil];
-        
-        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, kSC_APP_FRAME_WIDTH, 44)];
-        toolBar.barStyle = UIBarStyleBlackTranslucent;
-        toolBar.items = itemArray;
-        [self addSubview:toolBar];
-        
-        _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, 0, 0)];
-        // 解决iOS7上UIActionSheet四周是透明
-        _pickerView.backgroundColor = [UIColor whiteColor];
+        _pickerView = [[UIPickerView alloc] init];
+        _pickerView.top = _toolbar.bottom;
         _pickerView.delegate = self;
         _pickerView.dataSource = self;
         _pickerView.showsSelectionIndicator = YES;
@@ -72,7 +61,7 @@ UIPickerViewDataSource
 
 - (id)initWithDataSources:(NSArray *)aDataSources
 {
-    self = [self init];
+    self = [self initWithFrame:CGRectZero];
     if (self) {
         self.dataSources = aDataSources;
     }
@@ -88,17 +77,9 @@ UIPickerViewDataSource
     [_pickerView reloadAllComponents];
 }
 
-#pragma mark - Action Method
+#pragma mark - SCToolbarActionDelegate
 
-- (void)cancelButtonAction:(id)sender
-{
-    if (_cancelHandler != nil) {
-        _cancelHandler();
-    }
-    [self dismissWithClickedButtonIndex:0 animated:YES];
-}
-
-- (void)doneButtonAction:(id)sender
+- (void)toolbarDidDone:(SCToolbar *)toolbar
 {
     if (_doneHandler != nil) {
         NSInteger selectedRow = [_pickerView selectedRowInComponent:0];
@@ -108,7 +89,15 @@ UIPickerViewDataSource
         }
         _doneHandler(result);
     }
-    [self dismissWithClickedButtonIndex:1 animated:YES];
+    [self dismiss];
+}
+
+- (void)toolbarDidCancel:(SCToolbar *)toolbar
+{
+    if (_cancelHandler != nil) {
+        _cancelHandler();
+    }
+    [self dismiss];
 }
 
 #pragma mark - UIPickerViewDelegate & DataSource

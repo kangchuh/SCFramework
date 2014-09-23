@@ -50,6 +50,7 @@
 #import "NSURL+SCAddition.h"
 #import "UIScreen+SCAddition.h"
 #import "NSTimer+SCAddition.h"
+#import "UIBarButtonItem+SCAddition.h"
 #import "UINavigationItem+SCAddition.h"
 #import "UINavigationController+SCAddition.h"
 
@@ -64,6 +65,7 @@
 #import "SCTextView.h"
 #import "SCView.h"
 #import "SCPageControl.h"
+#import "SCToolbar.h"
 
 // -------------------------- VeiwController -------------------------- //
 #import "SCViewController.h"
