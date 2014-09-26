@@ -10,5 +10,6 @@
 
 @interface UITableView (SCAddition)
 
+- (NSIndexPath *)indexPathForCellOfSubView:(UIView *)view;
 
 @end

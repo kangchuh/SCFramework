@@ -10,4 +10,13 @@
 
 @implementation UITableView (SCAddition)
 
+- (NSIndexPath *)indexPathForCellOfSubView:(UIView *)subview
+{
+    while (subview && !([subview isKindOfClass:[UITableViewCell class]] ||
+                        [subview isMemberOfClass:[UITableViewCell class]])) {
+        subview = subview.superview;
+    }
+    return [self indexPathForCell:(UITableViewCell *)subview];
+}
+
 @end

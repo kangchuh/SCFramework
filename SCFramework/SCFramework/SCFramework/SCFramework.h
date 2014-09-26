@@ -50,6 +50,7 @@
 #import "NSURL+SCAddition.h"
 #import "UIScreen+SCAddition.h"
 #import "NSTimer+SCAddition.h"
+#import "UITableView+SCAddition.h"
 #import "UIBarButtonItem+SCAddition.h"
 #import "UINavigationItem+SCAddition.h"
 #import "UINavigationController+SCAddition.h"
