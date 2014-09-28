@@ -54,7 +54,7 @@
 /**
  *  @brief 从Xib加载视图
  *
- *  @description Loads an instance from the Nib named like the class. 
+ *  @description Loads an instance from the Nib named like the class.
  *               Returns the first root object of the Nib.
  */
 + (id)loadFromNib;
@@ -64,5 +64,9 @@
 + (void)animateFollowKeyboard:(NSDictionary *)userInfo
                    animations:(void(^)(NSDictionary *userInfo))animations
                    completion:(void (^)(BOOL finished))completion;
+
+#pragma mark - Public Method
+
+- (UIView *)firstResponder;
 
 @end

@@ -14,26 +14,26 @@
 
 - (CGPoint)origin
 {
-	return self.frame.origin;
+    return self.frame.origin;
 }
 
 - (void)setOrigin:(CGPoint)origin
 {
-	CGRect frame = self.frame;
-	frame.origin = origin;
-	self.frame = frame;
+    CGRect frame = self.frame;
+    frame.origin = origin;
+    self.frame = frame;
 }
 
 - (CGSize)size
 {
-	return self.frame.size;
+    return self.frame.size;
 }
 
 - (void)setSize:(CGSize)size
 {
-	CGRect frame = self.frame;
-	frame.size = size;
-	self.frame = frame;
+    CGRect frame = self.frame;
+    frame.size = size;
+    self.frame = frame;
 }
 
 - (CGFloat)left
@@ -208,16 +208,16 @@
  */
 + (id)loadFromNib
 {
-	NSString *nibName = NSStringFromClass([self class]);
-	NSArray *elements = [[NSBundle mainBundle] loadNibNamed:nibName
+    NSString *nibName = NSStringFromClass([self class]);
+    NSArray *elements = [[NSBundle mainBundle] loadNibNamed:nibName
                                                       owner:nil
                                                     options:nil];
-	for ( NSObject *anObject in elements ) {
-		if ( [anObject isKindOfClass:[self class]] ) {
-			return anObject;
-		}
-	}
-	return nil;
+    for ( NSObject *anObject in elements ) {
+        if ( [anObject isKindOfClass:[self class]] ) {
+            return anObject;
+        }
+    }
+    return nil;
 }
 
 #pragma mark - Animation
@@ -245,6 +245,24 @@
                              animations(userInfo);
                          }
                      } completion:completion];
+}
+
+#pragma mark - Public Method
+
+- (UIView *)firstResponder
+{
+    if ([self isFirstResponder]) {
+        return self;
+    }
+    UIView *firstResponder = nil;
+    NSArray *subviews = self.subviews;
+    for (UIView *subview in subviews) {
+        firstResponder = [subview firstResponder];
+        if (firstResponder) {
+            return firstResponder;
+        }
+    }
+    return nil;
 }
 
 @end
