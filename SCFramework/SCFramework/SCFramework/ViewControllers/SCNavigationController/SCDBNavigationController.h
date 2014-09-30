@@ -28,4 +28,6 @@ typedef NS_ENUM(NSInteger, SCDBNavigationControllerInteractiveDragMode) {
 /// 交互拖动模式, 默认为FadeOut
 @property (nonatomic, assign) SCDBNavigationControllerInteractiveDragMode interactiveMode;
 
+- (instancetype)initWithNavigationBarClass:(Class)navigationBarClass;
+
 @end

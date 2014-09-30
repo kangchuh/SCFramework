@@ -32,4 +32,6 @@ SCViewControllerTransition
 /// 委托管理对象
 @property (strong, nonatomic) SCCTNavigationControllerDelegateManager *delegateManager;
 
+- (instancetype)initWithNavigationBarClass:(Class)navigationBarClass;
+
 @end
