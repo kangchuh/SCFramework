@@ -94,6 +94,15 @@ UIGestureRecognizerDelegate
     return self;
 }
 
+- (instancetype)initWithNavigationBarClass:(Class)navigationBarClass
+{
+    self = [self initWithNavigationBarClass:navigationBarClass toolbarClass:nil];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
 - (void)loadView
 {
     [super loadView];
