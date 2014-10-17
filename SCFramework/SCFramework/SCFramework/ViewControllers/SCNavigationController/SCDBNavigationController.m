@@ -7,6 +7,9 @@
 //
 
 #import "SCDBNavigationController.h"
+#import "UINavigationController+SCAddition.h"
+
+#import "SCMacro.h"
 
 // 拖动完成距离
 static const CGFloat kSCDragCompleteDistance = 50.0;

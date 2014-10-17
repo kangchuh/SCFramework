@@ -7,6 +7,7 @@
 //
 
 #import "UIScreen+SCAddition.h"
+#import "UIDevice+SCAddition.h"
 
 @implementation UIScreen (SCAddition)
 

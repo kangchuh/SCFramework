@@ -7,7 +7,6 @@
 //
 
 #import "SCTableViewController.h"
-#import "SCTableView.h"
 #import "SCTableViewCell.h"
 
 @interface SCTableViewController ()

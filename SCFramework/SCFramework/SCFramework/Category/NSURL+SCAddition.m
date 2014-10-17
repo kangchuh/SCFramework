@@ -7,6 +7,8 @@
 //
 
 #import "NSURL+SCAddition.h"
+#import "NSString+SCAddition.h"
+#import "NSDictionary+SCAddition.h"
 
 @implementation NSURL (SCAddition)
 

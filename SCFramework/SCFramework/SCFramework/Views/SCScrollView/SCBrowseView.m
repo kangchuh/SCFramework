@@ -7,6 +7,10 @@
 //
 
 #import "SCBrowseView.h"
+
+#import "NSString+SCAddition.h"
+#import "NSTimer+SCAddition.h"
+
 #import <objc/runtime.h>
 
 /// 循环滚动时间间隔

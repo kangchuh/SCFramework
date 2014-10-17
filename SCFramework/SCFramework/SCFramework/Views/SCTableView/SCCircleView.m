@@ -7,6 +7,7 @@
 //
 
 #import "SCCircleView.h"
+#import "UIColor+SCAddition.h"
 
 static NSString * const kSCCircleViewRotationAnimationKey = @"kSCCircleViewRotationAnimationKey";
 

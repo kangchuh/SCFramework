@@ -7,6 +7,7 @@
 //
 
 #import "SCDatabase.h"
+#import "NSObject+SCAddition.h"
 
 inline NSString * SCSQLTypeFromObjcType(NSString * objcType)
 {

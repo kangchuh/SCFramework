@@ -7,6 +7,8 @@
 //
 
 #import "SCModel.h"
+#import "NSObject+SCAddition.h"
+
 #import <objc/runtime.h>
 
 #pragma GCC diagnostic ignored "-Wgnu"

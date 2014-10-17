@@ -7,6 +7,7 @@
 //
 
 #import "NSDictionary+SCAddition.h"
+#import "NSString+SCAddition.h"
 
 @implementation NSDictionary (SCAddition)
 

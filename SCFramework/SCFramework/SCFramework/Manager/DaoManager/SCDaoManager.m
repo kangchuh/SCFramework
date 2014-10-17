@@ -8,8 +8,10 @@
 
 #import "SCDaoManager.h"
 #import "SCSingleton.h"
+
 #import "SCDatabase.h"
 #import "SCDatabaseModel.h"
+
 #import <FMDB.h>
 
 @interface SCDaoManager ()

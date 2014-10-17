@@ -8,7 +8,17 @@
 
 #import "SCVersionManager.h"
 #import "SCSingleton.h"
+
 #import "SCUserDefaultManager.h"
+
+#import "NSString+SCAddition.h"
+#import "NSData+SCAddition.h"
+#import "NSDate+SCAddition.h"
+#import "NSArray+SCAddition.h"
+
+#import "SCNSJSONSerialization.h"
+
+#import "SCApp.h"
 
 NSString * const SCVersionManagerLanguageEnglish = @"en";
 NSString * const SCVersionManagerLanguageChineseSimplified = @"zh-Hans";

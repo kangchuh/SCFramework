@@ -7,6 +7,7 @@
 //
 
 #import "SCTextView.h"
+#import "NSString+SCAddition.h"
 
 @interface SCTextView ()
 {

@@ -7,8 +7,7 @@
 //
 
 #import "SCViewController.h"
-
-@class SCTableView;
+#import "SCTableView.h"
 
 @interface SCTableViewController : SCViewController
 <

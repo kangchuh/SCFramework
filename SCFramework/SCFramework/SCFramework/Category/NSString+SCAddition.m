@@ -7,6 +7,8 @@
 //
 
 #import "NSString+SCAddition.h"
+#import "NSArray+SCAddition.h"
+
 #import <CommonCrypto/CommonDigest.h>
 
 @implementation NSString (SCAddition)

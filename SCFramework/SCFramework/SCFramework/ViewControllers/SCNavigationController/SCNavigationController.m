@@ -7,6 +7,7 @@
 //
 
 #import "SCNavigationController.h"
+#import "UINavigationController+SCAddition.h"
 
 @interface SCNavigationController ()
 <

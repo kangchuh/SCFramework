@@ -7,6 +7,7 @@
 //
 
 #import "UINavigationItem+SCAddition.h"
+#import "NSArray+SCAddition.h"
 
 @implementation UINavigationItem (SCAddition)
 

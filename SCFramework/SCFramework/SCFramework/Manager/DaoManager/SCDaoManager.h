@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class SCModel;
+
 @protocol SCDatabaseModel;
 
 @interface SCDaoManager : NSObject

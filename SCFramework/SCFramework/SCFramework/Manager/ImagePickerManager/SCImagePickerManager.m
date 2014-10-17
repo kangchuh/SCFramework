@@ -8,7 +8,10 @@
 
 #import "SCImagePickerManager.h"
 #import "SCSingleton.h"
+
 #import "UIDevice+SCAddition.h"
+
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface SCImagePickerManager ()
 <

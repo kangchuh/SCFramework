@@ -7,6 +7,7 @@
 //
 
 #import "SCLabel.h"
+#import "NSString+SCAddition.h"
 
 @implementation SCLabel
 

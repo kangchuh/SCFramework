@@ -43,11 +43,19 @@
                                                 fromViewController:(UIViewController *)fromVC
                                                   toViewController:(UIViewController *)toVC
 {
-    if ([navigationController isKindOfClass:[SCCTNavigationController class]] ||
-        [navigationController isMemberOfClass:[SCCTNavigationController class]]) {
-        SCCTNavigationController *navigationVC = (SCCTNavigationController *)navigationController;
-        if ([navigationVC respondsToSelector:@selector(transitionDirection)]) {
-            _transitionAnimator.direction = [navigationVC transitionDirection];
+    Class SCCTNavigationControllerClass = NSClassFromString(@"SCCTNavigationController");
+    if ([navigationController isKindOfClass:SCCTNavigationControllerClass] ||
+        [navigationController isMemberOfClass:SCCTNavigationControllerClass]) {
+        if ([navigationController respondsToSelector:@selector(transitionDirection)]) {
+            NSInteger directionValue;
+            SEL selector = @selector(transitionDirection);
+            NSMethodSignature *signature = [navigationController methodSignatureForSelector:selector];
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+            invocation.target = navigationController;
+            invocation.selector = selector;
+            [invocation invoke];
+            [invocation getReturnValue:&directionValue];
+            _transitionAnimator.direction = directionValue;
         }
     }
     _transitionAnimator.operation = (SCViewControllerTransitionOperation)operation;

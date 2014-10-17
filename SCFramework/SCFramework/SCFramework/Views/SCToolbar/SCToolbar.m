@@ -8,6 +8,10 @@
 
 #import "SCToolbar.h"
 
+#import "UIBarButtonItem+SCAddition.h"
+
+#import "SCAdaptedSystem.h"
+
 @implementation SCToolbar
 
 - (instancetype)initWithFrame:(CGRect)frame actionStyle:(SCToolbarActionStyle)actionStyle

@@ -7,6 +7,7 @@
 //
 
 #import "UINavigationController+SCAddition.h"
+#import "NSArray+SCAddition.h"
 
 @implementation UINavigationController (SCAddition)
 
