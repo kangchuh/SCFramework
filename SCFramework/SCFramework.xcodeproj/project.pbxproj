@@ -14,6 +14,8 @@
 		B71EE5A91910CB9100590A9D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B71EE5A81910CB9100590A9D /* AVFoundation.framework */; };
 		B71EE5AB1910D69000590A9D /* TestPic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B71EE5AA1910D69000590A9D /* TestPic.jpg */; };
 		B71EE5AD1910D73D00590A9D /* Test.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B71EE5AC1910D73D00590A9D /* Test.jpeg */; };
+		B724306719F5243700013D7D /* SCFramework.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B724306219F5243700013D7D /* SCFramework.xcassets */; };
+		B724307319F5246800013D7D /* SCFWLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B724307119F5246800013D7D /* SCFWLocalizable.strings */; };
 		B725A02419D53D0800C92315 /* UITableView+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B725A02319D53D0800C92315 /* UITableView+SCAddition.m */; };
 		B7271A711974BE9100FDFA72 /* SCVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7271A701974BE9100FDFA72 /* SCVersionManager.m */; };
 		B72AF3D518C5655100621B34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72AF3D418C5655100621B34 /* Foundation.framework */; };
@@ -69,8 +71,6 @@
 		B7DED3DF1957D47D00A2D5C0 /* SCDateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED3761957D47D00A2D5C0 /* SCDateManager.m */; };
 		B7DED3E01957D47D00A2D5C0 /* SCFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED3791957D47D00A2D5C0 /* SCFileManager.m */; };
 		B7DED3E11957D47D00A2D5C0 /* SCUserDefaultManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED37C1957D47D00A2D5C0 /* SCUserDefaultManager.m */; };
-		B7DED3E21957D47D00A2D5C0 /* SCFWLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7DED37E1957D47D00A2D5C0 /* SCFWLocalizable.strings */; };
-		B7DED3E31957D47D00A2D5C0 /* SCFramework.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7DED3801957D47D00A2D5C0 /* SCFramework.xcassets */; };
 		B7DED3E41957D47D00A2D5C0 /* SCCTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED38B1957D47D00A2D5C0 /* SCCTNavigationController.m */; };
 		B7DED3E51957D47D00A2D5C0 /* SCCTNavigationControllerDelegateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED38D1957D47D00A2D5C0 /* SCCTNavigationControllerDelegateManager.m */; };
 		B7DED3E61957D47D00A2D5C0 /* SCDBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED38F1957D47D00A2D5C0 /* SCDBNavigationController.m */; };
@@ -119,6 +119,9 @@
 		B71EE5A81910CB9100590A9D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B71EE5AA1910D69000590A9D /* TestPic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TestPic.jpg; sourceTree = "<group>"; };
 		B71EE5AC1910D73D00590A9D /* Test.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test.jpeg; sourceTree = "<group>"; };
+		B724306219F5243700013D7D /* SCFramework.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SCFramework.xcassets; sourceTree = "<group>"; };
+		B724307219F5246800013D7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SCFWLocalizable.strings; sourceTree = "<group>"; };
+		B724307419F5247200013D7D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SCFWLocalizable.strings"; sourceTree = "<group>"; };
 		B725A02219D53D0800C92315 /* UITableView+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SCAddition.h"; sourceTree = "<group>"; };
 		B725A02319D53D0800C92315 /* UITableView+SCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SCAddition.m"; sourceTree = "<group>"; };
 		B7271A6F1974BE9100FDFA72 /* SCVersionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVersionManager.h; sourceTree = "<group>"; };
@@ -218,9 +221,6 @@
 		B7DED3791957D47D00A2D5C0 /* SCFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCFileManager.m; sourceTree = "<group>"; };
 		B7DED37B1957D47D00A2D5C0 /* SCUserDefaultManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUserDefaultManager.h; sourceTree = "<group>"; };
 		B7DED37C1957D47D00A2D5C0 /* SCUserDefaultManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUserDefaultManager.m; sourceTree = "<group>"; };
-		B7DED37F1957D47D00A2D5C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SCFWLocalizable.strings; sourceTree = "<group>"; };
-		B7DED3801957D47D00A2D5C0 /* SCFramework.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SCFramework.xcassets; sourceTree = "<group>"; };
-		B7DED3811957D47D00A2D5C0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SCFWLocalizable.strings"; sourceTree = "<group>"; };
 		B7DED3821957D47D00A2D5C0 /* SCConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCConfig.h; sourceTree = "<group>"; };
 		B7DED3831957D47D00A2D5C0 /* SCFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCFramework.h; sourceTree = "<group>"; };
 		B7DED3841957D47D00A2D5C0 /* SCLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLog.h; sourceTree = "<group>"; };
@@ -455,17 +455,18 @@
 		B7DED3381957D47D00A2D5C0 /* SCFramework */ = {
 			isa = PBXGroup;
 			children = (
-				B7DED3391957D47D00A2D5C0 /* Adapted */,
-				B7DED3401957D47D00A2D5C0 /* Category */,
-				B7DED35B1957D47D00A2D5C0 /* Common */,
-				B7DED3671957D47D00A2D5C0 /* Constant */,
-				B7DED36A1957D47D00A2D5C0 /* Manager */,
-				B7DED37D1957D47D00A2D5C0 /* Resources */,
 				B7DED3821957D47D00A2D5C0 /* SCConfig.h */,
 				B7DED3831957D47D00A2D5C0 /* SCFramework.h */,
 				B7DED3841957D47D00A2D5C0 /* SCLog.h */,
 				B7DED3851957D47D00A2D5C0 /* SCMacro.h */,
 				B7DED3861957D47D00A2D5C0 /* SCSingleton.h */,
+				B724307119F5246800013D7D /* SCFWLocalizable.strings */,
+				B724306219F5243700013D7D /* SCFramework.xcassets */,
+				B7DED3391957D47D00A2D5C0 /* Adapted */,
+				B7DED3401957D47D00A2D5C0 /* Category */,
+				B7DED35B1957D47D00A2D5C0 /* Common */,
+				B7DED3671957D47D00A2D5C0 /* Constant */,
+				B7DED36A1957D47D00A2D5C0 /* Manager */,
 				B7DED3871957D47D00A2D5C0 /* Vendor */,
 				B7DED3881957D47D00A2D5C0 /* ViewControllers */,
 				B7DED39E1957D47D00A2D5C0 /* Views */,
@@ -649,15 +650,6 @@
 				B7DED37C1957D47D00A2D5C0 /* SCUserDefaultManager.m */,
 			);
 			path = UserDefaultManager;
-			sourceTree = "<group>";
-		};
-		B7DED37D1957D47D00A2D5C0 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				B7DED37E1957D47D00A2D5C0 /* SCFWLocalizable.strings */,
-				B7DED3801957D47D00A2D5C0 /* SCFramework.xcassets */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		B7DED3871957D47D00A2D5C0 /* Vendor */ = {
@@ -936,8 +928,8 @@
 			files = (
 				B72AF3ED18C5655100621B34 /* Images.xcassets in Resources */,
 				B71EE5AB1910D69000590A9D /* TestPic.jpg in Resources */,
-				B7DED3E21957D47D00A2D5C0 /* SCFWLocalizable.strings in Resources */,
-				B7DED3E31957D47D00A2D5C0 /* SCFramework.xcassets in Resources */,
+				B724306719F5243700013D7D /* SCFramework.xcassets in Resources */,
+				B724307319F5246800013D7D /* SCFWLocalizable.strings in Resources */,
 				B71EE5AD1910D73D00590A9D /* Test.jpeg in Resources */,
 				B72AF3DC18C5655100621B34 /* Podfile in Resources */,
 				B72AF3E618C5655100621B34 /* InfoPlist.strings in Resources */,
@@ -1083,6 +1075,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B724307119F5246800013D7D /* SCFWLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B724307219F5246800013D7D /* en */,
+				B724307419F5247200013D7D /* zh-Hans */,
+			);
+			name = SCFWLocalizable.strings;
+			sourceTree = "<group>";
+		};
 		B72AF3E418C5655100621B34 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1097,15 +1098,6 @@
 				B72AF3FD18C5655100621B34 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		B7DED37E1957D47D00A2D5C0 /* SCFWLocalizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B7DED37F1957D47D00A2D5C0 /* en */,
-				B7DED3811957D47D00A2D5C0 /* zh-Hans */,
-			);
-			name = SCFWLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
