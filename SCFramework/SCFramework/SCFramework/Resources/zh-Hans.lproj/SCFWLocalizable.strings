@@ -31,3 +31,6 @@
 "SCFW_LS_Update" = "更新";
 "SCFW_LS_Next time" = "下一次";
 "SCFW_LS_Skip this version" = "跳过此版本";
+
+"SCFW_LS_Location Services Disenable" = "定位服务不可用, 请在\"设置\"-\"隐私\"-\"定位服务\"中打开定位服务";
+"SCFW_LS_Locate Fail" = "定位失败";

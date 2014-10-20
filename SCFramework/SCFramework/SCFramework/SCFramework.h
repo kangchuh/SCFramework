@@ -29,8 +29,6 @@
 #import "SCAdaptedSystem.h"
 
 // -------------------------- Manager -------------------------- //
-#import "SCCoreDataManager.h"
-#import "SCDaoManager.h"
 #import "SCDateManager.h"
 #import "SCFileManager.h"
 #import "SCUserDefaultManager.h"

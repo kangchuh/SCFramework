@@ -29,6 +29,7 @@
 		B72AF3F618C5655100621B34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72AF3D818C5655100621B34 /* UIKit.framework */; };
 		B72AF3FE18C5655100621B34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B72AF3FC18C5655100621B34 /* InfoPlist.strings */; };
 		B72AF40018C5655100621B34 /* SCFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B72AF3FF18C5655100621B34 /* SCFrameworkTests.m */; };
+		B72C84A719F4A61C0026225D /* SCLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B72C84A619F4A61C0026225D /* SCLocationManager.m */; };
 		B730F7D91921B9CA00CBB1E8 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B730F7D81921B9CA00CBB1E8 /* JavaScriptCore.framework */; };
 		B73CD4861990B39A00D21CD0 /* SCBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CD4851990B39A00D21CD0 /* SCBrowseView.m */; };
 		B7531D8718C734B100D701BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7531D8618C734B100D701BF /* libz.dylib */; };
@@ -139,6 +140,8 @@
 		B72AF3FB18C5655100621B34 /* SCFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SCFrameworkTests-Info.plist"; sourceTree = "<group>"; };
 		B72AF3FD18C5655100621B34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B72AF3FF18C5655100621B34 /* SCFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCFrameworkTests.m; sourceTree = "<group>"; };
+		B72C84A519F4A61C0026225D /* SCLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLocationManager.h; sourceTree = "<group>"; };
+		B72C84A619F4A61C0026225D /* SCLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLocationManager.m; sourceTree = "<group>"; };
 		B730F7D81921B9CA00CBB1E8 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		B73CD4841990B39A00D21CD0 /* SCBrowseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBrowseView.h; sourceTree = "<group>"; };
 		B73CD4851990B39A00D21CD0 /* SCBrowseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBrowseView.m; sourceTree = "<group>"; };
@@ -404,6 +407,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B72C84A419F4A5DF0026225D /* LocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				B72C84A519F4A61C0026225D /* SCLocationManager.h */,
+				B72C84A619F4A61C0026225D /* SCLocationManager.m */,
+			);
+			path = LocationManager;
+			sourceTree = "<group>";
+		};
 		B7645720196BC902009302C2 /* ImagePickerManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +599,7 @@
 				B7DED3741957D47D00A2D5C0 /* DateManager */,
 				B7DED3771957D47D00A2D5C0 /* FileManager */,
 				B7645720196BC902009302C2 /* ImagePickerManager */,
+				B72C84A419F4A5DF0026225D /* LocationManager */,
 				B7DED37A1957D47D00A2D5C0 /* UserDefaultManager */,
 				B7271A6E1974BE6B00FDFA72 /* VersionManager */,
 			);
@@ -980,6 +993,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7DED3F61957D47D00A2D5C0 /* SCExpandTableViewCell.m in Sources */,
+				B72C84A719F4A61C0026225D /* SCLocationManager.m in Sources */,
 				B725A02419D53D0800C92315 /* UITableView+SCAddition.m in Sources */,
 				B7DED3EF1957D47D00A2D5C0 /* SCPickerView.m in Sources */,
 				B7DED3D51957D47D00A2D5C0 /* UIView+SCAddition.m in Sources */,

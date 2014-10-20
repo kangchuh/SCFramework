@@ -31,3 +31,6 @@
 "SCFW_LS_Update" = "Update";
 "SCFW_LS_Next time" = "Next time";
 "SCFW_LS_Skip this version" = "Skip this version";
+
+"SCFW_LS_Location Services Disenable" = "Location services disenable, please open location services in \"Settings\"-\"Privacy\"-\"Location\"";
+"SCFW_LS_Locate Fail" = "Locate fail";
