@@ -10,6 +10,14 @@
 #import <CoreLocation/CoreLocation.h>
 
 /**
+ * TODO:    
+ *      iOS8及以上使用位置服务需要在Info.plist文件中
+ *      NSLocationWhenInUseUsageDescription &
+ *      NSLocationAlwaysUsageDescription
+ *      两个字段, 值可以为空.
+ */
+
+/**
  *  位置访问权限认证类型
  */
 typedef NS_ENUM(NSUInteger, CLLocationManagerAuthorizationType) {
