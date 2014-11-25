@@ -10,4 +10,7 @@
 
 @interface SCTextField : UITextField
 
+@property (nonatomic, strong) UIImage  *leftImage;
+@property (nonatomic, copy  ) NSString *leftText;
+
 @end

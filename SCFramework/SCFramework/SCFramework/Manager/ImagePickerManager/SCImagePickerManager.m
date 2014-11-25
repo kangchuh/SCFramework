@@ -64,7 +64,7 @@ SCSINGLETON(SCImagePickerManager);
             _pickingMediaHandler(picker, image, info);
         }
         
-        if ( _allowStore ) {
+        if ( _allowStore && picker.sourceType == UIImagePickerControllerSourceTypeCamera ) {
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
         }
     }
@@ -76,7 +76,7 @@ SCSINGLETON(SCImagePickerManager);
             _pickingMediaHandler(picker, moviePath, info);
         }
         
-        if ( _allowStore ) {
+        if ( _allowStore && picker.sourceType == UIImagePickerControllerSourceTypeCamera ) {
             if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(moviePath)) {
                 UISaveVideoAtPathToSavedPhotosAlbum(moviePath, nil, nil, nil);
             }
