@@ -31,6 +31,9 @@
 /// 平台信息
 + (NSString *)platform;
 
+/// 设备型号
++ (NSString *)deviceModel;
+
 /// 获取手机内存总量, 返回的是字节数
 + (NSUInteger)totalMemoryBytes;
 /// 获取手机可用内存, 返回的是字节数
