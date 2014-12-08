@@ -65,6 +65,8 @@
 #import "SCView.h"
 #import "SCPageControl.h"
 #import "SCToolbar.h"
+#import "SCAlertView.h"
+#import "SCActionSheet.h"
 
 // -------------------------- VeiwController -------------------------- //
 #import "SCViewController.h"

@@ -33,6 +33,8 @@
 		B72AF40018C5655100621B34 /* SCFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B72AF3FF18C5655100621B34 /* SCFrameworkTests.m */; };
 		B72C84A719F4A61C0026225D /* SCLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B72C84A619F4A61C0026225D /* SCLocationManager.m */; };
 		B730F7D91921B9CA00CBB1E8 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B730F7D81921B9CA00CBB1E8 /* JavaScriptCore.framework */; };
+		B73230E21A353E8C009C16D8 /* SCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73230E11A353E8C009C16D8 /* SCAlertView.m */; };
+		B73230E51A353EA4009C16D8 /* SCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B73230E41A353EA4009C16D8 /* SCActionSheet.m */; };
 		B73CD4861990B39A00D21CD0 /* SCBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CD4851990B39A00D21CD0 /* SCBrowseView.m */; };
 		B7531D8718C734B100D701BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7531D8618C734B100D701BF /* libz.dylib */; };
 		B75DAF85191B83230011E917 /* SCDemoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75DAF84191B83230011E917 /* SCDemoDetailViewController.m */; };
@@ -146,6 +148,10 @@
 		B72C84A519F4A61C0026225D /* SCLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLocationManager.h; sourceTree = "<group>"; };
 		B72C84A619F4A61C0026225D /* SCLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLocationManager.m; sourceTree = "<group>"; };
 		B730F7D81921B9CA00CBB1E8 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		B73230E01A353E8C009C16D8 /* SCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAlertView.h; sourceTree = "<group>"; };
+		B73230E11A353E8C009C16D8 /* SCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAlertView.m; sourceTree = "<group>"; };
+		B73230E31A353EA4009C16D8 /* SCActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCActionSheet.h; sourceTree = "<group>"; };
+		B73230E41A353EA4009C16D8 /* SCActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCActionSheet.m; sourceTree = "<group>"; };
 		B73CD4841990B39A00D21CD0 /* SCBrowseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBrowseView.h; sourceTree = "<group>"; };
 		B73CD4851990B39A00D21CD0 /* SCBrowseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBrowseView.m; sourceTree = "<group>"; };
 		B7531D8618C734B100D701BF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -414,6 +420,24 @@
 				B72C84A619F4A61C0026225D /* SCLocationManager.m */,
 			);
 			path = LocationManager;
+			sourceTree = "<group>";
+		};
+		B73230DE1A353E75009C16D8 /* SCActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				B73230E31A353EA4009C16D8 /* SCActionSheet.h */,
+				B73230E41A353EA4009C16D8 /* SCActionSheet.m */,
+			);
+			path = SCActionSheet;
+			sourceTree = "<group>";
+		};
+		B73230DF1A353E75009C16D8 /* SCAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				B73230E01A353E8C009C16D8 /* SCAlertView.h */,
+				B73230E11A353E8C009C16D8 /* SCAlertView.m */,
+			);
+			path = SCAlertView;
 			sourceTree = "<group>";
 		};
 		B7645720196BC902009302C2 /* ImagePickerManager */ = {
@@ -718,6 +742,8 @@
 		B7DED39E1957D47D00A2D5C0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B73230DE1A353E75009C16D8 /* SCActionSheet */,
+				B73230DF1A353E75009C16D8 /* SCAlertView */,
 				B7B70C5019D11B16000D4472 /* SCToolbar */,
 				B7DED39F1957D47D00A2D5C0 /* SCButton */,
 				B7DED3A21957D47D00A2D5C0 /* SCDatePicker */,
@@ -1019,6 +1045,7 @@
 				B7DED3FA1957D47D00A2D5C0 /* SCView.m in Sources */,
 				B7DED3E61957D47D00A2D5C0 /* SCDBNavigationController.m in Sources */,
 				B7E640AC19A478340019D963 /* NSTimer+SCAddition.m in Sources */,
+				B73230E21A353E8C009C16D8 /* SCAlertView.m in Sources */,
 				B7DED3D81957D47D00A2D5C0 /* SCNSJSONSerialization.m in Sources */,
 				B7DED3D91957D47D00A2D5C0 /* SCMath.m in Sources */,
 				B7DED3CD1957D47D00A2D5C0 /* NSObject+SCAddition.m in Sources */,
@@ -1043,6 +1070,7 @@
 				B7645723196BC902009302C2 /* SCImagePickerManager.m in Sources */,
 				B7DED3D21957D47D00A2D5C0 /* UIDevice+SCAddition.m in Sources */,
 				B7B70C5319D11B25000D4472 /* SCToolbar.m in Sources */,
+				B73230E51A353EA4009C16D8 /* SCActionSheet.m in Sources */,
 				B72AF3EB18C5655100621B34 /* AppDelegate.m in Sources */,
 				B7DED3F31957D47D00A2D5C0 /* SCPullLoadView.m in Sources */,
 				B7DED3CC1957D47D00A2D5C0 /* NSDictionary+SCAddition.m in Sources */,
