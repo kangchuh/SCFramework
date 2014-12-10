@@ -62,16 +62,14 @@ static void *SCFWNSIndexPathSubRowObjectKey;
 
 - (NSInteger)subRow
 {
-    id thisClass = [self class];
-    id subRowObj = objc_getAssociatedObject(thisClass, SCFWNSIndexPathSubRowObjectKey);
+    id subRowObj = objc_getAssociatedObject(self, SCFWNSIndexPathSubRowObjectKey);
     return [subRowObj integerValue];
 }
 
 - (void)setSubRow:(NSInteger)subRow
 {
-    id thisClass = [self class];
     id subRowObj = [NSNumber numberWithInteger:subRow];
-    objc_setAssociatedObject(thisClass, SCFWNSIndexPathSubRowObjectKey, subRowObj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, SCFWNSIndexPathSubRowObjectKey, subRowObj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 + (NSIndexPath *)indexPathForSubRow:(NSInteger)subrow inRow:(NSInteger)row inSection:(NSInteger)section

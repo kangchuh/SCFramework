@@ -19,7 +19,7 @@ static void *SCCLLocationManagerAuthorizationTypeKey = &SCCLLocationManagerAutho
 
 - (CLLocationManagerAuthorizationType)authorizationType
 {
-    id authorizationTypeObject = objc_getAssociatedObject(self.class,
+    id authorizationTypeObject = objc_getAssociatedObject(self,
                                                           SCCLLocationManagerAuthorizationTypeKey);
     return [authorizationTypeObject integerValue];
 }
@@ -27,7 +27,7 @@ static void *SCCLLocationManagerAuthorizationTypeKey = &SCCLLocationManagerAutho
 - (void)setAuthorizationType:(CLLocationManagerAuthorizationType)authorizationType
 {
     id authorizationTypeObject = @(authorizationType);
-    objc_setAssociatedObject(self.class,
+    objc_setAssociatedObject(self,
                              SCCLLocationManagerAuthorizationTypeKey,
                              authorizationTypeObject,
                              OBJC_ASSOCIATION_ASSIGN);

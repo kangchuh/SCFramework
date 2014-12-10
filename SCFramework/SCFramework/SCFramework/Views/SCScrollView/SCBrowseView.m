@@ -41,14 +41,14 @@ static const void *SCBrowseViewPageDidSelectActionKey = &SCBrowseViewPageDidSele
 
 - (SCBrowseViewPageWillSelectAction)willSelectAction
 {
-    id action = objc_getAssociatedObject(self.class,
+    id action = objc_getAssociatedObject(self,
                                          SCBrowseViewPageWillSelectActionKey);
     return action;
 }
 
 - (void)setWillSelectAction:(SCBrowseViewPageWillSelectAction)willSelectAction
 {
-    objc_setAssociatedObject(self.class,
+    objc_setAssociatedObject(self,
                              SCBrowseViewPageWillSelectActionKey,
                              willSelectAction,
                              OBJC_ASSOCIATION_COPY);
@@ -56,14 +56,14 @@ static const void *SCBrowseViewPageDidSelectActionKey = &SCBrowseViewPageDidSele
 
 - (SCBrowseViewPageDidSelectAction)didSelectAction
 {
-    id action = objc_getAssociatedObject(self.class,
+    id action = objc_getAssociatedObject(self,
                                          SCBrowseViewPageDidSelectActionKey);
     return action;
 }
 
 - (void)setDidSelectAction:(SCBrowseViewPageDidSelectAction)didSelectAction
 {
-    objc_setAssociatedObject(self.class,
+    objc_setAssociatedObject(self,
                              SCBrowseViewPageDidSelectActionKey,
                              didSelectAction,
                              OBJC_ASSOCIATION_COPY);
