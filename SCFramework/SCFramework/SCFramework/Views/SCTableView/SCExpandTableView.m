@@ -49,6 +49,35 @@ UITableViewDelegate
 
 @implementation SCExpandTableView
 
+- (BOOL)isExpandedForCellAtIndexPath:(NSIndexPath *)indexPath
+{
+    BOOL expanded = NO;
+    return expanded;
+}
+
+#pragma mark - UITableViewDataSource & UITableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 0;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"ExpandCell";
+    SCExpandTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[SCExpandTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                            reuseIdentifier:cellIdentifier];
+    }
+    return cell;
+}
+
 @end
 
 

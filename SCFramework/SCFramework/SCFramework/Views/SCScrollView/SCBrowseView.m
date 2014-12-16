@@ -158,12 +158,12 @@ UIScrollViewDelegate
 
 #pragma mark - Override Method
 
-- (void)didMoveToSuperview
-{
-    [super didMoveToSuperview];
-    
-    [self reloadData];
-}
+//- (void)didMoveToSuperview
+//{
+//    [super didMoveToSuperview];
+//    
+//    [self reloadData];
+//}
 
 #pragma mark - UIScrollViewDelegate
 
