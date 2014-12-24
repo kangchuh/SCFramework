@@ -132,6 +132,62 @@
     self.center = center;
 }
 
+- (CGPoint)topLeft
+{
+    return CGPointMake(CGRectGetMinX(self.frame),
+                       CGRectGetMinY(self.frame));
+}
+
+- (void)setTopLeft:(CGPoint)topLeft
+{
+    CGRect frame = self.frame;
+    frame.origin = CGPointMake(topLeft.x,
+                               topLeft.y);;
+    self.frame = frame;
+}
+
+- (CGPoint)topRight
+{
+    return CGPointMake(CGRectGetMaxX(self.frame),
+                       CGRectGetMinY(self.frame));
+}
+
+- (void)setTopRight:(CGPoint)topRight
+{
+    CGRect frame = self.frame;
+    frame.origin = CGPointMake(topRight.x - CGRectGetWidth(frame),
+                               topRight.y);
+    self.frame = frame;
+}
+
+- (CGPoint)bottomLeft
+{
+    return CGPointMake(CGRectGetMinX(self.frame),
+                       CGRectGetMaxY(self.frame));
+}
+
+- (void)setBottomLeft:(CGPoint)bottomLeft
+{
+    CGRect frame = self.frame;
+    frame.origin = CGPointMake(bottomLeft.x,
+                               bottomLeft.y - CGRectGetHeight(frame));
+    self.frame = frame;
+}
+
+- (CGPoint)bottomRight
+{
+    return CGPointMake(CGRectGetMaxX(self.frame),
+                       CGRectGetMaxY(self.frame));
+}
+
+- (void)setBottomRight:(CGPoint)bottomRight
+{
+    CGRect frame = self.frame;
+    frame.origin = CGPointMake(bottomRight.x - CGRectGetWidth(frame),
+                               bottomRight.y - CGRectGetHeight(frame));
+    self.frame = frame;
+}
+
 - (CGPoint)middle
 {
     return CGPointMake(CGRectGetWidth(self.frame) / 2.0,
@@ -157,6 +213,44 @@
         self.bottom = bottom;
     } else {
         self.height = height;
+    }
+}
+
+- (void)setSize:(CGSize)size anchor:(SCUIViewAnchorPosition)anchor
+{
+    switch (anchor) {
+        case SCUIViewAnchorTopLeft: {
+            CGPoint topLeft = self.topLeft;
+            self.size = size;
+            self.topLeft = topLeft;
+            break;
+        }
+        case SCUIViewAnchorTopRight: {
+            CGPoint topRight = self.topRight;
+            self.size = size;
+            self.topRight = topRight;
+            break;
+        }
+        case SCUIViewAnchorBottomLeft: {
+            CGPoint bottomLeft = self.bottomLeft;
+            self.size = size;
+            self.bottomLeft = bottomLeft;
+            break;
+        }
+        case SCUIViewAnchorBottomRight: {
+            CGPoint bottomRight = self.bottomRight;
+            self.size = size;
+            self.bottomRight = bottomRight;
+            break;
+        }
+        case SCUIViewAnchorCenter: {
+            CGPoint center = self.center;
+            self.size = size;
+            self.center = center;
+            break;
+        }
+        default:
+            break;
     }
 }
 

@@ -8,6 +8,32 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  锚点位置
+ */
+typedef NS_ENUM(NSUInteger, SCUIViewAnchorPosition){
+    /**
+     *  左上角
+     */
+    SCUIViewAnchorTopLeft,
+    /**
+     *  右上角
+     */
+    SCUIViewAnchorTopRight,
+    /**
+     *  左下角
+     */
+    SCUIViewAnchorBottomLeft,
+    /**
+     *  右下角
+     */
+    SCUIViewAnchorBottomRight,
+    /**
+     *  中心
+     */
+    SCUIViewAnchorCenter,
+};
+
 @interface UIView (SCAddition)
 
 #pragma mark - Frame
@@ -27,10 +53,17 @@
 @property (nonatomic) CGFloat centerX;
 @property (nonatomic) CGFloat centerY;
 
+@property (nonatomic) CGPoint topLeft;
+@property (nonatomic) CGPoint topRight;
+@property (nonatomic) CGPoint bottomLeft;
+@property (nonatomic) CGPoint bottomRight;
+
 @property (nonatomic, readonly) CGPoint middle;
 
 - (void)setWidth:(CGFloat)width rightAlignment:(BOOL)rightAlignment;
 - (void)setHeight:(CGFloat)height bottomAlignment:(BOOL)bottomAlignment;
+
+- (void)setSize:(CGSize)size anchor:(SCUIViewAnchorPosition)anchor;
 
 #pragma mark - Border radius
 
