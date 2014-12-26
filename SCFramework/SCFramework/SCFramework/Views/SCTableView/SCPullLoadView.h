@@ -14,7 +14,7 @@ extern const CGFloat kSCPullUpDistance;
 
 typedef NS_ENUM(NSInteger, SCPullUpState) {
     SCPullUpStateNormal = 1,// 正常
-    SCPullUpStatePulling,// 下拉中
+    SCPullUpStatePulling,// 上拉中
     SCPullUpStateLoading,// 加载中
 };
 
