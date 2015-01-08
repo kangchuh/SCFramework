@@ -21,6 +21,16 @@
     return [[UIScreen mainScreen] bounds].size.height;
 }
 
++ (BOOL)isFivePointFiveInch
+{
+    return ([UIDevice iPhone] && [UIScreen height] == 736.0);
+}
+
++ (BOOL)isFourPointSevenInch
+{
+    return ([UIDevice iPhone] && [UIScreen height] == 667.0);
+}
+
 + (BOOL)isFourInch
 {
     return ([UIDevice iPhone] && [UIScreen height] == 568.0);
