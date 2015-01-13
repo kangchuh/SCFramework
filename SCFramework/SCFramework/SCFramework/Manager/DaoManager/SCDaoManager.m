@@ -75,6 +75,7 @@ SCSINGLETON(SCDaoManager);
                 flag = YES;
             }
         }
+        [rs close];
     }
     [self.db close];
     
@@ -194,6 +195,7 @@ SCSINGLETON(SCDaoManager);
         NSString *sql = [self constructSQLForQueryWithModel:modelCls];
         FMResultSet *rs = [self.db executeQuery:sql];
         [models addObjectsFromArray:[self parseResultSet:rs forModel:modelCls]];
+        [rs close];
     }
     [self.db close];
     
@@ -219,6 +221,7 @@ SCSINGLETON(SCDaoManager);
             rs = [self.db executeQuery:sql];
         }
         [models addObjectsFromArray:[self parseResultSet:rs forModel:modelCls]];
+        [rs close];
     }
     [self.db close];
     
@@ -237,6 +240,7 @@ SCSINGLETON(SCDaoManager);
         NSString *sql = [NSString stringWithFormat:SQL, [modelCls tableName]];
         FMResultSet *rs = [self.db executeQuery:sql];
         [models addObjectsFromArray:[self parseResultSet:rs forModel:modelCls]];
+        [rs close];
     }
     [self.db close];
     
@@ -257,6 +261,7 @@ SCSINGLETON(SCDaoManager);
         if ( [rs next] ) {
             count = [[rs stringForColumnIndex:0] integerValue];
         }
+        [rs close];
     }
     [self.db close];
     

@@ -16,4 +16,10 @@
 + (id)objectFromData:(NSData *)data error:(NSError **)error;
 + (NSData *)dataFromObject:(id)object error:(NSError **)error;
 
++ (id)objectFromString:(NSString *)string;
++ (NSString *)stringFromObject:(id)object;
+
++ (id)objectFromString:(NSString *)string error:(NSError **)error;
++ (NSString *)stringFromObject:(id)object error:(NSError **)error;
+
 @end

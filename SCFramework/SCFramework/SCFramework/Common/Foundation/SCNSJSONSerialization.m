@@ -30,4 +30,32 @@
     return [NSJSONSerialization dataWithJSONObject:object options:0 error:error];
 }
 
++ (id)objectFromString:(NSString *)string
+{
+    return [self.class objectFromString:string error:nil];
+}
+
++ (NSString *)stringFromObject:(id)object
+{
+    return [self.class stringFromObject:object error:nil];
+}
+
++ (id)objectFromString:(NSString *)string error:(NSError *__autoreleasing *)error
+{
+    NSData *JSONData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    return [self.class objectFromData:JSONData error:error];
+}
+
++ (NSString *)stringFromObject:(id)object error:(NSError *__autoreleasing *)error
+{
+    NSData *JSONData = [self.class dataFromObject:object error:error];
+    if ( error ) {
+        return nil;
+    }
+    
+    NSString *JSONString = [[NSString alloc] initWithData:JSONData
+                                                 encoding:NSUTF8StringEncoding];
+    return JSONString;
+}
+
 @end
