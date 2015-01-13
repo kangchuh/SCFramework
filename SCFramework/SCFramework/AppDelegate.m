@@ -12,7 +12,96 @@
 
 #import "SCDemoListViewController.h"
 
+#import "SCKeyValueStore.h"
+
 @implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    NSDictionary *dictionary = @{@"user_id": @"123456",
+                                 @"user_name": @"username",
+                                 @"user_phone": @"13912345678"};
+    NSString *string = @"字符串";
+    NSNumber *number = @(9876543210);
+    NSArray *array = @[@"array - 1",
+                       @"array - 2",
+                       @"array - 3",
+                       @"array - 4",
+                       @"array - 5",
+                       @"array - 6",
+                       @"array - 7",
+                       @"array - 8",
+                       @"array - 9",
+                       @"array - 0"];
+    
+    static NSString *tableName = @"data";
+    
+    SCKeyValueStore *store = [[SCKeyValueStore alloc] init];
+    
+    [store createTable:tableName];
+    
+    DLog(@"%@", [store queryFromTable:tableName]);
+    
+    [store putObject:dictionary
+              forKey:@"1"
+           intoTable:tableName];
+    
+    [store putString:string
+              forKey:@"2"
+           intoTable:tableName];
+    
+    [store putNumber:number
+              forKey:@"3"
+           intoTable:tableName];
+    
+    [store putObject:array
+              forKey:@"4"
+           intoTable:tableName];
+    
+    DLog(@"%@", [store queryFromTable:tableName]);
+    
+    DLog(@"%@", [store queryItemForKey:@"1" fromTable:tableName]);
+    
+    [store deleteForKey:@"1" fromTable:tableName];
+    
+    DLog(@"%@", [store queryFromTable:tableName]);
+    
+    [store deleteForKeys:@[@"3", @"4"] fromTable:tableName];
+    
+    DLog(@"%@", [store queryFromTable:tableName]);
+    
+    [store putObject:dictionary
+              forKey:@"Prefix_1"
+           intoTable:tableName];
+    
+    [store putString:string
+              forKey:@"Prefix_2"
+           intoTable:tableName];
+    
+    [store putNumber:number
+              forKey:@"Prefix_3"
+           intoTable:tableName];
+    
+    [store putObject:array
+              forKey:@"Prefix_4"
+           intoTable:tableName];
+    
+    DLog(@"%@", [store queryFromTable:tableName]);
+    
+    [store deleteForKeyContainPrefix:@"Prefix" fromTable:tableName];
+    
+    DLog(@"%@", [store queryFromTable:tableName]);
+    
+    [store deleteFromTable:tableName];
+    
+    DLog(@"%@", [store queryFromTable:tableName]);
+    
+    [store dropTable:tableName];
+    
+    [store close];
+    
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
