@@ -54,4 +54,6 @@
 - (BOOL)deleteForKeyContainPrefix:(NSString *)keyPrefix fromTable:(NSString *)tableName;
 - (BOOL)deleteFromTable:(NSString *)tableName;
 
+- (void)close;
+
 @end

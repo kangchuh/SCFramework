@@ -17,6 +17,19 @@ static NSString * const SCKeyValueStoreKeyCreatedTime = @"CREATEDTIME";
 
 @implementation SCKeyValueItem
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:
+            @"%@ ( \
+            Key : %@, \
+            Value : %@, \
+            Created : %@)",
+            [super description],
+            _key,
+            _value,
+            _createdTime];
+}
+
 @end
 
 
@@ -29,6 +42,11 @@ static NSString * const SCKeyValueStoreKeyCreatedTime = @"CREATEDTIME";
 @implementation SCKeyValueStore
 
 SCSINGLETON(SCKeyValueStore);
+
+- (void)dealloc
+{
+    [_databaseQueue close];
+}
 
 #pragma mark - Init Method
 
@@ -169,6 +187,12 @@ SCSINGLETON(SCKeyValueStore);
         return NO;
     }
     
+    if (![self existTable:tableName]) {
+        if (![self createTable:tableName]) {
+            return NO;
+        }
+    }
+    
     if ( !object || !key ) {
         return NO;
     }
@@ -286,6 +310,11 @@ SCSINGLETON(SCKeyValueStore);
     return ret;
 }
 
+- (void)close
+{
+    [_databaseQueue close];
+}
+
 #pragma mark - Common
 
 - (NSString *)applicationDocumentsDirectory
@@ -378,8 +407,8 @@ SCSINGLETON(SCKeyValueStore);
 - (NSString *)constructSQLForDelete:(NSString *)tableName forKeys:(NSArray *)keys
 {
     NSMutableArray *optimizedKeys = [NSMutableArray array];
-    for ( id key in keys ) {
-        NSString *optimizedKey = [self optimizeSQLKey:[key stringValue]];
+    for ( NSString * key in keys ) {
+        NSString *optimizedKey = [self optimizeSQLKey:key];
         [optimizedKeys addObject:optimizedKey];
     }
     
@@ -426,17 +455,17 @@ SCSINGLETON(SCKeyValueStore);
 
 - (NSString *)optimizeSQLArgumentPrefix:(NSString *)argument
 {
-    return [NSString stringWithFormat:@"%@%%", argument];
+    return [NSString stringWithFormat:@"'%@%%'", argument];
 }
 
 - (NSString *)optimizeSQLArgumentSuffix:(NSString *)argument
 {
-    return [NSString stringWithFormat:@"%%%@", argument];
+    return [NSString stringWithFormat:@"'%%%@'", argument];
 }
 
 - (NSString *)optimizeSQLArgumentLike:(NSString *)argument
 {
-    return [NSString stringWithFormat:@"%%%@%%", argument];
+    return [NSString stringWithFormat:@"'%%%@%%'", argument];
 }
 
 @end

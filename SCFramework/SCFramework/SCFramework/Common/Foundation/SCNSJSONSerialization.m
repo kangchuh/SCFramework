@@ -49,7 +49,7 @@
 + (NSString *)stringFromObject:(id)object error:(NSError *__autoreleasing *)error
 {
     NSData *JSONData = [self.class dataFromObject:object error:error];
-    if ( error ) {
+    if ( *error ) {
         return nil;
     }
     

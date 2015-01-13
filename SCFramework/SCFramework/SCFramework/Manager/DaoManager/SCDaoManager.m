@@ -24,6 +24,11 @@
 
 SCSINGLETON(SCDaoManager);
 
+- (void)dealloc
+{
+    [_db close];
+}
+
 #pragma mark - Init Method
 
 - (instancetype)init
