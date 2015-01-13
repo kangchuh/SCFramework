@@ -21,7 +21,6 @@
 		B72AF3D518C5655100621B34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72AF3D418C5655100621B34 /* Foundation.framework */; };
 		B72AF3D718C5655100621B34 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72AF3D618C5655100621B34 /* CoreGraphics.framework */; };
 		B72AF3D918C5655100621B34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72AF3D818C5655100621B34 /* UIKit.framework */; };
-		B72AF3DC18C5655100621B34 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = B72AF3DB18C5655100621B34 /* Podfile */; };
 		B72AF3E618C5655100621B34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B72AF3E418C5655100621B34 /* InfoPlist.strings */; };
 		B72AF3E818C5655100621B34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B72AF3E718C5655100621B34 /* main.m */; };
 		B72AF3EB18C5655100621B34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B72AF3EA18C5655100621B34 /* AppDelegate.m */; };
@@ -36,6 +35,7 @@
 		B73230E21A353E8C009C16D8 /* SCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73230E11A353E8C009C16D8 /* SCAlertView.m */; };
 		B73230E51A353EA4009C16D8 /* SCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B73230E41A353EA4009C16D8 /* SCActionSheet.m */; };
 		B73CD4861990B39A00D21CD0 /* SCBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CD4851990B39A00D21CD0 /* SCBrowseView.m */; };
+		B73EDD7A1A5E67EF0024E33E /* SCKeyValueStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EDD791A5E67EF0024E33E /* SCKeyValueStore.m */; };
 		B7531D8718C734B100D701BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7531D8618C734B100D701BF /* libz.dylib */; };
 		B75DAF85191B83230011E917 /* SCDemoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75DAF84191B83230011E917 /* SCDemoDetailViewController.m */; };
 		B7645723196BC902009302C2 /* SCImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7645722196BC902009302C2 /* SCImagePickerManager.m */; };
@@ -112,6 +112,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37766DBC8C4297F76F2B18A8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4AB8801EE6A299C2E5194440 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		89C5A8B719C949FEA838C0A3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B705E09C18C6CAAE00AC6B5E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B707FA8118CDA1B500413B64 /* SCDemoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDemoListViewController.h; sourceTree = "<group>"; };
@@ -132,7 +134,6 @@
 		B72AF3D418C5655100621B34 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B72AF3D618C5655100621B34 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B72AF3D818C5655100621B34 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B72AF3DB18C5655100621B34 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B72AF3DE18C5655100621B34 /* SCFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCFramework-Prefix.pch"; sourceTree = "<group>"; };
 		B72AF3E318C5655100621B34 /* SCFramework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SCFramework-Info.plist"; sourceTree = "<group>"; };
 		B72AF3E518C5655100621B34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -154,6 +155,8 @@
 		B73230E41A353EA4009C16D8 /* SCActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCActionSheet.m; sourceTree = "<group>"; };
 		B73CD4841990B39A00D21CD0 /* SCBrowseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBrowseView.h; sourceTree = "<group>"; };
 		B73CD4851990B39A00D21CD0 /* SCBrowseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBrowseView.m; sourceTree = "<group>"; };
+		B73EDD781A5E67EF0024E33E /* SCKeyValueStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCKeyValueStore.h; sourceTree = "<group>"; };
+		B73EDD791A5E67EF0024E33E /* SCKeyValueStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCKeyValueStore.m; sourceTree = "<group>"; };
 		B7531D8618C734B100D701BF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B75DAF83191B83230011E917 /* SCDemoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDemoDetailViewController.h; sourceTree = "<group>"; };
 		B75DAF84191B83230011E917 /* SCDemoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDemoDetailViewController.m; sourceTree = "<group>"; };
@@ -285,7 +288,6 @@
 		B7E640AE19A478520019D963 /* SCBrowseViewPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBrowseViewPage.m; sourceTree = "<group>"; };
 		B7F300351962529800921CFD /* UINavigationItem+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+SCAddition.h"; sourceTree = "<group>"; };
 		B7F300361962529800921CFD /* UINavigationItem+SCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+SCAddition.m"; sourceTree = "<group>"; };
-		C8F7DCEE5BED4F0499DCBFDB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +320,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A245057DC8B10C961502457 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37766DBC8C4297F76F2B18A8 /* Pods.debug.xcconfig */,
+				4AB8801EE6A299C2E5194440 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B7271A6E1974BE6B00FDFA72 /* VersionManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,7 +345,7 @@
 				B72AF3F918C5655100621B34 /* SCFrameworkTests */,
 				B72AF3D318C5655100621B34 /* Frameworks */,
 				B72AF3D218C5655100621B34 /* Products */,
-				C8F7DCEE5BED4F0499DCBFDB /* Pods.xcconfig */,
+				1A245057DC8B10C961502457 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -369,7 +380,6 @@
 			children = (
 				B7DED3381957D47D00A2D5C0 /* SCFramework */,
 				B7F792D318C5A15700696D45 /* Classes */,
-				B72AF3DB18C5655100621B34 /* Podfile */,
 				B72AF3E918C5655100621B34 /* AppDelegate.h */,
 				B72AF3EA18C5655100621B34 /* AppDelegate.m */,
 				B707FA8118CDA1B500413B64 /* SCDemoListViewController.h */,
@@ -645,6 +655,8 @@
 				B7AF797B19A5DE270041F724 /* SCDatabase.h */,
 				B7AF797C19A5DE270041F724 /* SCDatabase.m */,
 				B7141FFB19A74EF3006C510C /* SCDatabaseModel.h */,
+				B73EDD781A5E67EF0024E33E /* SCKeyValueStore.h */,
+				B73EDD791A5E67EF0024E33E /* SCKeyValueStore.m */,
 			);
 			path = DaoManager;
 			sourceTree = "<group>";
@@ -957,7 +969,6 @@
 				B724306719F5243700013D7D /* SCFramework.xcassets in Resources */,
 				B724307319F5246800013D7D /* SCFWLocalizable.strings in Resources */,
 				B71EE5AD1910D73D00590A9D /* Test.jpeg in Resources */,
-				B72AF3DC18C5655100621B34 /* Podfile in Resources */,
 				B72AF3E618C5655100621B34 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -985,7 +996,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DAF8A8F08BD0450689DEAC96 /* Check Pods Manifest.lock */ = {
@@ -1055,6 +1066,7 @@
 				B7DED3D11957D47D00A2D5C0 /* UIColor+SCAddition.m in Sources */,
 				B73CD4861990B39A00D21CD0 /* SCBrowseView.m in Sources */,
 				B7DED3D61957D47D00A2D5C0 /* SCApp.m in Sources */,
+				B73EDD7A1A5E67EF0024E33E /* SCKeyValueStore.m in Sources */,
 				B7DED3C91957D47D00A2D5C0 /* NSArray+SCAddition.m in Sources */,
 				B7DED3EE1957D47D00A2D5C0 /* SCLabel.m in Sources */,
 				B7DED3CB1957D47D00A2D5C0 /* NSDate+SCAddition.m in Sources */,
@@ -1203,7 +1215,7 @@
 		};
 		B72AF40418C5655100621B34 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8F7DCEE5BED4F0499DCBFDB /* Pods.xcconfig */;
+			baseConfigurationReference = 37766DBC8C4297F76F2B18A8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1218,7 +1230,7 @@
 		};
 		B72AF40518C5655100621B34 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8F7DCEE5BED4F0499DCBFDB /* Pods.xcconfig */;
+			baseConfigurationReference = 4AB8801EE6A299C2E5194440 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
