@@ -10,13 +10,13 @@
 
 @interface UIScreen (SCAddition)
 
++ (CGSize)size;
 + (CGFloat)width;
 + (CGFloat)height;
 + (BOOL)isFivePointFiveInch;
 + (BOOL)isFourPointSevenInch;
 + (BOOL)isFourInch;
 + (BOOL)isThreePointFiveInch;
-+ (CGSize)size;
 + (CGSize)DPISize;
 
 @end
