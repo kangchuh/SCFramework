@@ -8,6 +8,7 @@
 
 #import "SCPullRefreshView.h"
 #import "NSDate+SCAddition.h"
+#import "UIDevice+SCAddition.h"
 #import "SCUserDefaultManager.h"
 
 const CGFloat kSCPullRefreshViewHeight = 60.f;
@@ -46,7 +47,7 @@ static NSString * const kSCLastUpdatedDateKey = @"SCLastUpdatedDateKey";
                                    20.0f)];
 		_statusLabel.backgroundColor = [UIColor clearColor];
 		_statusLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		_statusLabel.font = [UIFont boldSystemFontOfSize:13.0f];
+		_statusLabel.font = [UIFont boldSystemFontOfSize:[UIDevice iPad] ? 15.0f : 13.0f];
 		_statusLabel.textColor = [UIColor darkGrayColor];
 		_statusLabel.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
 		_statusLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
@@ -60,7 +61,7 @@ static NSString * const kSCLastUpdatedDateKey = @"SCLastUpdatedDateKey";
                                  20.0f)];
 		_dateLabel.backgroundColor = [UIColor clearColor];
 		_dateLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		_dateLabel.font = [UIFont systemFontOfSize:12.0f];
+		_dateLabel.font = [UIFont systemFontOfSize:[UIDevice iPad] ? 14.0f : 12.0f];
 		_dateLabel.textColor = [UIColor darkGrayColor];
 		_dateLabel.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
 		_dateLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);

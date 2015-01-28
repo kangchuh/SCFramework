@@ -7,6 +7,7 @@
 //
 
 #import "SCPullLoadView.h"
+#import "UIDevice+SCAddition.h"
 
 const CGFloat kSCPullLoadViewHeight = 40.f;
 
@@ -30,7 +31,7 @@ const CGFloat kSCPullUpDistance = 0.f;
                                                                  20.0f)];
 		_statusLabel.backgroundColor = [UIColor clearColor];
 		_statusLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		_statusLabel.font = [UIFont boldSystemFontOfSize:13.0f];
+        _statusLabel.font = [UIFont boldSystemFontOfSize:[UIDevice iPad] ? 15.0f : 13.0f];
 		_statusLabel.textColor = [UIColor darkGrayColor];
 		_statusLabel.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
 		_statusLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
