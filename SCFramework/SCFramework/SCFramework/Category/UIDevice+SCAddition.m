@@ -42,13 +42,22 @@
 
 + (BOOL)iPad
 {
-    return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
 }
 
 + (BOOL)iPhone
 {
-    return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone;
-    
+    return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+}
+
++ (BOOL)portrait
+{
+    return UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation);
+}
+
++ (BOOL)landscape
+{
+    return UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
 }
 
 + (BOOL)hasCamera
@@ -58,7 +67,7 @@
 
 + (NSString *)preferredLanguages
 {
-    return [[NSLocale preferredLanguages] objectAtIndex:0];
+    return [[NSLocale preferredLanguages] firstObject];
 }
 
 #pragma mark - sysctlbyname utils

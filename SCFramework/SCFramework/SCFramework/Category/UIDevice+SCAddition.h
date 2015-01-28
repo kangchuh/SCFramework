@@ -22,6 +22,12 @@
 /// 判断当前设备是否iPhone
 + (BOOL)iPhone;
 
+/// 竖屏
++ (BOOL)portrait;
+
+/// 横屏
++ (BOOL)landscape;
+
 /// 判断当前系统是否有摄像头
 + (BOOL)hasCamera;
 
