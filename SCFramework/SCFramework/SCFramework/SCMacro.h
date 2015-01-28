@@ -11,21 +11,30 @@
 
 // -------------------------- OS -------------------------- //
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
-#define kSC_iOS7_OR_LATER       ([[[UIDevice currentDevice] \
-                                        systemVersion] \
+#define kSC_iOS7_OR_LATER       ([[[UIDevice currentDevice] systemVersion] \
                                             compare:@"7.0"] != NSOrderedAscending)
 #else
 #define kSC_iOS7_OR_LATER       (NO)
+#endif
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+#define kSC_iOS8_OR_LATER       ([[[UIDevice currentDevice] systemVersion] \
+                                            compare:@"8.0"] != NSOrderedAscending)
+#else
+#define kSC_iOS8_OR_LATER       (NO)
 #endif
 
 #define kSC_SYSTEM_VERSION_F    ([[[UIDevice currentDevice] systemVersion] floatValue])
 #define kSC_SYSTEM_VERSION_D    ([[[UIDevice currentDevice] systemVersion] doubleValue])
 #define kSC_SYSTEM_VERSION_S    ([[UIDevice currentDevice] systemVersion])
 
-#define kSC_CURRENT_LANGUAGE    ([[NSLocale preferredLanguages] objectAtIndex:0])
+#define kSC_CURRENT_LANGUAGE    ([[NSLocale preferredLanguages] firstObject])
 
 #define kSC_iPad                (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define kSC_iPhone              (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+
+#define kSC_PORTRAIT            (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation))
+#define kSC_LANDSCAPE           (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
 
 // -------------------------- 常用宏常量 -------------------------- //
 #define kSC_KEY_WINDOW          ([[UIApplication sharedApplication] keyWindow])
