@@ -72,4 +72,10 @@
 #define kSCSYSTEMFONT(FONTSIZE)     [UIFont systemFontOfSize:FONTSIZE]
 #define kSCFONT(NAME, FONTSIZE)     [UIFont fontWithName:(NAME) size:(FONTSIZE)]
 
+#define kSCSTRINGFROMENUM(ENUMVALUE) (@#ENUMVALUE)
+
+#define kSCPROPERTYFULLKEYPATH(PROPERTY) (@#PROPERTY)
+
+#define kSCPROPERTYKEYPATH(PROPERTY) ([[(@#PROPERTY) componentsSeparatedByString:@"."] lastObject])
+
 #endif
