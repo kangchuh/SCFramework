@@ -7,6 +7,7 @@
 //
 
 #import "SCApp.h"
+#import "SCAdaptedSystem.h"
 #import "SCUserDefaultManager.h"
 
 static NSString * const SCAppStoreURL = @"https://itunes.apple.com/app/id";
@@ -35,6 +36,40 @@ static NSString * const SCAppFirstLaunchKey  = @"SCAppFirstLaunchKey";
 + (NSString *)version
 {
     return [[NSBundle mainBundle] infoDictionary][(NSString*)kCFBundleVersionKey];
+}
+
++ (UIInterfaceOrientation)orientation
+{
+    return [UIApplication sharedApplication].statusBarOrientation;
+}
+
++ (BOOL)portrait
+{
+    return UIInterfaceOrientationIsPortrait([SCApp orientation]);
+}
+
++ (BOOL)landscape
+{
+    return UIInterfaceOrientationIsLandscape([SCApp orientation]);
+}
+
++ (CGSize)size
+{
+    CGSize size = [[UIScreen mainScreen] bounds].size;
+    if (!SCiOS8OrLater() && [SCApp landscape]) {
+        size = CGSizeMake(size.height, size.width);
+    }
+    return size;
+}
+
++ (CGFloat)width
+{
+    return [SCApp size].width;
+}
+
++ (CGFloat)height
+{
+    return [SCApp size].height;
 }
 
 + (void)lock

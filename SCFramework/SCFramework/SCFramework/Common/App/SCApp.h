@@ -22,6 +22,15 @@ static inline void SCApplicationUnLock(void) {
 + (NSString *)bundleID;
 + (NSString *)version;
 
++ (UIInterfaceOrientation)orientation;
+
++ (BOOL)portrait;
++ (BOOL)landscape;
+
++ (CGSize)size;
++ (CGFloat)width;
++ (CGFloat)height;
+
 + (void)lock;
 + (void)unlock;
 
