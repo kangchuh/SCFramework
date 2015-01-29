@@ -14,17 +14,12 @@
 
 @implementation SCViewController
 
-- (void)loadView
-{
-    [super loadView];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning

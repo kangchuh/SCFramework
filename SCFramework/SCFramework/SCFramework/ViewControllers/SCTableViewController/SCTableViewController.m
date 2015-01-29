@@ -51,9 +51,10 @@
 
 #pragma mark - View LifeCycle
 
-- (void)loadView
+- (void)viewDidLoad
 {
-    [super loadView];
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
     
     _tableView = [[SCTableView alloc] initWithFrame:self.view.bounds
                                               style:_style];
@@ -65,11 +66,6 @@
     _tableView.delegate = self;
     _tableView.pullDelegate = self;
     [self.view addSubview:_tableView];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning

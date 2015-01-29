@@ -18,19 +18,14 @@ UIGestureRecognizerDelegate
 
 @implementation SCNavigationController
 
-- (void)loadView
-{
-    [super loadView];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.interactivePopEnabled = YES;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.interactivePopEnabled = YES;
 }
 
 - (void)didReceiveMemoryWarning

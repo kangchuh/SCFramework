@@ -106,9 +106,10 @@ UIGestureRecognizerDelegate
     return self;
 }
 
-- (void)loadView
+- (void)viewDidLoad
 {
-    [super loadView];
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
     
     // Disable the default interactive pop gesture
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
@@ -121,12 +122,6 @@ UIGestureRecognizerDelegate
                                      @selector(handleTransitionGesture:)];
     _interactiveGestureRecognizer.delegate = self;
     [self.view addGestureRecognizer:_interactiveGestureRecognizer];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
