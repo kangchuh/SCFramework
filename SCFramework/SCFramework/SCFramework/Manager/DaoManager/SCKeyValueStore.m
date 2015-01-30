@@ -163,6 +163,24 @@ SCSINGLETON(SCKeyValueStore);
     return [items firstObject];
 }
 
+- (NSArray *)queryForKeyContainPrefix:(NSString *)keyPrefix fromTable:(NSString *)tableName
+{
+    if (![self.class checkTableName:tableName]) {
+        return nil;
+    }
+    
+    NSString * sql = [self constructSQLForQuery:tableName forKeyContainPrefix:keyPrefix];
+    
+    __block NSMutableArray * items = [NSMutableArray array];
+    __weak __typeof(&*self)weakSelf = self;
+    [_databaseQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet * rs = [db executeQuery:sql];
+        [items addObjectsFromArray:[weakSelf parseResultSet:rs]];
+        [rs close];
+    }];
+    return items;
+}
+
 - (NSArray *)queryFromTable:(NSString *)tableName
 {
     if (![self.class checkTableName:tableName]) {
@@ -370,6 +388,16 @@ SCSINGLETON(SCKeyValueStore);
                       @"SELECT * FROM %@ WHERE %@ = ? LIMIT 1",
                       tableName,
                       SCKeyValueStoreKeyID];
+    return sql;
+}
+
+- (NSString *)constructSQLForQuery:(NSString *)tableName forKeyContainPrefix:(NSString *)keyPrefix
+{
+    NSString * sql = [NSString stringWithFormat:
+                      @"SELECT * FROM %@ WHERE %@ LIKE %@",
+                      tableName,
+                      SCKeyValueStoreKeyID,
+                      [self optimizeSQLArgumentPrefix:keyPrefix]];
     return sql;
 }
 

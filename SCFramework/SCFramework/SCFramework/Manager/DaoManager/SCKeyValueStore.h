@@ -38,6 +38,7 @@
 - (BOOL)dropTable:(NSString *)tableName;
 
 - (SCKeyValueItem *)queryItemForKey:(NSString *)key fromTable:(NSString *)tableName;
+- (NSArray *)queryForKeyContainPrefix:(NSString *)keyPrefix fromTable:(NSString *)tableName;
 - (NSArray *)queryFromTable:(NSString *)tableName;
 
 - (BOOL)putObject:(id)object forKey:(NSString *)key intoTable:(NSString *)tableName;
