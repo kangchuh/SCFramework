@@ -10,6 +10,9 @@
 
 const static CGFloat SCActionViewAnimationDuration = 0.25;
 
+const static CGFloat SCActionViewAnimationShowAlpha = 1.0;
+const static CGFloat SCActionViewAnimationDismissAlpha = 0.0;
+
 const static CGFloat SCActionViewMaskShowAlpha = 0.5;
 const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
 
@@ -96,12 +99,15 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
 
 - (void)showInView:(UIView *)view beginForAction:(SCViewActionAnimations)actionAnimations
 {
+    UIWindow *window = view.window;
     if (actionAnimations == SCViewActionAnimationActionSheet) {
-        UIWindow *window = view.window;
         self.top = window.height;
-        [window addSubview:self.mask];
-        [window addSubview:self];
+    } else if (actionAnimations == SCViewActionAnimationAlert) {
+        self.center = window.middle;
+        self.alpha = SCActionViewAnimationDismissAlpha;
     }
+    [window addSubview:self.mask];
+    [window addSubview:self];
 }
 
 - (void(^)(void))showInView:(UIView *)view animationsForAction:(SCViewActionAnimations)actionAnimations
@@ -113,6 +119,11 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
             UIWindow *window = view.window;
             weakSelf.mask.alpha = SCActionViewMaskShowAlpha;
             weakSelf.top = window.height - weakSelf.height;
+        };
+    } else if (actionAnimations == SCViewActionAnimationAlert) {
+        animations = ^(void) {
+            weakSelf.mask.alpha = SCActionViewMaskShowAlpha;
+            weakSelf.alpha = SCActionViewAnimationShowAlpha;
         };
     }
     return animations;
@@ -128,6 +139,11 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
             weakSelf.mask.alpha = SCActionViewMaskDismissAlpha;
             weakSelf.top = window.height;
         };
+    } else if (actionAnimations == SCViewActionAnimationAlert) {
+        animations = ^(void) {
+            weakSelf.mask.alpha = SCActionViewMaskDismissAlpha;
+            weakSelf.alpha = SCActionViewAnimationDismissAlpha;
+        };
     }
     return animations;
 }
@@ -140,6 +156,10 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
         completion = ^(BOOL finished) {
             weakSelf.visible = YES;
         };
+    } else if (actionAnimations == SCViewActionAnimationAlert) {
+        completion = ^(BOOL finished) {
+            weakSelf.visible = YES;
+        };
     }
     return completion;
 }
@@ -149,6 +169,12 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
     __weak __typeof(&*self)weakSelf = self;
     void(^completion)(BOOL finished) = NULL;
     if (actionAnimations == SCViewActionAnimationActionSheet) {
+        completion = ^(BOOL finished) {
+            [weakSelf.mask removeFromSuperview];
+            [weakSelf removeFromSuperview];
+            weakSelf.visible = NO;
+        };
+    } else if (actionAnimations == SCViewActionAnimationAlert) {
         completion = ^(BOOL finished) {
             [weakSelf.mask removeFromSuperview];
             [weakSelf removeFromSuperview];

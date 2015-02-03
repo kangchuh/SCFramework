@@ -30,7 +30,7 @@ BOOL SCiOS7OrLater(void)
         iOS7OrLater = NO;
 #endif
     });
-    DLog(@"%@%@", @"iOS 7 Or Later : ", iOS7OrLater ? @"YES" : @"NO");
+    //DLog(@"%@%@", @"iOS 7 Or Later : ", iOS7OrLater ? @"YES" : @"NO");
     return iOS7OrLater;
 }
 
@@ -54,7 +54,7 @@ extern BOOL SCiOS8OrLater(void)
         iOS8OrLater = NO;
 #endif
     });
-    DLog(@"%@%@", @"iOS 8 Or Later : ", iOS8OrLater ? @"YES" : @"NO");
+    //DLog(@"%@%@", @"iOS 8 Or Later : ", iOS8OrLater ? @"YES" : @"NO");
     return iOS8OrLater;
 }
 

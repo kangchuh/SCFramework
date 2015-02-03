@@ -10,6 +10,7 @@
 
 typedef NS_ENUM(NSUInteger, SCViewActionAnimations) {
     SCViewActionAnimationActionSheet,
+    SCViewActionAnimationAlert,
 };
 
 @interface SCActionView : SCView
