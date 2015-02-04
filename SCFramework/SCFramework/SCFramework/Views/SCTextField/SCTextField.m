@@ -40,4 +40,15 @@
     self.leftView = leftView;
 }
 
+- (void)setLeftText:(NSString *)leftText forFont:(UIFont *)font
+{
+    _leftText = [leftText copy];
+    
+    UILabel *leftView = [[UILabel alloc] init];
+    leftView.text = leftText;
+    leftView.font = font;
+    [leftView sizeToFit];
+    self.leftView = leftView;
+}
+
 @end

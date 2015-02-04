@@ -9,6 +9,11 @@
 #ifndef SCFramework_SCLog_h
 #define SCFramework_SCLog_h
 
+//*
+
+//
+// Plugin : XcodeColors
+//
 #define XCODE_COLORS_ESCAPE     @"\033["
 
 #define XCODE_COLORS_RESET_FG   XCODE_COLORS_ESCAPE @"fg;" // Clear any foreground color
@@ -46,5 +51,45 @@
                                     XCODE_COLORS_ESCAPE DEBUG_LOG_COLOR_CONTENT frmt XCODE_COLORS_RESET), \
                                     DEBUG_LOG_FILENAME, __LINE__, __FUNCTION__, ##__VA_ARGS__); }
 #endif
+
+/*/
+
+//
+// Plugin : MCLog
+//
+#define __DLOG_FILE__ [[NSString stringWithUTF8String:__FILE__] lastPathComponent]
+
+#define __DLog(LEVEL, fmt, ...) NSLog((@"-\e[7m" LEVEL @" [\e[27;2;3;4m < %@:[Line %d] %s > \e[22;23;24m] " fmt), \
+                                        __DLOG_FILE__, __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+
+// Only display output when the DEBUG setting
+#ifdef DEBUG
+#define DLogV(fmt, ...) __DLog(@"[VERBOSE]", fmt, ##__VA_ARGS__)
+#define DLogI(fmt, ...) __DLog(@"[INFO]", fmt, ##__VA_ARGS__)
+#define DLogW(fmt, ...) __DLog(@"[WARN]", fmt, ##__VA_ARGS__)
+#define DLogE(fmt, ...) __DLog(@"[ERROR]", fmt, ##__VA_ARGS__)
+
+#define DLog(fmt, ...)      { DLogI(fmt, ##__VA_ARGS__); }
+#define DRedLog(fmt, ...)   { DLogE(fmt, ##__VA_ARGS__); }
+#define DBlueLog(fmt, ...)  { DLogV(fmt, ##__VA_ARGS__); }
+#define ELog(err)           { if (err) DRedLog(@"%@", err); }
+#else
+#define DLogV(fmt, ...)
+#define DLogI(fmt, ...)
+#define DLogW(fmt, ...)
+#define DLogE(fmt, ...)
+
+#define DLog(fmt, ...)
+#define DRedLog(fmt, ...)
+#define DBlueLog(fmt, ...)
+#define ELog(err)
+#endif
+
+// ALog always displays output regardless of the DEBUG setting
+#ifndef ALog
+#define ALog(fmt, ...) __DLog(@"[ALWAY]", fmt, ##__VA_ARGS__)
+#endif
+
+//*/
 
 #endif

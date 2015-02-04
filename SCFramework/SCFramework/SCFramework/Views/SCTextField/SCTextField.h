@@ -13,4 +13,6 @@
 @property (nonatomic, strong) UIImage  *leftImage;
 @property (nonatomic, copy  ) NSString *leftText;
 
+- (void)setLeftText:(NSString *)leftText forFont:(UIFont *)font;
+
 @end
