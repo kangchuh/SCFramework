@@ -301,6 +301,8 @@ SCSINGLETON(SCDaoManager);
         primaryKey = [modelCls primaryKey];
     }
     if ([primaryKey isNotEmpty]) {
+        /*
+        // 单主键结构
         for (NSString *key in [properties keyEnumerator]) {
             id value = [properties objectForKey:key];
             if ([key isEqualToString:primaryKey]) {
@@ -313,6 +315,17 @@ SCSINGLETON(SCDaoManager);
                                           key, SCSQLTypeFromObjcType(value)]];
             }
         }
+        /*/
+        // 多主键结构
+        for (NSString *key in [properties keyEnumerator]) {
+            id value = [properties objectForKey:key];
+            [propertyPairs addObject:[NSString stringWithFormat:@"'%@' %@",
+                                      key, SCSQLTypeFromObjcType(value)]];
+        }
+        [propertyPairs addObject:[NSString stringWithFormat:@"%@ (%@)",
+                                  SCSQLAttributePrimaryKey,
+                                  primaryKey]];
+        //*/
     } else {
         [propertyPairs addObject:[NSString stringWithFormat:@"'id' %@ %@ %@",
                                   SCSQLTypeInt,

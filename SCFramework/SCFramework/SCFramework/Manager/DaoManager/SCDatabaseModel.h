@@ -11,9 +11,17 @@
 @protocol SCDatabaseModel <NSObject>
 
 @required
+/**
+ *  @brief  数据库表名称
+ */
 + (NSString *)tableName;
 
 @optional
+/**
+ *  @brief  数据库表主键
+ *
+ *  @discussion 支持单主键和多主键, 多主键用逗号隔开
+ */
 + (NSString *)primaryKey;
 
 @end
