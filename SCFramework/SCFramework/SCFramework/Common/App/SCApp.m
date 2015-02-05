@@ -7,6 +7,7 @@
 //
 
 #import "SCApp.h"
+#import "SCMath.h"
 #import "SCAdaptedSystem.h"
 #import "SCUserDefaultManager.h"
 
@@ -56,10 +57,7 @@ static NSString * const SCAppFirstLaunchKey  = @"SCAppFirstLaunchKey";
 + (CGSize)size
 {
     CGSize size = [[UIScreen mainScreen] bounds].size;
-    if (!SCiOS8OrLater() && [SCApp landscape]) {
-        size = CGSizeMake(size.height, size.width);
-    }
-    return size;
+    return SCiOS8OrLater() || [SCApp portrait] ? size : SCSizeSWAP(size);
 }
 
 + (CGFloat)width

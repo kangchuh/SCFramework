@@ -87,6 +87,13 @@ static inline CGFloat SCRectFloor(CGFloat number) {
 }
 
 /**
+ *  交换高度与宽度
+ */
+static inline CGSize SCSizeSWAP(CGSize size) {
+    return CGSizeMake(size.height, size.width);
+}
+
+/**
  *  根据字体像素(px)大小获取字体磅(pt)大小
  */
 //static inline CGFloat SCFontSizeFromPx(CGFloat px) {
