@@ -62,7 +62,18 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
 
 - (void)cancel
 {
+    if (_willTapCancelHandler) {
+        BOOL canCancel = _willTapCancelHandler();
+        if (!canCancel) {
+            return;
+        }
+    }
+    
     [self dismiss];
+    
+    if (_didTapCancelHandler) {
+        _didTapCancelHandler();
+    }
 }
 
 #pragma mark - Public Method

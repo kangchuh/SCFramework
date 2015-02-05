@@ -8,6 +8,9 @@
 
 #import "SCView.h"
 
+typedef BOOL(^SCActionViewWillTapCancelHandler)(void);
+typedef void(^SCActionViewDidTapCancelHandler)(void);
+
 typedef NS_ENUM(NSUInteger, SCViewActionAnimations) {
     SCViewActionAnimationActionSheet,
     SCViewActionAnimationAlert,
@@ -21,6 +24,9 @@ typedef NS_ENUM(NSUInteger, SCViewActionAnimations) {
 @property (nonatomic, assign) SCViewActionAnimations actionAnimations;
 
 @property (nonatomic, readonly, getter=isVisible) BOOL visible;
+
+@property (nonatomic, copy) SCActionViewWillTapCancelHandler willTapCancelHandler;
+@property (nonatomic, copy) SCActionViewDidTapCancelHandler  didTapCancelHandler;
 
 - (void)showInView:(UIView *)view;
 - (void)dismiss;

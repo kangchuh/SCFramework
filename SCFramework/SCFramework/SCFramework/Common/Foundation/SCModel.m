@@ -8,6 +8,8 @@
 
 #import "SCModel.h"
 #import "NSObject+SCAddition.h"
+#import "NSDictionary+SCAddition.h"
+#import "NSString+SCAddition.h"
 
 #import <objc/runtime.h>
 
@@ -81,6 +83,21 @@ static NSString * const SCNSObjectAutocodingException = @"SCNSObjectAutocodingEx
 
 #pragma mark - Public Method
 
+- (instancetype)initWithPropertyDictionary:(NSDictionary *)dictionary
+{
+    self = [super init];
+    if (self) {
+        // Initialization code
+        for (__unsafe_unretained NSString *key in [self codableProperties]) {
+            id value = dictionary[key];
+            if ( value ) {
+                [self setValue:value forKey:key];
+            }
+        }
+    }
+    return self;
+}
+
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
@@ -88,9 +105,11 @@ static NSString * const SCNSObjectAutocodingException = @"SCNSObjectAutocodingEx
         id value = [self valueForKey:key];
         if ( value ) {
             dictionary[key] = value;
+        } else {
+            dictionary[key] = [NSNull null];
         }
     }
-    return dictionary;
+    return [NSDictionary dictionaryWithDictionary:dictionary];
 }
 
 + (instancetype)objectWithContentsOfFile:(NSString *)filePath
@@ -132,6 +151,35 @@ static NSString * const SCNSObjectAutocodingException = @"SCNSObjectAutocodingEx
     //archive object
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
     return [data writeToFile:filePath atomically:useAuxiliaryFile];
+}
+
+- (NSDictionary *)JSONDictionary
+{
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    for (__unsafe_unretained NSString *key in [self codableProperties]) {
+        NSString *JSONKey = [self JSONKeyForPropertyKey:key];
+        id value = [self valueForKey:key];
+        if ( value ) {
+            dictionary[JSONKey] = value;
+        } else {
+            dictionary[JSONKey] = [NSNull null];
+        }
+    }
+    return [NSDictionary dictionaryWithDictionary:dictionary];
+}
+
+- (NSString *)JSONKeyForPropertyKey:(NSString *)propertyKey
+{
+    NSParameterAssert(propertyKey != nil);
+    
+    if (![self.class respondsToSelector:@selector(JSONKeysByPropertyKey)]) {
+        return propertyKey;
+    }
+    
+    NSDictionary *JSONKeys = [self.class JSONKeysByPropertyKey];
+    NSString *JSONKey = [JSONKeys stringForKey:propertyKey];
+    
+    return [JSONKey isNotEmpty] ? JSONKey : propertyKey;
 }
 
 @end
