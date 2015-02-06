@@ -12,7 +12,7 @@
 
 - (NSTimeInterval)timestamp
 {
-    return [self timeIntervalSince1970] * 1000.0;
+    return [self timeIntervalSince1970];
 }
 
 - (NSInteger)year
