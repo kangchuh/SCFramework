@@ -213,6 +213,12 @@
     return self.orientationSize.height;
 }
 
+- (CGPoint)orientationMiddle
+{
+    return CGPointMake(self.orientationSize.width / 2.0,
+                       self.orientationSize.height / 2.0);
+}
+
 - (void)setWidth:(CGFloat)width rightAlignment:(BOOL)rightAlignment
 {
     if (rightAlignment) {

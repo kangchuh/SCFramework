@@ -8,6 +8,8 @@
 
 #import "SCActionView.h"
 
+#import "UIView+SCAddition.h"
+
 const static CGFloat SCActionViewAnimationDuration = 0.25;
 
 const static CGFloat SCActionViewAnimationShowAlpha = 1.0;
@@ -48,9 +50,11 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
 - (UIControl *)mask
 {
     if (!_mask) {
-        _mask = [[UIControl alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _mask = [[UIControl alloc] initWithFrame:CGRectZero];
         _mask.backgroundColor = [UIColor blackColor];
         _mask.alpha = SCActionViewMaskDismissAlpha;
+        _mask.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+                                  UIViewAutoresizingFlexibleHeight);
         [_mask addTarget:self
                   action:@selector(cancel)
         forControlEvents:UIControlEventTouchUpInside];
@@ -110,15 +114,24 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
 
 - (void)showInView:(UIView *)view beginForAction:(SCViewActionAnimations)actionAnimations
 {
-    UIWindow *window = view.window;
+    UIView *containerView = [self viewForShowIn:view];
+    self.mask.size = containerView.orientationSize;
+    self.mask.center = containerView.orientationMiddle;
     if (actionAnimations == SCViewActionAnimationActionSheet) {
-        self.top = window.height;
+        self.top = containerView.orientationHeight;
+        self.width = containerView.orientationWidth;
+        self.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin |
+                                 UIViewAutoresizingFlexibleWidth);
     } else if (actionAnimations == SCViewActionAnimationAlert) {
-        self.center = window.middle;
+        self.center = containerView.orientationMiddle;
         self.alpha = SCActionViewAnimationDismissAlpha;
+        self.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin |
+                                 UIViewAutoresizingFlexibleTopMargin |
+                                 UIViewAutoresizingFlexibleRightMargin |
+                                 UIViewAutoresizingFlexibleBottomMargin);
     }
-    [window addSubview:self.mask];
-    [window addSubview:self];
+    [containerView addSubview:self.mask];
+    [containerView addSubview:self];
 }
 
 - (void(^)(void))showInView:(UIView *)view animationsForAction:(SCViewActionAnimations)actionAnimations
@@ -127,9 +140,9 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
     void(^animations)(void) = NULL;
     if (actionAnimations == SCViewActionAnimationActionSheet) {
         animations = ^(void) {
-            UIWindow *window = view.window;
+            UIView *containerView = [self viewForShowIn:view];
             weakSelf.mask.alpha = SCActionViewMaskShowAlpha;
-            weakSelf.top = window.height - weakSelf.height;
+            weakSelf.top = containerView.orientationHeight - weakSelf.height;
         };
     } else if (actionAnimations == SCViewActionAnimationAlert) {
         animations = ^(void) {
@@ -146,9 +159,9 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
     void(^animations)(void) = NULL;
     if (actionAnimations == SCViewActionAnimationActionSheet) {
         animations = ^(void) {
-            UIWindow *window = weakSelf.window;
+            UIView *containerView = self.superview;
             weakSelf.mask.alpha = SCActionViewMaskDismissAlpha;
-            weakSelf.top = window.height;
+            weakSelf.top = containerView.orientationHeight;
         };
     } else if (actionAnimations == SCViewActionAnimationAlert) {
         animations = ^(void) {
@@ -193,6 +206,15 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
         };
     }
     return completion;
+}
+
+#pragma mark - Rotate Orientation
+
+- (UIView *)viewForShowIn:(UIView *)view
+{
+    UIWindow *window = view.window;
+    UIView *windowView = [window.subviews firstObject];
+    return windowView ?: view;
 }
 
 @end
