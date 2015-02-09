@@ -7,6 +7,9 @@
 //
 
 #import "UIView+SCAddition.h"
+#import "SCAdaptedSystem.h"
+#import "SCMath.h"
+#import "SCApp.h"
 
 @implementation UIView (SCAddition)
 
@@ -192,6 +195,22 @@
 {
     return CGPointMake(CGRectGetWidth(self.frame) / 2.0,
                        CGRectGetHeight(self.frame) / 2.0);
+}
+
+- (CGSize)orientationSize
+{
+    BOOL swap = !SCiOS8OrLater() && [SCApp landscape];
+    return swap ? SCSizeSWAP(self.size) : self.size;
+}
+
+- (CGFloat)orientationWidth
+{
+    return self.orientationSize.width;
+}
+
+- (CGFloat)orientationHeight
+{
+    return self.orientationSize.height;
 }
 
 - (void)setWidth:(CGFloat)width rightAlignment:(BOOL)rightAlignment

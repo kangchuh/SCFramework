@@ -8,6 +8,9 @@
 
 #import "UIScreen+SCAddition.h"
 #import "UIDevice+SCAddition.h"
+#import "SCAdaptedSystem.h"
+#import "SCMath.h"
+#import "SCApp.h"
 
 @implementation UIScreen (SCAddition)
 
@@ -24,6 +27,22 @@
 + (CGFloat)height
 {
     return [[UIScreen mainScreen] bounds].size.height;
+}
+
++ (CGSize)orientationSize
+{
+    BOOL swap = !SCiOS8OrLater() && [SCApp landscape];
+    return swap ? SCSizeSWAP([UIScreen size]) : [UIScreen size];
+}
+
++ (CGFloat)orientationWidth
+{
+    return [UIScreen orientationSize].width;
+}
+
++ (CGFloat)orientationHeight
+{
+    return [UIScreen orientationSize].height;
 }
 
 + (BOOL)isFivePointFiveInch

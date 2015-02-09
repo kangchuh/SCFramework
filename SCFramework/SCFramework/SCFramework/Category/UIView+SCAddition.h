@@ -60,6 +60,10 @@ typedef NS_ENUM(NSUInteger, SCUIViewAnchorPosition){
 
 @property (nonatomic, readonly) CGPoint middle;
 
+@property (nonatomic, readonly) CGSize orientationSize;
+@property (nonatomic, readonly) CGFloat orientationWidth;
+@property (nonatomic, readonly) CGFloat orientationHeight;
+
 - (void)setWidth:(CGFloat)width rightAlignment:(BOOL)rightAlignment;
 - (void)setHeight:(CGFloat)height bottomAlignment:(BOOL)bottomAlignment;
 
