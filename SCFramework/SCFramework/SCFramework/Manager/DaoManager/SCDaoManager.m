@@ -368,7 +368,7 @@ SCSINGLETON(SCDaoManager);
     }
     *insertValues = [NSArray arrayWithArray:values];
     
-	NSString *sql = [NSString stringWithFormat:@"INSERT INTO '%@' (%@) VALUES (%@)",
+	NSString *sql = [NSString stringWithFormat:@"REPLACE INTO '%@' (%@) VALUES (%@)",
                      [[model class] tableName], [keys componentsJoinedByString:@", "],
                      [placeholders componentsJoinedByString:@", "]];
 	return sql;
