@@ -232,7 +232,7 @@ UIGestureRecognizerDelegate
         transform = CGAffineTransformMakeScale(scale, scale);
     } else {
         CGFloat startLeft = kSCLastScreenshotViewStartLeft;
-        CGFloat left = startLeft + (x / (maxX / abs(startLeft)));
+        CGFloat left = startLeft + (x / (maxX / fabs(startLeft)));
         transform.tx = left;
     }
     CGFloat startAlpha = kSCScreenshotMaskStartAlpha;
