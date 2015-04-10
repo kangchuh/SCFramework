@@ -14,7 +14,7 @@
 #import <objc/runtime.h>
 
 /// 循环滚动时间间隔
-static const CGFloat SCBrowseViewCyclePageDuration = 3.0;
+static const CGFloat SCBrowseViewCyclePageDuration = 5.0;
 
 typedef void(^SCBrowseViewPageWillSelectAction)(SCBrowseViewPage *page);
 typedef void(^SCBrowseViewPageDidSelectAction)(SCBrowseViewPage *page);
