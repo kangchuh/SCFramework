@@ -102,6 +102,13 @@ static NSString * const SCAppFirstLaunchKey  = @"SCAppFirstLaunchKey";
     [[UIApplication sharedApplication] openURL:downloadURL];
 }
 
++ (void)call:(NSString *)tel
+{
+    NSString *callString = [NSString stringWithFormat:@"telprompt://%@", tel];
+    NSURL *callURL = [NSURL URLWithString:callString];
+    [[UIApplication sharedApplication] openURL:callURL];
+}
+
 + (void)configFirstLaunch
 {
     NSString *everLaunchKey = [NSString stringWithFormat:@"%@_%@",

@@ -39,6 +39,8 @@ static inline void SCApplicationUnLock(void) {
 + (NSString *)appStoreURL:(NSString *)appID;
 + (void)launchAppStore:(NSString *)appID;
 
++ (void)call:(NSString *)tel;
+
 + (void)configFirstLaunch;
 + (BOOL)firstLaunch;
 
