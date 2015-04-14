@@ -26,7 +26,7 @@ static NSString * const SCAppFirstLaunchKey  = @"SCAppFirstLaunchKey";
 
 + (NSString *)name
 {
-    return [[NSBundle mainBundle] infoDictionary][(NSString*)kCFBundleExecutableKey];;
+    return [[NSBundle mainBundle] infoDictionary][(NSString*)kCFBundleExecutableKey];
 }
 
 + (NSString *)bundleID
@@ -37,6 +37,16 @@ static NSString * const SCAppFirstLaunchKey  = @"SCAppFirstLaunchKey";
 + (NSString *)version
 {
     return [[NSBundle mainBundle] infoDictionary][(NSString*)kCFBundleVersionKey];
+}
+
++ (NSString *)displayName
+{
+    return [[NSBundle mainBundle] infoDictionary][@"CFBundleDisplayName"];
+}
+
++ (NSString *)shortVersion
+{
+    return [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
 }
 
 + (UIInterfaceOrientation)orientation

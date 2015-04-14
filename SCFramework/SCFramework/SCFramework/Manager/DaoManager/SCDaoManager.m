@@ -138,7 +138,7 @@ SCSINGLETON(SCDaoManager);
     if ( [self.db open] ) {
         NSArray *insertValues = nil;
         NSString *sql = [self constructSQLForInsertWithModel:model insertValues:&insertValues];
-        BOOL ret = [self.db executeUpdate:sql withArgumentsInArray:insertValues];;
+        BOOL ret = [self.db executeUpdate:sql withArgumentsInArray:insertValues];
         if ( ret ) {
             flag = YES;
         }

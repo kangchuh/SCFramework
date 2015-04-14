@@ -145,7 +145,7 @@
 {
     CGRect frame = self.frame;
     frame.origin = CGPointMake(topLeft.x,
-                               topLeft.y);;
+                               topLeft.y);
     self.frame = frame;
 }
 

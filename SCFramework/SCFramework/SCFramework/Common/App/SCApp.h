@@ -21,6 +21,8 @@ static inline void SCApplicationUnLock(void) {
 + (NSString *)name;
 + (NSString *)bundleID;
 + (NSString *)version;
++ (NSString *)displayName;
++ (NSString *)shortVersion;
 
 + (UIInterfaceOrientation)orientation;
 
