@@ -29,9 +29,7 @@
     
     if ( _touchDelegate && [_touchDelegate respondsToSelector:
                             @selector(scrollView:touchEnded:withEvent:)] ) {
-        [_touchDelegate scrollView:self
-                        touchEnded:touches
-                         withEvent:event];
+        [_touchDelegate scrollView:self touchEnded:touches withEvent:event];
     }
 }
 
@@ -46,10 +44,7 @@
     
     if ( _touchDelegate && [_touchDelegate respondsToSelector:
                             @selector(scrollView:touchShouldBegin:withEvent:inContentView:)] ) {
-        [_touchDelegate scrollView:self
-                  touchShouldBegin:touches
-                         withEvent:event
-                     inContentView:view];
+        return [_touchDelegate scrollView:self touchShouldBegin:touches withEvent:event inContentView:view];
     }
     // 返回 YES, 立即发送 tracking events 到子视图, 响应子视图Touch事件;
     // NO 不发送(YES 不滚动, NO 滚动).
@@ -58,6 +53,10 @@
 
 - (BOOL)touchesShouldCancelInContentView:(UIView *)view
 {
+    if ( _touchDelegate && [_touchDelegate respondsToSelector:
+                            @selector(scrollView:touchShouldBegin:withEvent:inContentView:)] ) {
+        return [_touchDelegate scrollView:self touchesShouldCancelInContentView:view];
+    }
     // 返回 YES, 当触摸在子视图上时 ScrollView 可以滚动;
     // NO 当触摸在子视图上时 ScrollView 不可以滚动.
     return YES;
