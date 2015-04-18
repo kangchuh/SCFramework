@@ -50,12 +50,8 @@ typedef NS_ENUM(NSUInteger, SCScrollViewPageDirection) {
 @protocol SCScrollViewTouchDelegate <NSObject>
 
 @optional
-- (void)scrollView:(SCScrollView *)scrollView
-        touchEnded:(NSSet *)touches
-         withEvent:(UIEvent *)event;
-- (void)scrollView:(SCScrollView *)scrollView
-  touchShouldBegin:(NSSet *)touches
-         withEvent:(UIEvent *)event
-     inContentView:(id)view;
+- (void)scrollView:(SCScrollView *)scrollView touchEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+- (BOOL)scrollView:(SCScrollView *)scrollView touchShouldBegin:(NSSet *)touches withEvent:(UIEvent *)event inContentView:(id)view;
+- (BOOL)scrollView:(SCScrollView *)scrollView touchesShouldCancelInContentView:(UIView *)view;
 
 @end
