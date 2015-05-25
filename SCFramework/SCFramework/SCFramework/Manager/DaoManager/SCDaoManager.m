@@ -12,7 +12,7 @@
 #import "SCDatabase.h"
 #import "SCDatabaseModel.h"
 
-#import <FMDB.h>
+#import "FMDB.h"
 
 @interface SCDaoManager ()
 

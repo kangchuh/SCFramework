@@ -9,7 +9,7 @@
 #import "SCKeyValueStore.h"
 #import "SCSingleton.h"
 
-#import <FMDB.h>
+#import "FMDB.h"
 
 static NSString * const SCKeyValueStoreKeyID          = @"ID";
 static NSString * const SCKeyValueStoreKeyJSON        = @"JSON";
