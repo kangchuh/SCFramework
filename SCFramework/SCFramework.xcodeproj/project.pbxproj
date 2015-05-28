@@ -37,6 +37,7 @@
 		B73CD4861990B39A00D21CD0 /* SCBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CD4851990B39A00D21CD0 /* SCBrowseView.m */; };
 		B73EDD7A1A5E67EF0024E33E /* SCKeyValueStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EDD791A5E67EF0024E33E /* SCKeyValueStore.m */; };
 		B7531D8718C734B100D701BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7531D8618C734B100D701BF /* libz.dylib */; };
+		B75C059A1B16C84C00B5C012 /* SCPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75C05991B16C84C00B5C012 /* SCPageViewController.m */; };
 		B75DAF85191B83230011E917 /* SCDemoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75DAF84191B83230011E917 /* SCDemoDetailViewController.m */; };
 		B7645723196BC902009302C2 /* SCImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7645722196BC902009302C2 /* SCImagePickerManager.m */; };
 		B7653F6319CC207300A2AAB5 /* SCActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7653F6219CC207300A2AAB5 /* SCActionView.m */; };
@@ -157,6 +158,8 @@
 		B73EDD791A5E67EF0024E33E /* SCKeyValueStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCKeyValueStore.m; sourceTree = "<group>"; };
 		B74181151A834EBB00AD2169 /* SCJSONSerializing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCJSONSerializing.h; sourceTree = "<group>"; };
 		B7531D8618C734B100D701BF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		B75C05981B16C84C00B5C012 /* SCPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPageViewController.h; sourceTree = "<group>"; };
+		B75C05991B16C84C00B5C012 /* SCPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPageViewController.m; sourceTree = "<group>"; };
 		B75DAF83191B83230011E917 /* SCDemoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDemoDetailViewController.h; sourceTree = "<group>"; };
 		B75DAF84191B83230011E917 /* SCDemoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDemoDetailViewController.m; sourceTree = "<group>"; };
 		B7645721196BC902009302C2 /* SCImagePickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImagePickerManager.h; sourceTree = "<group>"; };
@@ -442,6 +445,15 @@
 			path = SCAlertView;
 			sourceTree = "<group>";
 		};
+		B75C05971B16C83700B5C012 /* SCPageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B75C05981B16C84C00B5C012 /* SCPageViewController.h */,
+				B75C05991B16C84C00B5C012 /* SCPageViewController.m */,
+			);
+			path = SCPageViewController;
+			sourceTree = "<group>";
+		};
 		B7645720196BC902009302C2 /* ImagePickerManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +704,7 @@
 			isa = PBXGroup;
 			children = (
 				B7DED3891957D47D00A2D5C0 /* SCNavigationController */,
+				B75C05971B16C83700B5C012 /* SCPageViewController */,
 				B7DED3951957D47D00A2D5C0 /* SCTabBarController */,
 				B7DED3981957D47D00A2D5C0 /* SCTableViewController */,
 				B7DED39B1957D47D00A2D5C0 /* SCViewController */,
@@ -1062,6 +1075,7 @@
 				B7DED3D81957D47D00A2D5C0 /* SCNSJSONSerialization.m in Sources */,
 				B7DED3D91957D47D00A2D5C0 /* SCMath.m in Sources */,
 				B7DED3CD1957D47D00A2D5C0 /* NSObject+SCAddition.m in Sources */,
+				B75C059A1B16C84C00B5C012 /* SCPageViewController.m in Sources */,
 				B7271A711974BE9100FDFA72 /* SCVersionManager.m in Sources */,
 				B7DED3F21957D47D00A2D5C0 /* SCExpandTableView.m in Sources */,
 				B7DED3ED1957D47D00A2D5C0 /* SCDatePicker.m in Sources */,
