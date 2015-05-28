@@ -18,7 +18,6 @@
     [self setFireDate:[NSDate distantFuture]];
 }
 
-
 - (void)resume
 {
     if (![self isValid]) {
