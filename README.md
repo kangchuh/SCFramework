@@ -82,15 +82,15 @@ SCTextField<br/>
 SCTextView－添加了placeholder属性等<br/>
 SCToolbar<br/>
 
-SCScrollView
+SCScrollView<br/>
 - **SCBrowseView**－浏览视图，使用了重用机制，支持自动浏览<br/>
 - **SCCycleScrollView**－循环滚动视图，支持自动定时滚动<br/>
 
-SCTableView
+SCTableView<br/>
 - **SCPullRefreshView**－刷新视图<br/>
 - **SCPullLoadView**－加载视图<br/>
 
-SCView
+SCView<br/>
 - **SCActionView**－扩展视图，添加了部分动画
 
 Licenses
