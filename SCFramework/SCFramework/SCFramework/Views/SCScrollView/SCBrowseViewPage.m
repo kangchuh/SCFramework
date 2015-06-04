@@ -40,7 +40,7 @@
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super init];
+    self = [self initWithFrame:CGRectZero];
     if (self) {
         // Initialization code
         self.reuseIdentifier = reuseIdentifier;

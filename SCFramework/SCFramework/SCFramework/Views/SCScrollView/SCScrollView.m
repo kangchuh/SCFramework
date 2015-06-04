@@ -128,7 +128,7 @@
     return (self.currentPage == self.numberOfPages - 1);
 }
 
-- (void)scrollToPreviousPage
+- (void)scrollToPreviousPage:(BOOL)animated
 {
     if (self.pagingEnabled) {
         CGPoint contentOffset = self.contentOffset;
@@ -143,11 +143,11 @@
             }
             contentOffset.x -= self.width;
         }
-        self.contentOffset = contentOffset;
+        [self setContentOffset:contentOffset animated:animated];
     }
 }
 
-- (void)scrollToNextPage
+- (void)scrollToNextPage:(BOOL)animated
 {
     if (self.pagingEnabled) {
         CGPoint contentOffset = self.contentOffset;
@@ -162,8 +162,18 @@
             }
             contentOffset.x += self.width;
         }
-        self.contentOffset = contentOffset;
+        [self setContentOffset:contentOffset animated:animated];
     }
+}
+
+- (void)scrollToPreviousPage
+{
+    [self scrollToPreviousPage:NO];
+}
+
+- (void)scrollToNextPage
+{
+    [self scrollToNextPage:NO];
 }
 
 - (void)scrollToFirstPage

@@ -36,6 +36,7 @@
 		B73230E51A353EA4009C16D8 /* SCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B73230E41A353EA4009C16D8 /* SCActionSheet.m */; };
 		B73CD4861990B39A00D21CD0 /* SCBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CD4851990B39A00D21CD0 /* SCBrowseView.m */; };
 		B73EDD7A1A5E67EF0024E33E /* SCKeyValueStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EDD791A5E67EF0024E33E /* SCKeyValueStore.m */; };
+		B745E7951B1EDF6B00E06BE6 /* SCCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B745E7941B1EDF6B00E06BE6 /* SCCycleScrollView.m */; };
 		B7531D8718C734B100D701BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7531D8618C734B100D701BF /* libz.dylib */; };
 		B75C059A1B16C84C00B5C012 /* SCPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75C05991B16C84C00B5C012 /* SCPageViewController.m */; };
 		B75DAF85191B83230011E917 /* SCDemoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75DAF84191B83230011E917 /* SCDemoDetailViewController.m */; };
@@ -157,6 +158,8 @@
 		B73EDD781A5E67EF0024E33E /* SCKeyValueStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCKeyValueStore.h; sourceTree = "<group>"; };
 		B73EDD791A5E67EF0024E33E /* SCKeyValueStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCKeyValueStore.m; sourceTree = "<group>"; };
 		B74181151A834EBB00AD2169 /* SCJSONSerializing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCJSONSerializing.h; sourceTree = "<group>"; };
+		B745E7931B1EDF6B00E06BE6 /* SCCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCycleScrollView.h; sourceTree = "<group>"; };
+		B745E7941B1EDF6B00E06BE6 /* SCCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCycleScrollView.m; sourceTree = "<group>"; };
 		B7531D8618C734B100D701BF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B75C05981B16C84C00B5C012 /* SCPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPageViewController.h; sourceTree = "<group>"; };
 		B75C05991B16C84C00B5C012 /* SCPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPageViewController.m; sourceTree = "<group>"; };
@@ -823,6 +826,8 @@
 				B73CD4851990B39A00D21CD0 /* SCBrowseView.m */,
 				B7E640AD19A478520019D963 /* SCBrowseViewPage.h */,
 				B7E640AE19A478520019D963 /* SCBrowseViewPage.m */,
+				B745E7931B1EDF6B00E06BE6 /* SCCycleScrollView.h */,
+				B745E7941B1EDF6B00E06BE6 /* SCCycleScrollView.m */,
 			);
 			path = SCScrollView;
 			sourceTree = "<group>";
@@ -1070,6 +1075,7 @@
 				B7DED3EB1957D47D00A2D5C0 /* SCViewController.m in Sources */,
 				B7DED3FA1957D47D00A2D5C0 /* SCView.m in Sources */,
 				B7DED3E61957D47D00A2D5C0 /* SCDBNavigationController.m in Sources */,
+				B745E7951B1EDF6B00E06BE6 /* SCCycleScrollView.m in Sources */,
 				B7E640AC19A478340019D963 /* NSTimer+SCAddition.m in Sources */,
 				B73230E21A353E8C009C16D8 /* SCAlertView.m in Sources */,
 				B7DED3D81957D47D00A2D5C0 /* SCNSJSONSerialization.m in Sources */,

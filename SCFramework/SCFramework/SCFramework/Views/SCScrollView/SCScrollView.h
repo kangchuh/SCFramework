@@ -39,6 +39,8 @@ typedef NS_ENUM(NSUInteger, SCScrollViewPageDirection) {
 - (BOOL)isFirstPage;
 - (BOOL)isLastPage;
 
+- (void)scrollToPreviousPage:(BOOL)animated;
+- (void)scrollToNextPage:(BOOL)animated;
 - (void)scrollToPreviousPage;
 - (void)scrollToNextPage;
 - (void)scrollToFirstPage;
