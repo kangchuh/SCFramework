@@ -198,7 +198,7 @@ SCSINGLETON(SCVersionManager);
 
 - (void)__checkIfUpdateAvailable:(NSString *)currentVersion
 {
-    if ([[SCApp version] compare:currentVersion options:NSNumericSearch] == NSOrderedAscending) {
+    if ([[SCApp shortVersion] compare:currentVersion options:NSNumericSearch] == NSOrderedAscending) {
         [self __showUpdateAlertIfNotSkipped:currentVersion];
     }
 }
@@ -222,7 +222,7 @@ SCSINGLETON(SCVersionManager);
 
 - (void)__showUpdateAlertWithVersion:(NSString *)currentVersion
 {
-    NSString *appName = [_appName isNotEmpty] ? _appName : [SCApp name];
+    NSString *appName = [_appName isNotEmpty] ? _appName : [SCApp displayName];
     
     NSString *title = NSLocalizedStringFromTable(@"SCFW_LS_Update Available", @"SCFWLocalizable", nil);
     NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTable(@"SCFW_LS_A new version of %@ is available. Please update to version %@ now.", @"SCFWLocalizable", nil), appName, currentVersion];
