@@ -146,23 +146,38 @@ static NSString * const kSCLastUpdatedDateKey = @"SCLastUpdatedDateKey";
     }
     
     NSInteger days = [lastUpdatedDate daysSinceDate:[NSDate date]];
+    
+    NSString *datePrefix = nil;
     NSString *dateFormat = nil;
     if (days == 0) {
-        NSString *today = NSLocalizedStringFromTable(@"SCFW_LS_Last updated today", @"SCFWLocalizable", nil);
-        dateFormat = [NSString stringWithFormat:@"%@ %@", today, kSCUpdatedDateFormatterHHmm];
+        datePrefix = NSLocalizedStringFromTable(@"SCFW_LS_Last updated today",
+                                                @"SCFWLocalizable", nil);
+        datePrefix = [datePrefix stringByAppendingString:@" "];
+        dateFormat = kSCUpdatedDateFormatterHHmm;
     } else if (days == 1) {
-        NSString *yesterday = NSLocalizedStringFromTable(@"SCFW_LS_Last updated yesterday", @"SCFWLocalizable", nil);
-        dateFormat = [NSString stringWithFormat:@"%@ %@", yesterday, kSCUpdatedDateFormatterHHmm];
+        datePrefix = NSLocalizedStringFromTable(@"SCFW_LS_Last updated yesterday",
+                                                @"SCFWLocalizable", nil);
+        datePrefix = [datePrefix stringByAppendingString:@" "];
+        dateFormat = kSCUpdatedDateFormatterHHmm;
     } else if (days == 2) {
-        NSString *before = NSLocalizedStringFromTable(@"SCFW_LS_Last updated before yesterday", @"SCFWLocalizable", nil);
-        dateFormat = [NSString stringWithFormat:@"%@ %@", before, kSCUpdatedDateFormatterHHmm];
+        datePrefix = NSLocalizedStringFromTable(@"SCFW_LS_Last updated before yesterday",
+                                                @"SCFWLocalizable", nil);
+        datePrefix = [datePrefix stringByAppendingString:@" "];
+        dateFormat = kSCUpdatedDateFormatterHHmm;
     } else {
+        datePrefix = @"";
         dateFormat = kSCUpdatedDateFormatterMMddHHmm;
     }
-    NSString *dateString = [lastUpdatedDate stringWithFormat:dateFormat];
     
-    NSString *updated = NSLocalizedStringFromTable(@"SCFW_LS_Last updated time", @"SCFWLocalizable", nil);
-    _dateLabel.text = [NSString stringWithFormat:@"%@ : %@", updated, dateString];
+    SCDateManager *dateManager = [SCDateManager sharedInstance];
+    NSString *dateString = [dateManager stringByConvertFromDate:lastUpdatedDate
+                                                         format:dateFormat];
+    
+    NSString *updatedString = NSLocalizedStringFromTable(@"SCFW_LS_Last updated time",
+                                                         @"SCFWLocalizable", nil);
+    
+    _dateLabel.text = [NSString stringWithFormat:@"%@ : %@%@",
+                       updatedString, datePrefix, dateString];
     
     [[SCUserDefaultManager sharedInstance] setObject:lastUpdatedDate
                                               forKey:kSCLastUpdatedDateKey];
