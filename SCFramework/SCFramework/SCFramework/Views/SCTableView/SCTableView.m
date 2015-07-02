@@ -181,6 +181,7 @@
     if (_refreshing) {
         _refreshing = NO;
         _pullRefreshView.state = SCPullDownStateNormal;
+        _pullRefreshView.pullScale = 0.0;
         [UIView animateWithDuration:0.18f
                          animations:^{
                              UIEdgeInsets contentInset = self.contentInset;

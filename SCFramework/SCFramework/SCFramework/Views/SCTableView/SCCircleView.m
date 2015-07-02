@@ -152,21 +152,27 @@ static NSString * const kSCCircleViewRotationAnimationKey = @"kSCCircleViewRotat
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        _trackLayer = [CAShapeLayer new];
-        _trackLayer.fillColor = nil;
-        _trackLayer.lineJoin = kCALineJoinRound;
+        [self defaultInit];
+        
+        UIBezierPath *path = [self createBarPath];
+        
+        _trackLayer = [CAShapeLayer layer];
+        _trackLayer.fillColor = [UIColor clearColor].CGColor;
         _trackLayer.lineCap = kCALineCapRound;
-        _trackLayer.frame = self.bounds;
+        _trackLayer.strokeColor = _trackColor.CGColor;
+        _trackLayer.lineWidth = _progressWidth;
+        _trackLayer.path = path.CGPath;
+        _trackLayer.strokeEnd = 1.0;
         [self.layer addSublayer:_trackLayer];
         
-        _progressLayer = [CAShapeLayer new];
-        _progressLayer.fillColor = nil;
-        _progressLayer.lineJoin = kCALineJoinRound;
+        _progressLayer = [CAShapeLayer layer];
+        _progressLayer.fillColor = [UIColor clearColor].CGColor;
         _progressLayer.lineCap = kCALineCapRound;
-        _progressLayer.frame = self.bounds;
+        _progressLayer.strokeColor = _progressColor.CGColor;
+        _progressLayer.lineWidth = _progressWidth;
+        _progressLayer.path = path.CGPath;
+        _progressLayer.strokeEnd = 0.0;
         [self.layer addSublayer:_progressLayer];
-        
-        [self defaultInit];
     }
     return self;
 }
@@ -175,10 +181,12 @@ static NSString * const kSCCircleViewRotationAnimationKey = @"kSCCircleViewRotat
 {
     self.backgroundColor = [UIColor clearColor];
     // 默认颜色
-    self.trackColor = [UIColor colorWithWholeRed:240.0
-                                           green:240.0
-                                            blue:240.0];
-    self.progressColor = [UIColor orangeColor];
+    //self.trackColor = [UIColor colorWithWholeRed:240.0
+    //                                       green:240.0
+    //                                        blue:240.0];
+    //self.progressColor = [UIColor orangeColor];
+    self.trackColor = [UIColor colorWithHex:0xdedede];
+    self.progressColor = [UIColor colorWithHex:0xd21a1b];
     // 默认宽度
     self.progressWidth = 3.0;
 }
@@ -203,11 +211,8 @@ static NSString * const kSCCircleViewRotationAnimationKey = @"kSCCircleViewRotat
 {
     _progressWidth = progressWidth;
     
-    _trackLayer.lineWidth = _progressWidth;
-    _progressLayer.lineWidth = _progressWidth;
-    
-    [self setTrack];
-    [self setProgress];
+    _trackLayer.lineWidth = progressWidth;
+    _progressLayer.lineWidth = progressWidth;
 }
 
 #pragma mark - Public Method
@@ -220,29 +225,44 @@ static NSString * const kSCCircleViewRotationAnimationKey = @"kSCCircleViewRotat
     }
 }
 
+- (void)startRotating
+{
+    CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:
+                                           @"transform.rotation.z"];
+    rotationAnimation.toValue = @(M_PI * 2.0);
+    rotationAnimation.duration = 1.0;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = HUGE_VALF;
+    rotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:
+                                        kCAMediaTimingFunctionLinear];
+    [self.layer addAnimation:rotationAnimation forKey:kSCCircleViewRotationAnimationKey];
+}
+
+- (void)stopRotating
+{
+    [self.layer removeAnimationForKey:kSCCircleViewRotationAnimationKey];
+}
+
 #pragma mark - Private Method
 
-- (void)setTrack
+- (UIBezierPath *)createBarPath
 {
-    CGFloat radius = floor((CGRectGetWidth(self.bounds) - _progressWidth) / 2.0);
-    _trackPath = [UIBezierPath bezierPathWithArcCenter:self.middle
-                                                radius:radius
-                                            startAngle:0
-                                              endAngle:M_PI * 2
-                                             clockwise:YES];
-    _trackLayer.path = _trackPath.CGPath;
+    CGFloat width = CGRectGetWidth(self.bounds);
+    CGFloat height = CGRectGetHeight(self.bounds);
+    CGFloat radius = floor((fmin(width, height) - _progressWidth) / 2.0);
+    CGFloat startAngle = - M_PI_2;
+    CGFloat endAngle = startAngle + M_PI * 2;
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:self.middle
+                                                        radius:radius
+                                                    startAngle:startAngle
+                                                      endAngle:endAngle
+                                                     clockwise:YES];
+    return path;
 }
 
 - (void)setProgress
 {
-    CGFloat radius = floor((CGRectGetWidth(self.bounds) - _progressWidth) / 2.0);
-    CGFloat startAngle = - M_PI_2;
-    _progressPath = [UIBezierPath bezierPathWithArcCenter:self.middle
-                                                   radius:radius
-                                               startAngle:startAngle
-                                                 endAngle:startAngle + (M_PI * 2) * _progress
-                                                clockwise:YES];
-    _progressLayer.path = _progressPath.CGPath;
+    _progressLayer.strokeEnd = _progress;
 }
 
 @end
