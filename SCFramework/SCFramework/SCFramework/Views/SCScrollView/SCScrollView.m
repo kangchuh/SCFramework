@@ -136,12 +136,14 @@
             if (contentOffset.y <= 0) {
                 return;
             }
-            contentOffset.y -= self.height;
+            NSInteger previousPage = self.currentPage - 1;
+            contentOffset.y = self.height * previousPage;
         } else {
             if (contentOffset.x <= 0) {
                 return;
             }
-            contentOffset.x -= self.width;
+            NSInteger previousPage = self.currentPage - 1;
+            contentOffset.x = self.width * previousPage;;
         }
         [self setContentOffset:contentOffset animated:animated];
     }
@@ -155,12 +157,14 @@
             if (contentOffset.y >= self.contentSize.height - self.height) {
                 return;
             }
-            contentOffset.y += self.height;
+            NSInteger nextPage = self.currentPage + 1;
+            contentOffset.y = self.height * nextPage;
         } else {
             if (contentOffset.x >= self.contentSize.width - self.width) {
                 return;
             }
-            contentOffset.x += self.width;
+            NSInteger nextPage = self.currentPage + 1;
+            contentOffset.x = self.width * nextPage;
         }
         [self setContentOffset:contentOffset animated:animated];
     }

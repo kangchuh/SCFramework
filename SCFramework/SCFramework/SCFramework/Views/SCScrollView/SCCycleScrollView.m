@@ -18,8 +18,8 @@ static const CGFloat SCCycleScrollingDuration = 5.0;
 
 @interface SCCycleScrollView ()
 {
-	/// 当前将要显示的视图
-	NSMutableArray *_willDisplayViews;
+    /// 当前可(需要)加载的视图
+    NSMutableDictionary *_loadableViews;
 }
 
 /// 内容视图
@@ -113,10 +113,10 @@ static const CGFloat SCCycleScrollingDuration = 5.0;
 	}
 
 	self.scrollingTimer = [NSTimer scheduledTimerWithTimeInterval:_scrollingDuration
-	                       target:self
-	                       selector:@selector(goToNextPage)
-	                       userInfo:nil
-	                       repeats:YES];
+                                                           target:self
+                                                         selector:@selector(goToNextPage)
+                                                         userInfo:nil
+                                                          repeats:YES];
 }
 
 - (void)stopPageing
@@ -176,7 +176,7 @@ static const CGFloat SCCycleScrollingDuration = 5.0;
 	return [self __constructValidPageValue:currentPage + 1];
 }
 
-- (NSArray *)__constructWillDisplayViews:(NSInteger)currentPage
+- (NSDictionary *)__constructLoadableViews:(NSInteger)currentPage
 {
 	NSInteger totalPgaes = [self __GETNumberOfPages];
 	if (totalPgaes == 0) {
@@ -184,18 +184,29 @@ static const CGFloat SCCycleScrollingDuration = 5.0;
 	} else if (totalPgaes == 1) {
 		UIView *currentView = [self __GETPageViewAtIndex:currentPage];
 
-		NSArray *views = @[ currentView ];
+        NSDictionary *views = @{ @(currentPage): currentView };
 
 		return views;
 	} else {
 		NSInteger previousPage = [self __constructPreviousPage:currentPage];
 		NSInteger nextPage = [self __constructNextPage:currentPage];
 
-		UIView *previousView = [self __GETPageViewAtIndex:previousPage];
-		UIView *currentView = [self __GETPageViewAtIndex:currentPage];
-		UIView *nextView = [self __GETPageViewAtIndex:nextPage];
+		UIView *previousView = _loadableViews[@(previousPage)];
+        if (!previousView) {
+            previousView = [self __GETPageViewAtIndex:previousPage];
+        }
+		UIView *currentView = _loadableViews[@(currentPage)];
+        if (!currentView) {
+            currentView = [self __GETPageViewAtIndex:currentPage];
+        }
+		UIView *nextView = _loadableViews[@(nextPage)];
+        if (!nextView) {
+            nextView = [self __GETPageViewAtIndex:nextPage];
+        }
 
-		NSArray *views = @[ previousView, currentView, nextView ];
+        NSDictionary *views = @{ @(previousPage): previousView,
+                                 @(currentPage): currentView,
+                                 @(nextPage): nextView };
 
 		return views;
 	}
@@ -203,45 +214,72 @@ static const CGFloat SCCycleScrollingDuration = 5.0;
 
 - (void)__reloadData
 {
-	if (!_willDisplayViews) {
-		_willDisplayViews = [[NSMutableArray alloc] init];
+	if (!_loadableViews) {
+		_loadableViews = [[NSMutableDictionary alloc] init];
 	}
 
-	if ([_willDisplayViews isNotEmpty]) {
-		[_willDisplayViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-		[_willDisplayViews removeAllObjects];
-	}
+    NSDictionary *loadableViews = [self __constructLoadableViews:_currentPage];
+    if ([_loadableViews isNotEmpty]) {
+        for (UIView *view in _loadableViews.allValues) {
+            if ([view respondsToSelector:@selector(removeFromSuperview)]) {
+                [view removeFromSuperview];
+            }
+        }
+        [_loadableViews removeAllObjects];
+    }
+    [_loadableViews addEntriesFromDictionary:loadableViews];
 
-	NSArray *willDisplayViews = [self __constructWillDisplayViews:_currentPage];
-	if ([willDisplayViews isNotEmpty]) {
-		[_willDisplayViews addObjectsFromArray:willDisplayViews];
-
-		NSInteger itemsCount = _willDisplayViews.count;
-		for (int i = 0; i < itemsCount; i++) {
-			UIView *itemView = [_willDisplayViews objectAtIndex:i];
-			[self __configFrameToWillDisplayView:itemView forIndex:i];
-			[self __configEventToWillDisplayView:itemView];
-			[_scrollView addSubview:itemView];
-		}
-
-		_scrollView.contentSize = ({
-			CGFloat contentWidth = _scrollView.width;
-			CGFloat contentHeight = _scrollView.height;
-			CGSize contentSize = CGSizeMake(contentWidth * itemsCount, contentHeight);
-			contentSize;
-		});
-		_scrollView.contentOffset = ({
-			CGFloat contentWidth = _scrollView.width;
-			CGPoint contentOffset = CGPointMake(itemsCount > 1 ? contentWidth : 0.0, 0.0);
-			contentOffset;
-		});
-	} else {
-		_scrollView.contentSize = CGSizeZero;
-		_scrollView.contentOffset = CGPointZero;
-	}
+    NSInteger itemsCount = _loadableViews.count;
+    if (itemsCount == 0) {
+        _scrollView.contentSize = CGSizeZero;
+        _scrollView.contentOffset = CGPointZero;
+    } else if (itemsCount == 1) {
+        UIView *currentView = _loadableViews[@(_currentPage)];
+        [self __configFrameToLoadableView:currentView forIndex:0];
+        [self __configEventToLoadableView:currentView];
+        [_scrollView addSubview:currentView];
+        
+        _scrollView.contentSize = ({
+            CGFloat contentWidth = _scrollView.width;
+            CGFloat contentHeight = _scrollView.height;
+            CGSize contentSize = CGSizeMake(contentWidth, contentHeight);
+            contentSize;
+        });
+        _scrollView.contentOffset = CGPointZero;
+    } else {
+        NSInteger previousPage = [self __constructPreviousPage:_currentPage];
+        NSInteger nextPage = [self __constructNextPage:_currentPage];
+        
+        UIView *previousView = _loadableViews[@(previousPage)];
+        [self __configFrameToLoadableView:previousView forIndex:0];
+        [self __configEventToLoadableView:previousView];
+        [_scrollView addSubview:previousView];
+        
+        UIView *currentView = _loadableViews[@(_currentPage)];
+        [self __configFrameToLoadableView:currentView forIndex:1];
+        [self __configEventToLoadableView:currentView];
+        [_scrollView addSubview:currentView];
+        
+        UIView *nextView = _loadableViews[@(nextPage)];
+        [self __configFrameToLoadableView:nextView forIndex:2];
+        [self __configEventToLoadableView:nextView];
+        [_scrollView addSubview:nextView];
+        
+        _scrollView.contentSize = ({
+            CGFloat contentWidth = _scrollView.width;
+            CGFloat contentHeight = _scrollView.height;
+            CGSize contentSize = CGSizeMake(contentWidth * itemsCount, contentHeight);
+            contentSize;
+        });
+        _scrollView.contentOffset = ({
+            CGFloat contentWidth = _scrollView.width;
+            CGPoint contentOffset = CGPointMake(contentWidth, 0.0);
+            contentOffset;
+        });
+    }
 }
 
-- (void)__configFrameToWillDisplayView:(UIView *)view forIndex:(NSInteger)index
+- (void)__configFrameToLoadableView:(UIView *)view forIndex:(NSInteger)index
 {
 	view.frame = ({
 		CGFloat contentWidth = _scrollView.width;
@@ -252,7 +290,7 @@ static const CGFloat SCCycleScrollingDuration = 5.0;
 	});
 }
 
-- (void)__configEventToWillDisplayView:(UIView *)view
+- (void)__configEventToLoadableView:(UIView *)view
 {
 	UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
 	                                      initWithTarget:self
