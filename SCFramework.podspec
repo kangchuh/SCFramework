@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.source_files = 'SCFramework/SCFramework/SCFramework/*'
 
   s.subspec 'Constant' do |ss|
-    ss.source_files = 'Constant/*.{h,m}'
+    ss.source_files = 'SCFramework/SCFramework/SCFramework/Constant/*.{h,m}'
     ss.dependency 'SCFramework/Constant'
   end
 
