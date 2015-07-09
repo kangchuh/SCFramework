@@ -13,9 +13,12 @@ Pod::Spec.new do |s|
     SCFramework.
   }
 
-  s.source_files = 'SCFramework/SCFramework/SCFramework/*'
+  #s.source_files = 'SCFramework/SCFramework/SCFramework/*'
 
-  
+  s.subspec 'Constant' do |ss|
+    ss.source_files = 'SCFramework/SCFramework/SCFramework/Constant/*.{h,m}'
+    ss.dependency 'SCFramework/Constant'
+  end
 
   s.platform = :ios
 
