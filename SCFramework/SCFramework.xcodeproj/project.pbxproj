@@ -42,7 +42,6 @@
 		B75DAF85191B83230011E917 /* SCDemoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75DAF84191B83230011E917 /* SCDemoDetailViewController.m */; };
 		B7645723196BC902009302C2 /* SCImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7645722196BC902009302C2 /* SCImagePickerManager.m */; };
 		B7653F6319CC207300A2AAB5 /* SCActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7653F6219CC207300A2AAB5 /* SCActionView.m */; };
-		B779D1FD1B4E607500743758 /* SCFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B779D1FC1B4E607500743758 /* SCFramework.podspec */; };
 		B7AF797D19A5DE270041F724 /* SCDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AF797C19A5DE270041F724 /* SCDatabase.m */; };
 		B7AF798A19A6E8AA0041F724 /* SCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AF798919A6E8AA0041F724 /* SCUtils.m */; };
 		B7B70C5319D11B25000D4472 /* SCToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B70C5219D11B25000D4472 /* SCToolbar.m */; };
@@ -170,7 +169,6 @@
 		B7645722196BC902009302C2 /* SCImagePickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImagePickerManager.m; sourceTree = "<group>"; };
 		B7653F6119CC207300A2AAB5 /* SCActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCActionView.h; sourceTree = "<group>"; };
 		B7653F6219CC207300A2AAB5 /* SCActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCActionView.m; sourceTree = "<group>"; };
-		B779D1FC1B4E607500743758 /* SCFramework.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SCFramework.podspec; sourceTree = SOURCE_ROOT; };
 		B7AF797B19A5DE270041F724 /* SCDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDatabase.h; sourceTree = "<group>"; };
 		B7AF797C19A5DE270041F724 /* SCDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDatabase.m; sourceTree = "<group>"; };
 		B7AF798819A6E8AA0041F724 /* SCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUtils.h; sourceTree = "<group>"; };
@@ -395,7 +393,6 @@
 		B72AF3DD18C5655100621B34 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B779D1FC1B4E607500743758 /* SCFramework.podspec */,
 				B71EE5AC1910D73D00590A9D /* Test.jpeg */,
 				B71EE5AA1910D69000590A9D /* TestPic.jpg */,
 				B72AF3DE18C5655100621B34 /* SCFramework-Prefix.pch */,
@@ -990,7 +987,6 @@
 				B72AF3ED18C5655100621B34 /* Images.xcassets in Resources */,
 				B71EE5AB1910D69000590A9D /* TestPic.jpg in Resources */,
 				B724306719F5243700013D7D /* SCFramework.xcassets in Resources */,
-				B779D1FD1B4E607500743758 /* SCFramework.podspec in Resources */,
 				B724307319F5246800013D7D /* SCFWLocalizable.strings in Resources */,
 				B71EE5AD1910D73D00590A9D /* Test.jpeg in Resources */,
 				B72AF3E618C5655100621B34 /* InfoPlist.strings in Resources */,
