@@ -13,7 +13,17 @@ Pod::Spec.new do |s|
     SCFramework.
   }
 
-  s.source_files = 'SCFramework/SCFramework/SCFramework'
+  s.source_files = 'SCFramework/SCFramework/SCFramework/*'
+
+  s.subspec 'Adapted' do |ss|
+    ss.source_files = 'Adapted/*.{h,m}'
+      ss.subspec 'AdaptedDevice' do |sss|
+        sss.source_files = 'AdaptedDevice/*.{h,m}'
+      end
+      ss.subspec 'AdaptedSystem' do |sss|
+        sss.source_files = 'AdaptedSystem/*.{h,m}'
+      end
+  end
 
   s.platform = :ios
 
