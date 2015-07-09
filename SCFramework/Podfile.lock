@@ -25,18 +25,17 @@ PODS:
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
-  - JSONModel (1.0.2)
   - Mantle (1.5.4):
     - Mantle/extobjc (= 1.5.4)
   - Mantle/extobjc (1.5.4)
-  - Masonry (0.6.1)
+  - Masonry (0.6.2)
   - MBProgressHUD (0.9.1)
-  - ReactiveCocoa (2.4.7):
-    - ReactiveCocoa/UI (= 2.4.7)
-  - ReactiveCocoa/Core (2.4.7):
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.4.7)
-  - ReactiveCocoa/UI (2.4.7):
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
@@ -44,25 +43,23 @@ PODS:
   - SSKeychain (1.2.3)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.5.4)
+  - AFNetworking (~> 2.5)
   - FMDB (~> 2.5)
-  - JSONModel (~> 1.0.2)
-  - Mantle (~> 1.5.4)
-  - Masonry (~> 0.6.1)
-  - MBProgressHUD (~> 0.9.1)
-  - ReactiveCocoa (~> 2.4.7)
-  - SDWebImage (~> 3.7.2)
-  - SSKeychain (~> 1.2.3)
+  - Mantle (~> 1.5)
+  - Masonry (~> 0.6)
+  - MBProgressHUD (~> 0.9)
+  - ReactiveCocoa (~> 2.5)
+  - SDWebImage (~> 3.7)
+  - SSKeychain (~> 1.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
-  JSONModel: 6ffcb4ffa3659c9e9a2e5d45d6c7705bab187c03
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
-  Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
+  Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  ReactiveCocoa: eb38dee0a0e698f73a9b25e5c1faea2bb4c79240
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.37.2

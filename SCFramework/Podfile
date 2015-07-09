@@ -2,16 +2,14 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, "7.0"
 
-pod 'AFNetworking', '~> 2.5.4'
-pod 'SDWebImage', '~> 3.7.2'
-pod 'MBProgressHUD', '~> 0.9.1'
+pod 'AFNetworking', '~> 2.5'
+pod 'SDWebImage', '~> 3.7'
+pod 'MBProgressHUD', '~> 0.9'
 
-pod 'SSKeychain', '~> 1.2.3'
+pod 'Mantle', '~> 1.5'
+pod 'Masonry', '~> 0.6'
+pod 'ReactiveCocoa', '~> 2.5'
 
 pod 'FMDB', '~> 2.5'
 
-pod 'ReactiveCocoa', '~> 2.4.7'
-pod 'Masonry', '~> 0.6.1'
-pod 'Mantle', '~> 1.5.4'
-
-pod 'JSONModel', '~> 1.0.2'
+pod 'SSKeychain', '~> 1.2'
