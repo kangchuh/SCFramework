@@ -16,13 +16,16 @@ Pod::Spec.new do |s|
   s.source_files = 'SCFramework/SCFramework/SCFramework/*'
 
   s.subspec 'Adapted' do |ss|
-    ss.source_files = 'Adapted/*.{h,m}'
-      ss.subspec 'AdaptedDevice' do |sss|
-        sss.source_files = 'AdaptedDevice/*.{h,m}'
-      end
-      ss.subspec 'AdaptedSystem' do |sss|
-        sss.source_files = 'AdaptedSystem/*.{h,m}'
-      end
+    ss.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/*.{h,m}'
+    ss.dependency 'SCFramework/SCFramework/SCFramework/Adapted'
+    ss.subspec 'AdaptedDevice' do |sss|
+      sss.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/AdaptedDevice/*.{h,m}'
+      sss.dependency 'SCFramework/SCFramework/SCFramework/Adapted/AdaptedDevice'
+    end
+    ss.subspec 'AdaptedSystem' do |sss|
+      sss.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/AdaptedSystem/*.{h,m}'
+      sss.dependency 'SCFramework/SCFramework/SCFramework/Adapted/AdaptedSystem'
+    end
   end
 
   s.platform = :ios
