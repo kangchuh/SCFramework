@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Constant' do |ss|
     ss.source_files = 'Constant/*.{h,m}'
-    ss.dependency 'Constant'
+    ss.dependency 'SCFramework/Constant'
   end
 
   s.platform = :ios
