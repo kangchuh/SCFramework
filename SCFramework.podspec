@@ -5,9 +5,9 @@ Pod::Spec.new do |s|
   s.summary  = 'SCFramework.'
   s.homepage = 'https://github.com/kangchuh/SCFramework'
   s.author   = { 'Angzn' => 'gangshuai08@gmail.com' }
-  s.social_media_url = "http://twitter.com/KangChuh"
+  s.social_media_url = 'http://twitter.com/KangChuh'
 
-  s.source   = { :git => 'https://github.com/kangchuh/SCFramework.git', :tag => 'v1.0.0' }
+  s.source   = { :git => 'https://github.com/kangchuh/SCFramework.git', :tag => s.version.to_s }
 
   s.description = %{
     SCFramework.
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.platform = :ios
 
-  s.ios.frameworks = 'Foundation', 'UIKit', 'CoreGraphics', 'CoreLocation', 'CoreData', 'libz'
+  s.ios.frameworks = 'Foundation', 'UIKit', 'CoreGraphics', 'CoreLocation', 'CoreData'
 
   s.ios.deployment_target = '7.0' # minimum SDK with autolayout
 
