@@ -127,6 +127,11 @@ static const CGFloat SCCycleScrollingDuration = 5.0;
 	self.scrollingTimer = nil;
 }
 
+- (BOOL)isPaging
+{
+    return self.scrollingTimer.isValid;
+}
+
 - (void)goToPreviousPage
 {
 	[self.scrollView scrollToPreviousPage:YES];

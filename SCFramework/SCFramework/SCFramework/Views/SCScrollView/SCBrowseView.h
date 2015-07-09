@@ -29,6 +29,7 @@
 
 - (void)startPageing;
 - (void)stopPageing;
+- (BOOL)isPaging;
 
 @end
 

@@ -28,6 +28,7 @@ UIScrollViewDelegate
 
 - (void)startPageing;
 - (void)stopPageing;
+- (BOOL)isPaging;
 
 - (void)goToPreviousPage;
 - (void)goToNextPage;

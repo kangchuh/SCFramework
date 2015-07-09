@@ -260,8 +260,15 @@ UIScrollViewDelegate
 
 - (void)stopPageing
 {
-    [_scrollingTimer invalidate];
+    if ([self.scrollingTimer isValid]) {
+        [self.scrollingTimer invalidate];
+    }
     self.scrollingTimer = nil;
+}
+
+- (BOOL)isPaging
+{
+    return self.scrollingTimer.isValid;
 }
 
 #pragma mark - Private Method
