@@ -37,6 +37,7 @@
 - (BOOL)isPhoneNumber;
 - (BOOL)isMobilePhoneNumber;
 - (BOOL)isIdentifyCardNumber;
+- (BOOL)isOrganizationCode;
 
 - (BOOL)isValidPassword;
 - (BOOL)isValidName;

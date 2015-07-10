@@ -176,7 +176,7 @@
  */
 - (BOOL)isChineseWords
 {
-    NSString *regex = @"^[\u4e00-\u9fa5],{0,}$";
+    NSString *regex = @"^[\u4e00-\u9fa5]{0,}$";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [predicate evaluateWithObject:self];
 }
@@ -230,7 +230,17 @@
  */
 - (BOOL)isIdentifyCardNumber
 {
-    NSString *regex = @"^\\d{15}|\\d{}18$";
+    NSString *regex = @"^\\d{15}$|^\\d{18}$|^\\d{17}(\\d|X|x)$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [predicate evaluateWithObject:self];
+}
+
+/**
+ *  @brief  是否为组织机构代码
+ */
+- (BOOL)isOrganizationCode
+{
+    NSString *regex = @"^[^\u4e00-\u9fa5]{9}$";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [predicate evaluateWithObject:self];
 }
