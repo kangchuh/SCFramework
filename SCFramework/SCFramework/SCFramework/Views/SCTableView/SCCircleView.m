@@ -134,6 +134,7 @@ static NSString * const kSCCircleViewRotationAnimationKey = @"kSCCircleViewRotat
     rotationAnimation.repeatCount = HUGE_VALF;
     rotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:
                                         kCAMediaTimingFunctionLinear];
+    rotationAnimation.removedOnCompletion = NO;
     [self.layer addAnimation:rotationAnimation forKey:kSCCircleViewRotationAnimationKey];
 }
 
