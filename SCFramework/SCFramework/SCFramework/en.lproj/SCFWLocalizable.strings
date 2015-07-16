@@ -27,7 +27,7 @@
 "SCFW_LS_Choose from album" = "Choose from album";
 
 "SCFW_LS_Update Available" = "Update Available";
-"SCFW_LS_A new version of %@ is available. Please update to version %@ now." = "A new version of '%@' is available. Please update to version %@ now.";
+"SCFW_LS_A new version of %@ is available. Please update to version %@ now." = "A new version of \"%@\" is available. Please update to version %@ now.";
 "SCFW_LS_Update" = "Update";
 "SCFW_LS_Next time" = "Next time";
 "SCFW_LS_Skip this version" = "Skip this version";

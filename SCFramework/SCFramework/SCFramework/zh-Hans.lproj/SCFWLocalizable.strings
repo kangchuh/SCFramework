@@ -27,7 +27,7 @@
 "SCFW_LS_Choose from album" = "从相册中选择";
 
 "SCFW_LS_Update Available" = "更新可用";
-"SCFW_LS_A new version of %@ is available. Please update to version %@ now." = "'%@'的新版本可用. 请更新到%@版本.";
+"SCFW_LS_A new version of %@ is available. Please update to version %@ now." = "“%@”的新版本可用. 请更新到%@版本.";
 "SCFW_LS_Update" = "更新";
 "SCFW_LS_Next time" = "下一次";
 "SCFW_LS_Skip this version" = "跳过此版本";
