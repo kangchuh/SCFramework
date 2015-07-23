@@ -146,7 +146,7 @@ UIGestureRecognizerDelegate
     }
 }
 
-#pragma mark - SCViewControllerTransitionAnimatorOption
+#pragma mark - SCViewControllerTransition
 
 - (SCViewControllerTransitionDirection)transitionDirection
 {
