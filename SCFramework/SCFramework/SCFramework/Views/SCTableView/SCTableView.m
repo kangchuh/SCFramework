@@ -129,9 +129,11 @@
         if (topMargin < -kSCPullDownDistance) {
             _pullRefreshView.state = SCPullDownStatePulling;
         } else if (topMargin >= -kSCPullDownDistance &&
-                   topMargin < 0.0) {
+                   topMargin <= 0.0) {
             _pullRefreshView.state = SCPullDownStateNormal;
             _pullRefreshView.pullScale = -topMargin / kSCPullDownDistance;
+        } else if (topMargin > 0.0) {
+            _pullRefreshView.state = SCPullDownStateNormal;
         }
     }
     
@@ -139,7 +141,9 @@
         if (bottomMargin > kSCPullUpDistance) {
             _pullLoadView.state = SCPullUpStatePulling;
         } else if (bottomMargin <= kSCPullUpDistance &&
-                   bottomMargin > 0.0 - kSCPullLoadViewHeight) {
+                   bottomMargin >= - kSCPullLoadViewHeight) {
+            _pullLoadView.state = SCPullUpStateNormal;
+        } else if (bottomMargin < - kSCPullLoadViewHeight) {
             _pullLoadView.state = SCPullUpStateNormal;
         }
     }
