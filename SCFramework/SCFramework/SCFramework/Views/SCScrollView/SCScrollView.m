@@ -38,9 +38,9 @@
 - (BOOL)touchesShouldBegin:(NSSet *)touches withEvent:(UIEvent *)event
              inContentView:(UIView *)view
 {
-    if ( _endEditingWhenTouch ) {
-        [self endEditing:YES];
-    }
+    //if ( _endEditingWhenTouch ) {
+    //    [self endEditing:YES];
+    //}
     
     if ( _touchDelegate && [_touchDelegate respondsToSelector:
                             @selector(scrollView:touchShouldBegin:withEvent:inContentView:)] ) {

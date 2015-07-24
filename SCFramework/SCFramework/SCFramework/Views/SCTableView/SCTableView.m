@@ -67,9 +67,9 @@
 - (BOOL)touchesShouldBegin:(NSSet *)touches withEvent:(UIEvent *)event
              inContentView:(UIView *)view
 {
-    if ( _endEditingWhenTouch ) {
-        [self endEditing:YES];
-    }
+    //if ( _endEditingWhenTouch ) {
+    //    [self endEditing:YES];
+    //}
     return [super touchesShouldBegin:touches withEvent:event inContentView:view];
 }
 
