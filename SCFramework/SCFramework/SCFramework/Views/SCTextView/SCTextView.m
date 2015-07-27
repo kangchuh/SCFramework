@@ -9,6 +9,8 @@
 #import "SCTextView.h"
 #import "NSString+SCAddition.h"
 
+static const CGFloat kSCTextViewInnerMargin = 8.0;
+
 @interface SCTextView ()
 {
 @private
@@ -48,12 +50,16 @@
     return self;
 }
 
-- (void)drawRect:(CGRect)rect
+- (void)layoutSubviews
 {
+    [super layoutSubviews];
+    
     if ([self.placeholder isNotEmpty]) {
         if (!_placeholderLabel) {
             _placeholderLabel = [[UILabel alloc] initWithFrame:
-                                 CGRectMake(8.0, 8.0, self.width - 16.0, 0.0)];
+                                 CGRectMake(kSCTextViewInnerMargin,
+                                            kSCTextViewInnerMargin,
+                                            0.0, 0.0)];
             _placeholderLabel.backgroundColor = [UIColor clearColor];
             _placeholderLabel.lineBreakMode = NSLineBreakByWordWrapping;
             _placeholderLabel.textColor = self.placeholderColor;
@@ -61,19 +67,13 @@
             _placeholderLabel.font = self.font;
             [self addSubview:_placeholderLabel];
         }
-        
-        _placeholderLabel.text = self.placeholder;
-        [_placeholderLabel sizeToFit];
         [self sendSubviewToBack:_placeholderLabel];
         
-        if ([self.text isNotEmpty]) {
-            _placeholderLabel.alpha = 0.0;
-        } else {
-            _placeholderLabel.alpha = 1.0;
-        }
+        _placeholderLabel.size = CGSizeZero;
+        _placeholderLabel.text = self.placeholder;
+        _placeholderLabel.hidden = [self.text isNotEmpty];
+        [_placeholderLabel sizeToFit];
     }
-    
-    [super drawRect:rect];
 }
 
 #pragma mark - UIResponder Touch Methods
@@ -108,7 +108,7 @@
     if (_placeholder != placeholder) {
         _placeholder = nil;
         _placeholder = [placeholder copy];
-        [self setNeedsDisplay];
+        [self setNeedsLayout];
     }
 }
 
@@ -117,14 +117,15 @@
     if (_placeholderColor != placeholderColor) {
         _placeholderColor = nil;
         _placeholderColor = placeholderColor;
-        [self setNeedsDisplay];
+        [self setNeedsLayout];
     }
 }
 
 - (void)reset
 {
     self.text = nil;
-    _placeholderLabel.alpha = 1.0;
+    
+    _placeholderLabel.hidden = NO;
 }
 
 #pragma mark - Notification Method
@@ -135,11 +136,7 @@
         return;
     }
     
-    if ([self.text isNotEmpty]) {
-        _placeholderLabel.alpha = 0.0;
-    } else {
-        _placeholderLabel.alpha = 1.0;
-    }
+    _placeholderLabel.hidden = [self.text isNotEmpty];
 }
 
 @end
