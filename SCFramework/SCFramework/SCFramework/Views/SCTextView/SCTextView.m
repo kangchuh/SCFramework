@@ -9,13 +9,9 @@
 #import "SCTextView.h"
 #import "NSString+SCAddition.h"
 
-static const CGFloat kSCTextViewInnerMargin = 8.0;
-
 @interface SCTextView ()
-{
-@private
-    UILabel *_placeholderLabel;
-}
+
+@property (nonatomic, strong) UILabel *placeholderLabel;
 
 @end
 
@@ -23,21 +19,14 @@ static const CGFloat kSCTextViewInnerMargin = 8.0;
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UITextViewTextDidChangeNotification
-                                                  object:nil];
+    [self sc_unregisterNotification];
 }
 
 #pragma mark - Init Method
 
 - (void)initialize
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(textDidChange:)
-                                                 name:UITextViewTextDidChangeNotification
-                                               object:nil];
-    
-    self.placeholderColor = [UIColor lightGrayColor];
+    [self sc_registerNotification];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -50,30 +39,34 @@ static const CGFloat kSCTextViewInnerMargin = 8.0;
     return self;
 }
 
+#pragma mark - UIView Override
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
-    if ([self.placeholder isNotEmpty]) {
-        if (!_placeholderLabel) {
-            _placeholderLabel = [[UILabel alloc] initWithFrame:
-                                 CGRectMake(kSCTextViewInnerMargin,
-                                            kSCTextViewInnerMargin,
-                                            0.0, 0.0)];
-            _placeholderLabel.backgroundColor = [UIColor clearColor];
-            _placeholderLabel.lineBreakMode = NSLineBreakByWordWrapping;
-            _placeholderLabel.textColor = self.placeholderColor;
-            _placeholderLabel.numberOfLines = 0;
-            _placeholderLabel.font = self.font;
-            [self addSubview:_placeholderLabel];
-        }
-        [self sendSubviewToBack:_placeholderLabel];
-        
-        _placeholderLabel.size = CGSizeZero;
-        _placeholderLabel.text = self.placeholder;
-        _placeholderLabel.hidden = [self.text isNotEmpty];
-        [_placeholderLabel sizeToFit];
+    self.placeholderLabel.hidden = [self __shouldHidePlaceholder];
+    
+    if (!self.placeholderLabel.hidden) {
+        [UIView performWithoutAnimation:^{
+            self.placeholderLabel.frame = [self __placeholderRectThatFits:self.bounds];
+            [self sendSubviewToBack:self.placeholderLabel];
+        }];
     }
+}
+
+#pragma mark - UITextView Override
+
+- (void)setFont:(UIFont *)font
+{
+    [super setFont:font];
+    
+    self.placeholderLabel.font = self.font;
+}
+
+- (void)setText:(NSString *)text
+{
+    [super setText:text];
 }
 
 #pragma mark - UIResponder Touch Methods
@@ -101,42 +94,100 @@ static const CGFloat kSCTextViewInnerMargin = 8.0;
     [super touchesCancelled:touches withEvent:event];
 }
 
+#pragma mark - Getter Method
+
+- (UILabel *)placeholderLabel
+{
+    if (!_placeholderLabel) {
+        _placeholderLabel = [[UILabel alloc] init];
+        _placeholderLabel.backgroundColor = [UIColor clearColor];
+        _placeholderLabel.textColor = [UIColor lightGrayColor];
+        _placeholderLabel.numberOfLines = 1;
+        _placeholderLabel.hidden = YES;
+        _placeholderLabel.font = self.font;
+        [self addSubview:_placeholderLabel];
+    }
+    return _placeholderLabel;
+}
+
+- (NSString *)placeholder
+{
+    return self.placeholderLabel.text;
+}
+
+- (UIColor *)placeholderColor
+{
+    return self.placeholderLabel.textColor;
+}
+
+- (NSUInteger)numberOfLines
+{
+    return fabs(self.contentSize.height / self.font.lineHeight);
+}
+
 #pragma mark - Public Method
 
 - (void)setPlaceholder:(NSString *)placeholder
 {
-    if (_placeholder != placeholder) {
-        _placeholder = nil;
-        _placeholder = [placeholder copy];
-        [self setNeedsLayout];
-    }
-}
-
-- (void)setPlaceholderColor:(UIColor *)placeholderColor
-{
-    if (_placeholderColor != placeholderColor) {
-        _placeholderColor = nil;
-        _placeholderColor = placeholderColor;
-        [self setNeedsLayout];
-    }
-}
-
-- (void)reset
-{
-    self.text = nil;
+    self.placeholderLabel.text = placeholder;
     
-    _placeholderLabel.hidden = NO;
+    [self setNeedsLayout];
+}
+
+- (void)setPlaceholderColor:(UIColor *)color
+{
+    self.placeholderLabel.textColor = color;
+}
+
+#pragma mark - Private Method
+
+- (BOOL)__shouldHidePlaceholder
+{
+    if (![self.placeholder isNotEmpty] || [self.text isNotEmpty]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (CGRect)__placeholderRectThatFits:(CGRect)bounds
+{
+    CGRect rect = CGRectZero;
+    
+    rect.size = [self.placeholderLabel sizeThatFits:bounds.size];
+    rect.origin = UIEdgeInsetsInsetRect(bounds, self.textContainerInset).origin;
+    
+    CGFloat padding = self.textContainer.lineFragmentPadding;
+    rect.origin.x += padding;
+    
+    return rect;
 }
 
 #pragma mark - Notification Method
 
-- (void)textDidChange:(NSNotification *)notification
+- (void)sc_registerNotification
 {
-    if (![self.placeholder isNotEmpty]) {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(sc_textViewDidChange:)
+                                                 name:UITextViewTextDidChangeNotification
+                                               object:nil];
+}
+
+- (void)sc_unregisterNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UITextViewTextDidChangeNotification
+                                                  object:nil];
+}
+
+- (void)sc_textViewDidChange:(NSNotification *)notification
+{
+    if (![notification.object isEqual:self]) {
         return;
     }
     
-    _placeholderLabel.hidden = [self.text isNotEmpty];
+    if (self.placeholderLabel.hidden != [self __shouldHidePlaceholder]) {
+        [self setNeedsLayout];
+    }
 }
 
 @end

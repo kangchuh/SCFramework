@@ -15,6 +15,6 @@
 @property (nonatomic, copy  ) NSString *placeholder;
 @property (nonatomic, strong) UIColor *placeholderColor;
 
-- (void)reset;
+@property (nonatomic, readonly) NSUInteger numberOfLines;
 
 @end
