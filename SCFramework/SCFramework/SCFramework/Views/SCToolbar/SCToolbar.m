@@ -61,8 +61,6 @@
 
 - (void)__setActionStyleDoneAndCancel
 {
-    UIBarButtonItem *leftSpaceItem = [[UIBarButtonItem alloc] initWithFixedSpaceWidth:10.0f];
-    
     UIBarButtonItem *cancelBarItem = [[UIBarButtonItem alloc] initWithTarget:self
                                                                       action:@selector(cancelAction:)];
     cancelBarItem.title = NSLocalizedStringFromTable(@"SCFW_LS_Cancel", @"SCFWLocalizable", nil);
@@ -75,13 +73,7 @@
     doneBarItem.title = NSLocalizedStringFromTable(@"SCFW_LS_Done", @"SCFWLocalizable", nil);
     doneBarItem.style = UIBarButtonItemStyleDone;
     
-    UIBarButtonItem *rightSpaceItem = [[UIBarButtonItem alloc] initWithFixedSpaceWidth:10.0f];
-    
-    if ( SCiOS8OrLater() ) {
-        self.items = @[leftSpaceItem, cancelBarItem, flexibleSpaceItem, doneBarItem, rightSpaceItem];
-    } else {
-        self.items = @[cancelBarItem, flexibleSpaceItem, doneBarItem];
-    }
+    self.items = @[cancelBarItem, flexibleSpaceItem, doneBarItem];
 }
 
 @end
