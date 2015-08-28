@@ -14,17 +14,19 @@ Pod::Spec.new do |s|
   }
 
   s.subspec 'SCFramework' do |s|
-    s.resource = 'SCFramework/SCFramework/*'
-    s.source_files = 'SCFramework/SCFramework/*.{h,m}'
+    s.subspec 'SCFramework' do |ss|
+      ss.resource = 'SCFramework/SCFramework/SCFramework/*'
+      ss.source_files = 'SCFramework/SCFramework/SCFramework/*.{h,m}'
 
-    s.subspec 'Adapted' do |a|
-      a.source_files = 'SCFramework/SCFramework/Adapted/*.{h,m}'
+      ss.subspec 'Adapted' do |a|
+        a.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/*.{h,m}'
 
-      a.subspec 'AdaptedDevice' do |ad|
-        ad.source_files = 'SCFramework/SCFramework/Adapted/AdaptedDevice/*.{h,m}'
-      end
-      a.subspec 'AdaptedSystem' do |as|
-        as.source_files = 'SCFramework/SCFramework/Adapted/AdaptedSystem/*.{h,m}'
+        a.subspec 'AdaptedDevice' do |ad|
+         ad.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/AdaptedDevice/*.{h,m}'
+        end
+        a.subspec 'AdaptedSystem' do |as|
+         as.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/AdaptedSystem/*.{h,m}'
+        end
       end
     end
   end
