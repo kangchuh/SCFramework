@@ -20,10 +20,85 @@ Pod::Spec.new do |s|
         a.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/*.{h,m}'
 
         a.subspec 'AdaptedDevice' do |ad|
-         ad.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/AdaptedDevice/*.{h,m}'
+          ad.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/AdaptedDevice/*.{h,m}'
         end
         a.subspec 'AdaptedSystem' do |as|
-         as.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/AdaptedSystem/*.{h,m}'
+          as.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/AdaptedSystem/*.{h,m}'
+        end
+      end
+
+      ss.subspec 'Category' do |c|
+        c.source_files = 'SCFramework/SCFramework/SCFramework/Category/*.{h,m}'
+      end
+
+      ss.subspec 'Common' do |c|
+        c.source_files = 'SCFramework/SCFramework/SCFramework/Common/*.{h,m}'
+
+        c.subspec 'Utils' do |u|
+          u.source_files = 'SCFramework/SCFramework/SCFramework/Common/Utils/*.{h,m}'
+        end
+        c.subspec 'App' do |a|
+          a.source_files = 'SCFramework/SCFramework/SCFramework/Common/App/*.{h,m}'
+        end
+        c.subspec 'Foundation' do |f|
+          f.source_files = 'SCFramework/SCFramework/SCFramework/Common/Foundation/*.{h,m}'
+        end
+        c.subspec 'App' do |m|
+          m.source_files = 'SCFramework/SCFramework/SCFramework/Common/Math/*.{h,m}'
+        end
+      end
+
+      ss.subspec 'Constant' do |c|
+        c.source_files = 'SCFramework/SCFramework/SCFramework/Constant/*.{h,m}'
+      end
+
+      ss.subspec 'Manager' do |c|
+        c.source_files = 'SCFramework/SCFramework/SCFramework/Manager/*.{h,m}'
+
+        c.subspec 'DaoManager' do |d|
+          d.source_files = 'SCFramework/SCFramework/SCFramework/Manager/DaoManager/*.{h,m}'
+        end
+        c.subspec 'DateManager' do |d|
+          d.source_files = 'SCFramework/SCFramework/SCFramework/Manager/DateManager/*.{h,m}'
+        end
+        c.subspec 'FileManager' do |f|
+          f.source_files = 'SCFramework/SCFramework/SCFramework/Manager/FileManager/*.{h,m}'
+        end
+        c.subspec 'ImagePickerManager' do |i|
+          i.source_files = 'SCFramework/SCFramework/SCFramework/Manager/ImagePickerManager/*.{h,m}'
+        end
+        c.subspec 'LocationManager' do |l|
+          l.source_files = 'SCFramework/SCFramework/SCFramework/Manager/LocationManager/*.{h,m}'
+        end
+        c.subspec 'UserDefaultManager' do |u|
+          u.source_files = 'SCFramework/SCFramework/SCFramework/Manager/UserDefaultManager/*.{h,m}'
+        end
+        c.subspec 'VersionManager' do |v|
+          v.source_files = 'SCFramework/SCFramework/SCFramework/Manager/VersionManager/*.{h,m}'
+        end
+      end
+
+      ss.subspec 'Vendor' do |v|
+        v.source_files = 'SCFramework/SCFramework/SCFramework/Vendor/*.{h,m}'
+      end
+
+      ss.subspec 'ViewControllers' do |c|
+        c.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/*.{h,m}'
+
+        c.subspec 'SCNavigationController' do |nvc|
+          nvc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCNavigationController/*.{h,m}'
+        end
+        c.subspec 'SCPageViewController' do |pvc|
+          pvc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCPageViewController/*.{h,m}'
+        end
+        c.subspec 'SCTabBarController' do |tbvc|
+          tbvc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTabBarController/*.{h,m}'
+        end
+        c.subspec 'SCTableViewController' do |tvc|
+          tvc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTableViewController/*.{h,m}'
+        end
+        c.subspec 'SCViewController' do |vc|
+          vc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCViewController/*.{h,m}'
         end
       end
     end
