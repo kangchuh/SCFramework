@@ -8,6 +8,7 @@
 
 #import "SCDBNavigationController.h"
 #import "UINavigationController+SCAddition.h"
+#import "UIView+SCAddition.h"
 
 #import "SCMacro.h"
 

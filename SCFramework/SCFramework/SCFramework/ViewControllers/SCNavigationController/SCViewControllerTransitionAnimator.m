@@ -7,6 +7,7 @@
 //
 
 #import "SCViewControllerTransitionAnimator.h"
+#import "UIView+SCAddition.h"
 
 // 默认转场动画时间
 static const CGFloat kSCTransitionDurationDefault = 0.30;
