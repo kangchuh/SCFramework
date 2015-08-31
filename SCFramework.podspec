@@ -45,7 +45,7 @@ Pod::Spec.new do |s|
         c.subspec 'Foundation' do |f|
           f.source_files = 'SCFramework/SCFramework/SCFramework/Common/Foundation/*.{h,m}'
         end
-        c.subspec 'App' do |m|
+        c.subspec 'Math' do |m|
           m.source_files = 'SCFramework/SCFramework/SCFramework/Common/Math/*.{h,m}'
         end
       end
