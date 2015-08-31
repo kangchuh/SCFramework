@@ -8,10 +8,9 @@
 
 #import "SCCoreDataManager.h"
 #import "SCSingleton.h"
+#import "SCLog.h"
 
 #import "NSString+SCAddition.h"
-
-#import "SCLog.h"
 
 // Momd文件后缀
 static NSString * const kSCFW_MOMD_FILE_EXT = @"momd";

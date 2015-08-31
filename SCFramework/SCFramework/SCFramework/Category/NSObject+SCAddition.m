@@ -8,6 +8,7 @@
 
 #import "NSObject+SCAddition.h"
 #import <objc/runtime.h>
+#import "SCLog.h"
 
 NSString * const SCObjcTypeChar = @"char";
 NSString * const SCObjcTypeInt = @"int";

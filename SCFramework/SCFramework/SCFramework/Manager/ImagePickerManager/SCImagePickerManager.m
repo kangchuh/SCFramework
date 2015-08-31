@@ -8,6 +8,7 @@
 
 #import "SCImagePickerManager.h"
 #import "SCSingleton.h"
+#import "SCLog.h"
 
 #import "UIDevice+SCAddition.h"
 

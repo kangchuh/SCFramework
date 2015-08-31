@@ -8,6 +8,7 @@
 
 #import "SCKeyValueStore.h"
 #import "SCSingleton.h"
+#import "SCLog.h"
 
 #import "FMDB.h"
 

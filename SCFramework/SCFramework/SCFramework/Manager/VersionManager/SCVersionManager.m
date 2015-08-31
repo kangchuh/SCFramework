@@ -8,6 +8,7 @@
 
 #import "SCVersionManager.h"
 #import "SCSingleton.h"
+#import "SCLog.h"
 
 #import "SCUserDefaultManager.h"
 
