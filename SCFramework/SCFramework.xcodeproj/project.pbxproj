@@ -10,7 +10,7 @@
 		91CE001E8CA9A4A714C1262B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD699A7A7BE03FFCE0BB4B68 /* libPods.a */; };
 		B705E09D18C6CAAE00AC6B5E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B705E09C18C6CAAE00AC6B5E /* CoreData.framework */; };
 		B707FA8318CDA1B500413B64 /* SCDemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B707FA8218CDA1B500413B64 /* SCDemoListViewController.m */; };
-		B71503901B9435C300F3E960 /* SCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B715038F1B9435C300F3E960 /* SCResources.bundle */; };
+		B715039B1B943BDC00F3E960 /* SCFWLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B71503991B943BDC00F3E960 /* SCFWLocalizable.strings */; };
 		B71EE5A71910CB3500590A9D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B71EE5A61910CB3500590A9D /* CoreMedia.framework */; };
 		B71EE5A91910CB9100590A9D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B71EE5A81910CB9100590A9D /* AVFoundation.framework */; };
 		B71EE5AB1910D69000590A9D /* TestPic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B71EE5AA1910D69000590A9D /* TestPic.jpg */; };
@@ -119,7 +119,8 @@
 		B707FA8118CDA1B500413B64 /* SCDemoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDemoListViewController.h; sourceTree = "<group>"; };
 		B707FA8218CDA1B500413B64 /* SCDemoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDemoListViewController.m; sourceTree = "<group>"; };
 		B7141FFB19A74EF3006C510C /* SCDatabaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDatabaseModel.h; sourceTree = "<group>"; };
-		B715038F1B9435C300F3E960 /* SCResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SCResources.bundle; sourceTree = "<group>"; };
+		B715039A1B943BDC00F3E960 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SCFWLocalizable.strings; sourceTree = "<group>"; };
+		B715039C1B943BE400F3E960 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SCFWLocalizable.strings"; sourceTree = "<group>"; };
 		B71EE5A61910CB3500590A9D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		B71EE5A81910CB9100590A9D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B71EE5AA1910D69000590A9D /* TestPic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TestPic.jpg; sourceTree = "<group>"; };
@@ -501,7 +502,7 @@
 				B7DED3841957D47D00A2D5C0 /* SCLog.h */,
 				B7DED3851957D47D00A2D5C0 /* SCMacro.h */,
 				B7DED3861957D47D00A2D5C0 /* SCSingleton.h */,
-				B715038F1B9435C300F3E960 /* SCResources.bundle */,
+				B71503991B943BDC00F3E960 /* SCFWLocalizable.strings */,
 				B7DED3391957D47D00A2D5C0 /* Adapted */,
 				B7DED3401957D47D00A2D5C0 /* Category */,
 				B7DED35B1957D47D00A2D5C0 /* Common */,
@@ -983,10 +984,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B715039B1B943BDC00F3E960 /* SCFWLocalizable.strings in Resources */,
 				B72AF3ED18C5655100621B34 /* Images.xcassets in Resources */,
 				B71EE5AB1910D69000590A9D /* TestPic.jpg in Resources */,
 				B779D1FF1B4E695500743758 /* SCFramework.podspec in Resources */,
-				B71503901B9435C300F3E960 /* SCResources.bundle in Resources */,
 				B71EE5AD1910D73D00590A9D /* Test.jpeg in Resources */,
 				B72AF3E618C5655100621B34 /* InfoPlist.strings in Resources */,
 			);
@@ -1136,6 +1137,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B71503991B943BDC00F3E960 /* SCFWLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B715039A1B943BDC00F3E960 /* en */,
+				B715039C1B943BE400F3E960 /* zh-Hans */,
+			);
+			name = SCFWLocalizable.strings;
+			sourceTree = "<group>";
+		};
 		B72AF3E418C5655100621B34 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
