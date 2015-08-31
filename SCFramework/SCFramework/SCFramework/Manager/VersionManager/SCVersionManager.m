@@ -16,6 +16,7 @@
 #import "NSData+SCAddition.h"
 #import "NSDate+SCAddition.h"
 #import "NSArray+SCAddition.h"
+#import "NSDictionary+SCAddition.h"
 
 #import "SCNSJSONSerialization.h"
 
