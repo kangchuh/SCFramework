@@ -153,6 +153,8 @@ Pod::Spec.new do |s|
     end
   end
 
+  s.dependency 'FMDB', '~> 2.5'
+
   s.platform = :ios
 
   s.ios.frameworks = 'Foundation', 'UIKit', 'CoreGraphics', 'CoreLocation', 'CoreData'
