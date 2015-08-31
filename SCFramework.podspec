@@ -15,7 +15,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'SCFramework' do |s|
     s.subspec 'SCFramework' do |ss|
-      ss.source_files = 'SCFramework/SCFramework/*.{h,m}'
+      ss.source_files = 'SCFramework/SCFramework/SCFramework/*.{h,m}'
+      ss.source_files = 'SCFramework/SCFramework/SCFramework/*.{strings,xcassets}'
 
       ss.subspec 'Adapted' do |a|
         a.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/*.{h,m}'
