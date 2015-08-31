@@ -8,6 +8,8 @@
 
 #import "SCScrollView.h"
 
+#import "UIView+SCAddition.h"
+
 @implementation SCScrollView
 
 - (id)initWithFrame:(CGRect)frame
