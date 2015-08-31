@@ -12,6 +12,7 @@
 #import "SCMacro.h"
 #import "SCConstant.h"
 
+#import "UIView+SCAddition.h"
 #import "NSDate+SCAddition.h"
 
 @interface SCDatePicker ()
