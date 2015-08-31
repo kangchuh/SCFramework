@@ -7,6 +7,7 @@
 //
 
 #import "SCView.h"
+#import "SCScrollView.h"
 
 @protocol SCCycleScrollViewDataSource;
 @protocol SCCycleScrollViewDelegate;
