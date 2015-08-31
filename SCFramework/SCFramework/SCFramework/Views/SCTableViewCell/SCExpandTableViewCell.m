@@ -42,20 +42,9 @@
 
 #pragma mark - Private Method
 
-static UIImage *__expandableImage = nil;
 - (UIView *)expandableView
 {
-    if (!__expandableImage) {
-        __expandableImage = [UIImage imageNamed:@"SCFW_ExpandableIcon"];
-    }
-    UIButton *expandableButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    expandableButton.frame = CGRectMake(0.0,
-                                        0.0,
-                                        __expandableImage.size.width,
-                                        __expandableImage.size.height);
-    [expandableButton setBackgroundImage:__expandableImage
-                                forState:UIControlStateNormal];
-    return expandableButton;
+    return nil;
 }
 
 @end
