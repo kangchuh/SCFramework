@@ -10,6 +10,7 @@
 #import "SCSingleton.h"
 #import "SCLog.h"
 
+#import "UIImage+SCAddition.h"
 #import "UIDevice+SCAddition.h"
 
 #import <MobileCoreServices/MobileCoreServices.h>
