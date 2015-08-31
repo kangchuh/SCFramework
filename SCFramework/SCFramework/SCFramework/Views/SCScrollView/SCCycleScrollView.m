@@ -10,6 +10,7 @@
 
 #import "SCScrollView.h"
 
+#import "UIView+SCAddition.h"
 #import "NSArray+SCAddition.h"
 #import "NSTimer+SCAddition.h"
 
