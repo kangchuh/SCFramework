@@ -15,6 +15,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'SCFramework' do |s|
     s.subspec 'SCFramework' do |ss|
+      ss.source_files = 'SCFramework/SCFramework/SCFramework/*.{h,m}'
 
       ss.subspec 'Adapted' do |a|
         a.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/*.{h,m}'
@@ -103,49 +104,49 @@ Pod::Spec.new do |s|
       end
 
         ss.subspec 'Views' do |vs|
-        vs.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/*.{h,m}'
+        vs.source_files = 'SCFramework/SCFramework/SCFramework/Views/*.{h,m}'
 
         vs.subspec 'SCActionSheet' do |as|
-          as.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCNavigationController/*.{h,m}'
+          as.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCActionSheet/*.{h,m}'
         end
         vs.subspec 'SCAlertView' do |av|
-          av.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCPageViewController/*.{h,m}'
+          av.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCAlertView/*.{h,m}'
         end
         vs.subspec 'SCToolbar' do |tb|
-          tb.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTabBarController/*.{h,m}'
+          tb.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCToolbar/*.{h,m}'
         end
         vs.subspec 'SCButton' do |b|
-          b.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCViewController/*.{h,m}'
+          b.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCButton/*.{h,m}'
         end
         vs.subspec 'SCDatePicker' do |dp|
-          dp.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTableViewController/*.{h,m}'
+          dp.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCDatePicker/*.{h,m}'
         end
         vs.subspec 'SCLabel' do |l|
-          l.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCViewController/*.{h,m}'
+          l.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCLabel/*.{h,m}'
         end
         vs.subspec 'SCPickerView' do |pv|
-          pv.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCNavigationController/*.{h,m}'
+          pv.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCPickerView/*.{h,m}'
         end
         vs.subspec 'SCScrollView' do |sv|
-          sv.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCPageViewController/*.{h,m}'
+          sv.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCScrollView/*.{h,m}'
         end
         vs.subspec 'SCTableView' do |tv|
-          tv.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTabBarController/*.{h,m}'
+          tv.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCTableView/*.{h,m}'
         end
         vs.subspec 'SCTableViewCell' do |tvc|
-          tvc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCViewController/*.{h,m}'
+          tvc.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCTableViewCell/*.{h,m}'
         end
         vs.subspec 'SCTextField' do |tf|
-          tf.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTableViewController/*.{h,m}'
+          tf.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCTextField/*.{h,m}'
         end
         vs.subspec 'SCTextView' do |tv|
-          tv.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCViewController/*.{h,m}'
+          tv.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCTextView/*.{h,m}'
         end
         vs.subspec 'SCView' do |v|
-          v.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTableViewController/*.{h,m}'
+          v.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCView/*.{h,m}'
         end
         vs.subspec 'SCPageControl' do |pc|
-          pc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCViewController/*.{h,m}'
+          pc.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCPageControl/*.{h,m}'
         end
       end
     end
