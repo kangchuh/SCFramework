@@ -157,7 +157,7 @@ Pod::Spec.new do |s|
 
   s.platform = :ios
 
-  s.ios.frameworks = 'Foundation', 'UIKit', 'CoreGraphics', 'CoreLocation', 'CoreData'
+  s.ios.frameworks = 'Foundation', 'UIKit', 'CoreGraphics', 'CoreLocation', 'CoreData', 'libz'
 
   s.ios.deployment_target = '7.0' # minimum SDK with autolayout
 
