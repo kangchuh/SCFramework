@@ -8,6 +8,7 @@
 
 #import "SCBrowseView.h"
 
+#import "UIView+SCAddition.h"
 #import "NSString+SCAddition.h"
 #import "NSTimer+SCAddition.h"
 
