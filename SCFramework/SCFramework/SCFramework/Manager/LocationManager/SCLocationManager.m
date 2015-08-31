@@ -9,6 +9,8 @@
 #import "SCLocationManager.h"
 #import "SCSingleton.h"
 
+#import "UIAlertView+SCAddition.h"
+
 #import <objc/runtime.h>
 
 static void *SCCLLocationManagerAuthorizationTypeKey = &SCCLLocationManagerAuthorizationTypeKey;
