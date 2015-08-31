@@ -8,9 +8,15 @@
 
 #import "SCDaoManager.h"
 #import "SCSingleton.h"
+#import "SCApp.h"
+
+#import "SCModel.h"
 
 #import "SCDatabase.h"
 #import "SCDatabaseModel.h"
+
+#import "NSObject+SCAddition.h"
+#import "NSString+SCAddition.h"
 
 #import "FMDB.h"
 
