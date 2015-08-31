@@ -12,6 +12,7 @@
 
 #import "UIView+SCAddition.h"
 #import "NSArray+SCAddition.h"
+#import "NSDictionary+SCAddition.h"
 #import "NSTimer+SCAddition.h"
 
 /// 循环滚动时间间隔
