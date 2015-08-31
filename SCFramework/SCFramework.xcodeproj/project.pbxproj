@@ -14,7 +14,6 @@
 		B71EE5A71910CB3500590A9D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B71EE5A61910CB3500590A9D /* CoreMedia.framework */; };
 		B71EE5A91910CB9100590A9D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B71EE5A81910CB9100590A9D /* AVFoundation.framework */; };
 		B71EE5AB1910D69000590A9D /* TestPic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B71EE5AA1910D69000590A9D /* TestPic.jpg */; };
-		B71EE5AD1910D73D00590A9D /* Test.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B71EE5AC1910D73D00590A9D /* Test.jpeg */; };
 		B725A02419D53D0800C92315 /* UITableView+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B725A02319D53D0800C92315 /* UITableView+SCAddition.m */; };
 		B7271A711974BE9100FDFA72 /* SCVersionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7271A701974BE9100FDFA72 /* SCVersionManager.m */; };
 		B72AF3D518C5655100621B34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72AF3D418C5655100621B34 /* Foundation.framework */; };
@@ -124,7 +123,6 @@
 		B71EE5A61910CB3500590A9D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		B71EE5A81910CB9100590A9D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B71EE5AA1910D69000590A9D /* TestPic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TestPic.jpg; sourceTree = "<group>"; };
-		B71EE5AC1910D73D00590A9D /* Test.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test.jpeg; sourceTree = "<group>"; };
 		B725A02219D53D0800C92315 /* UITableView+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SCAddition.h"; sourceTree = "<group>"; };
 		B725A02319D53D0800C92315 /* UITableView+SCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SCAddition.m"; sourceTree = "<group>"; };
 		B7271A6F1974BE9100FDFA72 /* SCVersionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVersionManager.h; sourceTree = "<group>"; };
@@ -394,12 +392,11 @@
 			isa = PBXGroup;
 			children = (
 				B779D1FE1B4E695500743758 /* SCFramework.podspec */,
-				B71EE5AC1910D73D00590A9D /* Test.jpeg */,
-				B71EE5AA1910D69000590A9D /* TestPic.jpg */,
 				B72AF3DE18C5655100621B34 /* SCFramework-Prefix.pch */,
 				B72AF3E318C5655100621B34 /* SCFramework-Info.plist */,
 				B72AF3E418C5655100621B34 /* InfoPlist.strings */,
 				B72AF3E718C5655100621B34 /* main.m */,
+				B71EE5AA1910D69000590A9D /* TestPic.jpg */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -988,7 +985,6 @@
 				B72AF3ED18C5655100621B34 /* Images.xcassets in Resources */,
 				B71EE5AB1910D69000590A9D /* TestPic.jpg in Resources */,
 				B779D1FF1B4E695500743758 /* SCFramework.podspec in Resources */,
-				B71EE5AD1910D73D00590A9D /* Test.jpeg in Resources */,
 				B72AF3E618C5655100621B34 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
