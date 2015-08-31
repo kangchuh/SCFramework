@@ -82,23 +82,70 @@ Pod::Spec.new do |s|
         v.source_files = 'SCFramework/SCFramework/SCFramework/Vendor/*.{h,m}'
       end
 
-      ss.subspec 'ViewControllers' do |c|
-        c.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/*.{h,m}'
+      ss.subspec 'ViewControllers' do |vcs|
+        vcs.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/*.{h,m}'
 
-        c.subspec 'SCNavigationController' do |nvc|
+        vcs.subspec 'SCNavigationController' do |nvc|
           nvc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCNavigationController/*.{h,m}'
         end
-        c.subspec 'SCPageViewController' do |pvc|
+        vcs.subspec 'SCPageViewController' do |pvc|
           pvc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCPageViewController/*.{h,m}'
         end
-        c.subspec 'SCTabBarController' do |tbvc|
+        vcs.subspec 'SCTabBarController' do |tbvc|
           tbvc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTabBarController/*.{h,m}'
         end
-        c.subspec 'SCTableViewController' do |tvc|
+        vcs.subspec 'SCTableViewController' do |tvc|
           tvc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTableViewController/*.{h,m}'
         end
-        c.subspec 'SCViewController' do |vc|
+        vcs.subspec 'SCViewController' do |vc|
           vc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCViewController/*.{h,m}'
+        end
+      end
+
+        ss.subspec 'Views' do |vs|
+        vs.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/*.{h,m}'
+
+        vs.subspec 'SCActionSheet' do |as|
+          as.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCNavigationController/*.{h,m}'
+        end
+        vs.subspec 'SCAlertView' do |av|
+          av.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCPageViewController/*.{h,m}'
+        end
+        vs.subspec 'SCToolbar' do |tb|
+          tb.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTabBarController/*.{h,m}'
+        end
+        vs.subspec 'SCButton' do |b|
+          b.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCViewController/*.{h,m}'
+        end
+        vs.subspec 'SCDatePicker' do |dp|
+          dp.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTableViewController/*.{h,m}'
+        end
+        vs.subspec 'SCLabel' do |l|
+          l.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCViewController/*.{h,m}'
+        end
+        vs.subspec 'SCPickerView' do |pv|
+          pv.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCNavigationController/*.{h,m}'
+        end
+        vs.subspec 'SCScrollView' do |sv|
+          sv.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCPageViewController/*.{h,m}'
+        end
+        vs.subspec 'SCTableView' do |tv|
+          tv.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTabBarController/*.{h,m}'
+        end
+        vs.subspec 'SCTableViewCell' do |tvc|
+          tvc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCViewController/*.{h,m}'
+        end
+        vs.subspec 'SCTextField' do |tf|
+          tf.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTableViewController/*.{h,m}'
+        end
+        vs.subspec 'SCTextView' do |tv|
+          tv.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCViewController/*.{h,m}'
+        end
+        vs.subspec 'SCView' do |v|
+          v.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCTableViewController/*.{h,m}'
+        end
+        vs.subspec 'SCPageControl' do |pc|
+          pc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCViewController/*.{h,m}'
         end
       end
     end
