@@ -8,7 +8,12 @@
 
 #import "SCKeyValueStore.h"
 #import "SCSingleton.h"
+#import "SCApp.h"
 #import "SCLog.h"
+
+#import "NSString+SCAddition.h"
+
+#import "SCNSJSONSerialization.h"
 
 #import "FMDB.h"
 
