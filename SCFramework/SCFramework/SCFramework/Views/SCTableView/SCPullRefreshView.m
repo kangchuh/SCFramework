@@ -10,6 +10,7 @@
 #import "NSDate+SCAddition.h"
 #import "UIDevice+SCAddition.h"
 #import "SCUserDefaultManager.h"
+#import "SCDateManager.h"
 
 const CGFloat kSCPullRefreshViewHeight = 60.f;
 
