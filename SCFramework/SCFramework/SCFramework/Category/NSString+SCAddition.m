@@ -246,11 +246,11 @@
 }
 
 /**
- *  @brief 验证密码(6—16位, 只能包含字符、数字和下划线)
+ *  @brief 验证密码(6—18位, 只能包含字符、数字和下划线)
  */
 - (BOOL)isValidPassword
 {
-    NSString *regex = @"^[\\w\\d_]{6,16}$";
+    NSString *regex = @"^[\\w\\d_]{6,18}$";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [predicate evaluateWithObject:self];
 }
