@@ -15,6 +15,9 @@
 
 #import <MobileCoreServices/MobileCoreServices.h>
 
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <AVFoundation/AVFoundation.h>
+
 @interface SCImagePickerManager ()
 <
 UIActionSheetDelegate,
@@ -99,6 +102,36 @@ SCSINGLETON(SCImagePickerManager);
 
 #pragma mark - Public Method
 
++ (void)checkAccessForAssetsLibrary:(void (^)(BOOL granted))completionHandler
+{
+    ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
+    if (authStatus == ALAuthorizationStatusAuthorized) {
+        completionHandler(YES);
+    } else if (authStatus == ALAuthorizationStatusDenied ||
+               authStatus == ALAuthorizationStatusRestricted) {
+        [self __alertForPhotosNotAccess];
+    } else if (authStatus == ALAuthorizationStatusNotDetermined) {
+        
+    } else {
+        [self __alertForPhotosNotAccess];
+    }
+}
+
++ (void)checkAccessForCaptureDevice:(NSString *)mediaType completionHandler:(void (^)(BOOL granted))completionHandler
+{
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
+    if (authStatus == AVAuthorizationStatusAuthorized) {
+        completionHandler(YES);
+    } else if (authStatus == AVAuthorizationStatusDenied ||
+               authStatus == AVAuthorizationStatusRestricted) {
+        [self __alertForCameraNotAccess];
+    } else if (authStatus == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:mediaType completionHandler:completionHandler];
+    } else {
+        [self __alertForCameraNotAccess];
+    }
+}
+
 - (void)startPickFromViewController:(UIViewController *)viewController
                        configPicker:(SCImagePickerConfigHandler)configHandler
               didFinishPickingMedia:(SCImagePickerDidFinishPickingMediaHandler)pickingHandler
@@ -127,6 +160,19 @@ SCSINGLETON(SCImagePickerManager);
 
 #pragma mark - Private Method
 
+- (void)__goToPhotoLibrary:(UIViewController *)viewController
+{
+    if ( !_imagePicker ) {
+        _imagePicker = [[UIImagePickerController alloc] init];
+        _imagePicker.delegate = self;
+    }
+    if ( _configHandler ) {
+        _configHandler(_imagePicker);
+    }
+    _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [viewController presentViewController:_imagePicker animated:YES completion:NULL];
+}
+
 - (void)__goToCamera:(UIViewController *)viewController
 {
     if ( !_imagePicker ) {
@@ -140,17 +186,16 @@ SCSINGLETON(SCImagePickerManager);
     [viewController presentViewController:_imagePicker animated:YES completion:NULL];
 }
 
-- (void)__goToPhotoLibrary:(UIViewController *)viewController
++ (void)__alertForPhotosNotAccess
 {
-    if ( !_imagePicker ) {
-        _imagePicker = [[UIImagePickerController alloc] init];
-        _imagePicker.delegate = self;
-    }
-    if ( _configHandler ) {
-        _configHandler(_imagePicker);
-    }
-    _imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [viewController presentViewController:_imagePicker animated:YES completion:NULL];
+    NSString *message = NSLocalizedStringFromTable(@"SCFW_LS_Photos Services Disenable", @"SCFWLocalizable", nil);
+    [UIAlertView showWithMessage:message];
+}
+
++ (void)__alertForCameraNotAccess
+{
+    NSString *message = NSLocalizedStringFromTable(@"SCFW_LS_Camera Services Disenable", @"SCFWLocalizable", nil);
+    [UIAlertView showWithMessage:message];
 }
 
 @end

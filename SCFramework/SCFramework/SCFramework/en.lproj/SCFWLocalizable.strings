@@ -34,3 +34,6 @@
 
 "SCFW_LS_Location Services Disenable" = "Location services disenable, please open location services in \"Settings\"-\"Privacy\"-\"Location\"";
 "SCFW_LS_Locate Fail" = "Locate fail";
+
+"SCFW_LS_Photos Services Disenable" = "Photos disenable, please open in \"Settings\"-\"Privacy\"-\"Photos\"";
+"SCFW_LS_Camera Services Disenable" = "Camera disenable, please open in \"Settings\"-\"Privacy\"-\"Camera\"";

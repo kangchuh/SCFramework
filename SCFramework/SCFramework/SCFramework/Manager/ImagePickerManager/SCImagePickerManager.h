@@ -37,6 +37,10 @@ typedef void(^SCImagePickerConfigHandler)(UIImagePickerController *picker);
 
 + (SCImagePickerManager *)sharedInstance;
 
++ (void)checkAccessForAssetsLibrary:(void (^)(BOOL granted))completionHandler;
+
++ (void)checkAccessForCaptureDevice:(NSString *)mediaType completionHandler:(void (^)(BOOL granted))completionHandler;
+
 - (void)startPickFromViewController:(UIViewController *)viewController
                        configPicker:(SCImagePickerConfigHandler)configHandler
               didFinishPickingMedia:(SCImagePickerDidFinishPickingMediaHandler)pickingMediaHandler

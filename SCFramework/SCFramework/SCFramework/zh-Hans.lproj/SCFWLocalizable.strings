@@ -34,3 +34,6 @@
 
 "SCFW_LS_Location Services Disenable" = "定位服务不可用, 请在\"设置\"-\"隐私\"-\"定位服务\"中打开定位服务";
 "SCFW_LS_Locate Fail" = "定位失败";
+
+"SCFW_LS_Photos Services Disenable" = "照片库禁止访问, 请在\"设置\"-\"隐私\"-\"照片\"中开启";
+"SCFW_LS_Camera Services Disenable" = "照相机禁止访问, 请在\"设置\"-\"隐私\"-\"相机\"中开启";

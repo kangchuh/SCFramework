@@ -159,7 +159,7 @@ Pod::Spec.new do |s|
 
   s.library = 'z'
 
-  s.ios.frameworks = 'Foundation', 'UIKit', 'CoreGraphics', 'CoreLocation', 'CoreData'
+  s.ios.frameworks = 'Foundation', 'UIKit', 'CoreGraphics', 'CoreLocation', 'CoreData', 'AssetsLibrary', 'AVFoundation'
 
   s.ios.deployment_target = '7.0' # minimum SDK with autolayout
 
