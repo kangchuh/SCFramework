@@ -12,6 +12,7 @@
 
 #import "UIImage+SCAddition.h"
 #import "UIDevice+SCAddition.h"
+#import "UIAlertView+SCAddition.h"
 
 #import <MobileCoreServices/MobileCoreServices.h>
 
