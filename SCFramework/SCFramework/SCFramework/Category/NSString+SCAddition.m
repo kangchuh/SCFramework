@@ -220,7 +220,7 @@
  */
 - (BOOL)isMobilePhoneNumber
 {
-    NSString *regex = @"^[1][3-8]+\\d{9}";
+    NSString *regex = @"^[1][3-8]\\d{9}$";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [predicate evaluateWithObject:self];
 }
