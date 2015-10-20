@@ -30,7 +30,7 @@
 {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:capacity];
     for (int i = 0; i < capacity; ++i) {
-        [array replaceObjectAtIndex:i withObject:theObject];
+        [array addObject:theObject];
     }
     return array;
 }
