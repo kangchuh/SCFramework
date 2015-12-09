@@ -31,6 +31,16 @@ typedef void(^SCImagePickerDidCancelHandler)(UIImagePickerController *picker);
  */
 typedef void(^SCImagePickerConfigHandler)(UIImagePickerController *picker);
 
+/**
+ *  @brief  保存图片到相册完成回调
+ */
+typedef void(^SCImageDidSavedCompletionHandler)(NSError *error);
+
+/**
+ *  @brief  保存视频到相册完成回调
+ */
+typedef void(^SCVideoDidSavedCompletionHandler)(NSError *error);
+
 @interface SCImagePickerManager : NSObject
 
 @property (nonatomic, assign) BOOL allowStore;
@@ -45,5 +55,11 @@ typedef void(^SCImagePickerConfigHandler)(UIImagePickerController *picker);
                        configPicker:(SCImagePickerConfigHandler)configHandler
               didFinishPickingMedia:(SCImagePickerDidFinishPickingMediaHandler)pickingMediaHandler
                           didCancel:(SCImagePickerDidCancelHandler)cancelHandler;
+
+- (void)saveImageToPhotosAlbum:(UIImage * _Nonnull)image
+                    completion:(SCImageDidSavedCompletionHandler _Nullable)completion;
+
+- (void)saveVideoToPhotosAlbum:(NSString * _Nonnull)videoPath
+                    completion:(SCVideoDidSavedCompletionHandler _Nullable)completion;
 
 @end

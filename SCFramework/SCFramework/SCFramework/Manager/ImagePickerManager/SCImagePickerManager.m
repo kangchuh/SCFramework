@@ -36,6 +36,10 @@ UIImagePickerControllerDelegate
 
 @property (nonatomic, weak  ) UIViewController                          *parentViewController;
 
+@property (nonatomic, copy  ) SCImageDidSavedCompletionHandler          imageDidSavedCompletionHandler;
+
+@property (nonatomic, copy  ) SCVideoDidSavedCompletionHandler          videoDidSavedCompletionHandler;
+
 @end
 
 @implementation SCImagePickerManager
@@ -101,6 +105,24 @@ SCSINGLETON(SCImagePickerManager);
     [[picker presentingViewController] dismissViewControllerAnimated:YES completion:NULL];
 }
 
+#pragma mark - Photos Delegate
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    DLog(@"%@, %@", error, contextInfo);
+    if (self.imageDidSavedCompletionHandler) {
+        self.imageDidSavedCompletionHandler(error);
+    }
+}
+
+- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    DLog(@"%@, %@, %@", videoPath, error, contextInfo);
+    if (self.videoDidSavedCompletionHandler) {
+        self.videoDidSavedCompletionHandler(error);
+    }
+}
+
 #pragma mark - Public Method
 
 + (void)checkAccessForAssetsLibrary:(void (^)(BOOL granted))completionHandler
@@ -112,7 +134,7 @@ SCSINGLETON(SCImagePickerManager);
                authStatus == ALAuthorizationStatusRestricted) {
         [self __alertForPhotosNotAccess];
     } else if (authStatus == ALAuthorizationStatusNotDetermined) {
-        
+        completionHandler(NO);
     } else {
         [self __alertForPhotosNotAccess];
     }
@@ -152,11 +174,28 @@ SCSINGLETON(SCImagePickerManager);
                                                         cancelButtonTitle:cancelTitle
                                                    destructiveButtonTitle:nil
                                                         otherButtonTitles:takeTitle, chooseTitle, nil];
-        
         [actionSheet showInView:viewController.view];
     } else {
         [self __goToPhotoLibrary:_parentViewController];
     }
+}
+
+- (void)saveImageToPhotosAlbum:(UIImage * _Nonnull)image
+                    completion:(SCImageDidSavedCompletionHandler _Nullable)completion
+{
+    self.imageDidSavedCompletionHandler = completion;
+    
+    SEL callback = @selector(image:didFinishSavingWithError:contextInfo:);
+    UIImageWriteToSavedPhotosAlbum(image, self, callback, nil);
+}
+
+- (void)saveVideoToPhotosAlbum:(NSString * _Nonnull)videoPath
+                    completion:(SCVideoDidSavedCompletionHandler _Nullable)completion
+{
+    self.videoDidSavedCompletionHandler = completion;
+    
+    SEL callback = @selector(video:didFinishSavingWithError:contextInfo:);
+    UISaveVideoAtPathToSavedPhotosAlbum(videoPath, self, callback, nil);
 }
 
 #pragma mark - Private Method
