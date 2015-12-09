@@ -56,10 +56,10 @@ typedef void(^SCVideoDidSavedCompletionHandler)(NSError *error);
               didFinishPickingMedia:(SCImagePickerDidFinishPickingMediaHandler)pickingMediaHandler
                           didCancel:(SCImagePickerDidCancelHandler)cancelHandler;
 
-- (void)saveImageToPhotosAlbum:(UIImage * _Nonnull)image
-                    completion:(SCImageDidSavedCompletionHandler _Nullable)completion;
+- (void)saveImageToPhotosAlbum:(UIImage *)image
+                    completion:(SCImageDidSavedCompletionHandler)completion;
 
-- (void)saveVideoToPhotosAlbum:(NSString * _Nonnull)videoPath
-                    completion:(SCVideoDidSavedCompletionHandler _Nullable)completion;
+- (void)saveVideoToPhotosAlbum:(NSString *)videoPath
+                    completion:(SCVideoDidSavedCompletionHandler)completion;
 
 @end

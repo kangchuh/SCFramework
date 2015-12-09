@@ -180,8 +180,8 @@ SCSINGLETON(SCImagePickerManager);
     }
 }
 
-- (void)saveImageToPhotosAlbum:(UIImage * _Nonnull)image
-                    completion:(SCImageDidSavedCompletionHandler _Nullable)completion
+- (void)saveImageToPhotosAlbum:(UIImage *)image
+                    completion:(SCImageDidSavedCompletionHandler)completion
 {
     self.imageDidSavedCompletionHandler = completion;
     
@@ -189,8 +189,8 @@ SCSINGLETON(SCImagePickerManager);
     UIImageWriteToSavedPhotosAlbum(image, self, callback, nil);
 }
 
-- (void)saveVideoToPhotosAlbum:(NSString * _Nonnull)videoPath
-                    completion:(SCVideoDidSavedCompletionHandler _Nullable)completion
+- (void)saveVideoToPhotosAlbum:(NSString *)videoPath
+                    completion:(SCVideoDidSavedCompletionHandler)completion
 {
     self.videoDidSavedCompletionHandler = completion;
     
