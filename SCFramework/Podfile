@@ -1,17 +1,17 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, "7.0"
+platform :ios, '7.0'
 
 inhibit_all_warnings!
 
-pod 'AFNetworking', '~> 2.5'
-pod 'SDWebImage', '~> 3.7'
-pod 'MBProgressHUD', '~> 0.9'
+pod 'AFNetworking', '~> 2.6.0'
+pod 'SDWebImage', '~> 3.7.0'
+pod 'MBProgressHUD', '~> 0.9.0'
 
-pod 'Mantle', '~> 1.5'
-pod 'Masonry', '~> 0.6'
+pod 'Mantle', '~> 2.0.0'
+pod 'Masonry', '~> 0.6.0'
 pod 'ReactiveCocoa', '~> 2.5'
 
 pod 'FMDB', '~> 2.5'
 
-pod 'SSKeychain', '~> 1.2'
+pod 'SSKeychain', '~> 1.2.0'

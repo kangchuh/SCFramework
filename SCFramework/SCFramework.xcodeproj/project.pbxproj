@@ -23,11 +23,6 @@
 		B72AF3E818C5655100621B34 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B72AF3E718C5655100621B34 /* main.m */; };
 		B72AF3EB18C5655100621B34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B72AF3EA18C5655100621B34 /* AppDelegate.m */; };
 		B72AF3ED18C5655100621B34 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B72AF3EC18C5655100621B34 /* Images.xcassets */; };
-		B72AF3F418C5655100621B34 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72AF3F318C5655100621B34 /* XCTest.framework */; };
-		B72AF3F518C5655100621B34 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72AF3D418C5655100621B34 /* Foundation.framework */; };
-		B72AF3F618C5655100621B34 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72AF3D818C5655100621B34 /* UIKit.framework */; };
-		B72AF3FE18C5655100621B34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B72AF3FC18C5655100621B34 /* InfoPlist.strings */; };
-		B72AF40018C5655100621B34 /* SCFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B72AF3FF18C5655100621B34 /* SCFrameworkTests.m */; };
 		B72C84A719F4A61C0026225D /* SCLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B72C84A619F4A61C0026225D /* SCLocationManager.m */; };
 		B730F7D91921B9CA00CBB1E8 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B730F7D81921B9CA00CBB1E8 /* JavaScriptCore.framework */; };
 		B73230E21A353E8C009C16D8 /* SCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73230E11A353E8C009C16D8 /* SCAlertView.m */; };
@@ -35,7 +30,6 @@
 		B73CD4861990B39A00D21CD0 /* SCBrowseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73CD4851990B39A00D21CD0 /* SCBrowseView.m */; };
 		B73EDD7A1A5E67EF0024E33E /* SCKeyValueStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B73EDD791A5E67EF0024E33E /* SCKeyValueStore.m */; };
 		B745E7951B1EDF6B00E06BE6 /* SCCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B745E7941B1EDF6B00E06BE6 /* SCCycleScrollView.m */; };
-		B7531D8718C734B100D701BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B7531D8618C734B100D701BF /* libz.dylib */; };
 		B75C059A1B16C84C00B5C012 /* SCPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75C05991B16C84C00B5C012 /* SCPageViewController.m */; };
 		B75DAF85191B83230011E917 /* SCDemoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B75DAF84191B83230011E917 /* SCDemoDetailViewController.m */; };
 		B7645723196BC902009302C2 /* SCImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7645722196BC902009302C2 /* SCImagePickerManager.m */; };
@@ -43,6 +37,7 @@
 		B779D1FF1B4E695500743758 /* SCFramework.podspec in Resources */ = {isa = PBXBuildFile; fileRef = B779D1FE1B4E695500743758 /* SCFramework.podspec */; };
 		B7AF797D19A5DE270041F724 /* SCDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AF797C19A5DE270041F724 /* SCDatabase.m */; };
 		B7AF798A19A6E8AA0041F724 /* SCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AF798919A6E8AA0041F724 /* SCUtils.m */; };
+		B7B166421C182D690052568C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B166401C182D320052568C /* libz.tbd */; };
 		B7B70C5319D11B25000D4472 /* SCToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B70C5219D11B25000D4472 /* SCToolbar.m */; };
 		B7B70C5A19D11E56000D4472 /* UIBarButtonItem+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B70C5919D11E56000D4472 /* UIBarButtonItem+SCAddition.m */; };
 		B7C2268619760BF700BEF1B2 /* SCPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C2268519760BF700BEF1B2 /* SCPageControl.m */; };
@@ -102,16 +97,6 @@
 		B7F300371962529800921CFD /* UINavigationItem+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F300361962529800921CFD /* UINavigationItem+SCAddition.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B72AF3F718C5655100621B34 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B72AF3C918C5655100621B34 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B72AF3D018C5655100621B34;
-			remoteInfo = SCFramework;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		6C0C92BEB5AD5FDF3951A522 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B705E09C18C6CAAE00AC6B5E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -138,8 +123,6 @@
 		B72AF3E918C5655100621B34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B72AF3EA18C5655100621B34 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B72AF3EC18C5655100621B34 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B72AF3F218C5655100621B34 /* SCFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B72AF3F318C5655100621B34 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B72AF3FB18C5655100621B34 /* SCFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SCFrameworkTests-Info.plist"; sourceTree = "<group>"; };
 		B72AF3FD18C5655100621B34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B72AF3FF18C5655100621B34 /* SCFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCFrameworkTests.m; sourceTree = "<group>"; };
@@ -157,7 +140,6 @@
 		B74181151A834EBB00AD2169 /* SCJSONSerializing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCJSONSerializing.h; sourceTree = "<group>"; };
 		B745E7931B1EDF6B00E06BE6 /* SCCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCycleScrollView.h; sourceTree = "<group>"; };
 		B745E7941B1EDF6B00E06BE6 /* SCCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCycleScrollView.m; sourceTree = "<group>"; };
-		B7531D8618C734B100D701BF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B75C05981B16C84C00B5C012 /* SCPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPageViewController.h; sourceTree = "<group>"; };
 		B75C05991B16C84C00B5C012 /* SCPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPageViewController.m; sourceTree = "<group>"; };
 		B75DAF83191B83230011E917 /* SCDemoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDemoDetailViewController.h; sourceTree = "<group>"; };
@@ -171,6 +153,7 @@
 		B7AF797C19A5DE270041F724 /* SCDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDatabase.m; sourceTree = "<group>"; };
 		B7AF798819A6E8AA0041F724 /* SCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCUtils.h; sourceTree = "<group>"; };
 		B7AF798919A6E8AA0041F724 /* SCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCUtils.m; sourceTree = "<group>"; };
+		B7B166401C182D320052568C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		B7B70C5119D11B25000D4472 /* SCToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCToolbar.h; sourceTree = "<group>"; };
 		B7B70C5219D11B25000D4472 /* SCToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCToolbar.m; sourceTree = "<group>"; };
 		B7B70C5819D11E56000D4472 /* UIBarButtonItem+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+SCAddition.h"; sourceTree = "<group>"; };
@@ -300,25 +283,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7B166421C182D690052568C /* libz.tbd in Frameworks */,
 				B730F7D91921B9CA00CBB1E8 /* JavaScriptCore.framework in Frameworks */,
 				B71EE5A91910CB9100590A9D /* AVFoundation.framework in Frameworks */,
 				B71EE5A71910CB3500590A9D /* CoreMedia.framework in Frameworks */,
-				B7531D8718C734B100D701BF /* libz.dylib in Frameworks */,
 				B705E09D18C6CAAE00AC6B5E /* CoreData.framework in Frameworks */,
 				B72AF3D718C5655100621B34 /* CoreGraphics.framework in Frameworks */,
 				B72AF3D918C5655100621B34 /* UIKit.framework in Frameworks */,
 				B72AF3D518C5655100621B34 /* Foundation.framework in Frameworks */,
 				91CE001E8CA9A4A714C1262B /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B72AF3EF18C5655100621B34 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B72AF3F418C5655100621B34 /* XCTest.framework in Frameworks */,
-				B72AF3F618C5655100621B34 /* UIKit.framework in Frameworks */,
-				B72AF3F518C5655100621B34 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +322,6 @@
 			isa = PBXGroup;
 			children = (
 				B72AF3D118C5655100621B34 /* SCFramework.app */,
-				B72AF3F218C5655100621B34 /* SCFrameworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -357,15 +329,14 @@
 		B72AF3D318C5655100621B34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B7B166401C182D320052568C /* libz.tbd */,
 				B730F7D81921B9CA00CBB1E8 /* JavaScriptCore.framework */,
 				B71EE5A81910CB9100590A9D /* AVFoundation.framework */,
 				B71EE5A61910CB3500590A9D /* CoreMedia.framework */,
-				B7531D8618C734B100D701BF /* libz.dylib */,
 				B705E09C18C6CAAE00AC6B5E /* CoreData.framework */,
 				B72AF3D418C5655100621B34 /* Foundation.framework */,
 				B72AF3D618C5655100621B34 /* CoreGraphics.framework */,
 				B72AF3D818C5655100621B34 /* UIKit.framework */,
-				B72AF3F318C5655100621B34 /* XCTest.framework */,
 				DD699A7A7BE03FFCE0BB4B68 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -914,6 +885,7 @@
 				B72AF3CE18C5655100621B34 /* Frameworks */,
 				B72AF3CF18C5655100621B34 /* Resources */,
 				D956854C7582753F0FF1B2F0 /* Copy Pods Resources */,
+				F810FFF0E54E50DC34078DA9 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -924,24 +896,6 @@
 			productReference = B72AF3D118C5655100621B34 /* SCFramework.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B72AF3F118C5655100621B34 /* SCFrameworkTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B72AF40618C5655100621B34 /* Build configuration list for PBXNativeTarget "SCFrameworkTests" */;
-			buildPhases = (
-				B72AF3EE18C5655100621B34 /* Sources */,
-				B72AF3EF18C5655100621B34 /* Frameworks */,
-				B72AF3F018C5655100621B34 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B72AF3F818C5655100621B34 /* PBXTargetDependency */,
-			);
-			name = SCFrameworkTests;
-			productName = SCFrameworkTests;
-			productReference = B72AF3F218C5655100621B34 /* SCFrameworkTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -951,11 +905,6 @@
 				CLASSPREFIX = SC;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Richer VC";
-				TargetAttributes = {
-					B72AF3F118C5655100621B34 = {
-						TestTargetID = B72AF3D018C5655100621B34;
-					};
-				};
 			};
 			buildConfigurationList = B72AF3CC18C5655100621B34 /* Build configuration list for PBXProject "SCFramework" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -971,7 +920,6 @@
 			projectRoot = "";
 			targets = (
 				B72AF3D018C5655100621B34 /* SCFramework */,
-				B72AF3F118C5655100621B34 /* SCFrameworkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -986,14 +934,6 @@
 				B71EE5AB1910D69000590A9D /* TestPic.jpg in Resources */,
 				B779D1FF1B4E695500743758 /* SCFramework.podspec in Resources */,
 				B72AF3E618C5655100621B34 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B72AF3F018C5655100621B34 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B72AF3FE18C5655100621B34 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,6 +968,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F810FFF0E54E50DC34078DA9 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1114,23 +1069,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B72AF3EE18C5655100621B34 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B72AF40018C5655100621B34 /* SCFrameworkTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B72AF3F818C5655100621B34 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B72AF3D018C5655100621B34 /* SCFramework */;
-			targetProxy = B72AF3F718C5655100621B34 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B71503991B943BDC00F3E960 /* SCFWLocalizable.strings */ = {
@@ -1264,48 +1203,6 @@
 			};
 			name = Release;
 		};
-		B72AF40718C5655100621B34 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SCFramework.app/SCFramework";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SCFramework/SCFramework-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "SCFrameworkTests/SCFrameworkTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "Richervc.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		B72AF40818C5655100621B34 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SCFramework.app/SCFramework";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SCFramework/SCFramework-Prefix.pch";
-				INFOPLIST_FILE = "SCFrameworkTests/SCFrameworkTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "Richervc.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1323,15 +1220,6 @@
 			buildConfigurations = (
 				B72AF40418C5655100621B34 /* Debug */,
 				B72AF40518C5655100621B34 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B72AF40618C5655100621B34 /* Build configuration list for PBXNativeTarget "SCFrameworkTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B72AF40718C5655100621B34 /* Debug */,
-				B72AF40818C5655100621B34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
