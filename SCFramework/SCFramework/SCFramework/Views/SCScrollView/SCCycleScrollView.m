@@ -202,18 +202,9 @@ static const CGFloat SCCycleScrollingDuration = 5.0;
 		NSInteger previousPage = [self __constructPreviousPage:currentPage];
 		NSInteger nextPage = [self __constructNextPage:currentPage];
 
-		UIView *previousView = _loadableViews[SCCycleScrollViewPreviousKey];
-        if (!previousView) {
-            previousView = [self __GETPageViewAtIndex:previousPage];
-        }
-		UIView *currentView = _loadableViews[SCCycleScrollViewCurrentKey];
-        if (!currentView) {
-            currentView = [self __GETPageViewAtIndex:currentPage];
-        }
-		UIView *nextView = _loadableViews[SCCycleScrollViewNextKey];
-        if (!nextView) {
-            nextView = [self __GETPageViewAtIndex:nextPage];
-        }
+		UIView *previousView = [self __GETPageViewAtIndex:previousPage];
+		UIView *currentView = [self __GETPageViewAtIndex:currentPage];
+		UIView *nextView = [self __GETPageViewAtIndex:nextPage];
 
         NSDictionary *views = @{ SCCycleScrollViewPreviousKey: previousView,
                                  SCCycleScrollViewCurrentKey: currentView,
