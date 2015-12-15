@@ -15,6 +15,10 @@
 #import "NSDictionary+SCAddition.h"
 #import "NSTimer+SCAddition.h"
 
+static NSString * const SCCycleScrollViewPreviousKey = @"SCCycleScrollViewPreviousKey";
+static NSString * const SCCycleScrollViewCurrentKey = @"SCCycleScrollViewCurrentKey";
+static NSString * const SCCycleScrollViewNextKey = @"SCCycleScrollViewNextKey";
+
 /// 循环滚动时间间隔
 static const CGFloat SCCycleScrollingDuration = 5.0;
 
@@ -191,29 +195,29 @@ static const CGFloat SCCycleScrollingDuration = 5.0;
 	} else if (totalPgaes == 1) {
 		UIView *currentView = [self __GETPageViewAtIndex:currentPage];
 
-        NSDictionary *views = @{ @(currentPage): currentView };
+        NSDictionary *views = @{ SCCycleScrollViewCurrentKey: currentView };
 
 		return views;
 	} else {
 		NSInteger previousPage = [self __constructPreviousPage:currentPage];
 		NSInteger nextPage = [self __constructNextPage:currentPage];
 
-		UIView *previousView = _loadableViews[@(previousPage)];
+		UIView *previousView = _loadableViews[SCCycleScrollViewPreviousKey];
         if (!previousView) {
             previousView = [self __GETPageViewAtIndex:previousPage];
         }
-		UIView *currentView = _loadableViews[@(currentPage)];
+		UIView *currentView = _loadableViews[SCCycleScrollViewCurrentKey];
         if (!currentView) {
             currentView = [self __GETPageViewAtIndex:currentPage];
         }
-		UIView *nextView = _loadableViews[@(nextPage)];
+		UIView *nextView = _loadableViews[SCCycleScrollViewNextKey];
         if (!nextView) {
             nextView = [self __GETPageViewAtIndex:nextPage];
         }
 
-        NSDictionary *views = @{ @(previousPage): previousView,
-                                 @(currentPage): currentView,
-                                 @(nextPage): nextView };
+        NSDictionary *views = @{ SCCycleScrollViewPreviousKey: previousView,
+                                 SCCycleScrollViewCurrentKey: currentView,
+                                 SCCycleScrollViewNextKey: nextView };
 
 		return views;
 	}
@@ -241,7 +245,7 @@ static const CGFloat SCCycleScrollingDuration = 5.0;
         _scrollView.contentSize = CGSizeZero;
         _scrollView.contentOffset = CGPointZero;
     } else if (itemsCount == 1) {
-        UIView *currentView = _loadableViews[@(_currentPage)];
+        UIView *currentView = _loadableViews[SCCycleScrollViewCurrentKey];
         [self __configFrameToLoadableView:currentView forIndex:0];
         [self __configEventToLoadableView:currentView];
         [_scrollView addSubview:currentView];
@@ -254,20 +258,17 @@ static const CGFloat SCCycleScrollingDuration = 5.0;
         });
         _scrollView.contentOffset = CGPointZero;
     } else {
-        NSInteger previousPage = [self __constructPreviousPage:_currentPage];
-        NSInteger nextPage = [self __constructNextPage:_currentPage];
-        
-        UIView *previousView = _loadableViews[@(previousPage)];
+        UIView *previousView = _loadableViews[SCCycleScrollViewPreviousKey];
         [self __configFrameToLoadableView:previousView forIndex:0];
         [self __configEventToLoadableView:previousView];
         [_scrollView addSubview:previousView];
         
-        UIView *currentView = _loadableViews[@(_currentPage)];
+        UIView *currentView = _loadableViews[SCCycleScrollViewCurrentKey];
         [self __configFrameToLoadableView:currentView forIndex:1];
         [self __configEventToLoadableView:currentView];
         [_scrollView addSubview:currentView];
         
-        UIView *nextView = _loadableViews[@(nextPage)];
+        UIView *nextView = _loadableViews[SCCycleScrollViewNextKey];
         [self __configFrameToLoadableView:nextView forIndex:2];
         [self __configEventToLoadableView:nextView];
         [_scrollView addSubview:nextView];
