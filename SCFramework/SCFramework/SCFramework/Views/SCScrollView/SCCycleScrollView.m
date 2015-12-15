@@ -113,6 +113,8 @@ static const CGFloat SCCycleScrollingDuration = 5.0;
 
 - (void)startPageing
 {
+    [self stopPageing];
+
 	NSInteger totalPgaes = [self __GETNumberOfPages];
 	if (totalPgaes <= 0) {
 		return;
