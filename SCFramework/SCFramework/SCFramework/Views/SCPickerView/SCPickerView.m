@@ -59,6 +59,7 @@ SCToolbarActionDelegate
         [self addSubview:_toolbar];
         
         _pickerView = [[UIPickerView alloc] init];
+        _pickerView.size = CGSizeMake(self.width, kSCFW_DATEPICKER_HEIGHT);
         _pickerView.top = _toolbar.bottom;
         _pickerView.delegate = self;
         _pickerView.dataSource = self;

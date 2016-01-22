@@ -56,6 +56,7 @@ SCToolbarActionDelegate
         [self addSubview:_toolbar];
         
         _datePicker = [[UIDatePicker alloc] init];
+        _datePicker.size = CGSizeMake(self.width, kSCFW_DATEPICKER_HEIGHT);
         _datePicker.top = _toolbar.bottom;
         _datePicker.datePickerMode = UIDatePickerModeDate;
         _datePicker.minimumDate = [NSDate dateWithTimeIntervalSince1970:0];
