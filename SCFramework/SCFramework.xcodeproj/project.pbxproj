@@ -42,6 +42,8 @@
 		B7B70C5A19D11E56000D4472 /* UIBarButtonItem+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B70C5919D11E56000D4472 /* UIBarButtonItem+SCAddition.m */; };
 		B7C2268619760BF700BEF1B2 /* SCPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C2268519760BF700BEF1B2 /* SCPageControl.m */; };
 		B7C2268C19762AF000BEF1B2 /* UIScreen+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C2268B19762AF000BEF1B2 /* UIScreen+SCAddition.m */; };
+		B7C97E3A1CC0EDBD00D28098 /* SCTableMetaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C97E391CC0EDBD00D28098 /* SCTableMetaModel.m */; };
+		B7C97E3D1CC0F2D900D28098 /* SCDatabaseMetaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C97E3C1CC0F2D900D28098 /* SCDatabaseMetaModel.m */; };
 		B7DED3C71957D47D00A2D5C0 /* SCAdaptedDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED33C1957D47D00A2D5C0 /* SCAdaptedDevice.m */; };
 		B7DED3C81957D47D00A2D5C0 /* SCAdaptedSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED33F1957D47D00A2D5C0 /* SCAdaptedSystem.m */; };
 		B7DED3C91957D47D00A2D5C0 /* NSArray+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DED3421957D47D00A2D5C0 /* NSArray+SCAddition.m */; };
@@ -162,6 +164,10 @@
 		B7C2268519760BF700BEF1B2 /* SCPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPageControl.m; sourceTree = "<group>"; };
 		B7C2268A19762AF000BEF1B2 /* UIScreen+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+SCAddition.h"; sourceTree = "<group>"; };
 		B7C2268B19762AF000BEF1B2 /* UIScreen+SCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+SCAddition.m"; sourceTree = "<group>"; };
+		B7C97E381CC0EDBD00D28098 /* SCTableMetaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTableMetaModel.h; sourceTree = "<group>"; };
+		B7C97E391CC0EDBD00D28098 /* SCTableMetaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTableMetaModel.m; sourceTree = "<group>"; };
+		B7C97E3B1CC0F2D900D28098 /* SCDatabaseMetaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDatabaseMetaModel.h; sourceTree = "<group>"; };
+		B7C97E3C1CC0F2D900D28098 /* SCDatabaseMetaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDatabaseMetaModel.m; sourceTree = "<group>"; };
 		B7D9A0692EE6DA81624DA5BD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B7DED33B1957D47D00A2D5C0 /* SCAdaptedDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAdaptedDevice.h; sourceTree = "<group>"; };
 		B7DED33C1957D47D00A2D5C0 /* SCAdaptedDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAdaptedDevice.m; sourceTree = "<group>"; };
@@ -631,6 +637,10 @@
 				B7AF797B19A5DE270041F724 /* SCDatabase.h */,
 				B7AF797C19A5DE270041F724 /* SCDatabase.m */,
 				B7141FFB19A74EF3006C510C /* SCDatabaseModel.h */,
+				B7C97E3B1CC0F2D900D28098 /* SCDatabaseMetaModel.h */,
+				B7C97E3C1CC0F2D900D28098 /* SCDatabaseMetaModel.m */,
+				B7C97E381CC0EDBD00D28098 /* SCTableMetaModel.h */,
+				B7C97E391CC0EDBD00D28098 /* SCTableMetaModel.m */,
 				B73EDD781A5E67EF0024E33E /* SCKeyValueStore.h */,
 				B73EDD791A5E67EF0024E33E /* SCKeyValueStore.m */,
 			);
@@ -993,6 +1003,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7DED3F61957D47D00A2D5C0 /* SCExpandTableViewCell.m in Sources */,
+				B7C97E3A1CC0EDBD00D28098 /* SCTableMetaModel.m in Sources */,
 				B72C84A719F4A61C0026225D /* SCLocationManager.m in Sources */,
 				B725A02419D53D0800C92315 /* UITableView+SCAddition.m in Sources */,
 				B7DED3EF1957D47D00A2D5C0 /* SCPickerView.m in Sources */,
@@ -1010,6 +1021,7 @@
 				B7F300371962529800921CFD /* UINavigationItem+SCAddition.m in Sources */,
 				B7DED3DA1957D47D00A2D5C0 /* SCConstant.m in Sources */,
 				B7DED3F91957D47D00A2D5C0 /* SCTextView.m in Sources */,
+				B7C97E3D1CC0F2D900D28098 /* SCDatabaseMetaModel.m in Sources */,
 				B7DED3DC1957D47D00A2D5C0 /* NSManagedObject+SCDaoAddition.m in Sources */,
 				B7DED3D31957D47D00A2D5C0 /* UIImage+SCAddition.m in Sources */,
 				B72AF3E818C5655100621B34 /* main.m in Sources */,
