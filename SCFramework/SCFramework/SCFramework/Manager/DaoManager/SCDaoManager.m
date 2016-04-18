@@ -15,8 +15,12 @@
 #import "SCDatabase.h"
 #import "SCDatabaseModel.h"
 
+#import "SCDatabaseMetaModel.h"
+#import "SCTableMetaModel.h"
+
 #import "NSObject+SCAddition.h"
 #import "NSString+SCAddition.h"
+#import "NSArray+SCAddition.h"
 
 #import "FMDB.h"
 
@@ -68,6 +72,98 @@ SCSINGLETON(SCDaoManager);
 }
 
 #pragma mark - Database
+
+- (NSArray *)datebaseMetas
+{
+    NSMutableArray *metas = [NSMutableArray array];
+    
+    if ( [self.db open] ) {
+        FMResultSet *rs = [self.db executeQuery:
+                           @"select * from sqlite_master"];
+        while ( [rs next] ) {
+            SCDatabaseMetaModel *meta = [[SCDatabaseMetaModel alloc] init];
+            meta.type      = [rs stringForColumn:@"type"];
+            meta.name      = [rs stringForColumn:@"name"];
+            meta.tableName = [rs stringForColumn:@"tbl_name"];
+            meta.sql       = [rs stringForColumn:@"sql"];
+            [metas addObject:meta];
+        }
+        [rs close];
+    }
+    [self.db close];
+    
+    return [NSArray arrayWithArray:metas];
+}
+
+- (NSArray *)tableMetas:(Class)modelCls
+{
+    if ( ![self existTable:modelCls] ) {
+        return nil;
+    }
+    
+    NSMutableArray *metas = [NSMutableArray array];
+    
+    if ( [self.db open] ) {
+        NSString *tableName = [modelCls tableName];
+        NSString *sql = [NSString stringWithFormat:
+                         @"PRAGMA table_info('%@')", tableName];
+        FMResultSet *rs = [self.db executeQuery:sql];
+        while ( [rs next] ) {
+            SCTableMetaModel *meta = [[SCTableMetaModel alloc] init];
+            meta.columnID     = [rs intForColumn:@"cid"];
+            meta.type         = [rs stringForColumn:@"type"];
+            meta.name         = [rs stringForColumn:@"name"];
+            meta.isNotNull    = [rs boolForColumn:@"notnull"];
+            meta.isPrimaryKey = [rs boolForColumn:@"pk"];
+            meta.defaultValue = [rs objectForColumnName:@"dflt_value"];
+            [metas addObject:meta];
+        }
+        [rs close];
+    }
+    [self.db close];
+    
+    return [NSArray arrayWithArray:metas];
+}
+
+- (BOOL)checkTableAndAlertIfNeed:(Class)modelCls
+{
+    NSArray *columnMetas = [self tableMetas:modelCls];
+    if (![columnMetas isNotEmpty]) {
+        return YES;
+    }
+    
+    BOOL flag = NO;
+    
+    if ( [self.db open] ) {
+        NSString *tableName = [modelCls tableName];
+        NSDictionary *properties = [modelCls storableProperties];
+        NSArray *propertyNames = [properties allKeys];
+        for (NSString *propertyName in propertyNames) {
+            BOOL columnForPropertyInTable = NO;
+            for (SCTableMetaModel *columnMeta in columnMetas) {
+                if ([propertyName isEqualToString:columnMeta.name]) {
+                    columnForPropertyInTable = YES;
+                    break;
+                }
+            }
+            if (!columnForPropertyInTable) {
+                id propertyType = [properties objectForKey:propertyName];
+                NSString *sql = [NSString stringWithFormat:@"ALTER TABLE '%@' ADD '%@' %@",
+                                 tableName, propertyName, SCSQLTypeFromObjcType(propertyType)];
+                BOOL ret = [self.db executeUpdate:sql];
+                if (ret) {
+                    flag = YES;
+                } else {
+                    flag = NO;
+                    break;
+                }
+            }
+        }
+    }
+    [self.db close];
+    
+    return flag;
+}
 
 - (BOOL)existTable:(Class)modelCls
 {

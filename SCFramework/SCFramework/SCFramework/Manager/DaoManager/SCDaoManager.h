@@ -19,6 +19,16 @@
 - (instancetype)initWithName:(NSString *)dbName;
 - (instancetype)initWithPath:(NSString *)dbPath;
 
+- (NSArray *)datebaseMetas;
+
+- (NSArray *)tableMetas:(Class)modelCls;
+
+- (BOOL)checkTableAndAlertIfNeed:(Class)modelCls;
+
+- (BOOL)existTable:(Class)modelCls;
+
+- (BOOL)createTable:(Class)modelCls;
+
 - (BOOL)dropTable:(Class)modelCls;
 
 - (BOOL)insertModel:(SCModel <SCDatabaseModel> *)model;
