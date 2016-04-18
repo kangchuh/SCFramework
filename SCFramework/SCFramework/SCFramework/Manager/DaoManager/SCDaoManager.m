@@ -22,8 +22,6 @@
 #import "NSString+SCAddition.h"
 #import "NSArray+SCAddition.h"
 
-#import "FMDB.h"
-
 @interface SCDaoManager ()
 
 @property (nonatomic, strong) FMDatabase *db;
@@ -227,7 +225,7 @@ SCSINGLETON(SCDaoManager);
     return flag;
 }
 
-- (BOOL)insertModel:(SCModel <SCDatabaseModel> *)model
+- (BOOL)insertModel:(SCModel<SCDatabaseModel> *)model
 {
     if ( ![self existTable:[model class]] ) {
         if ( ![self createTable:[model class]] ) {
@@ -243,6 +241,39 @@ SCSINGLETON(SCDaoManager);
         BOOL ret = [self.db executeUpdate:sql withArgumentsInArray:insertValues];
         if ( ret ) {
             flag = YES;
+        }
+    }
+    [self.db close];
+    
+    return flag;
+}
+
+- (BOOL)insertModels:(NSArray<SCModel<SCDatabaseModel> *> *)models
+{
+    if (![models isNotEmpty]) {
+        return YES;
+    }
+    
+    Class modelClass = models.firstObject.class;
+    if ( ![self existTable:modelClass] ) {
+        if ( ![self createTable:modelClass] ) {
+            return NO;
+        }
+    }
+    
+    BOOL flag = NO;
+    
+    if ( [self.db open] ) {
+        for (SCModel<SCDatabaseModel> *model in models) {
+            NSArray *insertValues = nil;
+            NSString *sql = [self constructSQLForInsertWithModel:model insertValues:&insertValues];
+            BOOL ret = [self.db executeUpdate:sql withArgumentsInArray:insertValues];
+            if ( ret ) {
+                flag = YES;
+            } else {
+                flag = NO;
+                break;
+            }
         }
     }
     [self.db close];
@@ -270,7 +301,27 @@ SCSINGLETON(SCDaoManager);
     return flag;
 }
 
-- (BOOL)updateModel:(SCModel <SCDatabaseModel> *)model forSQL:(NSString *)SQL
+- (BOOL)deleteModel:(Class)modelCls forSQL:(NSString *)SQL
+{
+    if ( ![self existTable:modelCls] ) {
+        return YES;
+    }
+    
+    BOOL flag = NO;
+    
+    if ( [self.db open] ) {
+        NSString *sql = [NSString stringWithFormat:SQL, [modelCls tableName]];
+        BOOL ret = [self.db executeUpdate:sql];
+        if ( ret ) {
+            flag = YES;
+        }
+    }
+    [self.db close];
+    
+    return flag;
+}
+
+- (BOOL)updateModel:(SCModel<SCDatabaseModel> *)model forSQL:(NSString *)SQL
 {
     if ( ![self existTable:[model class]] ) {
         return NO;
@@ -373,6 +424,33 @@ SCSINGLETON(SCDaoManager);
     [self.db close];
     
     return count;
+}
+
+- (BOOL)executeUpdate:(NSString *)SQL
+{
+    BOOL flag = NO;
+    
+    if ( [self.db open] ) {
+        BOOL ret = [self.db executeUpdate:SQL];
+        if ( ret ) {
+            flag = YES;
+        }
+    }
+    [self.db close];
+    
+    return flag;
+}
+
+- (FMResultSet *)executeQuery:(NSString *)SQL
+{
+    FMResultSet *rs = nil;
+    
+    if ( [self.db open] ) {
+        rs = [self.db executeQuery:SQL];
+    }
+    [self.db close];
+    
+    return rs;
 }
 
 #pragma mark - Common

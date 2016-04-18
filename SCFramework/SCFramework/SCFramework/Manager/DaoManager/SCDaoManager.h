@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "FMDB.h"
+
 @class SCModel;
 
 @protocol SCDatabaseModel;
 
 @interface SCDaoManager : NSObject
+
+@property (nonatomic, readonly) FMDatabase *db;
 
 + (SCDaoManager *)sharedInstance;
 
@@ -31,16 +35,24 @@
 
 - (BOOL)dropTable:(Class)modelCls;
 
-- (BOOL)insertModel:(SCModel <SCDatabaseModel> *)model;
+- (BOOL)insertModel:(SCModel<SCDatabaseModel> *)model;
+
+- (BOOL)insertModels:(NSArray<SCModel<SCDatabaseModel> *> *)models;
 
 - (BOOL)deleteModel:(Class)modelCls;
 
-- (BOOL)updateModel:(SCModel <SCDatabaseModel> *)model forSQL:(NSString *)SQL;
+- (BOOL)deleteModel:(Class)modelCls forSQL:(NSString *)SQL;
+
+- (BOOL)updateModel:(SCModel<SCDatabaseModel> *)model forSQL:(NSString *)SQL;
 
 - (NSArray *)query:(Class)modelCls;
 - (NSArray *)query:(Class)modelCls where:(id)where;
 - (NSArray *)query:(Class)modelCls forSQL:(NSString *)SQL;
 
 - (NSInteger)count:(Class)modelCls forSQL:(NSString *)SQL;
+
+- (BOOL)executeUpdate:(NSString *)SQL;
+
+- (FMResultSet *)executeQuery:(NSString *)SQL;
 
 @end
