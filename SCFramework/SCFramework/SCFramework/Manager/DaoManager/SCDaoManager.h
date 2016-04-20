@@ -39,6 +39,8 @@
 
 - (BOOL)insertModels:(NSArray<SCModel<SCDatabaseModel> *> *)models;
 
+- (BOOL)insertModels:(NSArray<SCModel<SCDatabaseModel> *> *)models rollback:(BOOL)rollback;
+
 - (BOOL)deleteModel:(Class)modelCls;
 
 - (BOOL)deleteModel:(Class)modelCls forSQL:(NSString *)SQL;

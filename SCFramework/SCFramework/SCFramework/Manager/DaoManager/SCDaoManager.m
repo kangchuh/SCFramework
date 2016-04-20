@@ -264,15 +264,63 @@ SCSINGLETON(SCDaoManager);
     BOOL flag = NO;
     
     if ( [self.db open] ) {
-        for (SCModel<SCDatabaseModel> *model in models) {
-            NSArray *insertValues = nil;
-            NSString *sql = [self constructSQLForInsertWithModel:model insertValues:&insertValues];
-            BOOL ret = [self.db executeUpdate:sql withArgumentsInArray:insertValues];
-            if ( ret ) {
-                flag = YES;
+        if ( [self.db beginTransaction] ) {
+            for (SCModel<SCDatabaseModel> *model in models) {
+                NSArray *insertValues = nil;
+                NSString *sql = [self constructSQLForInsertWithModel:model insertValues:&insertValues];
+                BOOL ret = [self.db executeUpdate:sql withArgumentsInArray:insertValues];
+                if ( !ret ) {
+                    
+                }
+            }
+            if ( !(flag = [self.db commit]) ) {
+                [self.db rollback];
+            }
+        }
+    }
+    [self.db close];
+    
+    return flag;
+}
+
+- (BOOL)insertModels:(NSArray<SCModel<SCDatabaseModel> *> *)models rollback:(BOOL)rollback
+{
+    if (![models isNotEmpty]) {
+        return YES;
+    }
+    
+    Class modelClass = models.firstObject.class;
+    if ( ![self existTable:modelClass] ) {
+        if ( ![self createTable:modelClass] ) {
+            return NO;
+        }
+    }
+    
+    BOOL flag = NO;
+    
+    if ( [self.db open] ) {
+        if ( [self.db beginTransaction] ) {
+            for (SCModel<SCDatabaseModel> *model in models) {
+                NSArray *insertValues = nil;
+                NSString *sql = [self constructSQLForInsertWithModel:model insertValues:&insertValues];
+                BOOL ret = [self.db executeUpdate:sql withArgumentsInArray:insertValues];
+                if ( rollback ) {
+                    if ( ret ) {
+                        flag = YES;
+                    } else {
+                        flag = NO;
+                        break;
+                    }
+                } else {
+                    flag = YES;
+                }
+            }
+            if ( flag ) {
+                if ( !(flag = [self.db commit]) ) {
+                    [self.db rollback];
+                }
             } else {
-                flag = NO;
-                break;
+                [self.db rollback];
             }
         }
     }
