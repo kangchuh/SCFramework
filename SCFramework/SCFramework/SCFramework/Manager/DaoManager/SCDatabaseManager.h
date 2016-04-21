@@ -1,9 +1,9 @@
 //
-//  SCDaoManager.h
+//  SCDatabaseManager.h
 //  SCFramework
 //
-//  Created by Angzn on 5/5/14.
-//  Copyright (c) 2014 Richer VC. All rights reserved.
+//  Created by Angzn on 16/4/21.
+//  Copyright © 2016年 Richer VC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,11 +14,11 @@
 
 @protocol SCDatabaseModel;
 
-@interface SCDaoManager : NSObject
+@interface SCDatabaseManager : NSObject
 
-@property (nonatomic, readonly) FMDatabase *db;
+@property (nonatomic, readonly) FMDatabaseQueue *dbQueue;
 
-+ (SCDaoManager *)sharedInstance;
++ (SCDatabaseManager *)sharedInstance;
 
 - (instancetype)initWithName:(NSString *)dbName;
 - (instancetype)initWithPath:(NSString *)dbPath;

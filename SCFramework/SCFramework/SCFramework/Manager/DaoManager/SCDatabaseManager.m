@@ -1,12 +1,12 @@
 //
-//  SCDaoManager.m
+//  SCDatabaseManager.m
 //  SCFramework
 //
-//  Created by Angzn on 5/5/14.
-//  Copyright (c) 2014 Richer VC. All rights reserved.
+//  Created by Angzn on 16/4/21.
+//  Copyright © 2016年 Richer VC. All rights reserved.
 //
 
-#import "SCDaoManager.h"
+#import "SCDatabaseManager.h"
 #import "SCSingleton.h"
 #import "SCApp.h"
 
@@ -22,19 +22,19 @@
 #import "NSString+SCAddition.h"
 #import "NSArray+SCAddition.h"
 
-@interface SCDaoManager ()
+@interface SCDatabaseManager ()
 
-@property (nonatomic, strong) FMDatabase *db;
+@property (nonatomic, strong) FMDatabaseQueue *dbQueue;
 
 @end
 
-@implementation SCDaoManager
+@implementation SCDatabaseManager
 
-SCSINGLETON(SCDaoManager);
+SCSINGLETON(SCDatabaseManager);
 
 - (void)dealloc
 {
-    [_db close];
+    [_dbQueue close];
 }
 
 #pragma mark - Init Method
@@ -45,7 +45,7 @@ SCSINGLETON(SCDaoManager);
     if (self) {
         NSString *dbName = [[SCApp bundleID] stringByAppendingString:@".sqlite"];
         NSString *dbPath = [self databasePathWithName:dbName];
-        self.db = [FMDatabase databaseWithPath:dbPath];
+        self.dbQueue = [[FMDatabaseQueue alloc] initWithPath:dbPath];
     }
     return self;
 }
@@ -55,7 +55,7 @@ SCSINGLETON(SCDaoManager);
     self = [super init];
     if (self) {
         NSString *dbPath = [self databasePathWithName:dbName];
-        self.db = [FMDatabase databaseWithPath:dbPath];
+        self.dbQueue = [[FMDatabaseQueue alloc] initWithPath:dbPath];
     }
     return self;
 }
@@ -64,7 +64,7 @@ SCSINGLETON(SCDaoManager);
 {
     self = [super init];
     if (self) {
-        self.db = [FMDatabase databaseWithPath:dbPath];
+        self.dbQueue = [[FMDatabaseQueue alloc] initWithPath:dbPath];
     }
     return self;
 }
@@ -73,10 +73,10 @@ SCSINGLETON(SCDaoManager);
 
 - (NSArray *)datebaseMetas
 {
-    NSMutableArray *metas = [NSMutableArray array];
+    __block NSMutableArray *metas = [NSMutableArray array];
     
-    if ( [self.db open] ) {
-        FMResultSet *rs = [self.db executeQuery:
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
+        FMResultSet *rs = [db executeQuery:
                            @"select * from sqlite_master"];
         while ( [rs next] ) {
             SCDatabaseMetaModel *meta = [[SCDatabaseMetaModel alloc] init];
@@ -87,8 +87,8 @@ SCSINGLETON(SCDaoManager);
             [metas addObject:meta];
         }
         [rs close];
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return [NSArray arrayWithArray:metas];
 }
@@ -99,13 +99,13 @@ SCSINGLETON(SCDaoManager);
         return nil;
     }
     
-    NSMutableArray *metas = [NSMutableArray array];
+    __block NSMutableArray *metas = [NSMutableArray array];
     
-    if ( [self.db open] ) {
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
         NSString *tableName = [modelCls tableName];
         NSString *sql = [NSString stringWithFormat:
                          @"PRAGMA table_info('%@')", tableName];
-        FMResultSet *rs = [self.db executeQuery:sql];
+        FMResultSet *rs = [db executeQuery:sql];
         while ( [rs next] ) {
             SCTableMetaModel *meta = [[SCTableMetaModel alloc] init];
             meta.columnID     = [rs intForColumn:@"cid"];
@@ -117,8 +117,8 @@ SCSINGLETON(SCDaoManager);
             [metas addObject:meta];
         }
         [rs close];
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return [NSArray arrayWithArray:metas];
 }
@@ -130,9 +130,9 @@ SCSINGLETON(SCDaoManager);
         return YES;
     }
     
-    BOOL flag = NO;
+    __block BOOL flag = NO;
     
-    if ( [self.db open] ) {
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
         NSString *tableName = [modelCls tableName];
         NSDictionary *properties = [modelCls storableProperties];
         NSArray *propertyNames = [properties allKeys];
@@ -148,7 +148,7 @@ SCSINGLETON(SCDaoManager);
                 id propertyType = [properties objectForKey:propertyName];
                 NSString *sql = [NSString stringWithFormat:@"ALTER TABLE '%@' ADD '%@' %@",
                                  tableName, propertyName, SCSQLTypeFromObjcType(propertyType)];
-                BOOL ret = [self.db executeUpdate:sql];
+                BOOL ret = [db executeUpdate:sql];
                 if (ret) {
                     flag = YES;
                 } else {
@@ -157,21 +157,21 @@ SCSINGLETON(SCDaoManager);
                 }
             }
         }
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return flag;
 }
 
 - (BOOL)existTable:(Class)modelCls
 {
-    BOOL flag = NO;
+    __block BOOL flag = NO;
     
-    if ( [self.db open] ) {
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
         NSAssert([modelCls respondsToSelector:@selector(tableName)],
                  @"Model must be implement <SCModelDatabase> protocol.");
         NSString *tableName = [modelCls tableName];
-        FMResultSet *rs = [self.db executeQuery:
+        FMResultSet *rs = [db executeQuery:
                            @"select count(*) as 'count' from sqlite_master"
                            " where type ='table' and name = ?", tableName];
         while ( [rs next] ) {
@@ -181,26 +181,28 @@ SCSINGLETON(SCDaoManager);
             }
         }
         [rs close];
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return flag;
 }
 
 - (BOOL)createTable:(Class)modelCls
 {
-    BOOL flag = NO;
+    __block BOOL flag = NO;
     
-    if ( [self.db open] ) {
+    __weak __typeof(&*self)weakSelf = self;
+    
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
         NSAssert([modelCls respondsToSelector:@selector(tableName)],
                  @"Model must be implement <SCModelDatabase> protocol.");
-        NSString *sql = [self constructSQLForCreateTableWithModel:modelCls];
-        BOOL ret = [self.db executeUpdate:sql];
+        NSString *sql = [weakSelf constructSQLForCreateTableWithModel:modelCls];
+        BOOL ret = [db executeUpdate:sql];
         if ( ret ) {
             flag = YES;
         }
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return flag;
 }
@@ -211,16 +213,18 @@ SCSINGLETON(SCDaoManager);
         return YES;
     }
     
-    BOOL flag = NO;
+    __block BOOL flag = NO;
     
-    if ( [self.db open] ) {
-        NSString *sql = [self constructSQLForDropTableWithModel:modelCls];
-        BOOL ret = [self.db executeUpdate:sql];
+    __weak __typeof(&*self)weakSelf = self;
+    
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
+        NSString *sql = [weakSelf constructSQLForDropTableWithModel:modelCls];
+        BOOL ret = [db executeUpdate:sql];
         if ( ret ) {
             flag = YES;
         }
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return flag;
 }
@@ -233,17 +237,19 @@ SCSINGLETON(SCDaoManager);
         }
     }
     
-    BOOL flag = NO;
+    __block BOOL flag = NO;
     
-    if ( [self.db open] ) {
+    __weak __typeof(&*self)weakSelf = self;
+    
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
         NSArray *insertValues = nil;
-        NSString *sql = [self constructSQLForInsertWithModel:model insertValues:&insertValues];
-        BOOL ret = [self.db executeUpdate:sql withArgumentsInArray:insertValues];
+        NSString *sql = [weakSelf constructSQLForInsertWithModel:model insertValues:&insertValues];
+        BOOL ret = [db executeUpdate:sql withArgumentsInArray:insertValues];
         if ( ret ) {
             flag = YES;
         }
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return flag;
 }
@@ -261,24 +267,23 @@ SCSINGLETON(SCDaoManager);
         }
     }
     
-    BOOL flag = NO;
+    __block BOOL flag = NO;
     
-    if ( [self.db open] ) {
-        if ( [self.db beginTransaction] ) {
-            for (SCModel<SCDatabaseModel> *model in models) {
-                NSArray *insertValues = nil;
-                NSString *sql = [self constructSQLForInsertWithModel:model insertValues:&insertValues];
-                BOOL ret = [self.db executeUpdate:sql withArgumentsInArray:insertValues];
-                if ( !ret ) {
-                    
-                }
-            }
-            if ( !(flag = [self.db commit]) ) {
-                [self.db rollback];
+    __weak __typeof(&*self)weakSelf = self;
+    
+    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        for (SCModel<SCDatabaseModel> *model in models) {
+            NSArray *insertValues = nil;
+            NSString *sql = [weakSelf constructSQLForInsertWithModel:model insertValues:&insertValues];
+            BOOL ret = [db executeUpdate:sql withArgumentsInArray:insertValues];
+            if ( ret ) {
+                flag = YES;
+            } else {
+                flag = YES;
             }
         }
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return flag;
 }
@@ -296,35 +301,29 @@ SCSINGLETON(SCDaoManager);
         }
     }
     
-    BOOL flag = NO;
+    __block BOOL flag = NO;
     
-    if ( [self.db open] ) {
-        if ( [self.db beginTransaction] ) {
-            for (SCModel<SCDatabaseModel> *model in models) {
-                NSArray *insertValues = nil;
-                NSString *sql = [self constructSQLForInsertWithModel:model insertValues:&insertValues];
-                BOOL ret = [self.db executeUpdate:sql withArgumentsInArray:insertValues];
-                if ( rollbackWhenError ) {
-                    if ( ret ) {
-                        flag = YES;
-                    } else {
-                        flag = NO;
-                        break;
-                    }
-                } else {
+    __weak __typeof(&*self)weakSelf = self;
+    
+    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        for (SCModel<SCDatabaseModel> *model in models) {
+            NSArray *insertValues = nil;
+            NSString *sql = [weakSelf constructSQLForInsertWithModel:model insertValues:&insertValues];
+            BOOL ret = [db executeUpdate:sql withArgumentsInArray:insertValues];
+            if ( rollbackWhenError ) {
+                if ( ret ) {
                     flag = YES;
-                }
-            }
-            if ( flag ) {
-                if ( !(flag = [self.db commit]) ) {
-                    [self.db rollback];
+                } else {
+                    flag = NO;
+                    *rollback = YES;
+                    break;
                 }
             } else {
-                [self.db rollback];
+                flag = YES;
             }
         }
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return flag;
 }
@@ -335,16 +334,18 @@ SCSINGLETON(SCDaoManager);
         return YES;
     }
     
-    BOOL flag = NO;
+    __block BOOL flag = NO;
     
-    if ( [self.db open] ) {
-        NSString *sql = [self constructSQLForDeleteWithModel:modelCls];
-        BOOL ret = [self.db executeUpdate:sql];
+    __weak __typeof(&*self)weakSelf = self;
+    
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
+        NSString *sql = [weakSelf constructSQLForDeleteWithModel:modelCls];
+        BOOL ret = [db executeUpdate:sql];
         if ( ret ) {
             flag = YES;
         }
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return flag;
 }
@@ -355,16 +356,16 @@ SCSINGLETON(SCDaoManager);
         return YES;
     }
     
-    BOOL flag = NO;
+    __block BOOL flag = NO;
     
-    if ( [self.db open] ) {
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:SQL, [modelCls tableName]];
-        BOOL ret = [self.db executeUpdate:sql];
+        BOOL ret = [db executeUpdate:sql];
         if ( ret ) {
             flag = YES;
         }
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return flag;
 }
@@ -375,16 +376,16 @@ SCSINGLETON(SCDaoManager);
         return NO;
     }
     
-    BOOL flag = NO;
+    __block BOOL flag = NO;
     
-    if ( [self.db open] ) {
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:SQL, [[model class] tableName]];
-        BOOL ret = [self.db executeUpdate:sql];
+        BOOL ret = [db executeUpdate:sql];
         if ( ret ) {
             flag = YES;
         }
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return flag;
 }
@@ -395,15 +396,17 @@ SCSINGLETON(SCDaoManager);
         return nil;
     }
     
-    NSMutableArray *models = [NSMutableArray array];
+    __block NSMutableArray *models = [NSMutableArray array];
     
-    if ( [self.db open] ) {
-        NSString *sql = [self constructSQLForQueryWithModel:modelCls];
-        FMResultSet *rs = [self.db executeQuery:sql];
-        [models addObjectsFromArray:[self parseResultSet:rs forModel:modelCls]];
+    __weak __typeof(&*self)weakSelf = self;
+    
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
+        NSString *sql = [weakSelf constructSQLForQueryWithModel:modelCls];
+        FMResultSet *rs = [db executeQuery:sql];
+        [models addObjectsFromArray:[weakSelf parseResultSet:rs forModel:modelCls]];
         [rs close];
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return [NSArray arrayWithArray:models];
 }
@@ -414,22 +417,24 @@ SCSINGLETON(SCDaoManager);
         return nil;
     }
     
-    NSMutableArray *models = [NSMutableArray array];
+    __block NSMutableArray *models = [NSMutableArray array];
     
-    if ( [self.db open] ) {
-        NSString *sql = [self constructSQLForQueryWithModel:modelCls];
+    __weak __typeof(&*self)weakSelf = self;
+    
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
+        NSString *sql = [weakSelf constructSQLForQueryWithModel:modelCls];
         FMResultSet *rs = nil;
         if ([where isKindOfClass:[NSDictionary class]]) {
-            rs = [self.db executeQuery:sql withParameterDictionary:where];
+            rs = [db executeQuery:sql withParameterDictionary:where];
         } else if ([where isKindOfClass:[NSArray class]]) {
-            rs = [self.db executeQuery:sql withArgumentsInArray:where];
+            rs = [db executeQuery:sql withArgumentsInArray:where];
         } else {
-            rs = [self.db executeQuery:sql];
+            rs = [db executeQuery:sql];
         }
-        [models addObjectsFromArray:[self parseResultSet:rs forModel:modelCls]];
+        [models addObjectsFromArray:[weakSelf parseResultSet:rs forModel:modelCls]];
         [rs close];
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return [NSArray arrayWithArray:models];
 }
@@ -440,15 +445,17 @@ SCSINGLETON(SCDaoManager);
         return nil;
     }
     
-    NSMutableArray *models = [NSMutableArray array];
+    __block NSMutableArray *models = [NSMutableArray array];
     
-    if ( [self.db open] ) {
+    __weak __typeof(&*self)weakSelf = self;
+    
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:SQL, [modelCls tableName]];
-        FMResultSet *rs = [self.db executeQuery:sql];
-        [models addObjectsFromArray:[self parseResultSet:rs forModel:modelCls]];
+        FMResultSet *rs = [db executeQuery:sql];
+        [models addObjectsFromArray:[weakSelf parseResultSet:rs forModel:modelCls]];
         [rs close];
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return [NSArray arrayWithArray:models];
 }
@@ -459,17 +466,17 @@ SCSINGLETON(SCDaoManager);
         return 0;
     }
     
-    NSInteger count = 0;
+    __block NSInteger count = 0;
     
-    if ( [self.db open] ) {
+    [self.dbQueue inDatabase:^(FMDatabase *db) {
         NSString *sql = [NSString stringWithFormat:SQL, [modelCls tableName]];
-        FMResultSet *rs = [self.db executeQuery:sql];
+        FMResultSet *rs = [db executeQuery:sql];
         if ( [rs next] ) {
             count = [[rs stringForColumnIndex:0] integerValue];
         }
         [rs close];
-    }
-    [self.db close];
+    }];
+    [self.dbQueue close];
     
     return count;
 }
@@ -503,20 +510,20 @@ SCSINGLETON(SCDaoManager);
     }
     if ([primaryKey isNotEmpty]) {
         /*
-        // 单主键结构
-        for (NSString *key in [properties keyEnumerator]) {
-            id value = [properties objectForKey:key];
-            if ([key isEqualToString:primaryKey]) {
-                [propertyPairs addObject:[NSString stringWithFormat:@"'%@' %@ %@ %@",
-                                          key, SCSQLTypeFromObjcType(value),
-                                          SCSQLAttributePrimaryKey,
-                                          SCSQLAttributeNotNull]];
-            } else {
-                [propertyPairs addObject:[NSString stringWithFormat:@"'%@' %@",
-                                          key, SCSQLTypeFromObjcType(value)]];
-            }
-        }
-        /*/
+         // 单主键结构
+         for (NSString *key in [properties keyEnumerator]) {
+         id value = [properties objectForKey:key];
+         if ([key isEqualToString:primaryKey]) {
+         [propertyPairs addObject:[NSString stringWithFormat:@"'%@' %@ %@ %@",
+         key, SCSQLTypeFromObjcType(value),
+         SCSQLAttributePrimaryKey,
+         SCSQLAttributeNotNull]];
+         } else {
+         [propertyPairs addObject:[NSString stringWithFormat:@"'%@' %@",
+         key, SCSQLTypeFromObjcType(value)]];
+         }
+         }
+         /*/
         // 多主键结构
         for (NSString *key in [properties keyEnumerator]) {
             id value = [properties objectForKey:key];
@@ -539,16 +546,16 @@ SCSINGLETON(SCDaoManager);
         }
     }
     
-	NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' (%@)",
+    NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS '%@' (%@)",
                      [modelCls tableName], [propertyPairs componentsJoinedByString:@", "]];
-	return sql;
+    return sql;
 }
 
 - (NSString *)constructSQLForDropTableWithModel:(Class)modelCls
 {
     NSString *sql = [NSString stringWithFormat:@"DROP TABLE '%@'",
                      [modelCls tableName]];
-	return sql;
+    return sql;
 }
 
 - (NSString *)constructSQLForInsertWithModel:(SCModel <SCDatabaseModel> *)model
@@ -569,24 +576,24 @@ SCSINGLETON(SCDaoManager);
     }
     *insertValues = [NSArray arrayWithArray:values];
     
-	NSString *sql = [NSString stringWithFormat:@"REPLACE INTO '%@' (%@) VALUES (%@)",
+    NSString *sql = [NSString stringWithFormat:@"REPLACE INTO '%@' (%@) VALUES (%@)",
                      [[model class] tableName], [keys componentsJoinedByString:@", "],
                      [placeholders componentsJoinedByString:@", "]];
-	return sql;
+    return sql;
 }
 
 - (NSString *)constructSQLForDeleteWithModel:(Class)modelCls
 {
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM '%@'",
                      [modelCls tableName]];
-	return sql;
+    return sql;
 }
 
 - (NSString *)constructSQLForQueryWithModel:(Class)modelCls
 {
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM '%@'",
                      [modelCls tableName]];
-	return sql;
+    return sql;
 }
 
 #pragma mark - Convert & Parse

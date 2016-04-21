@@ -97,6 +97,7 @@
 		B7E640AC19A478340019D963 /* NSTimer+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E640AB19A478340019D963 /* NSTimer+SCAddition.m */; };
 		B7E640AF19A478520019D963 /* SCBrowseViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E640AE19A478520019D963 /* SCBrowseViewPage.m */; };
 		B7F300371962529800921CFD /* UINavigationItem+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F300361962529800921CFD /* UINavigationItem+SCAddition.m */; };
+		B7F369711CC86BA2002DAA08 /* SCDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F369701CC86BA2002DAA08 /* SCDatabaseManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -281,6 +282,8 @@
 		B7E640AE19A478520019D963 /* SCBrowseViewPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBrowseViewPage.m; sourceTree = "<group>"; };
 		B7F300351962529800921CFD /* UINavigationItem+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+SCAddition.h"; sourceTree = "<group>"; };
 		B7F300361962529800921CFD /* UINavigationItem+SCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+SCAddition.m"; sourceTree = "<group>"; };
+		B7F3696F1CC86BA2002DAA08 /* SCDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDatabaseManager.h; sourceTree = "<group>"; };
+		B7F369701CC86BA2002DAA08 /* SCDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDatabaseManager.m; sourceTree = "<group>"; };
 		DD699A7A7BE03FFCE0BB4B68 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -634,6 +637,8 @@
 				B7DED3711957D47D00A2D5C0 /* SCCoreDataManager.m */,
 				B7DED3721957D47D00A2D5C0 /* SCDaoManager.h */,
 				B7DED3731957D47D00A2D5C0 /* SCDaoManager.m */,
+				B7F3696F1CC86BA2002DAA08 /* SCDatabaseManager.h */,
+				B7F369701CC86BA2002DAA08 /* SCDatabaseManager.m */,
 				B7AF797B19A5DE270041F724 /* SCDatabase.h */,
 				B7AF797C19A5DE270041F724 /* SCDatabase.m */,
 				B7141FFB19A74EF3006C510C /* SCDatabaseModel.h */,
@@ -1070,6 +1075,7 @@
 				B73230E51A353EA4009C16D8 /* SCActionSheet.m in Sources */,
 				B72AF3EB18C5655100621B34 /* AppDelegate.m in Sources */,
 				B7DED3F31957D47D00A2D5C0 /* SCPullLoadView.m in Sources */,
+				B7F369711CC86BA2002DAA08 /* SCDatabaseManager.m in Sources */,
 				B7DED3CC1957D47D00A2D5C0 /* NSDictionary+SCAddition.m in Sources */,
 				B7DED3E01957D47D00A2D5C0 /* SCFileManager.m in Sources */,
 				B7DED3F81957D47D00A2D5C0 /* SCTextField.m in Sources */,
