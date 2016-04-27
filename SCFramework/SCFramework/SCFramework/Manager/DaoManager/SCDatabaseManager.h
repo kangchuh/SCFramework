@@ -45,7 +45,7 @@
 
 - (BOOL)deleteModel:(Class)modelCls forSQL:(NSString *)SQL;
 
-- (BOOL)updateModel:(SCModel<SCDatabaseModel> *)model forSQL:(NSString *)SQL;
+- (BOOL)updateModel:(Class)modelCls forSQL:(NSString *)SQL;
 
 - (NSArray *)query:(Class)modelCls;
 - (NSArray *)query:(Class)modelCls where:(id)where;

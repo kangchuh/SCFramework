@@ -369,16 +369,16 @@ SCSINGLETON(SCDaoManager);
     return flag;
 }
 
-- (BOOL)updateModel:(SCModel<SCDatabaseModel> *)model forSQL:(NSString *)SQL
+- (BOOL)updateModel:(Class)modelCls forSQL:(NSString *)SQL
 {
-    if ( ![self existTable:[model class]] ) {
+    if ( ![self existTable:modelCls] ) {
         return NO;
     }
     
     BOOL flag = NO;
     
     if ( [self.db open] ) {
-        NSString *sql = [NSString stringWithFormat:SQL, [[model class] tableName]];
+        NSString *sql = [NSString stringWithFormat:SQL, [modelCls tableName]];
         BOOL ret = [self.db executeUpdate:sql];
         if ( ret ) {
             flag = YES;

@@ -370,16 +370,16 @@ SCSINGLETON(SCDatabaseManager);
     return flag;
 }
 
-- (BOOL)updateModel:(SCModel<SCDatabaseModel> *)model forSQL:(NSString *)SQL
+- (BOOL)updateModel:(Class)modelCls forSQL:(NSString *)SQL
 {
-    if ( ![self existTable:[model class]] ) {
+    if ( ![self existTable:modelCls] ) {
         return NO;
     }
     
     __block BOOL flag = NO;
     
     [self.dbQueue inDatabase:^(FMDatabase *db) {
-        NSString *sql = [NSString stringWithFormat:SQL, [[model class] tableName]];
+        NSString *sql = [NSString stringWithFormat:SQL, [modelCls tableName]];
         BOOL ret = [db executeUpdate:sql];
         if ( ret ) {
             flag = YES;
