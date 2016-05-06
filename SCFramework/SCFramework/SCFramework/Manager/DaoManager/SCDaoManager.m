@@ -629,7 +629,9 @@ SCSINGLETON(SCDaoManager);
                 NSString *objcType = [properties objectForKey:columnName];
                 id obj = [rs objectForColumnName:columnName];
                 id value = [self convertToObjcValue:obj forType:objcType];
-                [model setValue:value forKey:columnName];
+                if (value && ![value isEqual:[NSNull null]]) {
+                    [model setValue:value forKey:columnName];
+                }
             }
         }
         [models addObject:model];
