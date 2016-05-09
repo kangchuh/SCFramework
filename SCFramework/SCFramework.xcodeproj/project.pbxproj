@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		91CE001E8CA9A4A714C1262B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD699A7A7BE03FFCE0BB4B68 /* libPods.a */; };
 		B705E09D18C6CAAE00AC6B5E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B705E09C18C6CAAE00AC6B5E /* CoreData.framework */; };
+		B70625121CE099B3008C368B /* NSAttributedString+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B70625111CE099B3008C368B /* NSAttributedString+SCAddition.m */; };
 		B707FA8318CDA1B500413B64 /* SCDemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B707FA8218CDA1B500413B64 /* SCDemoListViewController.m */; };
 		B715039B1B943BDC00F3E960 /* SCFWLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B71503991B943BDC00F3E960 /* SCFWLocalizable.strings */; };
 		B71EE5A71910CB3500590A9D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B71EE5A61910CB3500590A9D /* CoreMedia.framework */; };
@@ -103,6 +104,8 @@
 /* Begin PBXFileReference section */
 		6C0C92BEB5AD5FDF3951A522 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B705E09C18C6CAAE00AC6B5E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B70625101CE099B3008C368B /* NSAttributedString+SCAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+SCAddition.h"; sourceTree = "<group>"; };
+		B70625111CE099B3008C368B /* NSAttributedString+SCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+SCAddition.m"; sourceTree = "<group>"; };
 		B707FA8118CDA1B500413B64 /* SCDemoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDemoListViewController.h; sourceTree = "<group>"; };
 		B707FA8218CDA1B500413B64 /* SCDemoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCDemoListViewController.m; sourceTree = "<group>"; };
 		B7141FFB19A74EF3006C510C /* SCDatabaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCDatabaseModel.h; sourceTree = "<group>"; };
@@ -534,6 +537,8 @@
 				B7DED34A1957D47D00A2D5C0 /* NSObject+SCAddition.m */,
 				B7DED34B1957D47D00A2D5C0 /* NSString+SCAddition.h */,
 				B7DED34C1957D47D00A2D5C0 /* NSString+SCAddition.m */,
+				B70625101CE099B3008C368B /* NSAttributedString+SCAddition.h */,
+				B70625111CE099B3008C368B /* NSAttributedString+SCAddition.m */,
 				B7DED34D1957D47D00A2D5C0 /* NSURL+SCAddition.h */,
 				B7DED34E1957D47D00A2D5C0 /* NSURL+SCAddition.m */,
 				B7DED34F1957D47D00A2D5C0 /* UIAlertView+SCAddition.h */,
@@ -1014,6 +1019,7 @@
 				B7DED3EF1957D47D00A2D5C0 /* SCPickerView.m in Sources */,
 				B7DED3D51957D47D00A2D5C0 /* UIView+SCAddition.m in Sources */,
 				B7C2268C19762AF000BEF1B2 /* UIScreen+SCAddition.m in Sources */,
+				B70625121CE099B3008C368B /* NSAttributedString+SCAddition.m in Sources */,
 				B7DED3EA1957D47D00A2D5C0 /* SCTableViewController.m in Sources */,
 				B7DED3C71957D47D00A2D5C0 /* SCAdaptedDevice.m in Sources */,
 				B7AF798A19A6E8AA0041F724 /* SCUtils.m in Sources */,
