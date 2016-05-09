@@ -129,12 +129,16 @@ SCSINGLETON(SCImagePickerManager);
 {
     ALAuthorizationStatus authStatus = [ALAssetsLibrary authorizationStatus];
     if (authStatus == ALAuthorizationStatusAuthorized) {
-        completionHandler(YES);
+        if (completionHandler) {
+            completionHandler(YES);
+        }
     } else if (authStatus == ALAuthorizationStatusDenied ||
                authStatus == ALAuthorizationStatusRestricted) {
         [self __alertForPhotosNotAccess];
     } else if (authStatus == ALAuthorizationStatusNotDetermined) {
-        completionHandler(NO);
+        if (completionHandler) {
+            completionHandler(NO);
+        }
     } else {
         [self __alertForPhotosNotAccess];
     }
@@ -144,12 +148,20 @@ SCSINGLETON(SCImagePickerManager);
 {
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
     if (authStatus == AVAuthorizationStatusAuthorized) {
-        completionHandler(YES);
+        if (completionHandler) {
+            completionHandler(YES);
+        }
     } else if (authStatus == AVAuthorizationStatusDenied ||
                authStatus == AVAuthorizationStatusRestricted) {
         [self __alertForCameraNotAccess];
     } else if (authStatus == AVAuthorizationStatusNotDetermined) {
-        [AVCaptureDevice requestAccessForMediaType:mediaType completionHandler:completionHandler];
+        [AVCaptureDevice requestAccessForMediaType:mediaType completionHandler:^(BOOL granted) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (completionHandler) {
+                    completionHandler(granted);
+                }
+            });
+        }];
     } else {
         [self __alertForCameraNotAccess];
     }
