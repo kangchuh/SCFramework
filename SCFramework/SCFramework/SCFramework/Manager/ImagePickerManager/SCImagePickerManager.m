@@ -177,7 +177,7 @@ SCSINGLETON(SCImagePickerManager);
     self.pickingMediaHandler = pickingHandler;
     self.cancelHandler = cancelHandler;
     
-    if ( [UIDevice hasCamera] ) {
+    if ( !_onlyPhotoLibrary && [UIDevice hasCamera] ) {
         NSString *cancelTitle = NSLocalizedStringFromTable(@"SCFW_LS_Cancel", @"SCFWLocalizable", nil);
         NSString *takeTitle = NSLocalizedStringFromTable(@"SCFW_LS_Take a picture", @"SCFWLocalizable", nil);
         NSString *chooseTitle = NSLocalizedStringFromTable(@"SCFW_LS_Choose from album", @"SCFWLocalizable", nil);
