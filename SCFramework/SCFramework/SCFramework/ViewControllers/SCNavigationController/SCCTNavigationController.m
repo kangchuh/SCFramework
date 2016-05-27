@@ -124,22 +124,30 @@ UIGestureRecognizerDelegate
     
     switch (recognizer.state) {
         case UIGestureRecognizerStateBegan: {
-            _delegateManager.interactiveAnimator = [[UIPercentDrivenInteractiveTransition alloc] init];
-            [self popViewControllerAnimated:YES];
+            if (transitionPercent >= 0.0) {
+                _delegateManager.interactiveAnimator = [[UIPercentDrivenInteractiveTransition alloc] init];
+                if (_delegateManager.interactiveAnimator) {
+                    [self popViewControllerAnimated:YES];
+                }
+            }
             break;
         }
         case UIGestureRecognizerStateChanged: {
-            [_delegateManager.interactiveAnimator updateInteractiveTransition:transitionPercent];
+            if (_delegateManager.interactiveAnimator) {
+                [_delegateManager.interactiveAnimator updateInteractiveTransition:transitionPercent];
+            }
             break;
         }
         case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled: {
-            if (transitionPercent > kSCInteractiveTransitionPercentComplete) {
-                [_delegateManager.interactiveAnimator finishInteractiveTransition];
-            } else {
-                [_delegateManager.interactiveAnimator cancelInteractiveTransition];
+            if (_delegateManager.interactiveAnimator) {
+                if (transitionPercent > kSCInteractiveTransitionPercentComplete) {
+                    [_delegateManager.interactiveAnimator finishInteractiveTransition];
+                } else {
+                    [_delegateManager.interactiveAnimator cancelInteractiveTransition];
+                }
+                _delegateManager.interactiveAnimator = nil;
             }
-            _delegateManager.interactiveAnimator = nil;
             break;
         }
         default:
