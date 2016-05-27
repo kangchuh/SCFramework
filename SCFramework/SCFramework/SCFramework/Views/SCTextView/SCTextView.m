@@ -102,7 +102,7 @@
         _placeholderLabel = [[UILabel alloc] init];
         _placeholderLabel.backgroundColor = [UIColor clearColor];
         _placeholderLabel.textColor = [UIColor lightGrayColor];
-        _placeholderLabel.numberOfLines = 1;
+        _placeholderLabel.numberOfLines = 0;
         _placeholderLabel.hidden = YES;
         _placeholderLabel.font = self.font;
         [self addSubview:_placeholderLabel];
