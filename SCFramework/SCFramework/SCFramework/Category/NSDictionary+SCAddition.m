@@ -134,6 +134,122 @@
     return NO;
 }
 
+- (NSArray *)sc_arrayForKey:(id)aKey
+{
+    id object = [self objectForKey:aKey];
+    if ([object isEqual:[NSNull null]]) {
+        return nil;
+    } else {
+        if ([object isKindOfClass:[NSArray class]]) {
+            return object;
+        }
+    }
+    return nil;
+}
+
+- (NSDictionary *)sc_dictionaryForKey:(id)aKey
+{
+    id object = [self objectForKey:aKey];
+    if ([object isEqual:[NSNull null]]) {
+        return nil;
+    } else {
+        if ([object isKindOfClass:[NSDictionary class]]) {
+            return object;
+        }
+    }
+    return nil;
+}
+
+- (NSString *)sc_stringForKey:(id)aKey
+{
+    id object = [self objectForKey:aKey];
+    if ([object isEqual:[NSNull null]]) {
+        return @"";
+    } else {
+        if ([object isKindOfClass:[NSNumber class]]) {
+            return [(NSNumber *)object stringValue];
+        } else if ([object isKindOfClass:[NSString class]]) {
+            return (NSString *)object;
+        }
+    }
+    return @"";
+}
+
+- (NSInteger)sc_integerForKey:(id)aKey
+{
+    id object = [self objectForKey:aKey];
+    if ([object isEqual:[NSNull null]]) {
+        return 0;
+    } else {
+        if ([object isKindOfClass:[NSString class]]) {
+            return [(NSString *)object integerValue];
+        } else if ([object isKindOfClass:[NSNumber class]]) {
+            return [(NSNumber *)object integerValue];
+        }
+    }
+    return 0;
+}
+
+- (int)sc_intForKey:(id)aKey
+{
+    id object = [self objectForKey:aKey];
+    if ([object isEqual:[NSNull null]]) {
+        return (int)0;
+    } else {
+        if ([object isKindOfClass:[NSString class]]) {
+            return [(NSString *)object intValue];
+        } else if ([object isKindOfClass:[NSNumber class]]) {
+            return [(NSNumber *)object intValue];
+        }
+    }
+    return (int)0;
+}
+
+- (float)sc_floatForKey:(id)aKey
+{
+    id object = [self objectForKey:aKey];
+    if ([object isEqual:[NSNull null]]) {
+        return (float)0;
+    } else {
+        if ([object isKindOfClass:[NSString class]]) {
+            return [(NSString *)object floatValue];
+        } else if ([object isKindOfClass:[NSNumber class]]) {
+            return [(NSNumber *)object floatValue];
+        }
+    }
+    return (float)0;
+}
+
+- (double)sc_doubleForKey:(id)aKey
+{
+    id object = [self objectForKey:aKey];
+    if ([object isEqual:[NSNull null]]) {
+        return (double)0;
+    } else {
+        if ([object isKindOfClass:[NSString class]]) {
+            return [(NSString *)object doubleValue];
+        } else if ([object isKindOfClass:[NSNumber class]]) {
+            return [(NSNumber *)object doubleValue];
+        }
+    }
+    return (double)0;
+}
+
+- (BOOL)sc_boolForKey:(id)aKey
+{
+    id object = [self objectForKey:aKey];
+    if ([object isEqual:[NSNull null]]) {
+        return NO;
+    } else {
+        if ([object isKindOfClass:[NSString class]]) {
+            return [(NSString *)object boolValue];
+        } else if ([object isKindOfClass:[NSNumber class]]) {
+            return [(NSNumber *)object boolValue];
+        }
+    }
+    return NO;
+}
+
 - (NSString *)paramString
 {
     NSMutableArray *paramPairs = [NSMutableArray array];
