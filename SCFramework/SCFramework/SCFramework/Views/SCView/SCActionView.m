@@ -82,6 +82,12 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
 
 #pragma mark - Public Method
 
+- (void)setTapCancelDisabled:(BOOL)tapCancelDisabled
+{
+    _tapCancelDisabled = tapCancelDisabled;
+    _mask.enabled = !tapCancelDisabled;
+}
+
 - (void)showInView:(UIView *)view
 {
     if (self.isVisible) {

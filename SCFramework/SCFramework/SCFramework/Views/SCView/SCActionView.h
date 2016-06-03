@@ -25,6 +25,8 @@ typedef NS_ENUM(NSUInteger, SCViewActionAnimations) {
 
 @property (nonatomic, readonly, getter=isVisible) BOOL visible;
 
+@property (nonatomic, assign) BOOL tapCancelDisabled;
+
 @property (nonatomic, copy) SCActionViewWillTapCancelHandler willTapCancelHandler;
 @property (nonatomic, copy) SCActionViewDidTapCancelHandler  didTapCancelHandler;
 
