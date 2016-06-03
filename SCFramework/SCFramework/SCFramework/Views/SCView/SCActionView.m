@@ -20,6 +20,10 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
 
 @interface SCActionView ()
 
+@property (nonatomic, assign) CGAffineTransform defaultTransform;
+
+@property (nonatomic, assign) CGFloat defaultAlpha;
+
 @property (nonatomic, strong) UIControl *mask;
 
 @property (nonatomic) BOOL visible;
@@ -127,8 +131,12 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
         self.autoresizingMask = (UIViewAutoresizingFlexibleTopMargin |
                                  UIViewAutoresizingFlexibleWidth);
     } else if (actionAnimations == SCViewActionAnimationAlert) {
+        self.defaultAlpha = self.alpha;
+        self.defaultTransform = self.transform;
         self.center = containerView.orientationMiddle;
         self.alpha = SCActionViewAnimationDismissAlpha;
+        CGAffineTransform transform = self.transform;
+        self.transform = CGAffineTransformScale(transform, 0.0, 0.0);
         self.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin |
                                  UIViewAutoresizingFlexibleTopMargin |
                                  UIViewAutoresizingFlexibleRightMargin |
@@ -152,6 +160,8 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
         animations = ^(void) {
             weakSelf.mask.alpha = SCActionViewMaskShowAlpha;
             weakSelf.alpha = SCActionViewAnimationShowAlpha;
+            CGAffineTransform transform = weakSelf.transform;
+            weakSelf.transform = CGAffineTransformScale(transform, 1.1, 1.1);
         };
     }
     return animations;
@@ -171,6 +181,8 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
         animations = ^(void) {
             weakSelf.mask.alpha = SCActionViewMaskDismissAlpha;
             weakSelf.alpha = SCActionViewAnimationDismissAlpha;
+            CGAffineTransform transform = weakSelf.transform;
+            weakSelf.transform = CGAffineTransformScale(transform, 0.0, 0.0);
         };
     }
     return animations;
@@ -187,6 +199,8 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
     } else if (actionAnimations == SCViewActionAnimationAlert) {
         completion = ^(BOOL finished) {
             weakSelf.visible = YES;
+            weakSelf.alpha = weakSelf.defaultAlpha;
+            weakSelf.transform = weakSelf.defaultTransform;
         };
     }
     return completion;
@@ -207,6 +221,8 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
             [weakSelf.mask removeFromSuperview];
             [weakSelf removeFromSuperview];
             weakSelf.visible = NO;
+            weakSelf.alpha = weakSelf.defaultAlpha;
+            weakSelf.transform = weakSelf.defaultTransform;
         };
     }
     return completion;
