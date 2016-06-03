@@ -66,6 +66,10 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
 
 - (void)cancel
 {
+    if (_tapCancelDisabled) {
+        return;
+    }
+    
     if (_willTapCancelHandler) {
         BOOL canCancel = _willTapCancelHandler();
         if (!canCancel) {
@@ -81,12 +85,6 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
 }
 
 #pragma mark - Public Method
-
-- (void)setTapCancelDisabled:(BOOL)tapCancelDisabled
-{
-    _tapCancelDisabled = tapCancelDisabled;
-    self.mask.enabled = !tapCancelDisabled;
-}
 
 - (void)showInView:(UIView *)view
 {
