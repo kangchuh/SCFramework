@@ -196,7 +196,7 @@
  */
 - (BOOL)isURL
 {
-    NSString *regex = @"^[a-zA-z]+://(w+(-w+)*)(.(w+(-w+)*))*(?S*)?$";
+    NSString *regex = @"[a-zA-z]+://[^\\s]*";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
     return [predicate evaluateWithObject:self];
 }
