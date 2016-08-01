@@ -93,8 +93,6 @@ const static CGFloat SCActionViewMaskDismissAlpha = 0.0;
     if (self.isVisible) {
         if (view == self.superview) {
             return;
-        } else {
-            [self dismiss];
         }
     }
     
