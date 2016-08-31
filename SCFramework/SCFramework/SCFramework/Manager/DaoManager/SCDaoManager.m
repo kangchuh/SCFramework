@@ -134,7 +134,7 @@ SCSINGLETON(SCDaoManager);
     
     if ( [self.db open] ) {
         NSString *tableName = [modelCls tableName];
-        NSDictionary *properties = [modelCls storableProperties];
+        NSDictionary *properties = [[modelCls new] storableProperties];
         NSArray *propertyNames = [properties allKeys];
         for (NSString *propertyName in propertyNames) {
             BOOL columnForPropertyInTable = NO;
@@ -495,7 +495,7 @@ SCSINGLETON(SCDaoManager);
 {
     NSMutableArray *propertyPairs = [NSMutableArray array];
     
-    NSDictionary *properties = [modelCls storableProperties];
+    NSDictionary *properties = [[modelCls new] storableProperties];
     
     NSString *primaryKey = nil;
     if ([modelCls respondsToSelector:@selector(primaryKey)]) {
@@ -619,7 +619,7 @@ SCSINGLETON(SCDaoManager);
 {
     NSMutableArray *models = [NSMutableArray array];
     NSInteger columnCount = (NSInteger)[rs columnCount];
-    NSDictionary *properties = [modelCls storableProperties];
+    NSDictionary *properties = [[modelCls new] storableProperties];
     NSArray *propertyNames = [properties allKeys];
     while ( [rs next] ) {
         SCModel *model = [[modelCls alloc] init];

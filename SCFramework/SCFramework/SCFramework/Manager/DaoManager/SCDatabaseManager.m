@@ -134,7 +134,7 @@ SCSINGLETON(SCDatabaseManager);
     
     [self.dbQueue inDatabase:^(FMDatabase *db) {
         NSString *tableName = [modelCls tableName];
-        NSDictionary *properties = [modelCls storableProperties];
+        NSDictionary *properties = [[modelCls new] storableProperties];
         NSArray *propertyNames = [properties allKeys];
         for (NSString *propertyName in propertyNames) {
             BOOL columnForPropertyInTable = NO;
@@ -502,7 +502,7 @@ SCSINGLETON(SCDatabaseManager);
 {
     NSMutableArray *propertyPairs = [NSMutableArray array];
     
-    NSDictionary *properties = [modelCls storableProperties];
+    NSDictionary *properties = [[modelCls new] storableProperties];
     
     NSString *primaryKey = nil;
     if ([modelCls respondsToSelector:@selector(primaryKey)]) {
@@ -510,20 +510,20 @@ SCSINGLETON(SCDatabaseManager);
     }
     if ([primaryKey isNotEmpty]) {
         /*
-         // 单主键结构
-         for (NSString *key in [properties keyEnumerator]) {
-         id value = [properties objectForKey:key];
-         if ([key isEqualToString:primaryKey]) {
-         [propertyPairs addObject:[NSString stringWithFormat:@"'%@' %@ %@ %@",
-         key, SCSQLTypeFromObjcType(value),
-         SCSQLAttributePrimaryKey,
-         SCSQLAttributeNotNull]];
-         } else {
-         [propertyPairs addObject:[NSString stringWithFormat:@"'%@' %@",
-         key, SCSQLTypeFromObjcType(value)]];
-         }
-         }
-         /*/
+        // 单主键结构
+        for (NSString *key in [properties keyEnumerator]) {
+            id value = [properties objectForKey:key];
+            if ([key isEqualToString:primaryKey]) {
+                [propertyPairs addObject:[NSString stringWithFormat:@"'%@' %@ %@ %@",
+                                          key, SCSQLTypeFromObjcType(value),
+                                          SCSQLAttributePrimaryKey,
+                                          SCSQLAttributeNotNull]];
+            } else {
+                [propertyPairs addObject:[NSString stringWithFormat:@"'%@' %@",
+                                          key, SCSQLTypeFromObjcType(value)]];
+            }
+        }
+        /*/
         // 多主键结构
         for (NSString *key in [properties keyEnumerator]) {
             id value = [properties objectForKey:key];
@@ -626,7 +626,7 @@ SCSINGLETON(SCDatabaseManager);
 {
     NSMutableArray *models = [NSMutableArray array];
     NSInteger columnCount = (NSInteger)[rs columnCount];
-    NSDictionary *properties = [modelCls storableProperties];
+    NSDictionary *properties = [[modelCls new] storableProperties];
     NSArray *propertyNames = [properties allKeys];
     while ( [rs next] ) {
         SCModel *model = [[modelCls alloc] init];
