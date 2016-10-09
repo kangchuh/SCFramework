@@ -51,9 +51,21 @@ SCSINGLETON(SCImagePickerManager);
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == actionSheet.firstOtherButtonIndex) {
-        [self __goToCamera:_parentViewController];
+        [self.class checkAccessForCamera:^(BOOL granted) {
+            if (granted) {
+                [self __goToCamera:_parentViewController];
+            } else {
+                [self.class __alertForCameraNotAccess];
+            }
+        }];
     } else if (buttonIndex == actionSheet.firstOtherButtonIndex + 1) {
-        [self __goToPhotoLibrary:_parentViewController];
+        [self.class checkAccessForAssetsLibrary:^(BOOL granted) {
+            if (granted) {
+                [self __goToPhotoLibrary:_parentViewController];
+            } else {
+                [self.class __alertForPhotosNotAccess];
+            }
+        }];
     }
 }
 
@@ -136,17 +148,21 @@ SCSINGLETON(SCImagePickerManager);
                authStatus == ALAuthorizationStatusRestricted) {
         [self __alertForPhotosNotAccess];
     } else if (authStatus == ALAuthorizationStatusNotDetermined) {
-        if (completionHandler) {
-            completionHandler(NO);
-        }
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (completionHandler) {
+                    completionHandler(granted);
+                }
+            });
+        }];
     } else {
         [self __alertForPhotosNotAccess];
     }
 }
 
-+ (void)checkAccessForCaptureDevice:(NSString *)mediaType completionHandler:(void (^)(BOOL granted))completionHandler
++ (void)checkAccessForCamera:(void (^)(BOOL))completionHandler
 {
-    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusAuthorized) {
         if (completionHandler) {
             completionHandler(YES);
@@ -155,7 +171,7 @@ SCSINGLETON(SCImagePickerManager);
                authStatus == AVAuthorizationStatusRestricted) {
         [self __alertForCameraNotAccess];
     } else if (authStatus == AVAuthorizationStatusNotDetermined) {
-        [AVCaptureDevice requestAccessForMediaType:mediaType completionHandler:^(BOOL granted) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (completionHandler) {
                     completionHandler(granted);
@@ -188,7 +204,13 @@ SCSINGLETON(SCImagePickerManager);
                                                         otherButtonTitles:takeTitle, chooseTitle, nil];
         [actionSheet showInView:viewController.view];
     } else {
-        [self __goToPhotoLibrary:_parentViewController];
+        [self.class checkAccessForAssetsLibrary:^(BOOL granted) {
+            if (granted) {
+                [self __goToPhotoLibrary:_parentViewController];
+            } else {
+                [self.class __alertForPhotosNotAccess];
+            }
+        }];
     }
 }
 
@@ -197,8 +219,13 @@ SCSINGLETON(SCImagePickerManager);
 {
     self.imageDidSavedCompletionHandler = completion;
     
-    SEL callback = @selector(image:didFinishSavingWithError:contextInfo:);
-    UIImageWriteToSavedPhotosAlbum(image, self, callback, nil);
+    [self.class checkAccessForAssetsLibrary:^(BOOL granted) {
+        if (granted) {
+            [self __saveImageToPhotosAlbum:image];
+        } else {
+            [self.class __alertForPhotosNotAccess];
+        }
+    }];
 }
 
 - (void)saveVideoToPhotosAlbum:(NSString *)videoPath
@@ -206,8 +233,13 @@ SCSINGLETON(SCImagePickerManager);
 {
     self.videoDidSavedCompletionHandler = completion;
     
-    SEL callback = @selector(video:didFinishSavingWithError:contextInfo:);
-    UISaveVideoAtPathToSavedPhotosAlbum(videoPath, self, callback, nil);
+    [self.class checkAccessForAssetsLibrary:^(BOOL granted) {
+        if (granted) {
+            [self __saveVideoToPhotosAlbum:videoPath];
+        } else {
+            [self.class __alertForPhotosNotAccess];
+        }
+    }];
 }
 
 #pragma mark - Private Method
@@ -236,6 +268,18 @@ SCSINGLETON(SCImagePickerManager);
     }
     _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     [viewController presentViewController:_imagePicker animated:YES completion:NULL];
+}
+
+- (void)__saveImageToPhotosAlbum:(UIImage *)image
+{
+    SEL callback = @selector(image:didFinishSavingWithError:contextInfo:);
+    UIImageWriteToSavedPhotosAlbum(image, self, callback, nil);
+}
+
+- (void)__saveVideoToPhotosAlbum:(NSString *)videoPath
+{
+    SEL callback = @selector(video:didFinishSavingWithError:contextInfo:);
+    UISaveVideoAtPathToSavedPhotosAlbum(videoPath, self, callback, nil);
 }
 
 + (void)__alertForPhotosNotAccess

@@ -51,7 +51,7 @@ typedef void(^SCVideoDidSavedCompletionHandler)(NSError *error);
 
 + (void)checkAccessForAssetsLibrary:(void (^)(BOOL granted))completionHandler;
 
-+ (void)checkAccessForCaptureDevice:(NSString *)mediaType completionHandler:(void (^)(BOOL granted))completionHandler;
++ (void)checkAccessForCamera:(void (^)(BOOL))completionHandler;
 
 - (void)startPickFromViewController:(UIViewController *)viewController
                        configPicker:(SCImagePickerConfigHandler)configHandler
