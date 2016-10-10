@@ -160,7 +160,7 @@ SCSINGLETON(SCImagePickerManager);
     }
 }
 
-+ (void)checkAccessForCamera:(void (^)(BOOL))completionHandler
++ (void)checkAccessForCamera:(void (^)(BOOL granted))completionHandler
 {
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (authStatus == AVAuthorizationStatusAuthorized) {
