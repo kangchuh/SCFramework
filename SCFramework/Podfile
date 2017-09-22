@@ -4,6 +4,8 @@ platform :ios, '7.0'
 
 inhibit_all_warnings!
 
+target 'SCFramework' do
+
 pod 'AFNetworking', '~> 2.6.0'
 pod 'SDWebImage', '~> 3.7.0'
 pod 'MBProgressHUD', '~> 0.9.0'
@@ -15,3 +17,5 @@ pod 'ReactiveCocoa', '~> 2.5'
 pod 'FMDB', '~> 2.5'
 
 pod 'SSKeychain', '~> 1.2.0'
+
+end

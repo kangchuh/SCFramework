@@ -45,6 +45,11 @@
     return [UIScreen orientationSize].height;
 }
 
++ (BOOL)isFivePointEightInch
+{
+    return ([UIDevice iPhone] && ([UIScreen height] == 812.0 || [UIScreen width] == 812.0));
+}
+
 + (BOOL)isFivePointFiveInch
 {
     return ([UIDevice iPhone] && ([UIScreen height] == 736.0 || [UIScreen width] == 736.0));

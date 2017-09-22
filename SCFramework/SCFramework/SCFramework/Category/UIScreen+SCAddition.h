@@ -16,6 +16,7 @@
 + (CGSize)orientationSize;
 + (CGFloat)orientationWidth;
 + (CGFloat)orientationHeight;
++ (BOOL)isFivePointEightInch;
 + (BOOL)isFivePointFiveInch;
 + (BOOL)isFourPointSevenInch;
 + (BOOL)isFourInch;
