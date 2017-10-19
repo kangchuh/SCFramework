@@ -8,9 +8,9 @@
 
 #import "SCConstant.h"
 
-const CGFloat kSCFW_STATUSBAR_HEIGHT = 20.f;
-const CGFloat kSCFW_NAVIGATIONBAR_HEIGHT = 44.0;
-const CGFloat kSCFW_TABBAR_HEIGHT = 49.0;
+//const CGFloat kSCFW_STATUSBAR_HEIGHT = 20.f;
+//const CGFloat kSCFW_NAVIGATIONBAR_HEIGHT = 44.0;
+//const CGFloat kSCFW_TABBAR_HEIGHT = 49.0;
 const CGFloat kSCFW_CELL_DEFAULT_HEIGHT = 44.0;
 const CGFloat kSCFW_TOOLBAR_HEIGHT = 44.0;
 const CGFloat kSCFW_PICKERVIEW_HEIGHT = 216.0;

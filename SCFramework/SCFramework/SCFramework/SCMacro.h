@@ -24,6 +24,9 @@
 #define kSC_iOS8_OR_LATER       (NO)
 #endif
 
+#define kSC_iPhoneX             ([[UIScreen mainScreen] bounds].size.width == 375.0 && \
+                                    [[UIScreen mainScreen] bounds].size.height == 812.0 ? YES : NO)
+
 #define kSC_SYSTEM_VERSION_F    ([[[UIDevice currentDevice] systemVersion] floatValue])
 #define kSC_SYSTEM_VERSION_D    ([[[UIDevice currentDevice] systemVersion] doubleValue])
 #define kSC_SYSTEM_VERSION_S    ([[UIDevice currentDevice] systemVersion])
