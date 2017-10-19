@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SCMacro.h"
+
 #define kSCFW_STATUSBAR_HEIGHT     (kSC_iPhoneX ? 44.0 : 20.0)
 #define kSCFW_NAVIGATIONBAR_HEIGHT (kSC_iPhoneX ? 44.0 : 44.0)
 #define kSCFW_TABBAR_HEIGHT        (kSC_iPhoneX ? 83.0 : 49.0)
