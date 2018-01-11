@@ -47,6 +47,8 @@ typedef void(^SCVideoDidSavedCompletionHandler)(NSError *error);
 
 @property (nonatomic, assign) BOOL onlyPhotoLibrary;
 
+@property (nonatomic, assign) BOOL onlyCamera;
+
 + (SCImagePickerManager *)sharedInstance;
 
 + (void)checkAccessForAssetsLibrary:(void (^)(BOOL granted))completionHandler;

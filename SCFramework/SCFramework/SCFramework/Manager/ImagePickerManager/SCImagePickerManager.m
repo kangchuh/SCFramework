@@ -193,16 +193,34 @@ SCSINGLETON(SCImagePickerManager);
     self.pickingMediaHandler = pickingHandler;
     self.cancelHandler = cancelHandler;
     
-    if ( !_onlyPhotoLibrary && [UIDevice hasCamera] ) {
-        NSString *cancelTitle = NSLocalizedStringFromTable(@"SCFW_LS_Cancel", @"SCFWLocalizable", nil);
-        NSString *takeTitle = NSLocalizedStringFromTable(@"SCFW_LS_Take a picture", @"SCFWLocalizable", nil);
-        NSString *chooseTitle = NSLocalizedStringFromTable(@"SCFW_LS_Choose from album", @"SCFWLocalizable", nil);
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                                 delegate:self
-                                                        cancelButtonTitle:cancelTitle
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:takeTitle, chooseTitle, nil];
-        [actionSheet showInView:viewController.view];
+    if ( [UIDevice hasCamera] ) {
+        if ( _onlyPhotoLibrary ) {
+            [self.class checkAccessForAssetsLibrary:^(BOOL granted) {
+                if (granted) {
+                    [self __goToPhotoLibrary:_parentViewController];
+                } else {
+                    [self.class __alertForPhotosNotAccess];
+                }
+            }];
+        } else if ( _onlyCamera ) {
+            [self.class checkAccessForCamera:^(BOOL granted) {
+                if (granted) {
+                    [self __goToCamera:_parentViewController];
+                } else {
+                    [self.class __alertForCameraNotAccess];
+                }
+            }];
+        } else {
+            NSString *cancelTitle = NSLocalizedStringFromTable(@"SCFW_LS_Cancel", @"SCFWLocalizable", nil);
+            NSString *takeTitle = NSLocalizedStringFromTable(@"SCFW_LS_Take a picture", @"SCFWLocalizable", nil);
+            NSString *chooseTitle = NSLocalizedStringFromTable(@"SCFW_LS_Choose from album", @"SCFWLocalizable", nil);
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                     delegate:self
+                                                            cancelButtonTitle:cancelTitle
+                                                       destructiveButtonTitle:nil
+                                                            otherButtonTitles:takeTitle, chooseTitle, nil];
+            [actionSheet showInView:viewController.view];
+        }
     } else {
         [self.class checkAccessForAssetsLibrary:^(BOOL granted) {
             if (granted) {
