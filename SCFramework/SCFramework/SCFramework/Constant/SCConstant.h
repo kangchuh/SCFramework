@@ -10,9 +10,9 @@
 
 #import "SCMacro.h"
 
-#define kSCFW_STATUSBAR_HEIGHT     (kSC_iPhoneX ? 44.0 : 20.0)
-#define kSCFW_NAVIGATIONBAR_HEIGHT (kSC_iPhoneX ? 44.0 : 44.0)
-#define kSCFW_TABBAR_HEIGHT        (kSC_iPhoneX ? 83.0 : 49.0)
+#define kSCFW_STATUSBAR_HEIGHT     (kSC_iPhoneX_OR_LATER ? 44.0 : 20.0)
+#define kSCFW_NAVIGATIONBAR_HEIGHT (kSC_iPhoneX_OR_LATER ? 44.0 : 44.0)
+#define kSCFW_TABBAR_HEIGHT        (kSC_iPhoneX_OR_LATER ? 83.0 : 49.0)
 
 //extern const CGFloat kSCFW_STATUSBAR_HEIGHT;
 //extern const CGFloat kSCFW_NAVIGATIONBAR_HEIGHT;
