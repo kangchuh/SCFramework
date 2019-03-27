@@ -99,6 +99,88 @@
 		B7E640AF19A478520019D963 /* SCBrowseViewPage.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E640AE19A478520019D963 /* SCBrowseViewPage.m */; };
 		B7F300371962529800921CFD /* UINavigationItem+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F300361962529800921CFD /* UINavigationItem+SCAddition.m */; };
 		B7F369711CC86BA2002DAA08 /* SCDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F369701CC86BA2002DAA08 /* SCDatabaseManager.m */; };
+		D9950420224B642600336E17 /* SCConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3821957D47D00A2D5C0 /* SCConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950421224B642600336E17 /* SCFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3831957D47D00A2D5C0 /* SCFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950422224B642600336E17 /* SCLog.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3841957D47D00A2D5C0 /* SCLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950423224B642600336E17 /* SCMacro.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3851957D47D00A2D5C0 /* SCMacro.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950424224B642600336E17 /* SCSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3861957D47D00A2D5C0 /* SCSingleton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950425224B642600336E17 /* SCAdaptedDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED33B1957D47D00A2D5C0 /* SCAdaptedDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950426224B642600336E17 /* SCAdaptedSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED33E1957D47D00A2D5C0 /* SCAdaptedSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950427224B642600336E17 /* NSArray+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3411957D47D00A2D5C0 /* NSArray+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950428224B642600336E17 /* NSData+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3431957D47D00A2D5C0 /* NSData+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950429224B642600336E17 /* NSDate+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3451957D47D00A2D5C0 /* NSDate+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995042A224B642600336E17 /* NSDictionary+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3471957D47D00A2D5C0 /* NSDictionary+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995042B224B642600336E17 /* NSObject+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3491957D47D00A2D5C0 /* NSObject+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995042C224B642600336E17 /* NSString+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED34B1957D47D00A2D5C0 /* NSString+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995042D224B642600336E17 /* NSAttributedString+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B70625101CE099B3008C368B /* NSAttributedString+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995042E224B642600336E17 /* NSURL+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED34D1957D47D00A2D5C0 /* NSURL+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995042F224B642600336E17 /* UIAlertView+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED34F1957D47D00A2D5C0 /* UIAlertView+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950430224B642600336E17 /* UIColor+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3511957D47D00A2D5C0 /* UIColor+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950431224B642600336E17 /* UIDevice+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3531957D47D00A2D5C0 /* UIDevice+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950432224B642600336E17 /* UIImage+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3551957D47D00A2D5C0 /* UIImage+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950433224B642600336E17 /* UINavigationController+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3571957D47D00A2D5C0 /* UINavigationController+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950434224B642600336E17 /* UIView+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3591957D47D00A2D5C0 /* UIView+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950435224B642700336E17 /* UINavigationItem+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7F300351962529800921CFD /* UINavigationItem+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950436224B642700336E17 /* UIScreen+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C2268A19762AF000BEF1B2 /* UIScreen+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950437224B642700336E17 /* NSTimer+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7E640AA19A478340019D963 /* NSTimer+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950438224B642700336E17 /* UIBarButtonItem+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B70C5819D11E56000D4472 /* UIBarButtonItem+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950439224B642700336E17 /* UITableView+SCAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B725A02219D53D0800C92315 /* UITableView+SCAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995043A224B642700336E17 /* SCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B7AF798819A6E8AA0041F724 /* SCUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995043B224B642700336E17 /* SCApp.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED35D1957D47D00A2D5C0 /* SCApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995043C224B642700336E17 /* SCJSONSerializing.h in Headers */ = {isa = PBXBuildFile; fileRef = B74181151A834EBB00AD2169 /* SCJSONSerializing.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995043D224B642700336E17 /* SCModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3601957D47D00A2D5C0 /* SCModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995043E224B642700336E17 /* SCNSJSONSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3621957D47D00A2D5C0 /* SCNSJSONSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995043F224B642700336E17 /* SCMath.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3651957D47D00A2D5C0 /* SCMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950440224B642700336E17 /* SCConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3681957D47D00A2D5C0 /* SCConstant.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950441224B642700336E17 /* NSFetchRequest+SCDaoAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED36C1957D47D00A2D5C0 /* NSFetchRequest+SCDaoAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950442224B642700336E17 /* NSManagedObject+SCDaoAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED36E1957D47D00A2D5C0 /* NSManagedObject+SCDaoAddition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950443224B642700336E17 /* SCCoreDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3701957D47D00A2D5C0 /* SCCoreDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950444224B642700336E17 /* SCDaoManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3721957D47D00A2D5C0 /* SCDaoManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950445224B642700336E17 /* SCDatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7F3696F1CC86BA2002DAA08 /* SCDatabaseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950446224B642700336E17 /* SCDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = B7AF797B19A5DE270041F724 /* SCDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950447224B642700336E17 /* SCDatabaseModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B7141FFB19A74EF3006C510C /* SCDatabaseModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950448224B642700336E17 /* SCDatabaseMetaModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C97E3B1CC0F2D900D28098 /* SCDatabaseMetaModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950449224B642700336E17 /* SCTableMetaModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C97E381CC0EDBD00D28098 /* SCTableMetaModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995044A224B642700336E17 /* SCKeyValueStore.h in Headers */ = {isa = PBXBuildFile; fileRef = B73EDD781A5E67EF0024E33E /* SCKeyValueStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995044B224B642700336E17 /* SCDateManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3751957D47D00A2D5C0 /* SCDateManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995044C224B642700336E17 /* SCFileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3781957D47D00A2D5C0 /* SCFileManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995044D224B642700336E17 /* SCImagePickerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7645721196BC902009302C2 /* SCImagePickerManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995044E224B642700336E17 /* SCLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B72C84A519F4A61C0026225D /* SCLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995044F224B642700336E17 /* SCUserDefaultManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED37B1957D47D00A2D5C0 /* SCUserDefaultManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950450224B642700336E17 /* SCVersionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7271A6F1974BE9100FDFA72 /* SCVersionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950451224B642700336E17 /* SCCTNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED38A1957D47D00A2D5C0 /* SCCTNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950452224B642700336E17 /* SCCTNavigationControllerDelegateManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED38C1957D47D00A2D5C0 /* SCCTNavigationControllerDelegateManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950453224B642700336E17 /* SCDBNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED38E1957D47D00A2D5C0 /* SCDBNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950454224B642700336E17 /* SCNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3901957D47D00A2D5C0 /* SCNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950455224B642700336E17 /* SCViewControllerTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3921957D47D00A2D5C0 /* SCViewControllerTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950456224B642700336E17 /* SCViewControllerTransitionAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3931957D47D00A2D5C0 /* SCViewControllerTransitionAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950457224B642700336E17 /* SCPageViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B75C05981B16C84C00B5C012 /* SCPageViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950458224B642700336E17 /* SCTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3961957D47D00A2D5C0 /* SCTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950459224B642700336E17 /* SCTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3991957D47D00A2D5C0 /* SCTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995045A224B642700336E17 /* SCViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED39C1957D47D00A2D5C0 /* SCViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995045B224B642700336E17 /* SCActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = B73230E31A353EA4009C16D8 /* SCActionSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995045C224B642700336E17 /* SCAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = B73230E01A353E8C009C16D8 /* SCAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995045D224B642700336E17 /* SCToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = B7B70C5119D11B25000D4472 /* SCToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995045E224B642700336E17 /* SCButton.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3A01957D47D00A2D5C0 /* SCButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995045F224B642700336E17 /* SCDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3A31957D47D00A2D5C0 /* SCDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950460224B642700336E17 /* SCLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3A61957D47D00A2D5C0 /* SCLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950461224B642700336E17 /* SCPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3A91957D47D00A2D5C0 /* SCPickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950462224B642700336E17 /* SCScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3AC1957D47D00A2D5C0 /* SCScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950463224B642700336E17 /* SCBrowseView.h in Headers */ = {isa = PBXBuildFile; fileRef = B73CD4841990B39A00D21CD0 /* SCBrowseView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950464224B642700336E17 /* SCBrowseViewPage.h in Headers */ = {isa = PBXBuildFile; fileRef = B7E640AD19A478520019D963 /* SCBrowseViewPage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950465224B642700336E17 /* SCCycleScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = B745E7931B1EDF6B00E06BE6 /* SCCycleScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950466224B642700336E17 /* SCCircleView.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3AF1957D47D00A2D5C0 /* SCCircleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950467224B642700336E17 /* SCExpandTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3B11957D47D00A2D5C0 /* SCExpandTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950468224B642700336E17 /* SCPullLoadView.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3B31957D47D00A2D5C0 /* SCPullLoadView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950469224B642700336E17 /* SCPullRefreshView.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3B51957D47D00A2D5C0 /* SCPullRefreshView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995046A224B642700336E17 /* SCTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3B71957D47D00A2D5C0 /* SCTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995046B224B642700336E17 /* SCExpandTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3BA1957D47D00A2D5C0 /* SCExpandTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995046C224B642700336E17 /* SCTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3BC1957D47D00A2D5C0 /* SCTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995046D224B642700336E17 /* SCTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3BF1957D47D00A2D5C0 /* SCTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995046E224B642700336E17 /* SCTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3C21957D47D00A2D5C0 /* SCTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D995046F224B642700336E17 /* SCView.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DED3C51957D47D00A2D5C0 /* SCView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950470224B642700336E17 /* SCActionView.h in Headers */ = {isa = PBXBuildFile; fileRef = B7653F6119CC207300A2AAB5 /* SCActionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9950471224B642700336E17 /* SCPageControl.h in Headers */ = {isa = PBXBuildFile; fileRef = B7C2268419760BF700BEF1B2 /* SCPageControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -895,12 +977,105 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		D995041F224B63C100336E17 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9950420224B642600336E17 /* SCConfig.h in Headers */,
+				D9950421224B642600336E17 /* SCFramework.h in Headers */,
+				D9950422224B642600336E17 /* SCLog.h in Headers */,
+				D9950423224B642600336E17 /* SCMacro.h in Headers */,
+				D9950424224B642600336E17 /* SCSingleton.h in Headers */,
+				D9950425224B642600336E17 /* SCAdaptedDevice.h in Headers */,
+				D9950426224B642600336E17 /* SCAdaptedSystem.h in Headers */,
+				D9950427224B642600336E17 /* NSArray+SCAddition.h in Headers */,
+				D9950428224B642600336E17 /* NSData+SCAddition.h in Headers */,
+				D9950429224B642600336E17 /* NSDate+SCAddition.h in Headers */,
+				D995042A224B642600336E17 /* NSDictionary+SCAddition.h in Headers */,
+				D995042B224B642600336E17 /* NSObject+SCAddition.h in Headers */,
+				D995042C224B642600336E17 /* NSString+SCAddition.h in Headers */,
+				D995042D224B642600336E17 /* NSAttributedString+SCAddition.h in Headers */,
+				D995042E224B642600336E17 /* NSURL+SCAddition.h in Headers */,
+				D995042F224B642600336E17 /* UIAlertView+SCAddition.h in Headers */,
+				D9950430224B642600336E17 /* UIColor+SCAddition.h in Headers */,
+				D9950431224B642600336E17 /* UIDevice+SCAddition.h in Headers */,
+				D9950432224B642600336E17 /* UIImage+SCAddition.h in Headers */,
+				D9950433224B642600336E17 /* UINavigationController+SCAddition.h in Headers */,
+				D9950434224B642600336E17 /* UIView+SCAddition.h in Headers */,
+				D9950435224B642700336E17 /* UINavigationItem+SCAddition.h in Headers */,
+				D9950436224B642700336E17 /* UIScreen+SCAddition.h in Headers */,
+				D9950437224B642700336E17 /* NSTimer+SCAddition.h in Headers */,
+				D9950438224B642700336E17 /* UIBarButtonItem+SCAddition.h in Headers */,
+				D9950439224B642700336E17 /* UITableView+SCAddition.h in Headers */,
+				D995043A224B642700336E17 /* SCUtils.h in Headers */,
+				D995043B224B642700336E17 /* SCApp.h in Headers */,
+				D995043C224B642700336E17 /* SCJSONSerializing.h in Headers */,
+				D995043D224B642700336E17 /* SCModel.h in Headers */,
+				D995043E224B642700336E17 /* SCNSJSONSerialization.h in Headers */,
+				D995043F224B642700336E17 /* SCMath.h in Headers */,
+				D9950440224B642700336E17 /* SCConstant.h in Headers */,
+				D9950441224B642700336E17 /* NSFetchRequest+SCDaoAddition.h in Headers */,
+				D9950442224B642700336E17 /* NSManagedObject+SCDaoAddition.h in Headers */,
+				D9950443224B642700336E17 /* SCCoreDataManager.h in Headers */,
+				D9950444224B642700336E17 /* SCDaoManager.h in Headers */,
+				D9950445224B642700336E17 /* SCDatabaseManager.h in Headers */,
+				D9950446224B642700336E17 /* SCDatabase.h in Headers */,
+				D9950447224B642700336E17 /* SCDatabaseModel.h in Headers */,
+				D9950448224B642700336E17 /* SCDatabaseMetaModel.h in Headers */,
+				D9950449224B642700336E17 /* SCTableMetaModel.h in Headers */,
+				D995044A224B642700336E17 /* SCKeyValueStore.h in Headers */,
+				D995044B224B642700336E17 /* SCDateManager.h in Headers */,
+				D995044C224B642700336E17 /* SCFileManager.h in Headers */,
+				D995044D224B642700336E17 /* SCImagePickerManager.h in Headers */,
+				D995044E224B642700336E17 /* SCLocationManager.h in Headers */,
+				D995044F224B642700336E17 /* SCUserDefaultManager.h in Headers */,
+				D9950450224B642700336E17 /* SCVersionManager.h in Headers */,
+				D9950451224B642700336E17 /* SCCTNavigationController.h in Headers */,
+				D9950452224B642700336E17 /* SCCTNavigationControllerDelegateManager.h in Headers */,
+				D9950453224B642700336E17 /* SCDBNavigationController.h in Headers */,
+				D9950454224B642700336E17 /* SCNavigationController.h in Headers */,
+				D9950455224B642700336E17 /* SCViewControllerTransition.h in Headers */,
+				D9950456224B642700336E17 /* SCViewControllerTransitionAnimator.h in Headers */,
+				D9950457224B642700336E17 /* SCPageViewController.h in Headers */,
+				D9950458224B642700336E17 /* SCTabBarController.h in Headers */,
+				D9950459224B642700336E17 /* SCTableViewController.h in Headers */,
+				D995045A224B642700336E17 /* SCViewController.h in Headers */,
+				D995045B224B642700336E17 /* SCActionSheet.h in Headers */,
+				D995045C224B642700336E17 /* SCAlertView.h in Headers */,
+				D995045D224B642700336E17 /* SCToolbar.h in Headers */,
+				D995045E224B642700336E17 /* SCButton.h in Headers */,
+				D995045F224B642700336E17 /* SCDatePicker.h in Headers */,
+				D9950460224B642700336E17 /* SCLabel.h in Headers */,
+				D9950461224B642700336E17 /* SCPickerView.h in Headers */,
+				D9950462224B642700336E17 /* SCScrollView.h in Headers */,
+				D9950463224B642700336E17 /* SCBrowseView.h in Headers */,
+				D9950464224B642700336E17 /* SCBrowseViewPage.h in Headers */,
+				D9950465224B642700336E17 /* SCCycleScrollView.h in Headers */,
+				D9950466224B642700336E17 /* SCCircleView.h in Headers */,
+				D9950467224B642700336E17 /* SCExpandTableView.h in Headers */,
+				D9950468224B642700336E17 /* SCPullLoadView.h in Headers */,
+				D9950469224B642700336E17 /* SCPullRefreshView.h in Headers */,
+				D995046A224B642700336E17 /* SCTableView.h in Headers */,
+				D995046B224B642700336E17 /* SCExpandTableViewCell.h in Headers */,
+				D995046C224B642700336E17 /* SCTableViewCell.h in Headers */,
+				D995046D224B642700336E17 /* SCTextField.h in Headers */,
+				D995046E224B642700336E17 /* SCTextView.h in Headers */,
+				D995046F224B642700336E17 /* SCView.h in Headers */,
+				D9950470224B642700336E17 /* SCActionView.h in Headers */,
+				D9950471224B642700336E17 /* SCPageControl.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		B72AF3D018C5655100621B34 /* SCFramework */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B72AF40318C5655100621B34 /* Build configuration list for PBXNativeTarget "SCFramework" */;
 			buildPhases = (
 				0C378CDD22C04F339C400877 /* [CP] Check Pods Manifest.lock */,
+				D995041F224B63C100336E17 /* Headers */,
 				B72AF3CD18C5655100621B34 /* Sources */,
 				B72AF3CE18C5655100621B34 /* Frameworks */,
 				B72AF3CF18C5655100621B34 /* Resources */,
