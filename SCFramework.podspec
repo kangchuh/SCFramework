@@ -20,9 +20,9 @@ Pod::Spec.new do |s|
                   SCFramework.
                   DESC
 
-  s.source_files = 'SCFramework/**/*.{h,m}'
-  s.public_header_files = 'SCFramework/**/*.h'
-  s.resources = 'SCFramework/**/*.{lproj}'
+  s.source_files = 'SCFramework/SCFramework/**/*.{h,m}'
+  s.public_header_files = 'SCFramework/SCFramework/**/*.h'
+  s.resources = 'SCFramework/SCFramework/**/*.{lproj}'
 
   s.dependency 'FMDB', '~> 2.7.0'
   s.platform = :ios
