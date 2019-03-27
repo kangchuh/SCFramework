@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import <FMDB.h>
+#import "FMDB.h"
 
 @class SCModel;
 
