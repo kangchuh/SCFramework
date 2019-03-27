@@ -153,7 +153,9 @@ Pod::Spec.new do |s|
     end
   end
 
-  s.dependency 'FMDB', '~> 2.5'
+  s.public_header_files = ["SCFramework/SCFramework/SCFramework/*.h"]
+
+  s.dependency 'FMDB', '~> 2.7.0'
 
   s.platform = :ios
 
