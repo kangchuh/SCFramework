@@ -23,11 +23,11 @@ Pod::Spec.new do |s|
   s.source_files = 'SCFramework/SCFramework/SCFramework/**/*.{h,m}'
   s.public_header_files = 'SCFramework/SCFramework/SCFramework/**/*.h'
   s.resources = 'SCFramework/SCFramework/SCFramework/**/*.{lproj}'
-
   s.dependency 'FMDB', '~> 2.7.0'
-  s.platform = :ios
+
+  s.platform = :ios, '7.0'
+  s.requires_arc = true
+
   s.library = 'z'
   s.ios.frameworks = 'Foundation', 'UIKit', 'CoreGraphics', 'CoreLocation', 'CoreData', 'AssetsLibrary', 'AVFoundation'
-  s.ios.deployment_target = '7.0' # minimum SDK with autolayout
-  s.requires_arc = true
 end

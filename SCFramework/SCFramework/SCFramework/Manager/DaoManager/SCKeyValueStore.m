@@ -15,7 +15,7 @@
 
 #import "SCNSJSONSerialization.h"
 
-#import "FMDB.h"
+#import <FMDB/FMDB.h>
 
 static NSString * const SCKeyValueStoreKeyID          = @"ID";
 static NSString * const SCKeyValueStoreKeyJSON        = @"JSON";
