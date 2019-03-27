@@ -440,7 +440,6 @@
 			isa = PBXGroup;
 			children = (
 				B7DED3381957D47D00A2D5C0 /* SCFramework */,
-				B7F792D318C5A15700696D45 /* Classes */,
 				B72AF3E918C5655100621B34 /* AppDelegate.h */,
 				B72AF3EA18C5655100621B34 /* AppDelegate.m */,
 				B707FA8118CDA1B500413B64 /* SCDemoListViewController.h */,
@@ -949,13 +948,6 @@
 				B7653F6219CC207300A2AAB5 /* SCActionView.m */,
 			);
 			path = SCView;
-			sourceTree = "<group>";
-		};
-		B7F792D318C5A15700696D45 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		EEBFA7C6120074130F3F31E6 /* Pods */ = {
