@@ -570,7 +570,6 @@
 				B7DED35B1957D47D00A2D5C0 /* Common */,
 				B7DED3671957D47D00A2D5C0 /* Constant */,
 				B7DED36A1957D47D00A2D5C0 /* Manager */,
-				B7DED3871957D47D00A2D5C0 /* Vendor */,
 				B7DED3881957D47D00A2D5C0 /* ViewControllers */,
 				B7DED39E1957D47D00A2D5C0 /* Views */,
 			);
@@ -764,13 +763,6 @@
 				B7DED37C1957D47D00A2D5C0 /* SCUserDefaultManager.m */,
 			);
 			path = UserDefaultManager;
-			sourceTree = "<group>";
-		};
-		B7DED3871957D47D00A2D5C0 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Vendor;
 			sourceTree = "<group>";
 		};
 		B7DED3881957D47D00A2D5C0 /* ViewControllers */ = {

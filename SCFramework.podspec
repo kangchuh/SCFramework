@@ -20,9 +20,6 @@ Pod::Spec.new do |s|
       ss.resources = 'SCFramework/SCFramework/SCFramework/*.{lproj}'
 
       ss.subspec 'Adapted' do |a|
-        a.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/*.{h,m}'
-        a.public_header_files = 'SCFramework/SCFramework/SCFramework/Adapted/*.h'
-
         a.subspec 'AdaptedDevice' do |ad|
           ad.source_files = 'SCFramework/SCFramework/SCFramework/Adapted/AdaptedDevice/*.{h,m}'
           ad.public_header_files = 'SCFramework/SCFramework/SCFramework/Adapted/AdaptedDevice/*.h'
@@ -39,9 +36,6 @@ Pod::Spec.new do |s|
       end
 
       ss.subspec 'Common' do |c|
-        c.source_files = 'SCFramework/SCFramework/SCFramework/Common/*.{h,m}'
-        c.public_header_files = 'SCFramework/SCFramework/SCFramework/Common/*.h'
-
         c.subspec 'Utils' do |u|
           u.source_files = 'SCFramework/SCFramework/SCFramework/Common/Utils/*.{h,m}'
           u.public_header_files = 'SCFramework/SCFramework/SCFramework/Common/Utils/*.h'
@@ -66,9 +60,6 @@ Pod::Spec.new do |s|
       end
 
       ss.subspec 'Manager' do |c|
-        c.source_files = 'SCFramework/SCFramework/SCFramework/Manager/*.{h,m}'
-        c.public_header_files = 'SCFramework/SCFramework/SCFramework/Manager/*.h'
-
         c.subspec 'DaoManager' do |d|
           d.source_files = 'SCFramework/SCFramework/SCFramework/Manager/DaoManager/*.{h,m}'
           d.public_header_files = 'SCFramework/SCFramework/SCFramework/Manager/DaoManager/*.h'
@@ -99,15 +90,7 @@ Pod::Spec.new do |s|
         end
       end
 
-      ss.subspec 'Vendor' do |v|
-        v.source_files = 'SCFramework/SCFramework/SCFramework/Vendor/*.{h,m}'
-        v.public_header_files = 'SCFramework/SCFramework/SCFramework/Vendor/*.h'
-      end
-
       ss.subspec 'ViewControllers' do |vcs|
-        vcs.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/*.{h,m}'
-        vcs.public_header_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/*.h'
-
         vcs.subspec 'SCNavigationController' do |nvc|
           nvc.source_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCNavigationController/*.{h,m}'
           nvc.public_header_files = 'SCFramework/SCFramework/SCFramework/ViewControllers/SCNavigationController/*.h'
@@ -130,10 +113,7 @@ Pod::Spec.new do |s|
         end
       end
 
-        ss.subspec 'Views' do |vs|
-        vs.source_files = 'SCFramework/SCFramework/SCFramework/Views/*.{h,m}'
-        vs.public_header_files = 'SCFramework/SCFramework/SCFramework/Views/*.h'
-
+      ss.subspec 'Views' do |vs|
         vs.subspec 'SCActionSheet' do |as|
           as.source_files = 'SCFramework/SCFramework/SCFramework/Views/SCActionSheet/*.{h,m}'
           as.public_header_files = 'SCFramework/SCFramework/SCFramework/Views/SCActionSheet/*.h'
