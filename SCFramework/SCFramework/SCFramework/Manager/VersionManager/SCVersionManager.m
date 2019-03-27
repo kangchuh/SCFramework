@@ -159,14 +159,14 @@ SCSINGLETON(SCVersionManager);
              NSDictionary *dictionary = [SCNSJSONSerialization objectFromData:data];
              dispatch_async(dispatch_get_main_queue(), ^{
                  self.lastCheckDate = [NSDate date];
-                 [[SCUserDefaultManager sharedInstance] setObject:_lastCheckDate
+                 [[SCUserDefaultManager sharedInstance] setObject:self.lastCheckDate
                                                            forKey:SCVersionManagerCheckDateKey];
                  
                  DLog(@"Version : %@", dictionary);
                  NSArray *versions = [dictionary arrayForKey:@"results"];
                  if ([versions isNotEmpty]) {
                      self.versionInfo = [versions firstObject];
-                     NSString *currentVersion = [_versionInfo stringForKey:@"version"];
+                     NSString *currentVersion = [self.versionInfo stringForKey:@"version"];
                      [self __checkIfUpdateAvailable:currentVersion];
                  }
              });

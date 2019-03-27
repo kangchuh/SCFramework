@@ -113,7 +113,7 @@ SCSINGLETON(SCDatabaseManager);
             meta.name         = [rs stringForColumn:@"name"];
             meta.isNotNull    = [rs boolForColumn:@"notnull"];
             meta.isPrimaryKey = [rs boolForColumn:@"pk"];
-            meta.defaultValue = [rs objectForColumnName:@"dflt_value"];
+            meta.defaultValue = [rs objectForColumn:@"dflt_value"];
             [metas addObject:meta];
         }
         [rs close];
@@ -634,7 +634,7 @@ SCSINGLETON(SCDatabaseManager);
             NSString *columnName = [rs columnNameForIndex:clm];
             if ([propertyNames containsObject:columnName]) {
                 NSString *objcType = [properties objectForKey:columnName];
-                id obj = [rs objectForColumnName:columnName];
+                id obj = [rs objectForColumn:columnName];
                 id value = [self convertToObjcValue:obj forType:objcType];
                 if (value && ![value isEqual:[NSNull null]]) {
                     [model setValue:value forKey:columnName];

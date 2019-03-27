@@ -288,7 +288,7 @@ UIGestureRecognizerDelegate
         [self popViewControllerAnimated:NO];
         // 导航视图恢复起始位置
         self.view.left = 0;
-        _interactiveBackgroundView.hidden = YES;
+        self.interactiveBackgroundView.hidden = YES;
     }];
 }
 
@@ -300,7 +300,7 @@ UIGestureRecognizerDelegate
     [UIView animateWithDuration:kSCBackAnimationDuration animations:^{
         [self moveToX:0];
     } completion:^(BOOL finished) {
-        _interactiveBackgroundView.hidden = YES;
+        self.interactiveBackgroundView.hidden = YES;
     }];
 }
 

@@ -53,7 +53,7 @@ SCSINGLETON(SCImagePickerManager);
     if (buttonIndex == actionSheet.firstOtherButtonIndex) {
         [self.class checkAccessForCamera:^(BOOL granted) {
             if (granted) {
-                [self __goToCamera:_parentViewController];
+                [self __goToCamera:self.parentViewController];
             } else {
                 [self.class __alertForCameraNotAccess];
             }
@@ -61,7 +61,7 @@ SCSINGLETON(SCImagePickerManager);
     } else if (buttonIndex == actionSheet.firstOtherButtonIndex + 1) {
         [self.class checkAccessForAssetsLibrary:^(BOOL granted) {
             if (granted) {
-                [self __goToPhotoLibrary:_parentViewController];
+                [self __goToPhotoLibrary:self.parentViewController];
             } else {
                 [self.class __alertForPhotosNotAccess];
             }
@@ -197,7 +197,7 @@ SCSINGLETON(SCImagePickerManager);
         if ( _onlyPhotoLibrary ) {
             [self.class checkAccessForAssetsLibrary:^(BOOL granted) {
                 if (granted) {
-                    [self __goToPhotoLibrary:_parentViewController];
+                    [self __goToPhotoLibrary:self.parentViewController];
                 } else {
                     [self.class __alertForPhotosNotAccess];
                 }
@@ -205,7 +205,7 @@ SCSINGLETON(SCImagePickerManager);
         } else if ( _onlyCamera ) {
             [self.class checkAccessForCamera:^(BOOL granted) {
                 if (granted) {
-                    [self __goToCamera:_parentViewController];
+                    [self __goToCamera:self.parentViewController];
                 } else {
                     [self.class __alertForCameraNotAccess];
                 }
@@ -224,7 +224,7 @@ SCSINGLETON(SCImagePickerManager);
     } else {
         [self.class checkAccessForAssetsLibrary:^(BOOL granted) {
             if (granted) {
-                [self __goToPhotoLibrary:_parentViewController];
+                [self __goToPhotoLibrary:self.parentViewController];
             } else {
                 [self.class __alertForPhotosNotAccess];
             }

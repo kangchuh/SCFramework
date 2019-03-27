@@ -18,7 +18,7 @@
 - (NSInteger)year
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    unsigned int uintFlags = NSYearCalendarUnit;
+    unsigned int uintFlags = NSCalendarUnitYear;
     NSDateComponents *dateComponents = [calendar components:uintFlags
                                                    fromDate:self];
     return [dateComponents year];
@@ -27,7 +27,7 @@
 - (NSInteger)month
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    unsigned int uintFlags = NSMonthCalendarUnit;
+    unsigned int uintFlags = NSCalendarUnitMonth;
     NSDateComponents *dateComponents = [calendar components:uintFlags
                                                    fromDate:self];
     return [dateComponents month];
@@ -36,7 +36,7 @@
 - (NSInteger)day
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    unsigned int uintFlags = NSDayCalendarUnit;
+    unsigned int uintFlags = NSCalendarUnitDay;
     NSDateComponents *dateComponents = [calendar components:uintFlags
                                                    fromDate:self];
     return [dateComponents day];
@@ -45,7 +45,7 @@
 - (NSInteger)hour
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    unsigned int uintFlags = NSHourCalendarUnit;
+    unsigned int uintFlags = NSCalendarUnitHour;
     NSDateComponents *dateComponents = [calendar components:uintFlags
                                                    fromDate:self];
     return [dateComponents hour];
@@ -54,7 +54,7 @@
 - (NSInteger)minute
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    unsigned int uintFlags = NSMinuteCalendarUnit;
+    unsigned int uintFlags = NSCalendarUnitMinute;
     NSDateComponents *dateComponents = [calendar components:uintFlags
                                                    fromDate:self];
     return [dateComponents minute];
@@ -63,7 +63,7 @@
 - (NSInteger)second
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    unsigned int uintFlags = NSSecondCalendarUnit;
+    unsigned int uintFlags = NSCalendarUnitSecond;
     NSDateComponents *dateComponents = [calendar components:uintFlags
                                                    fromDate:self];
     return [dateComponents second];
@@ -104,8 +104,8 @@
 - (NSInteger)numberOfDaysInMonth
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSRange daysRang = [calendar rangeOfUnit:NSDayCalendarUnit
-                                      inUnit:NSMonthCalendarUnit
+    NSRange daysRang = [calendar rangeOfUnit:NSCalendarUnitDay
+                                      inUnit:NSCalendarUnitMonth
                                      forDate:self];
     return daysRang.length;
 }
@@ -150,12 +150,12 @@
 - (NSDate *)beginOfDay
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    unsigned int flags = (NSYearCalendarUnit |
-                          NSMonthCalendarUnit |
-                          NSDayCalendarUnit |
-                          NSHourCalendarUnit |
-                          NSMinuteCalendarUnit |
-                          NSSecondCalendarUnit);
+    unsigned int flags = (NSCalendarUnitYear |
+                          NSCalendarUnitMonth |
+                          NSCalendarUnitDay |
+                          NSCalendarUnitHour |
+                          NSCalendarUnitMinute |
+                          NSCalendarUnitSecond);
     NSDateComponents *dateComponents = [calendar components:flags
                                                    fromDate:self];
     [dateComponents setHour:0];
@@ -170,12 +170,12 @@
 - (NSDate *)endOfDay
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    unsigned int flags = (NSYearCalendarUnit |
-                          NSMonthCalendarUnit |
-                          NSDayCalendarUnit |
-                          NSHourCalendarUnit |
-                          NSMinuteCalendarUnit |
-                          NSSecondCalendarUnit);
+    unsigned int flags = (NSCalendarUnitYear |
+                          NSCalendarUnitMonth |
+                          NSCalendarUnitDay |
+                          NSCalendarUnitHour |
+                          NSCalendarUnitMinute |
+                          NSCalendarUnitSecond);
     NSDateComponents *dateComponents = [calendar components:flags
                                                    fromDate:self];
     [dateComponents setHour:23];
@@ -190,13 +190,13 @@
 - (BOOL)isSameDay:(NSDate *)anotherDate
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components1 = [calendar components:(NSYearCalendarUnit |
-                                                          NSMonthCalendarUnit |
-                                                          NSDayCalendarUnit)
+    NSDateComponents *components1 = [calendar components:(NSCalendarUnitYear |
+                                                          NSCalendarUnitMonth |
+                                                          NSCalendarUnitDay)
                                                 fromDate:self];
-    NSDateComponents *components2 = [calendar components:(NSYearCalendarUnit |
-                                                          NSMonthCalendarUnit |
-                                                          NSDayCalendarUnit)
+    NSDateComponents *components2 = [calendar components:(NSCalendarUnitYear |
+                                                          NSCalendarUnitMonth |
+                                                          NSCalendarUnitDay)
                                                 fromDate:anotherDate];
     return ([components1 year] == [components2 year] &&
             [components1 month] == [components2 month] &&
@@ -217,7 +217,7 @@
 - (NSInteger)daysSinceDate:(NSDate *)anotherDate
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    unsigned int unitFlags = NSDayCalendarUnit;
+    unsigned int unitFlags = NSCalendarUnitDay;
     NSDateComponents *dateComponents = [calendar components:unitFlags
                                                    fromDate:self
                                                      toDate:anotherDate

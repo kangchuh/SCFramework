@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'SCFramework'
-  s.version  = '1.1.0'
+  s.version  = '1.1.2'
   s.license  = 'MIT'
   s.summary  = 'SCFramework.'
   s.homepage = 'https://github.com/kangchuh/SCFramework'
@@ -9,9 +9,9 @@ Pod::Spec.new do |s|
 
   s.source   = { :git => 'https://github.com/kangchuh/SCFramework.git', :tag => s.version.to_s }
 
-  s.description = %{
-    SCFramework.
-  }
+  s.description = <<-DESC
+                  SCFramework.
+                  DESC
 
   s.subspec 'SCFramework' do |s|
     s.subspec 'SCFramework' do |ss|
